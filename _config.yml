@@ -14,3 +14,12 @@ paginate:            5
 
 # Custom vars
 version:             1.0.0
+
+defaults:
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      comments: true
