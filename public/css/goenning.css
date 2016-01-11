@@ -17,3 +17,7 @@
 .social-bar a.github {
   background:url('/public/icons/github.png')
 }
+
+.social-bar a.npm {
+  background:url('/public/icons/npm.png')
+}
