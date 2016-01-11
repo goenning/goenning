@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Blog Archives
+title: Blog Archive
 ---
 
 <div class="archives">

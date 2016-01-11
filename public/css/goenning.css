@@ -1,0 +1,19 @@
+.social-bar a {
+  float:left;
+  width:32px;
+  height:32px;
+  margin-right:16px;
+  border-radius:4px;
+}
+
+.social-bar a.twitter {
+  background:url('/public/icons/twitter.png')
+}
+
+.social-bar a.stackoverflow {
+  background:url('/public/icons/stackoverflow.png')
+}
+
+.social-bar a.github {
+  background:url('/public/icons/github.png')
+}
