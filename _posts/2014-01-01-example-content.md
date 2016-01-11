@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Example content
-date: 2014-01-01
 ---
 
 

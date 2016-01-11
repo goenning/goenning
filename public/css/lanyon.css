@@ -331,6 +331,10 @@ a.sidebar-nav-item:focus {
   color: #9a9a9a;
 }
 
+.archive-post-date {
+  color: #9a9a9a;
+}
+
 /* Related posts */
 .related {
   padding-top: 2rem;
