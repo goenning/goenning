@@ -11,7 +11,7 @@ It's an immensely useful tool and one we encourage you to use here with Lanyon.
 
 Find out more by [visiting the project on GitHub](https://github.com/mojombo/jekyll).
 
-{% highlight typescript %}
+{% highlight javascript %}
 ```
 interface Hi {
   say():Promise<string>
