@@ -6,6 +6,7 @@ relative_permalinks: true
 title:               '@goenning'
 url:                 http://goenning.net
 paginate:            5
+highlighter:         pygments
 
 # Defaults
 defaults:
