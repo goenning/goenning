@@ -7,7 +7,7 @@ twitter_user: goenning
 twitter_tweet_button: true
 
 # Setup
-title: @goenning
+title: '@goenning'
 url: http://goenning.net
 paginate: 5
 markdown: redcarpet
