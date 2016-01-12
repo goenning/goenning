@@ -1,3 +1,12 @@
+.gravatar {
+  text-align:center;
+}
+
+.gravatar img {
+  border-radius:100px;
+  display:inline-block;
+}
+
 .social-bar a {
   float:left;
   width:32px;

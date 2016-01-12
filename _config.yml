@@ -1,6 +1,7 @@
 # Blog Settings
 title: '@goenning'
 url: http://goenning.net
+gravatar: http://www.gravatar.com/avatar/ba158e6c8c0e4a7869f4b9f0a45db0fe?s=200
 
 # Discuss
 disqus: true
@@ -10,9 +11,7 @@ disqus_user: goenning-net
 twitter_share: true
 twitter_user: goenning
 
-#
 # Jekyll Settings
-#
 markdown: redcarpet
 redcarpet:
   extensions: ["tables"]
