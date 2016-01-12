@@ -11,7 +11,7 @@ It's an immensely useful tool and one we encourage you to use here with Lanyon.
 
 Find out more by [visiting the project on GitHub](https://github.com/mojombo/jekyll).
 
-{% highlight javascript %}
+```javascript
 interface Hi {
   async say():Promise<string>
 }
@@ -21,4 +21,16 @@ export class Test() {
     await console.log("Hi")
   }
 }
-{% endhighlight %}
+```
+
+```typescript
+interface Hi {
+  async say():Promise<string>
+}
+
+export class Test() {
+  do(nome:string): void {
+    await console.log("Hi")
+  }
+}
+```
