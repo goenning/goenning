@@ -1,10 +1,17 @@
-# Setup
+# Blog Settings
 title: '@goenning'
 url: http://goenning.net
-paginate: 5
-permalink: pretty
-relative_permalinks: true
 
 # Twitter
 twitter_user: goenning
 twitter_tweet_button: true
+
+#
+# Jekyll Settings
+#
+markdown: redcarpet
+redcarpet:
+  extensions: ["tables"]
+paginate: 5
+permalink: pretty
+relative_permalinks: true
