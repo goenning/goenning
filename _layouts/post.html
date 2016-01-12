@@ -24,7 +24,7 @@ layout: default
   </ul>
 </div>
 
-{% if page.comments %}
+{% if site.disqus and page.comments %}
 <div class="comments">
   <div id="disqus_thread"></div>
   <script>
@@ -35,7 +35,7 @@ layout: default
   (function() { // DON'T EDIT BELOW THIS LINE
   var d = document, s = d.createElement('script');
 
-  s.src = '//goenning-net.disqus.com/embed.js';
+  s.src = '//{{site.disqus_user}}.disqus.com/embed.js';
 
   s.setAttribute('data-timestamp', +new Date());
   (d.head || d.body).appendChild(s);
