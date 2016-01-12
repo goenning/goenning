@@ -10,3 +10,61 @@ title: What's Jekyll?
 It's an immensely useful tool and one we encourage you to use here with Lanyon.
 
 Find out more by [visiting the project on GitHub](https://github.com/mojombo/jekyll).
+
+1
+
+```javascript
+interface Hi {
+  say():Promise<string>
+}
+
+export class Test() {
+  do(nome:string): void {
+    console.log("Hi")
+  }
+}
+```
+
+2
+
+```typescript
+interface Hi {
+  say():Promise<string>
+}
+
+export class Test() {
+  do(nome:string): void {
+    console.log("Hi")
+  }
+}
+```
+
+3
+
+{% highlight typescript %}
+interface Hi {
+  say():Promise<string>
+}
+
+export class Test() {
+  do(nome:string): void {
+    console.log("Hi")
+  }
+}
+{% endhighlight %}
+
+4
+
+{% highlight typescript %}
+```
+interface Hi {
+  say():Promise<string>
+}
+
+export class Test() {
+  do(nome:string): void {
+    console.log("Hi")
+  }
+}
+```
+{% endhighlight %}
