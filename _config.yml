@@ -1,13 +1,19 @@
 # Permalinks
-permalink:           pretty
+permalink: pretty
 relative_permalinks: true
 
-# Setup
-title:               '@goenning'
-url:                 http://goenning.net
-paginate:            5
+# Twitter
+twitter_user: goenning
+twitter_tweet_button: true
 
-# Defaults
+# Setup
+title: @goenning
+url: http://goenning.net
+paginate: 5
+markdown: redcarpet
+redcarpet:
+  extensions: ["tables"]
+
 defaults:
   -
     scope:
