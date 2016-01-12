@@ -23,7 +23,7 @@ export class Test() {
 }
 ```
 
-```typescript
+```ts
 interface Hi {
   async say():Promise<string>
 }
