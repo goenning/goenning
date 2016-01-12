@@ -2,9 +2,13 @@
 title: '@goenning'
 url: http://goenning.net
 
+# Discuss
+disqus: true
+disqus_user: goenning-net
+
 # Twitter
+twitter_share: true
 twitter_user: goenning
-twitter_tweet_button: true
 
 #
 # Jekyll Settings
