@@ -38,33 +38,3 @@ export class Test() {
   }
 }
 ```
-
-3
-
-{% highlight typescript %}
-interface Hi {
-  say():Promise<string>
-}
-
-export class Test() {
-  do(nome:string): void {
-    console.log("Hi")
-  }
-}
-{% endhighlight %}
-
-4
-
-{% highlight typescript %}
-```
-interface Hi {
-  say():Promise<string>
-}
-
-export class Test() {
-  do(nome:string): void {
-    console.log("Hi")
-  }
-}
-```
-{% endhighlight %}
