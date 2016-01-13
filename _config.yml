@@ -18,3 +18,8 @@ redcarpet:
 paginate: 5
 permalink: pretty
 relative_permalinks: true
+
+# Plug-ins
+gems:
+  - jekyll-sitemap
+  - jekyll-feed
