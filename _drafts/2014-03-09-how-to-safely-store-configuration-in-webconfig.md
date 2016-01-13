@@ -4,6 +4,23 @@ title: How to safely store configuration in web.config
 comments: true
 ---
 
+This is a very old topic (2005), but I've noticed that even today most developer does not know this or do not use it in some of their projects (including me!). What we are going to see here is of great importance to keep our production environment safe.
+
+The `web.config` file is commonly used to store sensitive data like password and confidential parameters. Ideally they should be hidden and not available in clear text for anyone that opens this file. In fact this is the ideal place to store content of this nature, after all, we have sections for that, like `appSettings` and `connectionStrings`.
+
+ASP.NET 2.0 has shipped with a very easy to use resource that can crypt sections of the web.config. The best of all is that it is not necessary to change a single line of our code. All we need is to run an executable and point it to our web.config file and our site will continue to work as usual.
+
+Check for yourself. Go to a server where you have a running ASP.NET application that is published in IIS and run the follow command.
+
+    aspnet_regiis.exe -pe “connectionStrings” -site “<your_site>” -app “<your_app>”
+
+In case of a site without applications, just use `-app "/"`.
+Open the `web.config` file and look at the `connectionStrings` section. It should be something like this:
+
+![](/public/images/crypto-connectionstrings.png)
+
+---
+
 Este é um assunto bastante antigo (2005) mas que até hoje muita gente não conhece ou não aplica em seus projetos (inclusive eu), negligenciando a segurança no lugar da facilidade. O que vamos ver aqui é de suma importância para manter um ambiente seguro e livre de dor de cabeça.
 
 O arquivo web.config é muito usado para armazenamento de dados sensíveis — como senhas e parâmetros sigilosos — que idealmente deveriam estar escondidos e não serem apresentados em texto puro. De fato este é o local ideal para guardamos conteúdo desta natureza, afinal temos seções dedicadas para isto, como o appSettings e connectionStrings.
@@ -15,7 +32,7 @@ No caso de um site sem aplicativos, use apenas -app “/”
 
 Abra o arquivo web.config do site em questão e veja como ficou. Deve estar com um visual parecido com este:
 
-(IMG: crypto-connectionstrings)
+![My helpful screenshot](/public/images/crypto-connectionstrings.png)
 
 Muito bacana, não é?
 
