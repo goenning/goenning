@@ -2,6 +2,7 @@
 layout: post
 title: How to safely store configuration in web.config
 comments: true
+tags: [C#, asp.net, web, security]
 ---
 
 This is a very old topic (2005), but I've noticed that even today most developer does not know this or do not use it in some of their projects (that includes me!). What we are going to see here is required to keep our production environment safe.
