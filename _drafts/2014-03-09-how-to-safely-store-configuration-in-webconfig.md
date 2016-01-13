@@ -13,7 +13,7 @@ ASP.NET 2.0 has shipped with a very easy to use resource that can crypt sections
 
 Check for yourself. Go to a server where you have a running ASP.NET application that is published in IIS and run the follow command.
 
-    aspnet_regiis.exe -pe “connectionStrings” -site “<your_site>” -app “<your_app>”
+> aspnet_regiis.exe -pe “connectionStrings” -site “<your_site>” -app “<your_app>”
 
 In case of a site without applications, just use `-app "/"`.
 
@@ -50,7 +50,7 @@ Our web.config would be like this:
 
 We can now run the same crypto command targeting only this new section.
 
-    aspnet_regiis.exe -pe “secureAppSettings” -site “<seu_site>” -app “<seu_app>”
+> aspnet_regiis.exe -pe “secureAppSettings” -site “<seu_site>” -app “<seu_app>”
     
 By using this technique we do not have to do anything to decrypto this parameter when we use it in our application, however it does change the way we access the parameters from this new section. The following class can be used to read the parameters.
 
