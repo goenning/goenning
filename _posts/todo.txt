@@ -1,4 +1,4 @@
-2014-03-09      http://blog.oenning.eti.br/2014/08/armazenando-configuracoes-com-seguranca-no-web-config/
+X 2014-03-09      http://blog.oenning.eti.br/2014/08/armazenando-configuracoes-com-seguranca-no-web-config/
 2014-06-13      http://blog.oenning.eti.br/2015/03/conectando-o-mundo-externo-ao-sap-com-o-uso-de-rfc/
 2014-06-20      http://blog.oenning.eti.br/2015/03/conectando-se-ao-sap-com-o-uso-de-soap-rfc/
 2014-08-06      http://blog.oenning.eti.br/2015/03/novo-projeto-sharp-sap-rfc/
@@ -14,3 +14,4 @@
 setup your own private git server
 forget about mocha done().
 app config in nodejs
+
