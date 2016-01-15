@@ -5,7 +5,7 @@ comments: true
 tags: [sap, abap, rfc]
 ---
 
-RFC is the standard interface of communication between SAP systems. It is through this protocol that data are exchanged between different environments. To make this work it is necessary to configure what is know as `RFC Destination` at `SM59` transaction. To create a new destination it is necessary to input technical configuration and a name. This name is used when we need to call a function in a remote SAP system.
+RFC is the standard interface of communication between SAP systems. It is through this protocol that data are exchanged between different environments. To make this work it is necessary to configure what is know as `RFC Destination`. A new destination can be created at `SM59` transaction, where we input technical configuration and a public name. This name is used when we need to call a function in a remote SAP system.
 
 ```abap
 REPORT zrfc_dest.
@@ -19,19 +19,23 @@ CALL FUNCTION 'Z_GET_DATA'
   IMPORTING
     name = v_name.
 ```
-In this example we are calling function `Z_GET_DATA` at `QAS` system which was previously configuration at SM59. This code is executed at the remote system and the result is returned to the caller.
+In this example we are calling function `Z_GET_DATA` at `QAS` system which was previously configuration at SM59. This content of this function is evaluated and executed at the remote system and the result is returned to the caller.
 
 ## Exchanging data between SAP and any other application
 
 ![](/public/images/sap_rfc.png)
 
-Yes, it's also possible to use the RFC protocol to integrate SAP systems with non-SAP systems. Although the protocol is proprietary, SAP offers libraries known as `SAP Connector` for the most used programming languages. The most notable are JCo (Java Connector) and NCo (.Net Connector). These connectors can be downloaded from SAP Service Marketplace.
+It's also possible to use the RFC protocol to integrate SAP systems with non-SAP systems. Although the protocol is proprietary, SAP offers libraries known as `SAP Connector` for the most used programming languages. The most notable are JCo (Java Connector) and NCo (.Net Connector). All connectors can be downloaded from [SAP Service Marketplace](http://service.sap.com/connectors).
 
-The API of both libraries are very similar and easy to use. Let's explore in this post a use case of both languages.
+The API of both libraries are very similar and easy to use.
+
+Let's explore in this post a use case of both languages.
 
 ## Use case
 
-For this tutorial we need to create a funcion. This function will receive and ID and return the name of an airline company. In case of no records found, an exception named CARR_NOT_FOUND should be thrown.
+For this tutorial we need a function that will be called from an external system and executed inside SAP.
+
+Our function receives an ID and return the name of an airline company. In case of no records found, an exception named CARR_NOT_FOUND should be thrown.
 
 The function looks like this.
 
@@ -99,7 +103,7 @@ namespace ConectandoSAP
             catch (RfcAbapException ex)
             {
                 if (ex.Key == "CARR_NOT_FOUND")
-                    Console.WriteLine("Não foi encontrado uma Cia. Aérea com o código informado.");
+                    Console.WriteLine("Airline company not found with given id.");
             }
             Console.ReadLine();
         }
@@ -108,19 +112,20 @@ namespace ConectandoSAP
 ```
 
 We start configuring the connection parameters for our `RfcDesination` instance.
-The `CreateFunction` method makes a quick connection to SAP and return the metadata for the function passed by parameter, in this case, `Z_GET_SCAR`. The next few lines of code will only set the input parameters, invoke the function and print the output value. This example also demonstrates the use of exception in NCo, where there is a generic exception called `RfcAbapException` and we need to read the `Key` property in order to find which is the corresponding exception that was really thrown in ABAP. Although this works as expected, I'm not a big fan of it. I tend to use two output parameters for my RFC functions. The first one is status which tells the caller if the process ended with success or failure, and a table of error messages.
+The `CreateFunction` method makes a quick connection to SAP and return the metadata for the function passed by parameter, in this case, `Z_GET_SCAR`. The next few lines of code will only set the input parameters, invoke the function and print the output value. This example also demonstrates the use of exception in NCo, where there is a generic exception called `RfcAbapException` that we need to read the `Key` property in order to find which is the corresponding exception that was really thrown in ABAP. Although this works as expected, I'm not a big fan of it. I tend to use two output parameters for my RFC functions, a status field which tells the caller if the process ended with success or failure and a table of error messages.
 
-This library's API is very easy to use, isn't it? There are basically three interfaces that are most used in the library: IRfcFunction, IRfcTable and IRfcStructure. It is through theses interfaces that happens the INPUT and OUTPUT of the remote function calls.
+This library's API is very easy to use, isn't it? There are basically three interfaces that are most used in the library: `IRfcFunction`, `IRfcTable` and `IRfcStructure`. It is through theses interfaces that happens the INPUT and OUTPUT of the remote function calls.
 
 ## Calling the ABAP function from Java
 
 Calling from Java is almost the same as .Net, both libraries are very similar.
 
-One of the few differences is that the configuration
-Os parâmetros de conexão com o SAP devem estar em arquivos com extensão .jcoDestionation.
-É necessário adicionar ao build path o arquivo sapjco3.jar e a biblioteca nativa referente ao sistema operacional que está sendo usado. No caso do windows, usar sapjco3.dll. Para Unix, deve-se usar sapjco3.so.
-Até mesmo a sintaxe é muito parecida. Veja só como ficou o arquivo de configuração e o programa main.
+One of the few differences is that the configuration properties should be located in a `{Destination}.jcoDestionation` file rather than set in the code.
+It is necessary to add java build path both `sapjco3.jar` and a operational system's native library. For Windows it is named `sapjco3.dll` and for Unix it is `sapjco3.so`.
 
+The code syntax is very similar. This is how the configuration file and main Program looks like.
+
+##### ABAP_AS.jcoDestionation
 ```ini
 jco.client.lang=en
 jco.client.client=001
@@ -152,7 +157,7 @@ public class Program {
         }
         catch (JCoException ex) {
             if (ex.getKey().equals("CARR_NOT_FOUND")) {
-                System.out.println("Não foi encontrado uma Cia. Aérea com o código informado.");
+                System.out.println("Airline company not found with given id.");
             }
         }
         System.out.println();
@@ -160,7 +165,12 @@ public class Program {
 }
 ```
 
-Fácil, não é mesmo? Note que o nome do arquivo deve ser o mesmo que o parâmetro passado na função getDestination.
+Easy, isn't it? Please note that the configuration filename should be the same as the destination named used in function `getDestination`.
 
-Isto é o básico que precisamos para conectar o mundo externo ao SAP. É claro que existem outras formas de acesso, como por exemplo o sistema de mensageria da SAP, conhecido como Process Integration.
-Mas nunca é demais ter uma segunda opção, principalmente em se tratando de tecnologia, certo? :) Além disto, RFC tende a ser mais rápido que qualquer outra solução, afinal é a forma mais nativa de comunicação existente no SAP. Posso queimar a minha linguá afirmando isto, pois nunca fiz um teste, mas na teoria é isto que deveria acontecer.
+This is the most simple example on how to connect both .Net and Java to SAP. There are others tools that can also be used to connect to SAP. One of them is called `SAP Process Integration`, mostly known as XI or PI.
+
+RFC tends to be faster than any other option because it is the native method of communication through SAP systems.
+
+Hope it helps.
+
+See ya!
