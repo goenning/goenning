@@ -1,11 +1,11 @@
 ---
 layout: post
-title: New project: SharpSapRfc
+title: 'New project: SharpSapRfc'
 comments: true
 tags: [sap, abap, rfc, sharpsaprfc]
 ---
 
-If you are new to SAP RFC, I suggest you to first read the post [Connecting the world to SAP with RFC]({% post_url 2014-06-13-connecting-the-world-to-sap-with-rfc %}).
+If you are new to SAP RFC, I suggest you to first read the post [Connecting the world to SAP with RFC](/2014/06/13/connecting-the-world-to-sap-with-rfc).
 
 ## SharpSapRfc
 

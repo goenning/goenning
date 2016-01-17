@@ -1,3 +1,11 @@
+.post-edit {
+  font-size:14px;
+}
+
+div.post {
+  margin-bottom:1em !important;
+}
+
 .gravatar {
   text-align:center;
 }

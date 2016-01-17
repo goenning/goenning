@@ -71,7 +71,7 @@ First we create a new Console Application in Visual Studio and reference both as
 
 Our `Program` class should be like this.
 
-```abap
+```csharp
 using System;
 using SAP.Middleware.Connector;
 
