@@ -2,8 +2,8 @@
   font-size:14px;
 }
 
-h3 {
-  margin-top: 1.5rem !important;
+h2, h3 {
+  margin-bottom: 0.5rem !important;
   color: #bf616a !important;
 }
 
