@@ -2,7 +2,8 @@
   font-size:14px;
 }
 
-h2, h3 {
+.post h2,
+.post h3 {
   margin-bottom: 0.5rem !important;
   border-bottom: 1px solid #ddd !important;
 }
