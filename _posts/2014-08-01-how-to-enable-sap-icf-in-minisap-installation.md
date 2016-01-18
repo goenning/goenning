@@ -7,7 +7,7 @@ tags: [sap, icf]
 
 If you ever try to access the ICF (Internet Communication Framework) Ping service in a newly installed miniSAP system, you'll probably get a 404 error page. Don't worry, the solution is quite simple.
 
-### Ping (and most of other ICF services) are disabled by default
+## Ping (and most of other ICF services) are disabled by default
 
 Enter `SICF` transaction and navigate through the tree until you reach `default_host/sap/bc/ping` node. Note that the service is disabled. Right click it and choose `Activate Service`. Now you can test it using your favorite internet browser. The default
 address, which is `<computer-name>:8000/sap/bc/ping?sap-client=001`.
