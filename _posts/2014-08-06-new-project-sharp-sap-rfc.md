@@ -11,7 +11,7 @@ If you are new to SAP RFC, I suggest you to first read the post [Connecting the 
 
 I was impressed by how SAP NCo's API is easy to understand, learn and code. All methods follow a well designed coding standard, with a strong oriented object structured, with well designed error messages, among other things. Even thought it is an excellent tool, I decided to create this library to make things even easier. It is possible?
 
-The project is open-source and is hosted at [oenning/SharpSapRfc](https://github.com/oenning/SharpSapRfc). There are a few examples in the home page as well as many other examples in the tests project.
+The project is open-source and is hosted at [goenning/SharpSapRfc](https://github.com/goenning/SharpSapRfc). There are a few examples in the home page as well as many other examples in the tests project.
 
 The great addition of this project to your codebase is the auto mapping between structures and tables to your C# classes.
 

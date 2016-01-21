@@ -139,6 +139,6 @@ Both projects have the same usage API, that means it is possible to swap between
 
 I've found that the project has become well organized with two distinct implementations over the same interface. This is an example of how Oriented Object Programming can bring great benefits when used correctly.
 
-More info and source code is available at [oenning/SharpSapRfc](https://github.com/oenning/SharpSapRfc).
+More info and source code is available at [goenning/SharpSapRfc](https://github.com/goenning/SharpSapRfc).
 
 Cheers!
