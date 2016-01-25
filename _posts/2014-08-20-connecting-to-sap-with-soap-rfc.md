@@ -1,5 +1,5 @@
 ---
-layout: _post
+layout: post
 title: Connecting to SAP with SOAP RFC
 comments: true
 tags: [sap, abap, rfc, soap, icf, sharpsaprfc]

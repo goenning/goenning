@@ -5,15 +5,17 @@ comments: true
 tags: [typescript, istambul, code-coverage]
 ---
 
-An implication of using transpile-to-javascript languages is that the compiler may emit some code that you did no expect. TypeScript does it for what he calls helper functions. These functions are emitted on each of the compiled files that need them. The same function, over and over again.
+An implication of using transpile-to-javascript languages is that the compiler may emit some code that you did not expect. TypeScript does it for what he calls helper functions. These functions are emitted on each of the compiled files that need them. The same function, over and over again.
 
-When your goal is to have 100% code-coverage, you `will` need to test these functions as well, even if you didn't code. Because, in fact, your SUT (System Under Test) is your JavaScript transpiled code, not your TypeScript source code. But how do you test every single branch of these functions?
+When your goal is to have 100% code-coverage, you `will` need to test these functions as well, even if you didn't code it, because your SUT (System Under Test) is your JavaScript transpiled code, not your TypeScript source code.
+
+But how do you test every single branch of these functions?
 
 You sure can, but you'll need to code a lot more than usual. That probably means you'll end up with some useless tests just to get to 100% coverage. That's not what we want, correct?
 
 ## Example of some helpers functions
 
-When using the awesome [async/await feature](http://blogs.msdn.com/b/typescript/archive/2015/11/03/what-about-async-await.aspx) of TypeScript the compiler will emit a function named `__awaiter`. The function currently looks like this.
+When using the awesome [async/await feature](http://blogs.msdn.com/b/typescript/archive/2015/11/03/what-about-async-await.aspx) of TypeScript the compiler will emit a function named `__awaiter` on top of the JavaScript file. The function currently looks like this.
 
 ```javascript
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, Promise, generator) {
@@ -49,9 +51,9 @@ If you are about to get 100% code coverage and all you need is to cover the many
 
 The first step is to tell TypeScript to stop emitting helper functions to the compiled files. You can do so by setting the property `compilerOptions.noEmitHelpers` to `true` on your `tsconfig.json` file.
 
-If you try to run your application after this change, it'll not work, because it will not have the definition of the helper functions they need to work properly.
+If you try to run your application after this change, it'll not work, because it won't have the definition of the helper functions they need to work properly.
 
-So the next step it to create the function by yourself. Find the entry point of you package/application and add the following.
+the next step it to create the function by yourself. Find the entry point of you package/application and add the following.
 
 ```javascript
 global["__awaiter"] = function(thisArg, _arguments, Promise, generator) {
@@ -69,9 +71,9 @@ global["__awaiter"] = function(thisArg, _arguments, Promise, generator) {
 };
 ```
 
-> You may need to add [nodejs](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/node/node.d.ts) typings using `tsd` or `typings` if still don't have it
+> You may need to add [nodejs](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/node/node.d.ts) typings using `tsd` or `typings` if still don't have it.
 
-Do the same for each helper you may need.
+Do the same for each helper your project needs.
 
 Now your App is ready to launch. It should be working again, your tests should be passing and your code coverage should have increased.
 
@@ -81,9 +83,9 @@ There is also a particular problem with `__awaiter` specifically. There are two 
 
 ![](/public/images/reject-awaiter.png)
 
-So, if you really want to get 100% coverage, you will need to ignore this function from coverage. Ignoring this function from code coverage could be seen as a hack, but I don't think about it that way. This function was created and tested by TypeScript developer
+So, if you really want to get 100% coverage, you will need to ignore this function from coverage.
 
-I'm using [Istanbul](https://www.npmjs.com/package/istanbul) for my project, so in my case I had to add a special comment on top of the function definition. And oh, don't forget to set `compilerOptions.removeComments` to `false` on your `tsconfig.json` file, that will prevent TypeScript from removing this special comment.
+I'm using [Istanbul](https://www.npmjs.com/package/istanbul) for my projects, so in my case I had to add a special comment on top of the function definition. Don't forget to set `compilerOptions.removeComments` to `false` on your `tsconfig.json` file, this setting will prevent TypeScript from removing this special comment during transpiling.
 
 ```javascript
 /* istanbul ignore next */
@@ -91,6 +93,8 @@ global["__awaiter"] = function(thisArg, _arguments, Promise, generator) {
   ...
 }
 ```
+
+Ignoring this function from code coverage could be seen as a hack, but I don't think about it that way. This function was created and tested by TypeScript developers, they own that code and it was stable enough to be put into a release.
 
 For a working example you can look at the source code of [goenning/guard-me](https://github.com/goenning/guard-me). This is a project I'm working on and is using this technique.
 
