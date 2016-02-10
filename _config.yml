@@ -19,14 +19,17 @@ twitter_share: true
 twitter_user: goenning
 
 # Jekyll Settings
-markdown: redcarpet
-redcarpet:
-  extensions: ["tables"]
+highlighter: rouge
+markdown: kramdown
+kramdown:
+    input: GFM
+    syntax_highlighter: rouge
+
 paginate: 5
 permalink: pretty
-relative_permalinks: true
 
 # Plug-ins
 gems:
   - jekyll-sitemap
   - jekyll-feed
+  - jekyll-paginate

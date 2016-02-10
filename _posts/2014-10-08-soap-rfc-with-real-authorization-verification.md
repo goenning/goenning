@@ -27,17 +27,17 @@ Before jumping into the code it is necessary to include PERFINTERVAL and SOAPINC
 O primeiro passo é criar uma classe na transação se24 que implementa a interface IF_HTTP_EXTENSION. Batizei a minha classe de Z_CL_HTTP_EXT_SOAPHANDLER_SRFC, onde SRFC significa Safe RFC. Obrigatoriamente teremos que codificar o método HANDLE_REQUEST, herdado da IF_HTTP_EXTENSION. É neste método que montamos o XML que será retornando no corpo do response.
 Antes de iniciar a codifição é necessário adicionar as includes PERFINTERVAL e SOAPINCS nas declarações globais da classe, pois precisaremos dos métodos contidos nestas includes.
 
-```abap
+~~~abap
 *"* use this source file for the definition and implementation of
 *"* local helper classes, interface definitions and type
 *"* declarations
 include PERFINTERVAL.
 INCLUDE SOAPINCS.
-```
+~~~
 
 I've tend to create small and simple methods in my classes, I find that it makes it easier to understand. The following class is the full definition of our HTTP Handler class.
 
-```abap
+~~~abap
 class Z_CL_HTTP_EXT_SOAPHANDLER_SRFC definition
   public
   final
@@ -67,7 +67,7 @@ class Z_CL_HTTP_EXT_SOAPHANDLER_SRFC definition
       returning
         value(HAS_AUTHORITY) type OS_BOOLEAN .
 ENDCLASS.
-```
+~~~
 `RETURN_ERROR` is used when returning HTTP Status 500, which means something went wrong.
 The method `GET_METHOD` is used to extract the function module name from the HTTP Requesty body.
 `CHECK_AUTHORITY` is responsible for running the authority check using current user and target function.
@@ -75,7 +75,7 @@ The method `GET_METHOD` is used to extract the function module name from the HTT
 
 The following code shows the implementation of the HTTP Handler.
 
-```abap
+~~~abap
 CLASS Z_CL_HTTP_EXT_SOAPHANDLER_SRFC IMPLEMENTATION.
 
   * <SIGNATURE>---------------------------------------------------------------------------------------+
@@ -224,7 +224,7 @@ CLASS Z_CL_HTTP_EXT_SOAPHANDLER_SRFC IMPLEMENTATION.
     CALL METHOD server->response->set_data( data = response ).
   ENDMETHOD.
 ENDCLASS.
-```
+~~~
 
 The code is self-explanatory, no need to explain. The cool part is where we create an instance of `CL_HTTP_EXT_SOAPHANDLER_RFC`. From this point on we leave all the complex processing to the standard service. When SAP releases a performance, security or any kind of update to this class, our custom service will take advantage of it as well.
 
@@ -237,7 +237,7 @@ You are now ready to test the service with soapUI.
 
 When calling function Z_SSRT_ADD with our new service `/sap/bc/soap/srfc` and an unauthorized user gives the following response.
 
-```XML
+~~~XML
 <SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/">
    <SOAP-ENV:Body>
       <SOAP-ENV:Fault>
@@ -247,11 +247,11 @@ When calling function Z_SSRT_ADD with our new service `/sap/bc/soap/srfc` and an
       </SOAP-ENV:Fault>
    </SOAP-ENV:Body>
 </SOAP-ENV:Envelope>
-```
+~~~
 
 With the same request and credentiais, if we change the endpoint of our request to `/sap/bc/soap/rfc`, the response is totally different.
 
-```XML
+~~~XML
 <SOAP-ENV:Envelope xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
    <SOAP-ENV:Body>
       <urn:Z_SSRT_ADD.Response xmlns:urn="urn:sap-com:document:sap:rfc:functions">
@@ -259,7 +259,7 @@ With the same request and credentiais, if we change the endpoint of our request 
       </urn:Z_SSRT_ADD.Response>
    </SOAP-ENV:Body>
 </SOAP-ENV:Envelope>
-```
+~~~
 
 Cool, isn't it? It is now possible to disable the old service and leave only srfc enabled.
 

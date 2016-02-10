@@ -19,7 +19,7 @@ The failover strategy can be changed by using the interface `II18nLookupFailedSt
 
 Just take a look at the following example.
 
-```csharp
+~~~csharp
 I18nConfig.SetResources(
     typeof(StringResources),
     typeof(EnumResources)
@@ -30,7 +30,7 @@ I18nConfig.LookupFailedStrategy = new ThrowExceptionI18nLookupFailedStrategy();
 "Click here".i18n(); //Looks for 'Click_here' in the resources files
 Gender.Male.i18n(); //Looks for 'Gender_Male' or 'Male' in the resources files
 "FIRST_NAME".i18n(); //Looks for 'FIRST_NAME' in the resources files
-```
+~~~
 
 Source code is available at [oenning/i18n-extension](https://github.com/oenning/i18n-extension).
 

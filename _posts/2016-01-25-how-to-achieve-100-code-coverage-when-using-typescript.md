@@ -17,7 +17,7 @@ You sure can, but you'll need to code a lot more than usual. That probably means
 
 When using the awesome [async/await feature](http://blogs.msdn.com/b/typescript/archive/2015/11/03/what-about-async-await.aspx) of TypeScript the compiler will emit a function named `__awaiter` on top of the JavaScript file. The function currently looks like this.
 
-```javascript
+~~~javascript
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, Promise, generator) {
     return new Promise(function (resolve, reject) {
         generator = generator.call(thisArg, _arguments);
@@ -31,17 +31,17 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, Promi
         step("next", void 0);
     });
 };
-```
+~~~
 
 Another example is when you are working with TypeScript class inheritance and your target is ES5. Because ECMAScript 5 does not support classes, the compiler will emit the helper function `__extends` the same way it does with async/await.
 
-```javascript
+~~~javascript
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-```
+~~~
 
 There are also others helpers functions like  `__decorate`, `__param`, `__metadata`, etc.
 
@@ -55,7 +55,7 @@ If you try to run your application after this change, it'll not work, because it
 
 the next step it to create the function by yourself. Find the entry point of you package/application and add the following.
 
-```javascript
+~~~javascript
 global["__awaiter"] = function(thisArg, _arguments, Promise, generator) {
   return new Promise(function(resolve, reject) {
     generator = generator.call(thisArg, _arguments);
@@ -69,7 +69,7 @@ global["__awaiter"] = function(thisArg, _arguments, Promise, generator) {
     step("next", void 0);
   });
 };
-```
+~~~
 
 > You may need to add [nodejs](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/node/node.d.ts) typings using `tsd` or `typings` if still don't have it.
 
@@ -87,12 +87,12 @@ So, if you really want to get 100% coverage, you will need to ignore this functi
 
 I'm using [Istanbul](https://www.npmjs.com/package/istanbul) for my projects, so in my case I had to add a special comment on top of the function definition. Don't forget to set `compilerOptions.removeComments` to `false` on your `tsconfig.json` file, this setting will prevent TypeScript from removing this special comment during transpiling.
 
-```javascript
+~~~javascript
 /* istanbul ignore next */
 global["__awaiter"] = function(thisArg, _arguments, Promise, generator) {
   ...
 }
-```
+~~~
 
 Ignoring this function from code coverage could be seen as a hack, but I don't think about it that way. This function was created and tested by TypeScript developers, they own that code and it was stable enough to be put into a release.
 

@@ -27,7 +27,7 @@ This is the default endpoint for `bc/soap/wsdl`. This is the service that really
 
 Suppose you have the following function named `Z_SSRT_SUM`.
 
-```abap
+~~~abap
 FUNCTION z_ssrt_sum.
 *"----------------------------------------------------------------------
 *"*"Local Interface:
@@ -41,11 +41,11 @@ FUNCTION z_ssrt_sum.
   e_result = i_num1 + i_num2.
 
 ENDFUNCTION.
-```
+~~~
 
 When you type `http://<server-name>:8000/sap/bc/soap/wsdl?sap-client=001&services=Z_SSRT_SUM` in the browser, your credentials will be prompted and the response text will be the following XML.
 
-```XML
+~~~XML
 <definitions targetNamespace="urn:sap-com:document:sap:rfc:functions" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:s0="urn:sap-com:document:sap:rfc:functions" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/">
    <types>
       <xsd:schema targetNamespace="urn:sap-com:document:sap:rfc:functions">
@@ -97,7 +97,7 @@ When you type `http://<server-name>:8000/sap/bc/soap/wsdl?sap-client=001&service
       </port>
    </service>
 </definitions>
-```
+~~~
 
 See how `Z_SSRT_SUM` and `Z_SSRT_SUM.Response` elements are defined as the input and output of the `Z_SSRT_SUM` operation. Do the same for some other complex functions you may have in your system and note how easy it is to understand the standard of WSDL content generation.
 
@@ -105,7 +105,7 @@ See how `Z_SSRT_SUM` and `Z_SSRT_SUM.Response` elements are defined as the input
 
 `soapUI` is a well known tool used to test WebServices without any need of programming. When you import the WSDL file, it'll automatically generate the follow HTTP Request body.
 
-```XML
+~~~XML
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:sap-com:document:sap:rfc:functions">
    <soapenv:Header/>
    <soapenv:Body>
@@ -115,11 +115,11 @@ See how `Z_SSRT_SUM` and `Z_SSRT_SUM.Response` elements are defined as the input
       </urn:Z_SSRT_SUM>
    </soapenv:Body>
 </soapenv:Envelope>
-```
+~~~
 
 Change both '?' to 2 and 5, and executed the request. The response will be like the following XML.
 
-```XML
+~~~XML
 <SOAP-ENV:Envelope xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
    <SOAP-ENV:Body>
       <urn:Z_SSRT_SUM.Response xmlns:urn="urn:sap-com:document:sap:rfc:functions">
@@ -127,7 +127,7 @@ Change both '?' to 2 and 5, and executed the request. The response will be like 
       </urn:Z_SSRT_SUM.Response>
    </SOAP-ENV:Body>
 </SOAP-ENV:Envelope>
-```
+~~~
 
 > If it does not work for you, remember to set the `username` and `password` on the left sidebar at properties group named `Request Properties`.
 

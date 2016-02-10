@@ -29,7 +29,7 @@ The ideal solution is to encrypt only the confidential parameters, leaving the o
 
 Our web.config would be like this:
 
-```xml
+~~~xml
 <configuration>
   <configSections>
     <section name="secureAppSettings" type="System.Configuration.NameValueSectionHandler, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
@@ -46,7 +46,7 @@ Our web.config would be like this:
     <add key="WebServicePassword" value="d2f!H@7xz" />
   </secureAppSettings>
 </configuration>
-```
+~~~
 
 We can now run the same encrypt command targeting only this new section.
 
@@ -54,7 +54,7 @@ We can now run the same encrypt command targeting only this new section.
 
 By using this technique we do not have to do anything to decrypt this parameter when we use it in our application, however it does change the way we access the parameters from this new section. The following class can be used to read the parameters.
 
-```csharp
+~~~csharp
 public static class SecureAppSettings
 {
     public static string Get(string key)
@@ -71,7 +71,7 @@ public class Program
         string password = SecureAppSettings.Get("WebServicePassword");
     }
 }
-```
+~~~
 
 What we saw here is simple and very useful.
 

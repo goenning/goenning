@@ -15,7 +15,7 @@ Fortunately SAP system have this magical database interface component that does 
 
 Here are three examples. The first one using `SELECT fieldlist`. The other two are using `SELECT *`, but one of them targets a table with less fields.
 
-```abap
+~~~abap
 TYPES: BEGIN OF ty_field,
         tabname TYPE dd03l-tabname,
         fieldname TYPE dd03l-fieldname,
@@ -39,7 +39,7 @@ SELECT *
   FROM dd03l
   INTO TABLE gt_fields3
   WHERE tabname = 'PARTNER_RECORD'.
-```
+~~~
 
 The first example is probably the most accepted method, where each field is set both in the query and in the target table variable. I tend to believe it makes the code easier to read and much more optimized for database reading. When executing `SQL Trace (ST05)` on this program it it possible to note that the execution time of the first two queries are exactly the same, except for the third query which is a bit more expensive.
 

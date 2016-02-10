@@ -18,7 +18,7 @@ The great addition of this project to your codebase is the auto mapping between 
 I'll leave a comparative example between both projects bellow.
 
 #### SAP NCo
-```csharp
+~~~csharp
 RfcDestination destination = RfcDestinationManager.GetDestination("TST");
 RfcRepository repository = destination.Repository;
 IRfcFunction function = repository.CreateFunction("Z_GET_SCAR");
@@ -34,10 +34,10 @@ catch (RfcAbapException ex)
     if (ex.Key == "CARR_NOT_FOUND")
         Console.WriteLine("Não foi encontrado uma Cia. Aérea com o código informado.");
 }
-```
+~~~
 
 #### SharpSapRfc
-```csharp
+~~~csharp
 using (SapRfcConnection conn = new SapRfcConnection("TST"))
 {
     try
@@ -55,11 +55,11 @@ using (SapRfcConnection conn = new SapRfcConnection("TST"))
             Console.WriteLine("Não foi encontrado uma Cia. Aérea com o código informado.");
     }
 }
-```
+~~~
 
 Hard to find any difference? That's because this example is using a simples string as input/output. The major advantage comes when you have POCO classes.
 
-```csharp
+~~~csharp
 {
     var result = conn.ExecuteFunction("Z_SSRT_GET_ALL_CUSTOMERS");
     var customers = result.GetTable<ZCustomer>("t_customers");
@@ -79,7 +79,7 @@ public class ZCustomer
 
     public int Age { get; set; }
 }
-```
+~~~
 
 > `Z_SSRT_GET_ALL_CUSTOMERS` is a function that returns a table category.
 
@@ -93,13 +93,13 @@ I've noticed that SAP's date and hour fields are always splited in two columns, 
 
 So I've deiced to implement the parse of these types to combine both remote fields into a simples property. All we need to do is map both fields' name, just like this example.
 
-```csharp
+~~~csharp
 public class ZMyClass
 {
     [RfcStructureField("DATUM", "UZEIT")]
     public DateTime DateTime { get; set; }
 }
-```
+~~~
 
 So, did you guys like it?
 Feel free to open an issue with suggestions, I'm open to it.
