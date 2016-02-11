@@ -123,8 +123,8 @@ app.get('/user/:id', cache(10), (req, res) => {
   }, 3000) //setTimeout was used to simulate a slow processing request
 })
 
-app.get((req, res) => {
-  res.status(404).send() //not found
+app.use((req, res) => {
+  res.status(404).send('') //not found
 })
 
 app.listen(3000, function () {
