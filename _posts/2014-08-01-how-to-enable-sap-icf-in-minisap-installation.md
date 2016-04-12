@@ -1,6 +1,6 @@
 ---
 layout: post
-title: How to enable SAP RFC in a miniSAP installation
+title: How to enable SAP ICF in a miniSAP installation
 comments: true
 tags: [sap, icf]
 ---

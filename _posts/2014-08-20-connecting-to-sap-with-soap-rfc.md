@@ -5,7 +5,7 @@ comments: true
 tags: [sap, abap, rfc, soap, icf, sharpsaprfc]
 ---
 
-In previous article entitled [How to enable SAP RFC in a miniSAP installation](/2014/08/01/how-to-enable-sap-icf-in-minisap-installation) you saw that SAP has a built-in HTTP module. This module contains multiples services, where each one has it's own interface and can be enabled or disabled depending on your needs. Each service has a corresponding ABAP Class that process the HTTP Response based on the HTTP Request. It is possible to identify the class by double-clicking at the service.
+In previous article entitled [How to enable SAP ICF in a miniSAP installation](/2014/08/01/how-to-enable-sap-icf-in-minisap-installation) you saw that SAP has a built-in HTTP module. This module contains multiples services, where each one has it's own interface and can be enabled or disabled depending on your needs. Each service has a corresponding ABAP Class that process the HTTP Response based on the HTTP Request. It is possible to identify the class by double-clicking at the service.
 
 ![](/public/images/class-handler-ping.png)
 
