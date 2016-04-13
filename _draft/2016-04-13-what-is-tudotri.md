@@ -19,7 +19,7 @@ After a few weeks a new project came to public: **tudoTRI**.
 
 ## Technical overview
 
-For those who got here from my live streaming on [livecoding.tv](http://BLABLABLA), here is a technical overview of how it was built and how I run it
+For those who got here from my [live streaming](https://www.livecoding.tv/goenning/) on livecoding.tv, here is a technical overview of how it was built and how I run it.
 
 #### Project structure
 
@@ -47,6 +47,9 @@ For those who got here from my live streaming on [livecoding.tv](http://BLABLABL
 - [NixStats](https://nixstats.com/) for server monitoring
 - Cron (to start the bot periodically)
 
+#### Misc.:
+- The code is not open source, although you can see part of it while [livecoding](https://www.livecoding.tv/goenning/) :)
+- Code is written in English, but database and website content is Brazilian Portuguese.
 
 TODO:
 +LOGO + Workspace
