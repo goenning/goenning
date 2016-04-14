@@ -1,25 +1,29 @@
-​---
+---
 layout: post
 title: Business and technical overview of tudoTRI
 comments: true
 tags: [livecoding, programming, triathlon]
 ---
 
-### What is tudoTRI
+### tudoTRI
 
 I've always wanted to build an useful website that could help others somehow. I decided to do it by combining two of my life passions: computer programming and triathlon.
 
 The idea of this project came from a day I was looking for a particular cycling component for my bike. I had **waste more than 2 hours** *googling* it and visiting dozens of online shops. The search was really helpful, because the price was very different between each site, it was ranging from R$ 200,00 to R$ 400,00. If I had bought from the first site I found, I'd probably waste more than necessary, resulting in a **bad purchase** for me.
 
-From that day on, I new that I could do something to make this experience better, for me all others athletes, that it would have place in the market and it was just a matter of time until I get the first version up and running.
+From that day on, I new that I could do something to make this experience better, for me all others athletes. It would have place in the market and it was just a matter of time until I get the first version up and running.
 
-After a few weeks a new project came to public: **tudoTRI**.
+After a few weeks the project came to public.
 
-**tudoTRI** is a Brazilian website that aggregates products from multiple local e-commences into a single place. By doing so, we are able to show our visitors what are the best offers for the products they are looking for.
+![](/public/images/tudotri-logo.png)
+
+[**tudoTRI**](http://tudotri.com.br) is a Brazilian website that aggregates products from multiple local e-commences into a single place. By doing so, we are able to show our visitors what are the best offers for the products they are looking for.
 
 ## Technical overview
 
 For those who got here from my [live streaming](https://www.livecoding.tv/goenning/) on livecoding.tv, here is a technical overview of how it was built and how I run it.
+
+![](/public/images/tudotri-workspace.jpg)
 
 #### Project structure
 
@@ -48,8 +52,5 @@ For those who got here from my [live streaming](https://www.livecoding.tv/goenni
 - Cron (to start the bot periodically)
 
 #### Misc.:
-- The code is not open source, although you can see part of it while [livecoding](https://www.livecoding.tv/goenning/) :)
+- The code is not open source, although you can see part of it while I'm [live coding](https://www.livecoding.tv/goenning/) :-)
 - Code is written in English, but database and website content is Brazilian Portuguese.
-
-TODO:
-+LOGO + Workspace
