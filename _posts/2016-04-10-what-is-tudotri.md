@@ -31,7 +31,7 @@ For those who got here from my [live streaming](https://www.livecoding.tv/goenni
 - **API:** the heart of the whole application, where business rules are coded and acting as a single point of access to the database;
 - **Admin:** the web application used by me to do administrative tasks like editing products, stores, users, configurations, etc.;
 - **Web:** the public web site (http://tudotri.com.br);
-- **Bot:** the crawler/scraper. His job is to visit the configured online shops to get the latests updates on prices and procuts;
+- **Bot:** the crawler/scraper. His job is to visit the configured online shops to get the latests updates on prices and products;
 
 #### Development Stack:
 - [Node.js](https://nodejs.org/)
