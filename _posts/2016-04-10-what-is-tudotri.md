@@ -52,5 +52,5 @@ For those who got here from my [live streaming](https://www.livecoding.tv/goenni
 - Cron (to start the bot periodically)
 
 #### Misc.:
-- The code is not open source, although you can see part of it while I'm [live coding](https://www.livecoding.tv/goenning/) :-)
-- Code is written in English, but database and website content is Brazilian Portuguese.
+- The code is open source and can be found @ [https://github.com/tudoTRI](https://github.com/tudoTRI)
+- Code is written in English, but database and website content is Brazilian Portuguese
