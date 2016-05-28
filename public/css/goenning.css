@@ -23,6 +23,7 @@
 .gravatar img {
   border-radius:100px;
   display:inline-block;
+  height: 150px;
 }
 
 .social-bar a {
