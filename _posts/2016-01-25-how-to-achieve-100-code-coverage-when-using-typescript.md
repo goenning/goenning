@@ -71,7 +71,7 @@ global["__awaiter"] = function(thisArg, _arguments, Promise, generator) {
 };
 ~~~
 
-> You may need to add [nodejs](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/node/node.d.ts) typings using `tsd` or `typings` if still don't have it.
+> You may need to add [node.js](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/node/node.d.ts) typings using `tsd` or `typings` if still don't have it.
 
 Do the same for each helper your project needs.
 

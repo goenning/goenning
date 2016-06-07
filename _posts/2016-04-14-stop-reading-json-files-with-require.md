@@ -2,7 +2,7 @@
 layout: post
 title: Stop reading JSON files with require
 comments: true
-tags: [javascript, programming, troubleshooting, nodejs]
+tags: [javascript, programming, troubleshooting, node.js]
 ---
 
 And there you are, coding at 11:00 PM, trying to get your unit testing back to the green field. You try as hard as you can, you throw `console.log` for every function call and you `just can't find WHY!`. Why isn't it working anymore? Why?!

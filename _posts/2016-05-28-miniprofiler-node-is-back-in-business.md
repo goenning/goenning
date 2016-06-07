@@ -2,7 +2,7 @@
 layout: post
 title: MiniProfiler for Node.js is back in business
 comments: true
-tags: [nodejs, miniprofiler, performance]
+tags: [node.js, miniprofiler, performance]
 ---
 
 I'm truly addicted to [MiniProfiler](http://miniprofiler.com). Have being using it in my ASP.NET projects for a while and it really shines. I love to be able to see exactly what is making a particular request become slow or to find those nasty SELECT N+1 issues. I/O operations is the top reason for a slow application and MiniProfiler helps us find the bottleneck with ease.

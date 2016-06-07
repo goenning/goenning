@@ -1,22 +1,19 @@
-<!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
-     styles, `#sidebar-checkbox` for behavior. -->
 <input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
 
-<!-- Toggleable sidebar -->
 <div class="sidebar" id="sidebar">
   <div class="sidebar-item">
     <div class="gravatar">
-      <img src="{{ site.gravatar }}" />
+      <img src="{{ site.gravatar }}"/>
     </div>
     <p>Welcome to my blog!</p>
-    <p>I'm Guilherme Oenning, a passionate software developer living in Brazil. Blogging mostly about node.js and TypeScript, but I've done plenty of C# and Java code before.</p>
-    <p>Avid practitioner of Test-Driven Development and currently learning Swift.</p>
+    <p>I'm Guilherme Oenning, a passionate software developer living in Brazil. Blogging mostly about node.js, but I've done plenty of C# and Java code before.</p>
+    <p>Avid practitioner of Test-Driven Development and currently learning Docker and TypeScript.</p>
   </div>
 
   <nav class="sidebar-nav">
     <a class="sidebar-nav-item{% if page.title == 'Home' %} active{% endif %}" href="/">Home</a>
 
-    {% assign pages_list = site.pages | sort:"url" %}
+    {% assign pages_list = site.pages | sort : "url" %}
     {% for node in pages_list %}
       {% if node.title != null %}
         {% if node.layout == "page" %}
