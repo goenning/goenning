@@ -7,7 +7,7 @@ tags: [node.js, Docker, open source]
 
 While surfing through GitHub it's not hard to find projects that has a complex `how to contribute` guide that aims to help newcomers to set up a bare minimum development environment.
 
-These projects are way more complex than an utility library, for example, because it's becoming more and more common to find projects that depends on Redis, ElasticSearch, SQL Databases and so on. Knex, for example, has a [CONTRIBUTING.md](https://github.com/tgriesser/knex/blob/master/CONTRIBUTING.md) guide that suggests that you install MySQL and Postgres locally with a given username, password and database name so that you can run their integrations tests.
+These projects are way more complex than an utility library, for example, because it's becoming more and more common to find projects that depends on Redis, ElasticSearch, SQL Databases and so on. Knex, for example, has a [CONTRIBUTING.md](https://github.com/tgriesser/knex/blob/master/CONTRIBUTING.md) guide suggesting that you install MySQL and Postgres locally with a given username, password and database name so that you can run their integrations tests.
 
 Having to install all these services locally doesn't make sense, it will eventually slow down your machine while your not coding and you'll end up with a ton of services that are idle most of the time.
 
@@ -47,7 +47,7 @@ You're now ready to work on the project. Easy, right?
 
 ### How does it work?
 
-Looking at `package.json` file it is possible to see that `start-services` is just an alias to `docker run -d -e POSTGRES_USER=docker -e POSTGRES_PASSWORD=docker -p 5050:5432 postgres`.
+Looking at `package.json` file it's possible to see that `start-services` is just an alias to `docker run -d -e POSTGRES_USER=docker -e POSTGRES_PASSWORD=docker -p 5050:5432 postgres`.
 
 This docker cmomand creates a new container based on [postgres](https://hub.docker.com/_/postgres/) image, create a new user named docker with password docker and a database named docker as well. That's all configurable, choose what best fits your needs. `-p` parameter binds the docker host port 5050 to the container port 5432.
 
@@ -62,7 +62,7 @@ var ip = require('docker-ip');
 var connString = `postgres://docker:docker@${ip()}:5050/docker`;
 ```
 
-`docker-ip` uses `docker-machine ip` and fallback to `localhost` when docker-machine is not available, like on Travis and most others Linux hosts.
+`docker-ip` uses `docker-machine ip` and fallback to `localhost` when docker-machine is not available, like in Travis and most others Linux hosts.
 
 To make it work with Travis it's necessary to add `docker` as a new service and start docker containers before running the test script. I had to add a `sleep 3` to my build recipe because the services was taking longer than expected to become available for use.
 
