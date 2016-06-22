@@ -1,0 +1,44 @@
+code.highlighter-rouge {
+  padding: .25em .5em;
+  color: #bf616a;
+  background-color: #f9f9f9;
+  border-radius: 3px;
+}
+
+body {
+  color: #515151;
+}
+
+h1.site-name {
+  margin-bottom:10px;
+}
+
+* {
+  font-family: 'PT Sans', Helvetica, Arial, sans-serif !important;
+  text-rendering: optimizelegibility;
+}
+
+h1 {
+  font-size:2em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+}
+
+.post h2, .post h3 {
+  margin-bottom: 0.5rem !important;
+  border-bottom: 1px solid #ddd !important;
+}
+
+.post .date {
+  display: block;
+  margin-top: -.5rem;
+  margin-bottom: 1rem;
+  color: #9a9a9a;
+}
+
+.archive-post-date {
+  color: #9a9a9a;
+  font-size: 12px;
+}

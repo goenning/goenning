@@ -1,34 +1,80 @@
-# Blog Settings
-title: '@goenning'
-description: Where I blog about coding and some other awesome things
-url: http://goenning.net
-gravatar: http://www.gravatar.com/avatar/ba158e6c8c0e4a7869f4b9f0a45db0fe?s=200
+#
+# This file contains configuration flags to customize your site
+#
+name: '@goenning'
+description: loop at { code; run; read; blog; eat; bike ride; } until tired;
+avatar: http://www.gravatar.com/avatar/ba158e6c8c0e4a7869f4b9f0a45db0fe?s=200
 
-author:
-  name: Guilherme Oenning
+#
+# Flags below are optional
+#
+
+# Includes an icon in the footer for each username you enter
+footer-links:
+  dribbble:
   email: oenning.ti@gmail.com
-  uri: http://goenning.net
+  facebook:
+  flickr:
+  github: goenning
+  instagram:
+  linkedin:
+  pinterest:
+  rss: goenning
+  twitter: goenning
+  stackoverflow: # your stackoverflow profile, e.g. "users/50476/bart-kiers"
+  youtube: # channel/<your_long_string> or user/<user-name>
+  googleplus: # anything in your profile username that comes after plus.google.com/
 
-# Discuss
-disqus: true
-disqus_user: goenning-net
 
-# Twitter
-twitter_share: true
-twitter_user: goenning
+# Enter your Disqus shortname (not your username) to enable commenting on posts
+# You can find your shortname on the Settings page of your Disqus account
+disqus: goenning-net
 
-# Jekyll Settings
-highlighter: rouge
-markdown: kramdown
-kramdown:
-    input: GFM
-    syntax_highlighter: rouge
+# Enter your Google Analytics web tracking code (e.g. UA-2110908-2) to activate tracking
+google_analytics: UA-47250005-3
 
-paginate: 5
+# Your website URL (e.g. http://barryclark.github.io or http://www.barryclark.co)
+# Used for Sitemap.xml and your RSS feed
+url: http://goenning.net
+
+# If you're hosting your site at a Project repository on GitHub pages
+# (http://yourusername.github.io/repository-name)
+# and NOT your User repository (http://yourusername.github.io)
+# then add in the baseurl here, like this: "/repository-name"
+baseurl: ""
+
+#
+# !! You don't need to change any of the configuration flags below !!
+#
+
 permalink: pretty
 
-# Plug-ins
+# The release of Jekyll Now that you're using
+version: v1.2.0
+
+# Jekyll 3 now only supports Kramdown for Markdown
+kramdown:
+  # Use GitHub flavored markdown, including triple backtick fenced code blocks
+  input: GFM
+  # Jekyll 3 and GitHub Pages now only support rouge for syntax highlighting
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    # Use existing pygments syntax highlighting css
+    css_class: 'highlight'
+
+# Set the Sass partials directory, as we're using @imports
+sass:
+  style: :expanded # You might prefer to minify using :compressed
+
+# Use the following plug-ins
 gems:
-  - jekyll-sitemap
-  - jekyll-feed
-  - jekyll-paginate
+  - jekyll-sitemap # Create a sitemap using the official Jekyll sitemap gem
+  - jekyll-feed # Create an Atom feed using the official Jekyll feed gem
+
+# Exclude these files from your production _site
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - LICENSE
+  - README.md
+  - CNAME
