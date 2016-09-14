@@ -39,10 +39,12 @@ They all look like the same, there is only a small change between each other. Fo
 This is the most used and important authorization object in profile configuration for RFC users. The usage is very simple, because there are only 3 authority parameters. It can be used on Function Module level or function group, it's your call. If it's set to a Function Module, only that function can be executed. When a Function Group is set, all functions inside it are allowed to be called. Multiples objects can be set in order to authorize multiple distinct functions.
 
 *ACTVT:* Only option available is 16 – Executar.
+
 *RFC_TYPE:* Possible values are FUGR ou FUNC, which represents Function Group and Function Module respectively.
+
 *RFC_NAME:* This is where you can set the name of Function Group or Function Module, depending on what you set on RFC_TYPE.
 
-*Tip:* To be able to call RFC functions using SAP Connector it is necessary to authorize some basic functions along side with business functions you may need. These functions are used to test the connection and to query metadata from function and structures. You can safely add these function groups `SYST`, `RFC1` e vRFC_METADATA`.
+*Tip:* To be able to call RFC functions using SAP Connector it is necessary to authorize some basic functions along side with business functions you may need. These functions are used to test the connection and to query metadata from function and structures. You can safely add these function groups `SYST`, `RFC1` e `RFC_METADATA`.
 
 This is an example of a custom profile with RFC enabled. Z_SSRT is the function group that contains many functions that the user needs to call remotely.
 
