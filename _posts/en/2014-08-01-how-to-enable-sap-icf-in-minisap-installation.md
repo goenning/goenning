@@ -2,6 +2,7 @@
 layout: post
 title: How to enable SAP ICF in a miniSAP installation
 comments: true
+lang: en
 tags: [sap, icf]
 ---
 

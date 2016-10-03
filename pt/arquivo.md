@@ -1,8 +1,8 @@
 ---
 layout: page
-title: Blog Archive
-permalink: /archive/
-lang: en
+title: Arquivo do Blog
+permalink: /pt/arquivo/
+lang: pt
 ---
 
 <div class="archives">

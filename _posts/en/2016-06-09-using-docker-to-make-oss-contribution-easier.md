@@ -2,7 +2,9 @@
 layout: post
 title: Using Docker to make OSS contribution easier
 comments: true
+lang: en
 tags: [node.js, Docker, open source]
+ref: using-docker-to-make-oss-contribution-easier
 ---
 
 While surfing through GitHub it's not hard to find projects that has a complex `how to contribute` guide that aims to help newcomers to set up a bare minimum development environment.

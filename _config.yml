@@ -9,6 +9,29 @@ avatar: http://www.gravatar.com/avatar/ba158e6c8c0e4a7869f4b9f0a45db0fe?s=200
 # Flags below are optional
 #
 
+navigation:
+  en:
+    index:
+      name: "Blog"
+      url: "/"
+    archive:
+      name: "Archive"
+      url: "/archive"
+    about:
+      name: "About"
+      url: "/about"
+  pt:
+    index:
+      name: "Blog"
+      url: "/pt/"
+    archive:
+      name: "Arquivo"
+      url: "/pt/arquivo"
+    about:
+      name: "Sobre"
+      url: "/pt/sobre"
+
+
 # Includes an icon in the footer for each username you enter
 footer-links:
   dribbble:

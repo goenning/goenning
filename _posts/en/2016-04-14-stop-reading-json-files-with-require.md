@@ -2,6 +2,7 @@
 layout: post
 title: Stop reading JSON files with require
 comments: true
+lang: en
 tags: [javascript, programming, troubleshooting, node.js]
 ---
 

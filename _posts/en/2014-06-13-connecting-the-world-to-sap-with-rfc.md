@@ -2,6 +2,7 @@
 layout: post
 title: Connecting the world to SAP with RFC
 comments: true
+lang: en
 tags: [sap, abap, rfc]
 ---
 

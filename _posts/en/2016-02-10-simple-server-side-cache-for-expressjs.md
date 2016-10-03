@@ -2,6 +2,7 @@
 layout: post
 title: Simple server side cache for Express with Node.js
 comments: true
+lang: en
 tags: [express, nodejs, cache, performance]
 ---
 

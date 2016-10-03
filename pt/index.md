@@ -1,6 +1,6 @@
 ---
 layout: default
-lang: en
+lang: pt
 ---
 
 <div class="posts">
@@ -19,4 +19,4 @@ lang: en
   {% endfor %}
 </div>
 
-<p>See the <a href="{{ site.baseurl }}/archive">archive</a> for more posts.</p>
+<p>Veja o <a href="{{ site.baseurl }}/pt/arquivo">arquivo</a> para mais posts.</p>

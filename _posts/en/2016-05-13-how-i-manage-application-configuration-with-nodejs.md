@@ -2,6 +2,7 @@
 layout: post
 title: How I manage application configuration with Node.js
 comments: true
+lang: en
 tags: [node.js, environment, configuration]
 ---
 

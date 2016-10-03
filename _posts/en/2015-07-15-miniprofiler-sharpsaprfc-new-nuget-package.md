@@ -2,6 +2,7 @@
 layout: post
 title: 'MiniProfiler for SharpSapRfc: A new NuGet Package'
 comments: true
+lang: en
 tags: [sap, miniprofiler, performance, .net]
 ---
 

@@ -2,6 +2,7 @@
 layout: post
 title: MiniProfiler for Node.js is back in business
 comments: true
+lang: en
 tags: [node.js, miniprofiler, performance]
 ---
 

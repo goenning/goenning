@@ -2,6 +2,7 @@
 layout: post
 title: Adding security to ICF and SOAP RFC
 comments: true
+lang: en
 tags: [icf, security, sap, abap, rfc]
 ---
 

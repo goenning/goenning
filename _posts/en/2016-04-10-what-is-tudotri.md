@@ -2,6 +2,7 @@
 layout: post
 title: Business and technical overview of tudoTRI
 comments: true
+lang: en
 tags: [livecoding, programming, triathlon]
 ---
 

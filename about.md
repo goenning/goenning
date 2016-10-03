@@ -2,6 +2,7 @@
 layout: page
 title: Who am I
 permalink: /about/
+lang: en
 ---
 
 I'm Guilherme Oenning, a passionate software developer living in Brazil. I've worked with web development since the beginning of my career and now mostly interested on node.js, but I've done plenty of C# and Java code before. Avid practitioner of Test-Driven Development and currently learning Docker and TypeScript.
