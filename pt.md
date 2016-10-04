@@ -1,7 +1,9 @@
 ---
 layout: default
 lang: pt
+permalink: /pt
 ---
+
 
 <div class="posts">
   {% assign posts=site.posts | where:"lang", page.lang %}

@@ -1,8 +1,9 @@
 ---
 layout: page
 title: Quem sou eu
-permalink: /pt/sobre/
+permalink: /sobre
 lang: pt
+ref: about
 ---
 
 Falta traduzir :)

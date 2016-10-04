@@ -4,6 +4,7 @@
 name: '@goenning'
 description: loop at { code; run; read; blog; eat; bike ride; } until tired;
 avatar: http://www.gravatar.com/avatar/ba158e6c8c0e4a7869f4b9f0a45db0fe?s=200
+env: production
 
 #
 # Flags below are optional
@@ -23,13 +24,13 @@ navigation:
   pt:
     index:
       name: "Blog"
-      url: "/pt/"
+      url: "/pt"
     archive:
       name: "Arquivo"
-      url: "/pt/arquivo"
+      url: "/arquivo"
     about:
       name: "Sobre"
-      url: "/pt/sobre"
+      url: "/sobre"
 
 
 # Includes an icon in the footer for each username you enter

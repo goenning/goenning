@@ -1,8 +1,9 @@
 ---
 layout: page
 title: Blog Archive
-permalink: /archive/
+permalink: /archive
 lang: en
+ref: archive
 ---
 
 <div class="archives">

@@ -1,8 +1,9 @@
 ---
 layout: page
 title: Arquivo do Blog
-permalink: /pt/arquivo/
+permalink: /arquivo
 lang: pt
+ref: archive
 ---
 
 <div class="archives">
