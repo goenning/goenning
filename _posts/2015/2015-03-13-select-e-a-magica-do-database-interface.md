@@ -7,7 +7,7 @@ tags: [sap, abap]
 ref: select-all-and-the-magic-behind-database-interface
 ---
 
-Falamos [no artigo sobre OpenSQL](/2015/03/open-sql-vs-native-sql/ "Open SQL vs Native SQL") que o Database Interface atua no meio de campo entre a aplicação e o banco de dados, lembram? Ele é responsável por algumas tarefas como a tradução de OpenSQL em NativeSQL, manutenção dos dados no buffer, entre outras.
+Falamos [no artigo sobre OpenSQL](/2015/03/13/open-sql-vs-native-sql/ "Open SQL vs Native SQL") que o Database Interface atua no meio de campo entre a aplicação e o banco de dados, lembram? Ele é responsável por algumas tarefas como a tradução de OpenSQL em NativeSQL, manutenção dos dados no buffer, entre outras.
 
 Recentemente descobri algo novo que ele também faz e que é saudável para o banco de dados e consequentemente o ambiente de um modo geral.
 

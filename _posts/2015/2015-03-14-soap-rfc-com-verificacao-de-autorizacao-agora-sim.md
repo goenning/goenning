@@ -9,9 +9,9 @@ ref: soap-rfc-with-real-authorization-verification
 
 Se o sistema não faz exatamente o que você quer, senta a bunda na cadeira e **faça você mesmo**! Esta á uma das vantagem de se trabalhar em uma plataforma de fácil extensão — a possibilidade de sair da caixinha e buscar fazer algo diferente. Percebi isto primeiramente no ASP.NET MVC e NHibernate, agora estou vendo o mesmo acontecer com o SAP.
 
-No [último artigo](/2015/03/adicionando-seguranca-no-uso-do-icf-e-rfc/ "Adicionando segurança no uso do ICF e RFC") discutimos sobre a falta de segurança por usuário no serviço RFC SOAP do SAP . Os objetos de autorização e a tabela de white list ajudam bastante, mas não resolvem completamente o problema.
+No [último artigo](/2015/03/14/adicionando-seguranca-no-uso-do-icf-e-rfc/ "Adicionando segurança no uso do ICF e RFC") discutimos sobre a falta de segurança por usuário no serviço RFC SOAP do SAP . Os objetos de autorização e a tabela de white list ajudam bastante, mas não resolvem completamente o problema.
 
-Já no artigo [Conectando-se ao SAP com o uso de SOAP RFC](/2015/03/conectando-se-ao-sap-com-o-uso-de-soap-rfc/ "Conectando-se ao SAP com o uso de SOAP RFC") falamos rapidamente que é possível criar novos serviços do ICF implementando um classe conhecida como **Handler**. Após a escrita do post surgiu a ideia. Que tal fazermos um serviço ICF com suporte à autorização por usuário? Seria uma forma prática de aprender a criar um serviço e de quebrar fazer algo útil.
+Já no artigo [Conectando-se ao SAP com o uso de SOAP RFC](/2015/03/13/conectando-se-ao-sap-com-o-uso-de-soap-rfc/ "Conectando-se ao SAP com o uso de SOAP RFC") falamos rapidamente que é possível criar novos serviços do ICF implementando um classe conhecida como **Handler**. Após a escrita do post surgiu a ideia. Que tal fazermos um serviço ICF com suporte à autorização por usuário? Seria uma forma prática de aprender a criar um serviço e de quebrar fazer algo útil.
 
 As premissas deste pequeno exercício são:
 

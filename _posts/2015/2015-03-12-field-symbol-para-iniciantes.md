@@ -9,7 +9,7 @@ tags: [abap, field-symbol]
 
 Vamos falar de Field-Symbol para finalizar a série de posts sobre variáveis.
   
-Caso você ainda não tenha visto, já falamos sobre [Tipos de dados, variáveis e constantes](/2015/03/tipos-de-dados-variaveis-e-constantes/) e outro sobre [Variáveis de sistema do ABAP](/2015/03/12/variaveis-de-sistema-do-abap/).
+Caso você ainda não tenha visto, já falamos sobre [Tipos de dados, variáveis e constantes](/2015/03/11/tipos-de-dados-variaveis-e-constantes/) e outro sobre [Variáveis de sistema do ABAP](/2015/03/12/variaveis-de-sistema-do-abap/).
 
 O Field-Symbol pode ser comparado aos ponteiros na linguagem C. Uma variável declarada como Field-Symbol não armazena fisicamente um valor, ela apenas possui referência ao endereço de memória de uma variável. Toda modificação feita no símbolo é realizada na variável que está sendo referenciada.
 

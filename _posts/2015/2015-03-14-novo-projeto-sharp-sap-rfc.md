@@ -7,7 +7,7 @@ tags: [abap, github, opensource, sharpsaprfc]
 ref: new-project-sharp-sap-rfc
 ---
 
-No artigo [Conectando o mundo externo ao SAP com o uso de RFC](/2015/03/conectando-o-mundo-externo-ao-sap-com-o-uso-de-rfc/) falei um pouco sobre as chamadas de RFC usando .Net e gostei tanto de estudar o SAP NCo que eu acabei criando uma nova biblioteca.
+No artigo [Conectando o mundo externo ao SAP com o uso de RFC](/2015/03/13/conectando-o-mundo-externo-ao-sap-com-o-uso-de-rfc/) falei um pouco sobre as chamadas de RFC usando .Net e gostei tanto de estudar o SAP NCo que eu acabei criando uma nova biblioteca.
 
 ## Sharp SAP RFC
 

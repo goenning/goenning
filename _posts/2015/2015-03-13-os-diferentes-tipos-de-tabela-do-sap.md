@@ -76,7 +76,7 @@ Vejam também como ficam os registros criados nesta tabela.
 
 Esta é o tipo de tabela padrão quando usamos a SE11 justamente por ser usada em praticamente 99% dos casos quando comparado com a Pooled Table e Cluster Table.
   
-Para consultar e manipular os dados destas tabelas é possível usar tanto [OpenSQL quanto NativeSQL](/2015/03/open-sql-vs-native-sql/).
+Para consultar e manipular os dados destas tabelas é possível usar tanto [OpenSQL quanto NativeSQL](/2015/03/13/open-sql-vs-native-sql/).
 
 # Pooled Table
 

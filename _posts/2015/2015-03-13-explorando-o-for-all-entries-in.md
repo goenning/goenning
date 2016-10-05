@@ -7,7 +7,7 @@ tags: [abap, for all entries in, opensql]
 ---
 ![](/public/images/2015/03/2014-05-05-20_57_24-Documentação-palavra-chave-ABAP.png)
 
-No artigo [Open SQLsdf vs Native SQL](/2015/03/open-sql-vs-native-sql/) comentamos rapidamente sobre a instrução FOR ALL ENTRIES IN usada nos comandos Open SQL.
+No artigo [Open SQLsdf vs Native SQL](/2015/03/13/open-sql-vs-native-sql/) comentamos rapidamente sobre a instrução FOR ALL ENTRIES IN usada nos comandos Open SQL.
 
 Resolvi escrever este outro artigo para explicar com mais detalhes o seu funcionamento e também mostrar como ela funciona por baixo dos panos, pois é uma instrução muito usada em ABAP.
 

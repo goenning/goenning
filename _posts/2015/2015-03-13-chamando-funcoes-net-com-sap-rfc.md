@@ -5,7 +5,7 @@ comments: true
 lang: pt
 tags: [abap, github, jco, nco, rfc, rfc server]
 ---
-No post [Conectando o mundo externo ao SAP com o uso de RFC](/2015/03/conectando-o-mundo-externo-ao-sap-com-o-uso-de-rfc/) falamos sobre como fazer aplicações Java e .NET acessarem funções do SAP através do protocolo RFC.
+No post [Conectando o mundo externo ao SAP com o uso de RFC](/2015/03/13/conectando-o-mundo-externo-ao-sap-com-o-uso-de-rfc/) falamos sobre como fazer aplicações Java e .NET acessarem funções do SAP através do protocolo RFC.
 
 Algo que me parece pouco comum — porém com grande potencial e utilidade — é a possibilidade de fazer um programa ABAP invocar métodos escritos em Java ou .NET usando este mesmo protocolo. Aprendemos no post acima que quando invocamos uma função através de **CALL FUNCTION** é possível definir um destinatário RFC. Qualquer servidor de aplicação ABAP pode ser cadastrado como um destinatários RFC — e é por isto que é possível fazer chamadas remotas entre servidores ABAP. As bibliotecas **JCo** e **NCo** permitem que nós criemos um servidor RFC que também pode ser usado como um destinatário.
 

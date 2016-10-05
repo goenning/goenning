@@ -7,7 +7,7 @@ tags: [sap, abap, rfc, soap, icf, sharpsaprfc]
 ref: connecting-to-sap-with-soap-rfc
 ---
 
-No artigo [Habilitando SAP ICF na instalação MiniSAP](/2015/03/habilitando-sap-icf-na-instalacao-minisap/ "Habilitando SAP ICF na instalação MiniSAP") falamos sobre o módulo HTTP que o SAP possui nativamente. Dentro deste módulo existem diversas interfaces que são chamadas de serviço. Cada serviço tem um objetivo e uma forma de funcionamento. Já vimos como funciona o **ping**, que é simplesmente um retorno HTML com uma mensagem de sucesso. Se clicamos no serviço podemos ver qual é a classe ABAP que é chamada quando fazemos uma requisição HTTP. Veja este exemplo do ping:
+No artigo [Habilitando SAP ICF na instalação MiniSAP](/2015/03/14/habilitando-sap-icf-na-instalacao-minisap/ "Habilitando SAP ICF na instalação MiniSAP") falamos sobre o módulo HTTP que o SAP possui nativamente. Dentro deste módulo existem diversas interfaces que são chamadas de serviço. Cada serviço tem um objetivo e uma forma de funcionamento. Já vimos como funciona o **ping**, que é simplesmente um retorno HTML com uma mensagem de sucesso. Se clicamos no serviço podemos ver qual é a classe ABAP que é chamada quando fazemos uma requisição HTTP. Veja este exemplo do ping:
 
 ![](/public/images/2015/03/class-handler-ping.png)
 
