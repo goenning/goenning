@@ -169,4 +169,4 @@ Mas nunca é demais ter uma segunda opção, principalmente em se tratando de te
 
 Para quem não tem acesso aos conectores SAP e também não tem uma instalação de SAP PI (que agora é SAP PO), existe uma terceira alternativa: SAP RFC via SOAP.
   
-Mais informações no artigo </2015/03/13/conectando-se-ao-sap-com-o-uso-de-soap-rfc/>. Quanto mais opções, melhor!
+Mais informações no artigo </2015/03/14/conectando-se-ao-sap-com-o-uso-de-soap-rfc/>. Quanto mais opções, melhor!
