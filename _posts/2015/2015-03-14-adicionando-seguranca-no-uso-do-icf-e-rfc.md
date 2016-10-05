@@ -7,7 +7,7 @@ tags: [icf, security, sap, abap, rfc]
 ref: adding-security-to-icf-and-soap-rfc
 ---
 
-![](/public/images/2015/03/14/no_auth_rfcping.png)
+![](/public/images/2015/03/no_auth_rfcping.png)
 
 Já falamos bastante de como funciona a RFC no SAP, então se você chegou agora e quer saber um pouco mais sobre RFC, sugiro a leitura deste conteúdo:
 
