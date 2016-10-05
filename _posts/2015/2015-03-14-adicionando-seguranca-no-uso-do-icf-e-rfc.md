@@ -14,7 +14,7 @@ Já falamos bastante de como funciona a RFC no SAP, então se você chegou agora
   * [Chamando funções .NET com SAP RFC](/2015/03/13/chamando-funcoes-net-com-sap-rfc/ "Chamando funções .NET com SAP RFC")
   * [Conectando o mundo externo ao SAP com o uso de RFC](/2015/03/13/conectando-o-mundo-externo-ao-sap-com-o-uso-de-rfc/ "Conectando o mundo externo ao SAP com o uso de RFC")
   * <http://www.guru99.com/rfc-remote-function-call.html>
-  * [Conectando-se ao SAP com o uso de SOAP RFC](/2015/03/13/conectando-se-ao-sap-com-o-uso-de-soap-rfc/ "Conectando-se ao SAP com o uso de SOAP RFC")
+  * [Conectando-se ao SAP com o uso de SOAP RFC](/2015/03/14/conectando-se-ao-sap-com-o-uso-de-soap-rfc/ "Conectando-se ao SAP com o uso de SOAP RFC")
 
 Acontece que a RFC pode representar um risco para a segurança do ambiente SAP. Afinal ninguém gostaria que um vírus/invasor/alguém-mal-intencionado ficasse criando Pedidos de Compra e Ordens de Produção sem você saber, correto? Ou pior ainda, alguém poderia criar usuários via RFC.
 
