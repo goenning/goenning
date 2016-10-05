@@ -137,7 +137,7 @@ Se em seu teste der falha ao fazer login não se esqueça de preencher os campos
 
 ## SharpSapRfc.Soap
 
-Eu não poderia perder a oportunidade e acabei fazendo um upgrade do [Sharp SAP RFC](/2015/03/novo-projeto-sharp-sap-rfc/). Separei em dois pacotes NuGet chamados de SharpSapRfc.Soap e SharpSapRfc.Plain.x86 (e x64 também). A interface de uso ficou exatamente a mesma, ou seja, é possível alterar entre Soap e Plain sem qualquer quebra no código. As únicas diferenças são na hora de instanciar a classe de conexão e o arquivo de configuração que também fica um pouco diferente. 
+Eu não poderia perder a oportunidade e acabei fazendo um upgrade do [Sharp SAP RFC](/2015/03/14/novo-projeto-sharp-sap-rfc/). Separei em dois pacotes NuGet chamados de SharpSapRfc.Soap e SharpSapRfc.Plain.x86 (e x64 também). A interface de uso ficou exatamente a mesma, ou seja, é possível alterar entre Soap e Plain sem qualquer quebra no código. As únicas diferenças são na hora de instanciar a classe de conexão e o arquivo de configuração que também fica um pouco diferente. 
 
 Achei que projeto ficou bem organizado tendo duas implementações distintas para a mesma interface. Foi exemplo para mim de que a orientação a objetos quando usada de forma correta pode trazer grandes benefícios. Foi usado muito polimorfismo no projeto e vejo que pode ser útil como material de estudo.
 

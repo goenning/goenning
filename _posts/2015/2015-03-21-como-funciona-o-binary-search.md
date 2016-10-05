@@ -5,7 +5,7 @@ comments: true
 lang: pt
 tags: [abap, binary search, performance, tabelas]
 ---
-Todo programador ABAP já ouviu falar que devemos utilizar a instrução **BINARY SEARCH** sempre que fizermos leituras em tabela internas por questões de performance. Podemos perceber a grande diferença no tempo de processamento através [desta análise comparativa entre diferentes leituras nos três tipos de tabela](/2015/03/performance-de-leitura-por-tipo-de-tabela/). A leitura sequencial standard começa a apresentar sérios problemas a medida que a quantidade de registros vai aumentando. As outras leituras, inclusive a binária, mantêm-se estável durante muito mais tempo, mostrando assim serem mais eficientes.
+Todo programador ABAP já ouviu falar que devemos utilizar a instrução **BINARY SEARCH** sempre que fizermos leituras em tabela internas por questões de performance. Podemos perceber a grande diferença no tempo de processamento através [desta análise comparativa entre diferentes leituras nos três tipos de tabela](/2015/03/18/performance-de-leitura-por-tipo-de-tabela/). A leitura sequencial standard começa a apresentar sérios problemas a medida que a quantidade de registros vai aumentando. As outras leituras, inclusive a binária, mantêm-se estável durante muito mais tempo, mostrando assim serem mais eficientes.
 
 Mas você sabe como realmente funciona a pesquisa binária? Não? Então vem comigo.
 

@@ -168,7 +168,7 @@ LOOP AT alunos INTO wa_aluno.
 ENDLOOP.
 ~~~
 
-Nestes exemplos eu sempre usei a tabela do tipo STANDARD. Mas também é possível usar HASHED ou SORTED. A diferença está na ordem com que os registros são inseridos e no desempenho durante os comandos de LOOP E READ TABLE. O artigo [Performance de leitura por tipo de tabela](/2015/03/performance-de-leitura-por-tipo-de-tabela/ "Performance de leitura por tipo de tabela") explora bastante este assunto. 
+Nestes exemplos eu sempre usei a tabela do tipo STANDARD. Mas também é possível usar HASHED ou SORTED. A diferença está na ordem com que os registros são inseridos e no desempenho durante os comandos de LOOP E READ TABLE. O artigo [Performance de leitura por tipo de tabela](/2015/03/18/performance-de-leitura-por-tipo-de-tabela/ "Performance de leitura por tipo de tabela") explora bastante este assunto. 
 
 #### Diferente formas de declarar uma variável.
 

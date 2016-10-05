@@ -26,7 +26,7 @@ Uma classe de testes unitários é possui uma lógica que executa um programa ou
 
 O tempo que o computador leva para executar estes 5 testes vai ser algumas centenas de vezes mais rápido que um ser humano. Isto permite também que os testes sejam executados constantemente, várias vezes seguidas, conforme o programador vai alterando o código. Este tipo de fluxo de trabalho garante que ao alterar o código não estou estragando nada do que já estava funcionando, mas isto só é verdade se todos os cenários estiverem cobertos por testes. 
 
-Para você ter uma ideia, o projeto [Sharp SAP RFC](/2015/03/novo-projeto-sharp-sap-rfc/) foi escrito em C# e teve o uso de testes unitários desde a primeira linha de código. O projeto atualmente possui 92 casos de testes que são executados em 11 segundos. São todos estes cenários que me dão segurança de colocar novos recursos na biblioteca sem correr o risco de publicar uma nova versão com novidades e estragando algo que antes já estava funcionando.
+Para você ter uma ideia, o projeto [Sharp SAP RFC](/2015/03/14/novo-projeto-sharp-sap-rfc/) foi escrito em C# e teve o uso de testes unitários desde a primeira linha de código. O projeto atualmente possui 92 casos de testes que são executados em 11 segundos. São todos estes cenários que me dão segurança de colocar novos recursos na biblioteca sem correr o risco de publicar uma nova versão com novidades e estragando algo que antes já estava funcionando.
 
 ![](/public/images//2015/03/vs-ssr-testes.png)
 

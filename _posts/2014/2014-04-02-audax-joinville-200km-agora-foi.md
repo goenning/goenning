@@ -8,7 +8,7 @@ tags: [audax, bike, esporte]
 
 ![](/public/images/2014/04/aj200-largada.jpg)
 
-Se o título post anterior era [Audax Joinville 200km. Agora vai!](/2014/03/audax-joinville-200km-agora-vai/), este eu devo chamar de **agora foi!**
+Se o título post anterior era [Audax Joinville 200km. Agora vai!](/2014/03/02/audax-joinville-200km-agora-vai/), este eu devo chamar de **agora foi!**
 
 Concluí a tão sonhada prova do **Audax 200km**, aquela que ano passado não me senti confiante o suficiente para participar.
 

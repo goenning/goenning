@@ -21,4 +21,4 @@ permalink: /pt
   {% endfor %}
 </div>
 
-<p>Veja o <a href="{{ site.baseurl }}/pt/arquivo">arquivo</a> para mais posts.</p>
+<p>Veja o <a href="{{ site.baseurl }}/arquivo">arquivo</a> para mais posts.</p>

@@ -12,7 +12,7 @@ No SAP existem pelo menos quatro tipos diferentes de tabela, cada qual com suas 
 
 Vamos iniciar falando deste, pois possui um comportamento que difere de todas as outras três.
   
-Este é o único tipo de tabela que não é compartilhado entre processos e também não é persistente, ou seja, os dados são armazenados na memória e uma vez finalizado o programa os dados da tabela são perdidos. Tabelas internas são usadas em programas para armazenar dados temporários que serão usados para algum cálculo ou algum outro tipo de processamento. Escrevi um pouco sobre como usar tabelas internas [neste post](/2015/03/variaveis-de-sistema-do-abap/), então aqui só vou complementar a explicação com os possíveis tipos de tabela interna (quase um inception de tipos de tabela ein?!)
+Este é o único tipo de tabela que não é compartilhado entre processos e também não é persistente, ou seja, os dados são armazenados na memória e uma vez finalizado o programa os dados da tabela são perdidos. Tabelas internas são usadas em programas para armazenar dados temporários que serão usados para algum cálculo ou algum outro tipo de processamento. Escrevi um pouco sobre como usar tabelas internas [neste post](/2015/03/12/variaveis-de-sistema-do-abap/), então aqui só vou complementar a explicação com os possíveis tipos de tabela interna (quase um inception de tipos de tabela ein?!)
 
 ### Standard Table
 
@@ -52,7 +52,7 @@ Esta imagem ajuda a resumir bem a diferença entre elas.
 
 ![](/public/images/2015/03/abap_pts3.jpg)
 
-O desempenho das três tabelas é bastante semelhante quando definimos uma chave e a usamos nas buscas. Por este e outros motivos é que a Standard Table é hoje o tipo de tabela mais usada. É ersátil e conseguimos obter desempenho equivalente. [Neste artigo](/2015/03/performance-de-leitura-por-tipo-de-tabela/ "Performance de leitura por tipo de tabela") você encontra uma análise de quando usar cada tipo de tabela do ponto de vista de desempenho.
+O desempenho das três tabelas é bastante semelhante quando definimos uma chave e a usamos nas buscas. Por este e outros motivos é que a Standard Table é hoje o tipo de tabela mais usada. É ersátil e conseguimos obter desempenho equivalente. [Neste artigo](/2015/03/18/performance-de-leitura-por-tipo-de-tabela/ "Performance de leitura por tipo de tabela") você encontra uma análise de quando usar cada tipo de tabela do ponto de vista de desempenho.
 
 ![](/public/images/2015/03/zgdc_inttab_perf_test_graph.png)
 
