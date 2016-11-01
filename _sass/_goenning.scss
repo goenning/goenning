@@ -1,7 +1,10 @@
 code.highlighter-rouge {
-  padding: .25em .5em;
-  color: #bf616a;
-  background-color: #f9f9f9;
+  line-height: 1.5;
+  white-space: nowrap;
+  margin: 0 2px;
+  padding: 0 5px;
+  border: 1px solid #f7f7f7;
+  background-color: #efefef;
   border-radius: 3px;
 }
 
@@ -16,6 +19,10 @@ h1.site-name {
 * {
   font-family: 'PT Sans', Helvetica, Arial, sans-serif !important;
   text-rendering: optimizelegibility;
+}
+
+html {
+  font-size: 1em;
 }
 
 h1 {
