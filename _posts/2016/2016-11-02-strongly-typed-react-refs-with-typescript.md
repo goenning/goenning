@@ -12,13 +12,13 @@ but rather [inflexible](http://stackoverflow.com/questions/29503213/use-state-or
 
 But anyway, `refs` are available and they work. So why not use them?
 
-When working with TypeScript it's usually a common practive to have everything as strongly typed as possible.
+When working with TypeScript it's usually a common practice to have everything as strongly typed as possible.
 
 Unfortunately `refs` is typed as `[key: string]: ReactInstance`, which force us to type `this.refs["myInput]`. This is definitely not what we want.
 
 ### Using callback references
 
-`ref` as a callback is the recommended approach on how to use it nowdays, and the solution with TypeScript is pretty simple.
+`ref` as a callback is the recommended approach on how to use it nowadays, and the solution with TypeScript is pretty simple.
 
 ```typescript
 import * as React from "react";
@@ -117,6 +117,6 @@ export class CustomTextInput extends React.Component<{}, {}> {
 
 We're simply overriding the `refs` property to be strongly typed. Yeah, that's all. 
 
-The difference between this example and the above is that this one is using the standard React `refs` property while the other is definining a new one.
+The difference between this example and the above is that this one is using the standard React `refs` property while the other is defining a new one.
 
 Whatever you prefer, just don't forget to "type" your React components as much as possible.
