@@ -22,7 +22,7 @@ Você pode remover um por um, usando `sudo npm -g rm <nome>` ou então algo mais
 
 > $ npm ls -gp --depth=0 | awk -F/ '/node_modules/ && !/\/npm$/ {print $NF}' | xargs npm -g rm
 
-A explicação está contida no [Stack Overflow](http://stackoverflow.com/questions/9283472/command-to-remove-all-npm-modules-globally), mas basicamente ele irá varrer todos módulos globais e executar o `npm rm` para cada um.
+A explicação está contida [neste post](http://stackoverflow.com/questions/9283472/command-to-remove-all-npm-modules-globally), mas basicamente ele irá percorrer todos módulos globais e executar o `npm rm` para cada um.
 
 ### 2. Pasta padrão
 
