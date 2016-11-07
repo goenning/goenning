@@ -5,6 +5,7 @@ comments: true
 lang: pt
 tags: [abap, application server, arquitetura, camadas, sap]
 ---
+
 ![](/public/images/2015/03/arquitetura-sap-r31.gif)
 
 ## Arquitetura do SAP e suas 3 camadas

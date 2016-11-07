@@ -6,9 +6,8 @@ lang: pt
 tags: [sap, miniprofiler, performance, .net]
 ref: miniprofiler-sharpsaprfc-new-nuget-package
 ---
-## O MiniProfiler
 
-Já fazia algum tempo que havia lido sobre o [MiniProfiler,](http://miniprofiler.com) mas nunca tive a oportunidade de testar. Recentemente comecei a usá-lo e tenho gostado tanto que resolvi compartilhar com vocês o resultado do estudo.
+Já fazia algum tempo que havia lido sobre o [MiniProfiler](http://miniprofiler.com), mas nunca tive a oportunidade de testar. Recentemente comecei a usá-lo e tenho gostado tanto que resolvi compartilhar com vocês o resultado do estudo.
 
 Trata-se de uma biblioteca pequena, fácil de instalar e de configurar, e que traz informações muito úteis relacionadas ao tempo de resposta e processamento de cada página web. Foi criado pelo time do Stack Overflow (o Google dos programadores) e é [utilizado por eles em produção](http://blog.codinghorror.com/performance-is-a-feature/). Um grande case de sucesso, não é mesmo?
 

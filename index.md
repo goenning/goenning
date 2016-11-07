@@ -11,7 +11,11 @@ lang: en
       <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
 
       <div class="entry">
-        {{ post.excerpt }}
+        {% if post.content contains '<!--more-->' %}
+          {{ post.content | split:'<!--more-->' | first }}
+        {% else %}
+          {{ post.excerpt }}
+        {% endif %}
       </div>
 
       <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>

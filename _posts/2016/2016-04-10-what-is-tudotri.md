@@ -6,8 +6,6 @@ lang: en
 tags: [livecoding, programming, triathlon]
 ---
 
-### tudoTRI
-
 I've always wanted to build an useful website that could help others somehow. I decided to do it by combining two of my life passions: computer programming and triathlon.
 
 The idea of this project came from a day I was looking for a particular cycling component for my bike. I had **waste more than 2 hours** *googling* it and visiting dozens of online shops. The search was really helpful, because the price was very different between each site, it was ranging from R$ 200,00 to R$ 400,00. If I had bought from the first site I found, I'd probably waste more than necessary, resulting in a **bad purchase** for me.

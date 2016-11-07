@@ -5,6 +5,7 @@ comments: true
 lang: pt
 tags: [abap, bapi, function, se37]
 ---
+
 No ABAP — assim como em diversas outras linguagens estruturadas — temos a possibilidade de criar pedaços de código que são reutilizáveis. Estes códigos são chamados de funções e estão disponíveis para que qualquer programa faça uso deles.
 
 As funções são usadas quando queremos encapsular uma regra de negócio ou funcionalidade, sendo muito útil para manter a organização e controle do sistema. Criar uma função significa ter **um único ponto de manutenção** para aquela determinada rotina.

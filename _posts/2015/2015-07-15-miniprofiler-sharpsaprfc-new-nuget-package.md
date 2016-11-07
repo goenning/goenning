@@ -7,8 +7,6 @@ tags: [sap, miniprofiler, performance, .net]
 ref: miniprofiler-sharpsaprfc-new-nuget-package
 ---
 
-### MiniProfiler
-
 It has been a long time since I first heard about MiniProfiler, but I never had the opportunity to use and study it. Recently — because of some tunning tasks I had to do — I started to use it and I enjoyed so much that I've decide to share my experience here.
 
 It's all about a tiny package, easy to install and configure, that brings to the eyes of the programmer some really useful information regarding response time of each HTTP Request. It was created by [Stack Overflow](http://stackoverflow.com/) team and it is used by them in production. Who needs a better success case than this, right?
