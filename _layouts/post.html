@@ -9,9 +9,13 @@ layout: default
     {{ page.date | date: "%B %e, %Y" }}
   </div>
 
+  {% include social-buttons.html %}
+
   <div class="entry">
     {{ content }}
   </div>
+
+  {% include social-buttons.html %}
 
   {% include disqus.html %}
 </article>
