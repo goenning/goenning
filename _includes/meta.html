@@ -10,7 +10,6 @@
     <meta name="description" content="{{ site.description }}">
     <meta property="og:description" content="{{ site.description }}" />
 {% endif %}
-<meta name="author" content="{{ site.name }}" />
 
 {% if page.title %}
     <meta property="og:title" content="{{ page.title }}" />
@@ -20,12 +19,20 @@
     <meta property="og:title" content="{{ site.name }}" />
 {% endif %}
 
+{% if page.cover %}
+    <meta property="og:image" content="{{ site.url }}{{ page.cover }}" />
+    <meta property="twitter:image" content="{{ site.url }}{{ page.cover }}" />
+{% else %}
+    <meta property="og:image" content="{{ site.avatar }}" />
+    <meta property="twitter:image" content="{{ site.avatar }}" />
+{% endif %}
+
+<meta name="author" content="{{ site.name }}" />
+
 <meta property="og:site_name" content="{{ site.name }}" />
-<meta property="og:url" content="{{ page.url }}" />
+<meta property="og:url" content="{{ site.url }}{{ page.url }}" />
 <meta property="og:type" content="website" />
 <meta property="og:locale" content="{{ page.lang }}" />
-<meta property="og:image" content="{{ site.avatar }}" />
 
 <meta property="twitter:card" content="summary" />
-<meta property="twitter:image" content="{{ site.avatar }}" />
 <meta property="twitter:site" content="@goenning" />

@@ -5,6 +5,7 @@ comments: true
 lang: pt
 tags: [sap, miniprofiler, performance, .net]
 ref: miniprofiler-sharpsaprfc-new-nuget-package
+cover: /public/images//2015/09/profile-sap-1.png
 ---
 
 Já fazia algum tempo que havia lido sobre o [MiniProfiler](http://miniprofiler.com), mas nunca tive a oportunidade de testar. Recentemente comecei a usá-lo e tenho gostado tanto que resolvi compartilhar com vocês o resultado do estudo.
