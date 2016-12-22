@@ -8,7 +8,8 @@ ref: about
 
 Hi there! I'm Guilherme Oenning, a passionate brazilian software developer.
 
-Here's what I'm doing now
+Here's what I'm doing now:
+
 - Living in Dublin, Ireland
 - Coding for [SoftwareONE](http://www.softwareone.com) @ [PyraCloud Platform](http://www.pyracloud.com)
 - Learning Azure, Docker and TypeScript
