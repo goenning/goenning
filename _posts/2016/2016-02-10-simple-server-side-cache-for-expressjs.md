@@ -1,9 +1,10 @@
 ---
 layout: post
-title: Simple server side cache for Express with Node.js
+title: Simple server side cache for Express.js with Node.js
 comments: true
 lang: en
 tags: [express, nodejs, cache, performance]
+ref: simple-server-side-cache-for-expressjs
 ---
 
 Express is the most extensible web framework I've seen so far. The framework's middleware architecture makes it easy to plug-in extra features with minimal effort and in a standardized way.
@@ -18,7 +19,7 @@ This is where server side cache becomes in handy. The goal of server side cache 
 
 There are many ways of doing it, it could be done with NGINX or a CDN like CloudFlare, but in this example we'll see how to do it with Node.js and Express with minimal work and in a flexible way.
 
-## Show me the code
+## Show me the code!
 
 Our goal here is to enable server side cache for our application with minimal effort. So, let's do it!
 
@@ -66,7 +67,7 @@ The cool thing here is that it works for routes that responds with HTML, JSON, X
 
 You can easily plug it into any existing express web application by simple adding the `cache` middleware for each route you may want to cache.
 
-*Important:* `PUT` and `POST` methods should never be cached.
+*Important:* `PUT`, `DELETE` and `POST` methods should never be cached.
 
 For this example we have used a npm module that caches the content in memory, this has some good and bad implications.
 
