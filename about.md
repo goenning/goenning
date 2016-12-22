@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Who am I
+title: Who am I and what I'm doing now
 permalink: /about
 lang: en
 ref: about
