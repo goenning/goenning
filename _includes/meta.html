@@ -3,7 +3,10 @@
 <meta http-equiv='X-UA-Compatible' content='IE=edge'>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
 
-{% if page.excerpt %}
+{% if page.abstract %}
+    <meta name="description" content="{{ page.abstract }}" />
+    <meta property="og:description" content="{{ page.abstract }}" />
+{% elsif page.excerpt %}
     <meta name="description" content="{{ page.excerpt | strip_html }}" />
     <meta property="og:description" content="{{ page.excerpt | strip_html }}" />
 {% else %}

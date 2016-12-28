@@ -49,6 +49,19 @@ h1, h2, h3, h4, h5, h6 {
   color: #9a9a9a;
 }
 
+.post .cover {
+  @media screen and (min-width: 640px) {
+    float: left;
+    max-width: 300px;
+    max-height: 300px;
+    margin-right: 10px;
+  }
+}
+
+.post {
+  display: inline-block;
+}
+
 .archive-post-date {
   color: #9a9a9a;
   font-size: 12px;

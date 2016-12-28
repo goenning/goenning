@@ -12,8 +12,14 @@ permalink: /pt
 
       <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
 
+      {% if post.cover %}
+        <img class="cover" src="{{ post.cover }}" />
+      {% endif %}
+
       <div class="entry">
-        {% if post.content contains '<!--more-->' %}
+        {% if post.abstract %}
+          {{ post.abstract }}
+        {% elsif post.content contains '<!--more-->' %}
           {{ post.content | split:'<!--more-->' | first }}
         {% else %}
           {{ post.excerpt }}

@@ -9,7 +9,9 @@ ref: simple-server-side-cache-for-expressjs
 
 Express é provavelmente o framework web mais extensível que vi até agora. Sua arquitetura baseada em middlewares torna muito fácil a adição de novas funcionalidades de forma padronizada e com mínimo esforço.
 
-Neste tópico mostrei como fazer um pequeno e simples, porém poderoso e útil, middleware para ajudar a aumentar o desempenho de suas aplicaçoes web com Express.js sem qualquer dependencia externa.
+Neste post mostro como fazer um pequeno e simples, porém poderoso e útil, middleware para ajudar a aumentar o desempenho de suas aplicaçoes web com Express.js sem qualquer dependencia externa.
+
+<!--more-->
 
 ## Sobre cache no lado servidor
 
