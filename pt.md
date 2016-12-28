@@ -18,7 +18,7 @@ permalink: /pt
 
       <div class="entry">
         {% if post.abstract %}
-          {{ post.abstract }}
+          <p>{{ post.abstract }}</p>
         {% elsif post.content contains '<!--more-->' %}
           {{ post.content | split:'<!--more-->' | first }}
         {% else %}
