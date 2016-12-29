@@ -17,7 +17,7 @@ lang: en
       <div class="entry">
         {% if post.abstract %}
           <p>{{ post.abstract }}</p>
-        {% else if post.content contains '<!--more-->' %}
+        {% elsif post.content contains '<!--more-->' %}
           {{ post.content | split:'<!--more-->' | first }}
         {% else %}
           {{ post.excerpt }}
