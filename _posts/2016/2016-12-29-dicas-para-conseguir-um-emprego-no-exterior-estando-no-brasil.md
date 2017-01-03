@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Como conseguir um emprego no exterior estando no Brasil
+title: Dicas para conseguir um emprego no exterior estando no Brasil
 comments: true
 lang: pt
-tags: [emprego, exterior, entrevista, ti]
+tags: [emprego, exterior, entrevista, ti, irlanda, dublin, europa]
 cover: /public/images/2016/12/plane.jpg
 abstract: | 
   Após ter me mudado para a Irlanda resolvei compartilhar com os leitores como foi o processo e passar algumas dicas de como você também pode fazer o mesmo sem sair de casa. Quero mostrar que isto é perfeitamente possível e como o processo pode ser mais fácil do que você imagina.
@@ -37,23 +37,25 @@ Considero **reading e writing** o mais fácil de praticar, afinal quem trabalha 
 
 E é claro, não dá para deixar de comentar que nada dispensa um bom curso de inglês. Se for VIP, melhor ainda. Lembre-se que curso de inglês é um investimento e não uma despesa.
 
-### Saia da zona do conforto e arrisque. Comece agora!
+### Saia da zona do conforto e arrisque!
 
-Eu demorei bastante antes de começar a aplicar para vagas. Se eu soubesse como seria o processo, com certeza eu teria feito antes, muito antes!
+Eu demorei bastante antes de começar a aplicar para vagas. Fiquei com receio do meu nível de inglês e do meu conhecimento técnico, mas se eu soubesse como seriam os processos, com certeza eu teria feito antes, muito antes!
 
-A verdade é que muita empresa não vai responder sua aplicação, o que eu acho uma péssima experiência. Por você ser Brasileiro e estando a milhares de quilômetros de distância, não vão dar a mínima para você. Outras empresas até irão te responder, normalmente dizendo que não patrocinam visto ou que estão procurando alguém que já esteja por perto. Ok, não é o que você espera, mas pelo teve um retorno. 
+A verdade é que a maioria das empresas não vão nem responder sua aplicação, o que eu acho uma péssima experiência. Então não adianta muito perder horas pensando se deve aplicar ou não para uma determinada vaga, depois esperar mais de 10 dias por uma resposta e nada da empresa responder. Por você ser Brasileiro e estando a milhares de quilômetros de distância, talvez não deem a mínima para você. Talvez a empresa não conhece como funciona os processos de imigração e por isto prefere nem responder. Empresas maiores, normalmente multinacionais, possuem mais conhecimento neste assunto e por isto tendem a ter maior probabilidade de contratar um estrangeiro.
 
 Mas terão algumas empresas que irão te surpreender com um e-mail contendo: "Gostamos do seu perfil e queremos te conhecer melhor, podemos marcar uma entrevista para semana que vem?".
 
-Você só vai descobrir se você **tentar**.
+Seja ela uma startup ou multinacional, você só vai descobrir se você **tentar**! A questão é: não se abale em receber um não. Continue a tentar.
 
-Se você ainda não está 100% certo de que esta é a hora de realmente se mudar, seja qual for o motivo, você ainda assim pode aplicar para estas vagas só para praticar e ver como você se sai. Se te rejeitarem durante a entrevista, pelo menos você vai ter aprendido alguma coisa. Agora se você for aceito, é só rejeitar a oferta. Ou se for muito boa, aceite! A questão é que participando dos processos de recrutamento no exterior mesmo quando não está procurando um novo emprego é um excelente forma de mensurar o quanto o mercado está procurando alguém como você. 
+Se você ainda não está 100% certo de que esta é a hora de realmente se mudar, seja qual for o motivo, você ainda assim pode aplicar para estas vagas só para praticar e ver como você se sai. Se te rejeitarem durante a entrevista, pelo menos você vai ter aprendido alguma coisa. Agora se você for aceito, é só rejeitar a oferta, simples assim. Ou se for muito boa, aceite! A questão é que participando dos processos de recrutamento mesmo quando não está procurando um novo emprego é um excelente forma de mensurar o quanto o mercado está procurando alguém como você.
 
 Quando estiver decidido que a hora de se mudar chegou, você terá noção de como funciona os processos fora do Brasil, quanto o mercado está disposto a te pagar e se seu inglês é suficiente ou não.
 
-### 8 dicas para se preparar antes de aplicar
+### Dicas para se preparar antes de aplicar
 
 Minha sugestão é que os seguintes pontos sejam revistos antes de começar a aplicar para as vagas que você tem interesse.
+
+Lembre-se que ao aplicar para uma vaga você estará competindo pela vaga não só com outros Brasileiros, mas também com Franceses, Russos, Indianos, Japoneses, etc. Vivemos em um mundo globalizado onde nós não somos os únicos com condições e sonhos de imigração, isto cria uma enorme diversidade cultural nas empresas, mas ao mesmo tempo cria um processo de seleção muito mais acirrado. 
 
 ##### 1) Quanto tempo leva para você estar pronto para se mudar? Já pensou que você terá que cumprir seu mês de aviso? Vender seu carro, casa, seus outros pertences, etc.?
 
@@ -69,9 +71,15 @@ O site [numbeo](https://www.numbeo.com/cost-of-living) é um bom começo para te
 
 O LinkedIn é uma ótima ferramenta para mostrar ao mundo sua experiência profissional e para criar conexões. O Brasil como um todo ainda não adotou complementamente o uso dele, mas aqui fora a realidade é outra. Portanto traduza seu perfil para o inglês e complete-o de forma que alguém que nunca te viu saiba com que tipo de projeto, tecnologias e processos você já trabalhou. O LinkedIn é seu currículo na internet, público e disponível para qualquer um visitá-lo, invista um bom tempo nele.
 
+[Recentemente foi liberado](https://blog.linkedin.com/2016/10/06/now-you-can-privately-signal-to-recruiters-youre-open-to-new-job) uma opção que te permite segmentar em quais cidades e área de atuação você está buscando uma vaga. Desta forma recrutadores de tal região poderão te encontrar com mais facilidade.
+
 ##### 4) Prepare uma Cover Letter (ou várias!)
 
-A Cover Letter é uma breve introdução sua, contendo sua ambição profissional, o que te chamou a atenção na empresa e porque você gostaria de fazer parte dela. Ela deve estar sempre ligada com a empresa em que você está aplicando, por isto é normal ter que fazer uma carta para cada empresa que estiver aplicando. Este é seu elevator pitch, você precisa se vender em 2 ou 3 parágrafos. 
+A Cover Letter é uma breve introdução sua, contendo sua ambição profissional, o que te chamou a atenção na empresa e porque você gostaria de fazer parte dela. Ela deve estar sempre ligada com a empresa em que você está aplicando, por isto é normal ter que fazer uma carta para cada empresa que estiver aplicando. 
+
+Procure saber um pouco mais sobre a cultura da empresa e utilize isto a seu favor, mostre que você fez seu dever de casa e pesquisou sobre a empresa antes de aplicar já na cover letter.
+
+Este é seu elevator pitch, você precisa se vender em 2 ou 3 parágrafos. 
 
 ##### 5) Entrevistas por Skype ou ligação local.
 
@@ -81,21 +89,41 @@ Esteja preparado, pois quando alguém te ligar você terá que estar online no S
 
 ##### 6) Se prepare para provar suas habilidades
 
-Se estiver aplicando para alguma vaga de desenvolvedor, é provável que as entrevistas contenham testes de lógica de programação utilizando algum site específico ou até mesmo o bloco de notas (na falta de um quadro branco) que devem ser resolvidos no ato da entrevista, com o entrevistador online do outro lado da linha te questionando e você tendo que explicar o que e porque está fazendo de tal maneira.
+Se estiver aplicando para alguma vaga de desenvolvedor, é provável que as entrevistas contenham testes de lógica de programação que devem ser resolvidos no ato da entrevista. Enquanto você pensa e digita, do outro lado da linha estará o entrevistador te questionando sobre o que e porque está fazendo de tal maneira. Esteja preparado para codificar fora de sua IDE favorita, os testes geralmente são realizados em algum site com editor online ou até mesmo o bloco de notas (na falta de um quadro branco).
 
-Outro possível teste também pode ser uma aplicação a ser desenvolvida em X dias (a combinar), sendo que neste caso você terá mais tempo e recursos para desenvolver algo mais complexo e elaborado.
+Outro tipo de teste muito usado é quando o entrevistador solicita que você desenvolva uma aplicação em X dias (a combinar), sendo que neste caso você terá mais tempo e recursos para desenvolver algo mais complexo e elaborado.
+
+[Aqui está um exemplo](https://github.com/goenning/hangman-node) de um projeto que fiz durante um dos processos de seleção em que participei. Invista o tempo concedido para montar um projeto bem organizado, com um código limpo e fácil de entender, escreva testes automatizados sempre que possível, invista em uma documentação básica de como executar e utilizar o aplicativo. Cuidado para não estrapolar, muitas vezes menos é mais!
 
 ##### 7) Seja atraente
 
-Não, não precisa ser bonito não.
+Não, você não precisa ser bonito(a).
 
-A questão é que muitas empresas de TI valorizam **MUITO** quando você tem um perfil ativo em sites como GitHub e Stack Overflow. Não precisa ser nenhum um pouco famoso, mas só de contribuir — mesmo que de forma singela — com projetos e a comunidade open source já vai dar uma destacada legal em seu currículo.
+A questão é que muitas empresas de TI valorizam **MUITO** quando você o candidato é um participante ativo de comunidades online, como GitHub, Stack Overflow, Google Developers Group, blogosfera, etc. Não precisa ser famoso e nem estar no ranking de algum site, mas só de contribuir — mesmo que de forma singela — com projetos e a comunidade já vai dar uma destacada legal em seu currículo, além de também estar ajudando ao próximo. 
+
+Invista um tempo neste assunto e mostre ao mundo o quão tecnicamente atraente você é, além de enriquecer seu currículo e montar seu próprio portfólio online, você estará fazendo parte de uma enorme rede de talentosos contatos que um dia poderão te surpreender.
 
 ##### 8) E o mais importante, você gostou da empresa em que vai se aplicar? 
 
 Não saia aplicando em qualquer empresa só para poder sair do Brasil e depois se arrepender por estar perdendo tempo. Invista em seu futuro escolhendo um local que irá te proporcionar crescimento pessoal e profissional. Pesquise muito sobre a empresa, aproveite que vivemos na era digital e navegue por todo os sites e redes sociais, busque conhecer o máximo sobre ela, leia as notícias, pesquisa sobre quem trabalha lá, leia os reviews no [Glassdoor](https://www.glassdoor.com).
 
 A Irlanda, por exemplo, possui uma regra em que um imigrante deve ficar pelo menos 12 meses na empresa antes de conseguir uma nova autorização para trabalhar em outra empresa. Você não gostaria de queimar um ano de sua vida trabalhando em um local em que você não gosta, não é? 
+
+##### Onde procurar por vagas
+
+Aqui está alguns dos sites que você pode procurar por vagas. Dê uma atenção extra às vagas que tenham **visa sponsorship**.
+
+- [GitHub Jobs](https://jobs.github.com/)
+- [StackOverflow Jobs](http://stackoverflow.com/jobs)
+- [LinkedIn Jobs](https://www.linkedin.com/jobs/)
+- [AngelList](https://angel.co/) mais voltado para vagas em startups.
+
+Específico para a Irlanda:
+
+- Grupo no Facebook: [IT in Dublin](https://www.facebook.com/groups/ITinDublin/)
+- Sites de Recrutadoras Locais: [Computer Futures](http://www.computerfutures.com/en/)
+- Sites de Vagas Locais: [Irish Jobs](http://www.irishjobs.ie/), [Monster](http://www.monster.ie/), [Jobs.ie](http://www.jobs.ie/)
+
 
 ##### Ficou com alguma dúvida? Deixe sua pergunta ou comentário logo abaixo.
 
