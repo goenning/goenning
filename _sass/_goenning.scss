@@ -16,7 +16,7 @@ h1.site-name {
   margin-bottom:10px;
 }
 
-* {
+body {
   font-family: 'PT Sans', Helvetica, Arial, sans-serif !important;
   text-rendering: optimizelegibility;
 }
@@ -49,12 +49,18 @@ h1, h2, h3, h4, h5, h6 {
   color: #9a9a9a;
 }
 
+.left {
+  float:left;
+  margin-right: 10px;
+}
+
 .post .cover {
+  float: left;
+  margin-right: 10px;
+  
   @media screen and (min-width: 640px) {
-    float: left;
     max-width: 300px;
-    max-height: 300px;
-    margin-right: 10px;
+    max-height: 150px;
   }
 }
 
