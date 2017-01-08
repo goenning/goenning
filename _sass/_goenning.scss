@@ -55,12 +55,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .post .cover {
-  float: left;
-  margin-right: 10px;
-  
   @media screen and (min-width: 640px) {
+    float: left;
+    margin-right: 10px;
+    max-height: 200px;
     max-width: 300px;
-    max-height: 150px;
   }
 }
 
