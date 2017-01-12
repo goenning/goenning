@@ -1,1 +1,1 @@
-jekyll serve --config _config.yml,_config_dev.yml
+jekyll serve --drafts --config _config.yml,_config_dev.yml
