@@ -6,8 +6,8 @@ layout: default
   <h1>{{ page.title }}</h1>
 
   <div class="date">
-    {{ page.date | date: "%B %e, %Y" }} <br />
-    {% include read_time.html %}
+    {% include post_date.html lang=page.lang date=page.date %}
+    {% include post_read_time.html %}
   </div>
 
   <div class="entry">

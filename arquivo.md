@@ -25,7 +25,7 @@ ref: archive
 
         <li>
           <a href="{{post.url}}">{{post.title}}</a>
-          <span class="archive-post-date">{{post.date | date_to_string }}</span>
+          <span class="archive-post-date">{% include post_date.html lang=post.lang date=post.date %}</span>
         </li>
 
       {% if forloop.last %}

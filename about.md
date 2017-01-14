@@ -14,7 +14,7 @@ Here's what I'm doing now:
 - Coding for [SoftwareONE](http://www.softwareone.com) @ [PyraCloud Platform](http://www.pyracloud.com)
 - Learning Azure, Docker and TypeScript
 - Cycling to work whenever possible
-- Learning German (Mostly Duolingo and Memrise while waiting for classe
+- Learning German (Mostly Duolingo and Memriseg while waiting for classe
 - Training for my first marathon (expected for October/2017)
 
 You can find me online on <a href="https://github.com/{{ site.footer-links.github }}">GitHub</a> and <a href="https://twitter.com/{{ site.footer-links.twitter }}">Twitter</a>.

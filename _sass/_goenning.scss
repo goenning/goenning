@@ -39,6 +39,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .post h2, .post h3 {
+  padding-bottom: 5px;
   margin-bottom: 0.5rem !important;
   border-bottom: 1px solid #ddd !important;
 }
@@ -48,6 +49,12 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: -.5rem;
   margin-bottom: 1rem;
   color: #9a9a9a;
+  font-size: 18px
+}
+
+.post .reading-time {
+  font-size: 12px;
+  display: block;
 }
 
 .left {
@@ -62,6 +69,10 @@ h1, h2, h3, h4, h5, h6 {
     max-height: 200px;
     max-width: 300px;
   }
+}
+
+.posts article.post {
+  display: inline-block;
 }
 
 .archive-post-date {
