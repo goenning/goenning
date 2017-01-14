@@ -1,0 +1,14 @@
+{% assign posts = site.posts | where:"series", include.name%}
+
+> {% if include.lang == 'pt' %}
+> Este post faz parte da série **{{include.title}}**. <br />
+> {% else %}
+> This blog post is part of the **{{include.title}}** series. <br />
+> {% endif %}
+> {% for post in posts reversed %} 
+> {% if post.url == page.url %}
+>  - {{ post.title }}
+> {% else %}
+>  - [{{ post.title }}]({{post.url}})
+> {% endif %}
+> {% endfor %}

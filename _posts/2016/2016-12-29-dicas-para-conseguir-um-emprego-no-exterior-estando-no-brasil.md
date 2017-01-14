@@ -5,6 +5,7 @@ comments: true
 lang: pt
 tags: [emprego, exterior, entrevista, ti, irlanda, dublin, europa]
 cover: /public/images/2016/12/plane.jpg
+series: brasilparairlanda
 abstract: | 
   Após ter me mudado para a Irlanda resolvei compartilhar com os leitores como foi o processo e passar algumas dicas de como você também pode fazer o mesmo sem sair de casa. Quero mostrar que isto é perfeitamente possível e como o processo pode ser mais fácil do que você imagina.
 ---
@@ -128,3 +129,5 @@ Específico para a Irlanda:
 ##### Ficou com alguma dúvida? Deixe sua pergunta ou comentário logo abaixo.
 
 Um abraço!
+￼
+{% include _series_brasilparairlanda.html %}

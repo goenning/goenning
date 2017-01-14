@@ -1,0 +1,17 @@
+{% assign words = content | number_of_words %}
+
+<span class="reading-time" title="estimated read time">
+  {% if page.lang == 'pt' %}
+    {% if words < 360 %}
+      1 minuto para ler
+    {% else %}
+      {{ words | divided_by:180 }} minutos para ler
+    {% endif %}
+  {% else %}
+    {% if words < 360 %}
+      1 minute read
+    {% else %}
+      {{ words | divided_by:180 }} minutes read
+    {% endif %}
+  {% endif %}
+</span>

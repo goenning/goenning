@@ -4,6 +4,7 @@ title: "From any OS to Azure with ASP.NET Core: Introduction"
 comments: true
 lang: en
 tags: [dotnet, aspnetcore, azure, macos]
+series: fromanyostoazure
 cover: /public/images/2017/01/dotnet-logo.png
 ---
 
@@ -73,3 +74,5 @@ My recommended extensions are:
 Hope you enjoy it. If you do, please leave a comment.
 
 Cheers!
+
+{% include _series_fromanyostoazure.html %}

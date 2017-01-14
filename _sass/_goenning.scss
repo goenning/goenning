@@ -10,7 +10,6 @@ code.highlighter-rouge {
 
 body {
   color: #515151;
-  width: 100%;
   overflow-x: hidden;
 }
 
@@ -28,7 +27,7 @@ html {
 }
 
 h1 {
-  font-size:2em;
+  font-size:1.5em;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -63,10 +62,6 @@ h1, h2, h3, h4, h5, h6 {
     max-height: 200px;
     max-width: 300px;
   }
-}
-
-.post {
-  display: inline-block;
 }
 
 .archive-post-date {

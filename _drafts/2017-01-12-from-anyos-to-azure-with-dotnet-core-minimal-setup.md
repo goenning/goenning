@@ -3,10 +3,9 @@ layout: post
 title: "From any OS to Azure with ASP.NET Core: A minimal setup"
 comments: true
 lang: en
+series: fromanyostoazure
 tags: [dotnet, aspnetcore, azure, macos]
 ---
-
-{% include _series_fromanyostoazure.html %}
 
 First of all, check if `dotnet` CLI is installed correcly, because you'll need that.
 
@@ -171,3 +170,5 @@ Congratulations! This is the first to build our API and deploy it to the cloud.
 Hope you enjoy it. If you do, please leave a comment.
 
 Cheers!
+
+{% include _series_fromanyostoazure.html %}

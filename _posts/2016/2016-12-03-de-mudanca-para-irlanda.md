@@ -5,6 +5,7 @@ comments: true
 lang: pt
 tags: [irlanda, dublin, trabalho, imigração]
 cover: /public/images/2016/12/Hapenny-Bridge-Dublin-362k.jpg
+series: brasilparairlanda
 abstract: Nossa história de vida é um conjunto de fatos. Tomamos uma decisão que irá mudar completamente nossas vidas. Estamos nos mudando para Dublin, Irlanda.
 ---
 
@@ -29,3 +30,5 @@ Por este motivo, decidi que aos poucos vou atualizar e organizar este pequeno es
 Fiquem a vontade para usar o espaço de comentários abaixo para fazer perguntar ou sugestão de assuntos a serem abordados.
 
 Um abraço e até logo.
+￼
+{% include _series_brasilparairlanda.html %}

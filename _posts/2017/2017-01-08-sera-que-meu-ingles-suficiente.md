@@ -4,6 +4,7 @@ title: Será que meu inglês é suficiente?
 comments: true
 lang: pt
 tags: [inglês, trabalho]
+series: brasilparairlanda
 cover: /public/images/2017/01/fique-calmo-and-speak-english.jpeg
 ---
 
@@ -51,3 +52,5 @@ Agora que estou mais confortável com o inglês, é hora de partir para o tercei
 Danke für deinen Besuch.
 
 Tschüss und bis bald!
+￼
+{% include _series_brasilparairlanda.html %}
