@@ -6,6 +6,8 @@ lang: pt
 tags: [imigração, irlanda]
 series: brasilparairlanda
 cover: /public/images/2017/01/ireland-flag.jpg
+abstract:
+  Conseguir o work permit Irlandês é só primeiro passo para a imigração. Após isto é necessário passar pela imigração no aeroporto e resolver toda a documentação local. Neste post vou explicar como tudo isto funciona. Escrevi exatamente o que eu gostaria de ter lido antes vir para cá, então acredito que seja útil para quem esta planejando algo parecido.
 ---
 
 Conseguir o work permit Irlandês é só primeiro passo para a imigração. Após isto é necessário passar pela imigração no aeroporto e resolver toda a documentação local. Neste post vou explicar como tudo isto funciona.
