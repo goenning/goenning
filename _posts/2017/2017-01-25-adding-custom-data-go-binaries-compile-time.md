@@ -12,7 +12,7 @@ Sometimes it is really useful to be able to get some information about your Go b
 How would you do it?
 
 - We could create a `json/yml/xml` file to store this information. Yup, we could, but do you want to manually update it everytime? You'd also need to distribute two files instead of just one.
-- What about a `version` global structure? Well, it'd be better as we would end up with just the binary and no additional configuration files. But even then, we'd need to update the structure manually before each build.
+- What about a `version` global structure? Well, it'd be better as we would end up with just the binary and no metadata files. But even then, we'd need to update the structure manually before each build.
 
 ### Compiler flags to the rescue
 
@@ -86,7 +86,7 @@ We could then change it by using the full package path, like this:
 
 > go build -ldflags "-X github.com/goenning/hello-go/info.BuildTime=$(date +"%Y.%m.%d.%H%M%S") -X github.com/goenning/hello-go/info.CommitHash=$(git log --pretty=format:'%h' -n 1)"
 
-Just remember that as we are writing a package that is intended to be imported somewhere else, our variables need to start with a capital letter. You could also implement some sort of encapsulation to have access to them from outsite your package.
+Just remember that as we are writing a package that is intended to be imported somewhere else, our variables need to start with a capital letter. Another option would be leaving them as internal and implement some sort of encapsulation to have access to them from outsite your package.
 
 ### That's all for today folks
 
