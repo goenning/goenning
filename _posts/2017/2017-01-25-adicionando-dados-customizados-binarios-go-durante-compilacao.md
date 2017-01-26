@@ -8,7 +8,7 @@ ref: adding-custom-data-go-binaries-compile-time
 ---
 
 As vezes é realmente útil obter informações sobre seus binários Go, por exemplo: quando ele foi compilado, qual o usuário que o compilou, qual o hash do último commit usado, etc. Estas informações são especialmente úteis para versionamento de binários, para análise de bugs ou então só para ter uma referência para o código fonte.
-
+<!--more-->
 Como você faria isto?
 
 - Poderíamos criar um arquivo `json/yml/xml` para armazenar estas informações. Sim, poderíamos, mas você quer atualizar manualmente a cada nova compilação? Você também teria que distribuir dois arquivos ao invés de apenas um.
