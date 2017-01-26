@@ -2,7 +2,7 @@
 layout: post
 title: Adicionando dados customizados em binários Go durante a compilação
 comments: true
-lang: en
+lang: pt
 tags: [go, goland, ldflags]
 ref: adding-custom-data-go-binaries-compile-time
 ---
