@@ -5,10 +5,11 @@ comments: true
 lang: pt
 tags: [go, goland, ldflags]
 ref: adding-custom-data-go-binaries-compile-time
-abstract: As vezes é realmente útil obter informações sobre seus binários Go, por exemplo: quando ele foi compilado, qual o usuário que o compilou, qual o hash do último commit usado, etc. Estas informações são especialmente úteis para versionamento de binários, para análise de bugs ou então só para ter uma referência para o código fonte.
 ---
 
 As vezes é realmente útil obter informações sobre seus binários Go, por exemplo: quando ele foi compilado, qual o usuário que o compilou, qual o hash do último commit usado, etc. Estas informações são especialmente úteis para versionamento de binários, para análise de bugs ou então só para ter uma referência para o código fonte.
+
+<!--more-->
 
 Como você faria isto?
 
