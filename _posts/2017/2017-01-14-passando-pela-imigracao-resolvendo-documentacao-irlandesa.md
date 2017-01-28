@@ -14,7 +14,7 @@ Conseguir o work permit Irlandês é só primeiro passo para a imigração. Apó
 
 O primeiro ponto que gostaria de reforçar é que muita gente chama o work permit de visto. Isto está errado! Este documento serve para comprovar que você possui um vínculo empregatício com uma empresa na Irlanda e que este foi autorizado pelo departamento de emprego do país para que você possa trabalhar em uma determinada empresa. Ou seja, ap optar por sair da empresa você perde o work permit e precisa correr atrás de um novo.
 
-É com o work permit que você consegue obter todos os outros que explico a seguir.
+É com o work permit que você consegue obter todos os outros documentos que explico logo abaixo.
 
 ### GNIB
 
