@@ -35,4 +35,12 @@ ref: archive
       {% capture last_year %}{{ this_year }}{% endcapture %}
     {% endfor %}
   </ul>
+
+  <h2>Talks</h2>
+  <ul>
+    <li>
+      <a href="https://drive.google.com/file/d/0B65Y6FNYSEywTXZJQ1NITXBJeE0/view">Introdução ao TypeScript + React</a>
+      <span class="archive-post-date">Novembro/2016 (Blumenau/SC)</span>
+    </li>
+  </ul>
 </div>
