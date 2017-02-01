@@ -3,7 +3,7 @@
 #
 name: '@goenning'
 description: loop at { code; run; read; blog; eat; bike ride; } until tired;
-avatar: http://www.gravatar.com/avatar/ba158e6c8c0e4a7869f4b9f0a45db0fe?s=200
+avatar: //www.gravatar.com/avatar/ba158e6c8c0e4a7869f4b9f0a45db0fe?s=200
 env: production
 
 #
@@ -59,7 +59,7 @@ google_analytics: UA-47250005-3
 
 # Your website URL (e.g. http://barryclark.github.io or http://www.barryclark.co)
 # Used for Sitemap.xml and your RSS feed
-url: http://goenning.net
+url: https://goenning.net
 
 # If you're hosting your site at a Project repository on GitHub pages
 # (http://yourusername.github.io/repository-name)
