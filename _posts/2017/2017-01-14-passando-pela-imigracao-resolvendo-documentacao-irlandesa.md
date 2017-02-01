@@ -12,7 +12,9 @@ abstract:
 
 Conseguir o work permit Irlandês é só primeiro passo para a imigração. Após isto é necessário passar pela imigração no aeroporto e resolver toda a documentação local. Neste post vou explicar como tudo isto funciona.
 
-O primeiro ponto que gostaria de reforçar é que muita gente chama o work permit de visto. Isto está errado! Este documento apenas comprova que você possui um emprego na Irlanda e que este foi autorizado pelo departamento de emprego do país. Mas é com este documento que você consegue obter todos os outros.
+O primeiro ponto que gostaria de reforçar é que muita gente chama o work permit de visto. Isto está errado! Este documento serve para comprovar que você possui um vínculo empregatício com uma empresa na Irlanda e que este foi autorizado pelo departamento de emprego do país para que você possa trabalhar em uma determinada empresa. Ou seja, ap optar por sair da empresa você perde o work permit e precisa correr atrás de um novo.
+
+É com o work permit que você consegue obter todos os outros documentos que explico logo abaixo.
 
 ### GNIB
 
@@ -25,6 +27,7 @@ Estes são os possíveis *stamps*.
 - **Stamp 2:** Emitido para quem vem ao país para estudar. Não tenho muitos detalhes sobre isto, mas tem bastante informação na Internet.x
 
 - **Stamp 3:** Emitido para quem veio ao país acompanhar outra pessoa com cidadania ou stamp 1. Este stamp não te permite trabalhar ou estudar. Para fazer uma destas duas atividades é necessário aplicar novamente para o GNIB e solicitar um stamp diferente, mas voce terá que provar o porque da troca, seja por ter recebido uma oferta de trabalho ou por estar iniciando algum curso. Apesar de não poder trabalhar em um emprego integral, trabalhos voluntários não-remunerados são permitidos e costumam enriquecer o currículo.
+**Obs:** Cônjuge de quem possui work permit recebe um visto com Stamp 3 desde que estejam casados.
 
 - **Stamp 4:** Geralmente atribuído à cônjuge de cidadão europeu, mas quem tiver 5 anos de critical skills pode solicitar um. Este stamp permite residir e trabalhar na Irlanda mesmo sem qualquer restrição. 
 
