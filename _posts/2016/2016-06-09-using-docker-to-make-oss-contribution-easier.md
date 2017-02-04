@@ -29,7 +29,7 @@ Want to know something cool? [travis-ci](https://travis-ci.org/) supports Docker
 
 ### Try it yourself
 
-Let's dig into an example using [miniprofiler-pg](https://github.com/goenning/miniprofiler-pg), a library that monkey-patches all postgres commands that are issued by the application and provide helpful information to [miniprofiler](https://github.com/MiniProfiler/node). It's a small package, so I ended up with a small test suite, but it's good example on how to setup everything.
+Let's dig into an example using [miniprofiler-pg](https://github.com/goenning/miniprofiler-pg), a library that monkey-patches all postgres commands that are issued by the application and provide helpful information to [miniprofiler](https://github.com/MiniProfiler/node). It's a small package, so I ended up with a small test suite, but it's good example on how to set up everything.
 
 Before running the following commands, make sure Docker is installed you can run commands like `docker ps`.
 
