@@ -5,6 +5,7 @@ comments: true
 lang: pt
 tags: [go, golang, web, gostore]
 series: primeirawebappgo
+ref: your-very-first-web-app-go
 ---
 
 Estou começando hoje uma nova série no blog de como construir sua primeira aplicação web usando Go. Farei isto seguindo um modelo de "baby steps", então você pode esperar por uma série longa cobrindo tudo que você precisa (ou deveria) fazer/usar para construir uma aplicação web, como Go tools, GOPATH, testes automatizados, vendoring, banco de dados e, é claro, com hospedagem na nuvem.
