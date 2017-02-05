@@ -68,13 +68,22 @@ O quanto você vai gastar por mês depende do seu estilo de vida. A Irlanda, por
 
 O site [numbeo](https://www.numbeo.com/cost-of-living) é um bom começo para ter uma primeira noção de quanto custam as coisas em seu país de destino. Em breve pretendo escrever melhor sobre gastos mensais aqui em Dublin.
 
-##### 3) Atualize seu LinkedIn 
+
+##### 3) Adapte seu currículo
+
+Não basta traduzir, também é necessário adaptar seu currículo. Faça questão de destacar cada contribuição e resultado que você trouxe para a empresa durante o tempo que trabalhou lá, isto conta muito sobre o quanto você é capaz de entregar valor através de seu trabalho. Inclua pelo menos uma linha explicando qual o segmento de atuação de cada empresa que trabalhou, pois isto muito ajuda os recrutadores a saber em quais ramos de atividade você tem experiência.
+
+Uma dica valiosa é modelar seu currículo para cada determinada vaga. Por exemplo, se a vaga exige experiência com Jenkins e você já trabalhou com esta ferramenta antes, mesmo que há algum tempo atrás, você pode escrever seu histórico profissional de forma a dar uma ênfase nisto. Só não vale mentir :)
+
+Procure uma boa agência de recrutamento que eles certamente irão te ajudar a elaborar o melhor currículo possível.
+
+##### 4) Atualize seu LinkedIn
 
 O LinkedIn é uma ótima ferramenta para mostrar ao mundo sua experiência profissional e para criar conexões. O Brasil como um todo ainda não adotou complementamente o uso dele, mas aqui fora a realidade é outra. Portanto traduza seu perfil para o inglês e complete-o de forma que alguém que nunca te viu saiba com que tipo de projeto, tecnologias e processos você já trabalhou. O LinkedIn é seu currículo na internet, público e disponível para qualquer um visitá-lo, invista um bom tempo nele.
 
 [Recentemente foi liberado](https://blog.linkedin.com/2016/10/06/now-you-can-privately-signal-to-recruiters-youre-open-to-new-job) uma opção que te permite segmentar em quais cidades e área de atuação você está buscando uma vaga. Desta forma recrutadores de tal região poderão te encontrar com mais facilidade.
 
-##### 4) Prepare uma Cover Letter (ou várias!)
+##### 5) Prepare uma Cover Letter (ou várias!)
 
 A Cover Letter é uma breve introdução sua, contendo sua ambição profissional, o que te chamou a atenção na empresa e porque você gostaria de fazer parte dela. Ela deve estar sempre ligada com a empresa em que você está aplicando, por isto é normal ter que fazer uma carta para cada empresa que estiver aplicando. 
 
@@ -82,21 +91,25 @@ Procure saber um pouco mais sobre a cultura da empresa e utilize isto a seu favo
 
 Este é seu elevator pitch, você precisa se vender em 2 ou 3 parágrafos. 
 
-##### 5) Entrevistas por Skype ou ligação local.
+##### 6) Entrevistas por Skype ou ligação local
 
-Grande parte das entrevistas acontecem por Skype, porém ainda existem algumas empresas/recrutadores que gostam de usar o telefone. Para evitar perder uma entrevista por não ter um telefone local, compre um número do exterior pelo Skype e coloque-o em seu currículo ou utilize-lo nos formulários de aplicação. O custo é baixo e você pode cancelar depois de 3 meses. 
+Grande parte das entrevistas acontecem por Skype, porém ainda existem algumas empresas/recrutadores que gostam de usar o telefone. Para evitar perder uma entrevista por não ter um telefone local, compre um número no exterior pelo Skype e coloque-o em seu currículo ou nos formulários de aplicação. O pagamento é mensal e custo é bem baixo, você pode cancelar quando não precisar mais. 
 
-Esteja preparado, pois quando alguém te ligar você terá que estar online no Skype para poder atender a ligação. Você pode baixar o App em seu smartphone, funciona muito bem! :)
+Esteja preparado, pois quando alguém te ligar você terá que estar online no Skype para poder atender a ligação. Você pode baixar o App em seu smartphone, funciona muito bem! Foi o que eu fiz para conseguir falar com o pessoal da Irlanda :)
 
-##### 6) Se prepare para provar suas habilidades
+Dica de ouro, **NUNCA**, em hipótese alguma, peça desculpa pelo seu nível de inglês. Falou algo errado? Se enrolou? Continue falando como se nada tivesse acontecido. Os recrutadores sabem que você não é nativo e não esperam um inglês perfeito. 
+
+##### 7) Se prepare para provar suas habilidades
 
 Se estiver aplicando para alguma vaga de desenvolvedor, é provável que as entrevistas contenham testes de lógica de programação que devem ser resolvidos no ato da entrevista. Enquanto você pensa e digita, do outro lado da linha estará o entrevistador te questionando sobre o que e porque está fazendo de tal maneira. Esteja preparado para codificar fora de sua IDE favorita, os testes geralmente são realizados em algum site com editor online ou até mesmo o bloco de notas (na falta de um quadro branco).
 
+Utilize os sites [https://www.hackerrank.com/](https://www.hackerrank.com/) e [https://codility.com/](https://codility.com/) para praticar. Quanto mais testes você fizer, mais preparado você estará.
+
 Outro tipo de teste muito usado é quando o entrevistador solicita que você desenvolva uma aplicação em X dias (a combinar), sendo que neste caso você terá mais tempo e recursos para desenvolver algo mais complexo e elaborado.
 
-[Aqui está um exemplo](https://github.com/goenning/hangman-node) de um projeto que fiz durante um dos processos de seleção em que participei. Invista o tempo concedido para montar um projeto bem organizado, com um código limpo e fácil de entender, escreva testes automatizados sempre que possível, invista em uma documentação básica de como executar e utilizar o aplicativo. Cuidado para não estrapolar, muitas vezes menos é mais!
+[Aqui está um exemplo](https://github.com/goenning/hangman-node) de um projeto que fiz durante um dos processos de seleção em que participei. Invista o tempo concedido para montar um projeto bem organizado, com um código limpo e fácil de entender, escreva testes automatizados sempre que possível, invista em uma documentação básica de como executar e utilizar o aplicativo. Só tome cuidado para não estrapolar, muitas vezes menos é mais!
 
-##### 7) Seja atraente
+##### 8) Seja atraente
 
 Não, você não precisa ser bonito(a).
 
@@ -104,7 +117,7 @@ A questão é que muitas empresas de TI valorizam **MUITO** quando você o candi
 
 Invista um tempo neste assunto e mostre ao mundo o quão tecnicamente atraente você é, além de enriquecer seu currículo e montar seu próprio portfólio online, você estará fazendo parte de uma enorme rede de talentosos contatos que um dia poderão te surpreender.
 
-##### 8) E o mais importante, você gostou da empresa em que vai se aplicar? 
+##### 9) E o mais importante, você gostou da empresa em que vai se aplicar? 
 
 Não saia aplicando em qualquer empresa só para poder sair do Brasil e depois se arrepender por estar perdendo tempo. Invista em seu futuro escolhendo um local que irá te proporcionar crescimento pessoal e profissional. Pesquise muito sobre a empresa, aproveite que vivemos na era digital e navegue por todo os sites e redes sociais, busque conhecer o máximo sobre ela, leia as notícias, pesquisa sobre quem trabalha lá, leia os reviews no [Glassdoor](https://www.glassdoor.com).
 
@@ -122,7 +135,7 @@ Aqui está alguns dos sites que você pode procurar por vagas. Dê uma atenção
 Específico para a Irlanda:
 
 - Grupo no Facebook: [IT in Dublin](https://www.facebook.com/groups/ITinDublin/)
-- Sites de Recrutadoras Locais: [Computer Futures](http://www.computerfutures.com/en/)
+- Sites de Recrutadoras Locais: [Computer Futures](http://www.computerfutures.com/en/), [Recruiters](http://www.recruiters.ie/)
 - Sites de Vagas Locais: [Irish Jobs](http://www.irishjobs.ie/), [Monster](http://www.monster.ie/), [Jobs.ie](http://www.jobs.ie/)
 
 
