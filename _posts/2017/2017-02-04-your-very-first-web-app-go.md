@@ -102,17 +102,17 @@ Yes, that's all you need! No Apache, Tomcat or IIS. Go's built-in http server ca
 
 The interesting part is that you can navigate to **any** page on this address and you will still see this very same message, even though our handler matcher is just `/`. 
 
-This might seem awkward to some, but it's just how Go's default Mux works. You can get some more information about it on [official docs page](https://golang.org/src/net/http/server.go?s=57308:57433#L1890). 
+This might seem awkward to some, but it's just how Go's default router works. You can get some more information about it on [official docs page](https://golang.org/src/net/http/server.go?s=57308:57433#L1890). 
 
-If you don't want this behavior you can easily create your own Mux or use any open source alternatives, there are dozens of them. We'll take a look at one of them in the near future.
+If you don't want this behavior you can easily create your own router or use any open source alternatives, there are dozens of them. We'll take a look at one of them in the near future.
 
 ### Let's just recap what we've learned so far:
 
 1. `http` is a standard Go library that can be used to create both HTTP servers and clients.
 2. We don't need any additional web container to host a web application written using Go.
-3. Go's default Mux is easy to use, but has some drawbacks.
+3. Go's default router is easy to use, but has some drawbacks.
 
-That's all for today folks. Looking forward for the next post where we'll introduce a custom mux, mocked data and some front end stuff to make our page more user friendly.
+That's all for today folks. Looking forward for the next post where we'll introduce vendoring, custom router, mocked data and some templates.
 
 If you have any questions or suggestions, please drop me a comment.
 
