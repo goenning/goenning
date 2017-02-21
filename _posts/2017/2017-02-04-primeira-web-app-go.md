@@ -102,17 +102,17 @@ Sim, isto é tudo que você precisa. Nada de Apache, Tomcat ou ISS. Por estarmos
 
 A parte interessante é que, mesmo tendo configurado nosso servidor para processar apenas a rota `/`, você pode navegar para **qualquer** página neste endereço e o retorno será sempre este mesma mensagem.
 
-Isto pode parecer estranho para alguns, mas é assim que o Mux padrão do Go funciona. Você consegue mais informações sobre isto na [documentação oficial](https://golang.org/src/net/http/server.go?s=57308:57433#L1890) deste pacote. 
+Isto pode parecer estranho para alguns, mas é assim que o router padrão do Go funciona. Você consegue mais informações sobre isto na [documentação oficial](https://golang.org/src/net/http/server.go?s=57308:57433#L1890) deste pacote. 
 
-Se você não gosta deste comportamento é possível facilmente escrever seu próprio Mux or utilizar qualquer alternativa open source, existem dezenas de opções. Faremos uso de uma delas no futuro próximo.
+Se você não gosta deste comportamento é possível facilmente escrever seu próprio router or utilizar qualquer alternativa open source, existem dezenas de opções. Faremos uso de uma delas no futuro próximo.
 
 ### Vamos recapituar o que aprendemos até agora:
 
 1. `http` faz parte da biblioteca padrão do Go e pode ser usada para criar servidores e clientes HTTP.
 2. Não precisamos de nenhum container web para hospedar nossa aplicação escrita em Go.
-3. O Mux default do Go é fácil de usar, mas possui alguns efeitos colaterais.
+3. O router padrão do Go é fácil de usar, mas possui alguns efeitos colaterais.
 
-Isto é tudo por hoje pessoal. Espero vocês no próximo post quando introduziremos um Mux customizado, mocked data e alguns recursos de front end para deixar nossa página mais amigável.
+Isto é tudo por hoje pessoal. Espero vocês no próximo post quando introduziremos vendoring, router customizado, mocked data e templates.
 
 Em caso de dúvidas ou sugestões, deixe seu comentário logo abaixo. 
 
