@@ -112,7 +112,7 @@ Se você não gosta deste comportamento é possível facilmente escrever seu pr�
 2. Não precisamos de nenhum container web para hospedar nossa aplicação escrita em Go.
 3. O router padrão do Go é fácil de usar, mas possui alguns efeitos colaterais.
 
-Isto é tudo por hoje pessoal. Espero vocês no próximo post quando introduziremos vendoring, router customizado, mocked data e templates.
+Isto é tudo por hoje pessoal. Espero vocês no próximo post quando introduziremos pacotes, vendoring e um router customizado.
 
 Em caso de dúvidas ou sugestões, deixe seu comentário logo abaixo. 
 

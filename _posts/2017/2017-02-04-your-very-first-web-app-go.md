@@ -106,13 +106,13 @@ This might seem awkward to some, but it's just how Go's default router works. Yo
 
 If you don't want this behavior you can easily create your own router or use any open source alternatives, there are dozens of them. We'll take a look at one of them in the near future.
 
-### Let's just recap what we've learned so far:
+### Let's just recap what we've just learned:
 
 1. `http` is a standard Go library that can be used to create both HTTP servers and clients.
 2. We don't need any additional web container to host a web application written using Go.
 3. Go's default router is easy to use, but has some drawbacks.
 
-That's all for today folks. Looking forward for the next post where we'll introduce vendoring, custom router, mocked data and some templates.
+That's all for today folks. Looking forward for the next post where we'll introduce packages, vendoring and a custom router.
 
 If you have any questions or suggestions, please drop me a comment.
 
