@@ -47,7 +47,9 @@ Outro documento de grande importância é o PPS. Pode ser comparado ao CPF no Br
 
 A solicitação do PPS também deve ser feita por agendamento, mas desta vez no website da [MyWelfare](https://www.mywelfare.ie/Account/Login).
 
-Para conseguir o PPS você terá que informar por qual motivo o está solicitando. Como você vai trabalhar e terá que pagar imposto, você é obrigado a ter este número. Então leve seu passaporte, work permit original, certidão de casamento juramentada para quem for casado e comprovante de residência. É recomendado levar uma carta da empresa com sua matrícula de funcionário e alegando que você é novo no país, pois eles podem solicitar algum comprovante da empresa relacionado ao work permit.
+Para conseguir o PPS você terá que informar por qual motivo o está solicitando. Como você vai trabalhar e terá que pagar imposto, você é obrigado a ter este número. Então leve seu passaporte, work permit original e comprovante de residência. Se estiver solicitando PPS para o casal, leve também sua certidão de casamento juramentada. Existe um benefício de crédito de imposto adicional para quem for casado e um dos dois não estiver trabalhando, então mesmo que seu parceiro(a) ainda não tenha um emprego, faça a solicitação do PPS dele(a).
+
+É recomendado levar uma carta da empresa com sua matrícula de funcionário e alegando que você é novo no país, pois eles podem solicitar algum comprovante da empresa relacionado ao work permit.
 
 O comprovante de residência é a parte mais difícil, pois é raro ter algo em seu nome logo no início.
 

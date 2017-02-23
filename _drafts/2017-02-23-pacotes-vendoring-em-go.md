@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Packages and vendoring in Go"
+title: "Pacotes e vendoring em Go"
 comments: true
-lang: en
+lang: pt
 tags: [go, golang, web, gostore]
 series: firstwebappgo
 ref: packages-vendoring-in-go
