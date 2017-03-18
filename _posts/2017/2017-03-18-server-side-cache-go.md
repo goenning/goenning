@@ -138,5 +138,6 @@ You just made something fast become even faster, thus helping make the Web a bet
 
 If you like it, please share it or leave me a comment!
 
-Cheers,
+Cheers!
+
 Guilherme
