@@ -17,9 +17,9 @@ When talking about speed, discussions usually end up with some sort of caching s
 
 ### What is server side cache?
 
-Most web developers are familiar with browser cache using HTTP header `Cache-Control`, which is basically how the server can instruct the browser on when and how long the browser can cache the resource. This is extremely useful and you should definitely use it for static assets like JavaScript, CSS and Images.
+Most web developers are familiar with browser cache using HTTP header `Cache-Control`, which is basically how the server can instruct the browser on when and how long the browser can cache the resource. This is extremely useful and we should always use it for static assets like JavaScript, CSS and Images.
 
-But what about HTML pages? How do we cache them? It's certainly not useful to cache it on the browser, because if your page changes, the user won't see the new content anytime soon. Let's take for instance a news portal like CNN, how do you serve the home page for millions of people so fast? If a new article is published, everyone needs to see it on the next refresh. 
+But what about HTML pages? How do we cache them? It's certainly not useful to cache it on the browser, because if our page changes, the user won't see the new content anytime soon. Let's take for instance a news portal like CNN, how can they serve the home page for millions of people so fast? If a new article is published, everyone needs to see it on the next refresh. 
 
 That's where server cache comes into play. Building the index page of a news portal possible requires multiple IO operations like database queries or API calls. After the HTML of the index page is built for an user it's possible to cache it on the server and use this cached version to respond to all subsequent requests to the same page. By doing this on the server, we have full control on when to invalidate a given set of cached content when a new article is published. 
 
@@ -103,16 +103,16 @@ func cached(duration string, handler func(w http.ResponseWriter, r *http.Request
 }
 ```
 
-To use it we just need to wrap our HTTP handler function inside a `cached` call, like the following. Thanks to Go's `time` package, we can use human friendly string to represent a duration. For instance, **10s** is much easier to understand than **10 * 1000**.
+To use it we just need to wrap our HTTP handler function inside a `cached` call, like the following. Thanks to Go's `time` package, we can use human friendly string to represent a duration. For instance, **10s** is much easier to understand than **10 * 1000**. On the following example, only the index route is being cached.
 
 ```go
-  // both idex and about are: func (w http.ResponseWriter, r *http.Request) { ... }
-	http.Handle("/", cached("10s", index)) 
-	http.HandleFunc("/about", about)
-  http.ListenAndServe(...)
+// both idex and about are: func (w http.ResponseWriter, r *http.Request) { ... }
+http.Handle("/", cached("10s", index)) 
+http.HandleFunc("/about", about)
+http.ListenAndServe(...)
 ```
 
-On this example, only the index route is being cached.
+
 
 Check out the following images of two subsequent calls to the same address.
 
