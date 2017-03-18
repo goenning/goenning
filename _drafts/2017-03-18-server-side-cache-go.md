@@ -16,11 +16,13 @@ When talking about speed, discussions usually end up with some sort of caching s
 
 ### What is server side cache?
 
-Most web developers are familiar with browser cache, which is basically how the server can instruct the browser to cache a particular resource for given period of time by using the HTTP header `Cache-Control`. This is extremely useful and you should definitely use it for static assets like JavaScript, CSS and Images.
+Most web developers are familiar with browser cache using HTTP header `Cache-Control`, which is basically how the server can instruct the browser on when and how long the browser can cache the resource. This is extremely useful and you should definitely use it for static assets like JavaScript, CSS and Images.
 
-But what about HTML pages? How do we cache them? It's certainly not useful to cache it on the browser, because if your page changes, the user won't see the new content anytime soon. Let's for instance think about a news portal like CNN, how do you serve the home page for millions of people so fast? If a new article is published, everyone needs to see it on the next refresh. 
+But what about HTML pages? How do we cache them? It's certainly not useful to cache it on the browser, because if your page changes, the user won't see the new content anytime soon. Let's take for instance a news portal like CNN, how do you serve the home page for millions of people so fast? If a new article is published, everyone needs to see it on the next refresh. 
 
-That's where server cache comes into play. Building the index page of a news portal possible requires multiple IO operations like database queries or API calls. After the HTML of the index page is built for an user it's possible to cache it on the server and use this cached version to respond to all subsequent requests to the same page. By doing this on the server, we have full control on when to invalidate a given set of cached content when a new article is published.
+That's where server cache comes into play. Building the index page of a news portal possible requires multiple IO operations like database queries or API calls. After the HTML of the index page is built for an user it's possible to cache it on the server and use this cached version to respond to all subsequent requests to the same page. By doing this on the server, we have full control on when to invalidate a given set of cached content when a new article is published. 
+
+It does now save the user from sending a HTTP request like the browser cache does, but it'll certainly speed up the the server respond to it.
 
 ### How do we do it in Go?
 
@@ -30,9 +32,9 @@ The difficult part is to decide where you want to cache the page. Common strateg
 
 **In-Memory**: Every page is cached on your web application's process memory, which makes it an excellent candidate for the fastest cache you'll ever have and the easiest to implement. The drawback is that if you have multiple servers (which you should probably have), you'll end with N copies of these cached content. If the process restarts for any reason, it'll lose all the cached content and thus slowing down the first request again.
 
-**Disk**: Cached pages are stored on a disk. This may not be the fastest option available as the server would still need to read from disk and possible do some network operations if it's not a local disk. The biggest advantage is that they are cheaper than memory and very fault tolerant as they can survive reboots. 
+**Disk**: Cached pages are stored on a disk. This is certainly not the fastest option available as the server needs to read from disk and maybe even do some network operations if it's not a local disk. The biggest advantage is that they are cheaper than memory and very resilient as they can survive reboots from application server.
 
-**Database**: Cached pages are stored in a database, it could be SQL or a key-value storage, doesn't matter. The fact is that Redis is the king on this field. It's a high performance and battle tested in-memory database widely used. It's not as fast as process in-memory, because it requires network calls, but content are shared across all servers and thus are not duplicated and not consuming more resources from the application server.
+**Database**: Cached pages are stored in a database, it could be SQL or a key-value storage, doesn't matter. The fact is that Redis is the king on this field. It's a high performance and battle tested in-memory database widely used. It's not as fast as process in-memory, because it requires network calls, but content is shared across all servers, so they are not duplicated and neither require resources from the application server.
 
 ### Talk is cheap, show me the code!
 
@@ -47,11 +49,13 @@ type Storage interface {
 }
 ```
 
-Then we have two structs that implement this interface, [memory.Storage](https://github.com/goenning/go-cache-demo/blob/master/cache/memory/cache.go) that uses a map object to store all the content and [redis.Storage](https://github.com/goenning/go-cache-demo/blob/master/cache/redis/cache.go) that uses a third-party Redis client. The implementaton of these structs are pretty straightforward, so I'll skip and go to the important part.
+Then we have two structs that implement this interface, [memory.Storage](https://github.com/goenning/go-cache-demo/blob/master/cache/memory/cache.go) that uses a map object to store all the content and [redis.Storage](https://github.com/goenning/go-cache-demo/blob/master/cache/redis/cache.go) that uses a third-party Redis client.
 
-`cached` is an http middleware that runs before the http handler and returns the content straight away if the page is already cached. If it's not, the handler is executed and its body is cached for a given period of time. Because it's a middleware, it's really easy to enable and disable it for certain routes.
+The implementaton of these structs are pretty straightforward, so I'll skip and go to the important part. If you want to give the disk strategy a try, just create a new struct that implements the interface just like the others.
 
-I'm using `RequestURI` as the key for my storage because I want to cache contents based on different paths and querystring. This means that a page with url `/users?page=1` and `/users?page=2` are cached independently even though the same HTTP handler is being used by both URL.
+`cached` is an http middleware that runs before the http handler and returns the content straight away if the page is already cached. If it's not, the handler is executed and its body is cached for a given period of time. Because it's a middleware, it's really easy to enable and disable it for certain routes. Keep reading for a concrete example.
+
+I'm using `RequestURI` as the key for my storage because I want to cache the pages based on different paths and querystring. This means that a page with url `/users?page=1` and `/users?page=2` are cached independently even though the same HTTP handler is being used by both URL.
 
 The code of the middleware is as follow.
 
@@ -107,7 +111,9 @@ To use it we just need to wrap our HTTP handler function inside a `cached` call,
   http.ListenAndServe(...)
 ```
 
-Check out following images of two subsequent calls to the same address.
+On this example, only the index route is being cached.
+
+Check out the following images of two subsequent calls to the same address.
 
 First request takes **2 seconds** while second request is served in just **27ms** with the **exact same content and size**.
 
@@ -115,18 +121,19 @@ First request takes **2 seconds** while second request is served in just **27ms*
 
 ![](/public/images/2017/03/load-two.png)
 
+After 10 seconds from the first request, the next request will take longer again as the page cache has been expired.
 
 ### What you should take care when implementing server side cache
 
-The first thing to do is **never** cache POST, PUT or DELETE requests as these are used to change resources and not retrieve then, so it makes no sense to cache it. That being said, only GET requests should be cached.
+The first thing to do is **never** cache POST, PUT or DELETE requests as these are used to change resources and not retrieve data, so it doesn't make sense to cache it. That being said, only GET requests should be cached. **Tip**: It is possible to avoid mistakes like this by implementing a safe check on the middleware :)
 
 Take an extra care for user based content. Applications and websites that requires user to be logged in can also be cached, but you'll need to take into consideration that the user identification have to be used as part of your key, otherwise you'd be returning content from one user to other users, which is definitely a huge data breach. The drawback of doing this is that you'll end up with much more cached pages. So keep this in mind when doing it.
 
-And last, but not least, you definitely need to implement a feature switch to easily turn off this on development environment for obvious reasons :)
+And last, but not least, you definitely need to implement a feature switch to easily turn this off on development environment for obvious reasons :)
 
 ### Congratulations 
 
-You just made something fast become faster. You're helping making the Web a better place. Thank you!
+You just made something fast become even faster and thus helping make the Web a better place. Thank you!
 
 Cheers,
 Guilherme
