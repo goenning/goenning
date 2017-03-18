@@ -133,7 +133,9 @@ And last, but not least, you definitely need to implement a feature switch to ea
 
 ### Congratulations 
 
-You just made something fast become even faster and thus helping make the Web a better place. Thank you!
+You just made something fast become even faster, thus helping make the Web a better place. Thank you!
+
+If you like it, please share it or leave me a comment!
 
 Cheers,
 Guilherme
