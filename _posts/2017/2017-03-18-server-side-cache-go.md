@@ -45,8 +45,8 @@ First thing I have created is an interface named [Storage](https://github.com/go
 
 ```go
 type Storage interface {
-	Get(key string) string
-	Set(key, content string, duration time.Duration)
+	Get(key string) []byte
+	Set(key string, content []byte, duration time.Duration)
 }
 ```
 
@@ -67,7 +67,6 @@ import (
 	"fmt"
 	"net/http"
 	"net/http/httptest"
-	"strings"
 	"time"
 )
 
@@ -75,9 +74,9 @@ func cached(duration string, handler func(w http.ResponseWriter, r *http.Request
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 
 		content := storage.Get(r.RequestURI)
-		if content != "" {
+		if content != nil {
 			fmt.Print("Cache Hit!\n")
-			w.Write([]byte(content))
+			w.Write(content)
 		} else {
 			c := httptest.NewRecorder()
 			handler(c, r)
@@ -87,7 +86,7 @@ func cached(duration string, handler func(w http.ResponseWriter, r *http.Request
 			}
 
 			w.WriteHeader(c.Code)
-			content := c.Body.String()
+			content := c.Body.Bytes()
 
 			if d, err := time.ParseDuration(duration); err == nil {
 				fmt.Printf("New page cached: %s for %s\n", r.RequestURI, duration)
@@ -96,7 +95,7 @@ func cached(duration string, handler func(w http.ResponseWriter, r *http.Request
 				fmt.Printf("Page not cached. err: %s\n", err)
 			}
 
-			w.Write([]byte(content))
+			w.Write(content)
 		}
 
 	})
