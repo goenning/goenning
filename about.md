@@ -12,11 +12,11 @@ Here's what I'm doing now:
 
 - Living in Dublin, Ireland
 - Coding for [SoftwareONE](http://www.softwareone.com) @ [PyraCloud Platform](http://www.pyracloud.com)
-- Learning Azure, Docker, Go and TypeScript
-- Cycling to work whenever possible
-- Learning German (Mostly Duolingo and Memriseg while waiting for classe
+- Learning Azure, Docker, Go and TypeScript through my new pet project http://we.canhearyou.com
+- Cycling and Running to work whenever possible
+- Learning German through classes and Duolingo
 - Training for my first marathon (expected for October/2017)
 
 You can find me online on <a href="https://github.com/{{ site.footer-links.github }}">GitHub</a> and <a href="https://twitter.com/{{ site.footer-links.twitter }}">Twitter</a>.
 
-Last updated: January 18rd, 2016.
+Last updated: March 30rd, 2016.
