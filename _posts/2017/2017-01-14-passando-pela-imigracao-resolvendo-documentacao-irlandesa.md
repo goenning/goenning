@@ -24,16 +24,16 @@ Estes são os possíveis *stamps*.
 
 - **Stamp 1:** Emitido para quem está morando aqui a trabalho. Existe uma forte ligação com o work permit, isto significa que se você sair do emprego em um determinado tempo, você perde o visto.
 
-- **Stamp 2:** Emitido para quem vem ao país para estudar. Não tenho muitos detalhes sobre isto, mas tem bastante informação na Internet.x
+- **Stamp 2:** Emitido para quem vem ao país para estudar. Não tenho muitos detalhes sobre isto, mas tem bastante informação na Internet.
 
-- **Stamp 3:** Emitido para quem veio ao país acompanhar outra pessoa com cidadania ou stamp 1. Este stamp não te permite trabalhar ou estudar. Para fazer uma destas duas atividades é necessário aplicar novamente para o GNIB e solicitar um stamp diferente, mas voce terá que provar o porque da troca, seja por ter recebido uma oferta de trabalho ou por estar iniciando algum curso. Apesar de não poder trabalhar em um emprego integral, trabalhos voluntários não-remunerados são permitidos e costumam enriquecer o currículo.
+- **Stamp 3:** Emitido para quem veio ao país acompanhar outra pessoa com cidadania ou Stamp 1. A restrição deste Stamp é que a pessoa não pode trabalhar. Para exercer uma profissão é necessário aplicar novamente para o GNIB e trocar para o Stamp 1, o que requer uma oferta de trabalho. Apesar de não poder trabalhar full-time, trabalhos voluntários não-remunerados são permitidos e costumam enriquecer o currículo. Outra opção é matricular-se em uma escola de idioma e mudar para o Stamp 2, podendo assim estudar e trabalhar meio-período.
 **Obs:** Cônjuge de quem possui work permit recebe um visto com Stamp 3 desde que estejam casados.
 
-- **Stamp 4:** Geralmente atribuído à cônjuge de cidadão europeu, mas quem tiver 5 anos de critical skills pode solicitar um. Este stamp permite residir e trabalhar na Irlanda mesmo sem qualquer restrição. 
+- **Stamp 4:** Geralmente atribuído à cônjuge de cidadão europeu, mas quem tiver 2 anos de work permit também pode solicitar um. Este stamp permite residir e trabalhar na Irlanda sem qualquer restrição. 
 
 Cidadãos europeus não precisam solicitar este documento.
 
-O GNIB custa `€300,00 por pessoa` e só pode ser pago em cartão, seja ele débito, crédito ou até mesmo visa travel money. A única restrição é que o cartão deve estar no nome de alguém que esteja com você na hora do pagamento.
+O custo do GNIB é  de`€300,00 por pessoa` e só pode ser pago em cartão, seja ele débito, crédito ou até mesmo Visa Travel Money (VTM). A única restrição é que o cartão deve estar no nome de alguém que esteja com você na hora do pagamento.
 
 Para retirar seu GNIB você deve fazer primeiro o agendamento na [site de imigração](https://burghquayregistrationoffice.inis.gov.ie/) e então comparecer ao local na data e hora escolhido. Minha recomendação é que você faça isto enquanto ainda estiver no Brasil. Veja a data que você irá chegar aqui e já faça o agendamento. O agendamente é muito concorrido e você pode demorar a conseguir uma vaga.
 
