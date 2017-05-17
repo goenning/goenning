@@ -12,7 +12,7 @@ Here's what I'm doing now:
 
 - Living in Dublin, Ireland
 - Coding for [SoftwareONE](http://www.softwareone.com) @ [PyraCloud Platform](http://www.pyracloud.com)
-- Learning Azure, Docker, Go and TypeScript through my new pet project http://we.canhearyou.com
+- Learning Azure, Docker, Go and TypeScript through my new pet project [http://getfider.com](http://getfider.com)
 - Cycling and Running to work whenever possible
 - Learning German through classes and Duolingo
 - Training for my first marathon (expected for October/2017)
