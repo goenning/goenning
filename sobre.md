@@ -12,7 +12,7 @@ Aqui está o que estou fazendo agora:
 
 - Morando em Dublin, Irlanda
 - Codificando para a [SoftwareONE](http://www.softwareone.com) @ [PyraCloud Platform](http://www.pyracloud.com)
-- Estudando Azure, Docker, Go e TypeScript através do meu mais novo projeto pessoa: http://we.canhearyou.com
+- Estudando Azure, Docker, Go e TypeScript através do meu mais novo projeto pessoal [http://getfider.com](http://getfider.com)
 - Pedalando e Correndo para o trabalho sempre que possível
 - Aprendedo Alemão em aulas presenciais e Duolingo
 - Treinando para minha primeira maratona (previsto para Outubro/2017)
