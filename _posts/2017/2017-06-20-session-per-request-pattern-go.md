@@ -4,15 +4,14 @@ title: "Session per Request pattern in Go"
 comments: true
 lang: en
 tags: [go, golang, web, database, transaction, pattern]
-abstract: 
-  TODO
+abstract: There is a particular pattern that is very common on these languages that is hard to find any mentions about in the Go community. The pattern is called Session per Request and is particularly useful to decouple business components from database transaction management. This post will drive you through what it is, how to implement, pros/cons and some examples written in Go.
 ---
 
-Prior to start coding in Go, I've implemented multiple web applications in C# and Java. There is a particular pattern that is very common on these languages that it's easy to see any mentions about in the Go community.
+Prior to start coding in Go, I've implemented multiple web applications in C# and Java. There is a particular pattern that is very common on these languages that is hard to find any mentions about in the Go community. 
 
-The pattern is called **Session per Request** (aka: Transaction per Request) and is particularly very useful to decouple business objects from infrastructural details like database transaction management.
+The pattern is called **Session per Request** and is particularly useful to decouple business components from database transaction management. This post will drive you through what it is, how to implement, pros/cons and some examples written in Go.
 
-The idea behind this pattern is to avoid having to open and close transaction explicitly for each batch of database operation we need and move this into a proper component that does it automatically. In regards of being a web application, the transaction is open on the very beginning of the HTTP request and committed or rolled back before it ends. 
+The idea behind this pattern is to open a new database transaction at the very beginning of the HTTP request and commit or rollback it before the response is sent back to client. By doing so, we can avoid having to open/close transactions explicitly for each batch of database operations and just use the already created transaction.
 
 ### Managing database transactions, the traditional way
 
@@ -76,13 +75,11 @@ func index(w http.ResponseWriter, r *http.Request) {
 
 What it does is basically open a new transaction and run a couple of commands. If any error occurs, at any time, the transaction is rolled back and a 500 response is returned. If everything goes well, transaction is committed and a 200 response is returned with a simple message.
 
-On this example we've basically mixed transaction management with a couple of business commands, and it's a bit bigger because of all the error handling statements.
-
-Thsis is very common requirement for proper database consistency management. Now imagine, how messy this would become to spread this around all your codebase.
+On this example we've basically mixed transaction management with a couple of business commands. It's also a bit bigger because of all the error handling statements. This is a very common requirement for proper database consistency management, right? Now imagine how messy this would become if we need to do the same in multiple places.
 
 ### Applying the pattern
 
-Let's have a look on how we can improve this.
+Let's have a look on how we can make this better.
 
 As I wrote before, the pattern consists of moving the transaction management code to another layer that can execute code **before and after** all the handlers. Go – and many other languages – can achieve this by using HTTP middlewares.
 
@@ -183,20 +180,20 @@ func inder(w http.ResponseWriter, r *http.Request) error {
 }
 ```
 
-The `index` handler code is much smaller and simple now. All it does is get an active transaction from the context and start using it. If something goes wrong, just return an `error` to the middleware. The middleware, of course, looks a bit scary at first, but it's something you write once and just reuse it.
+The `index` handler code is much smaller and simple now. All it does is get an active transaction from the context and start using it. If something goes wrong, just return an `error` to the middleware. The middleware, of course, looks a bit scary at first, but it's something you write once and just use it.
 
 This pattern also comes with a couple of benefits, such as:
 
-1. Code is easier to maintain and reuse as it's following the [Single Responsibility Principle](https://en.wikipedia.org/wiki/Single_responsibility_principle);
-2. It's easy to write unit tests for the handler as you can inject a transaction to the handler through the context;
-3. The handler does not need to handle errors that it does not know how to, just send it back to the pipeline.
-4. The whole HTTP request works as a single unit of work. Either everything is committed or everything fails, no matter which components have issued database commands.
+1. It's easy to write unit tests for the handler as you can inject a transaction to the handler through the context;
+2. The handler does not need to handle errors that it does not know how to, just send the error back to the pipeline.
+3. The whole HTTP request works as a single unit of work. Either everything is committed or rolledback, no matter which components have issued database commands.
+4. Code is easier to maintain and reuse as it's following the [Single Responsibility Principle](https://en.wikipedia.org/wiki/Single_responsibility_principle);
 
 On the other hand, you might want to keep your HTTP requests as fast as possible. It's never good to have lots of transactions hanging for a long time 😃.
 
 ### Where to go from here?
 
-This pattern can be easily implemented in bare Go code or any other web framework. 
+This pattern can be easily implemented in bare Go code (like example above) or any other web framework. 
 
 If you're looking for some inspiration, you can check my current OSS project called [Fider](https://github.com/getfider/fider) where I'm using echo framework, this pattern and plenty more things.
 
