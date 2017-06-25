@@ -6,17 +6,14 @@ lang: pt
 ref: about
 ---
 
+Este blog é meu pequeno espaço de dicas e artigos sobre desenvolvimento de software.
+
+Compartilho aqui tudo aquilo que aprendi na minha vida profissional e que acredito que possa ajudar outras pessoas.
+
+Atualmente trabalho na SoftwareONE, em Dublin, Irlanda. Meu estudos estão voltados para a linguagem Go e TypeScript, Docker e Inteligência Artificial.
+
+Também mantenho uma plataforma de feedback open source chamada Fider. Saiba mais em [http://getfider.com](http://getfider.com)
+
 Olá! Sou Guilherme Oenning, um brasileiro apaixonado por desenvolvimento de software.
 
-Aqui está o que estou fazendo agora:
-
-- Morando em Dublin, Irlanda
-- Codificando para a [SoftwareONE](http://www.softwareone.com) @ [PyraCloud Platform](http://www.pyracloud.com)
-- Estudando Azure, Docker, Go e TypeScript através do meu mais novo projeto pessoal [http://getfider.com](http://getfider.com)
-- Pedalando e Correndo para o trabalho sempre que possível
-- Aprendedo Alemão em aulas presenciais e Duolingo
-- Treinando para minha primeira maratona (previsto para Outubro/2017)
-
 Você me encontra online no <a href="https://github.com/{{ site.footer-links.github }}">GitHub</a> e no <a href="https://twitter.com/{{ site.footer-links.twitter }}">Twitter</a>.
-
-Última atualização: 30 de Mara de 2016.
