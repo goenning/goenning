@@ -78,6 +78,10 @@ For this example we have used a npm module that caches the content in memory, th
 
 Another option to solve most of this issues is using a distributed cache service like [Redis](http://redis.io/). It could be done with a single npm module [express-redis-cache](https://www.npmjs.com/package/express-redis-cache) that already implements the Express a middleware.
 
+## Live example
+
+The full code is available at [Glitch](https://glitch.com/edit/#!/server-side-cache-express), which can be run online to see the live result.
+
 ## Full code
 
 ~~~javascript
