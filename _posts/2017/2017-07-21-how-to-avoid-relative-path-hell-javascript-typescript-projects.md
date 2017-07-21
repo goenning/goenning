@@ -1,11 +1,11 @@
 ---
 layout: post
-title: How to solve relative path hell in JavaScript/TypeScript projects
+title: How to avoid relative path hell in JavaScript/TypeScript projects
 comments: true
 lang: en
 tags: [typescript, javascript, module resolution]
 cover: /public/images/2017/07/relative-path-hell.jpg
-abstract: Relative path hell is a common pain point on large JavaScript/TypeScript projects. Learn how Webpack can help you solve this problem.
+abstract: Relative path hell is a common pain point on large JavaScript/TypeScript projects. Learn how Webpack can help you avoid this problem.
 ---
 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Thanks to <a href="https://twitter.com/hashtag/typescript?src=hash">#typescript</a> and <a href="https://twitter.com/hashtag/webpack?src=hash">#webpack</a> I can now freely move my components without having to deal with relative path hell :) <a href="https://t.co/q257QPoylI">pic.twitter.com/q257QPoylI</a></p>&mdash; Guilherme Oenning (@goenning) <a href="https://twitter.com/goenning/status/880884293500850176">June 30, 2017</a></blockquote>
@@ -28,7 +28,7 @@ On regards to refactoring, every time **ANY module** is moved up or down the tre
 
 ## Webpack to the rescue
 
-Webpak can solve this issue by creating an alias for a specific directory, so that instead of using the relative path, it would be possible to use only the alias or a combination of alias and path.
+Webpak can avoid this issue by creating an alias for a specific directory, so that instead of using the relative path, it would be possible to use only the alias or a combination of alias and path.
 
 Previous example can be rewritten to.
 
