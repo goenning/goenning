@@ -8,7 +8,7 @@ ref: about
 
 This blog is where I share some tips and articles regarding software development that I've learned through my professional life.
 
-I'm currently working at SoftwareONE, in Dublin, Ireland. I'm studying the Go and TypeScript language, Docker and Artificial Intelligence. 
+I currently work at SoftwareONE as a Software Developer. My current study list includes Go, TypeScript, Docker and Artificial Intelligence. 
 
 I also maintain an open source feedback platform called Fider. Learn more about it at [http://getfider.com](http://getfider.com)
 
