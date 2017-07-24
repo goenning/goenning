@@ -1,6 +1,6 @@
 ---
 layout: post
-title: How to avoid relative path hell in JavaScript/TypeScript projects
+title: How to avoid relative path hell in JavaScript / TypeScript projects
 comments: true
 lang: en
 tags: [typescript, javascript, module resolution]
