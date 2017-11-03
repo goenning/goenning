@@ -13,24 +13,56 @@ On this blogpost I will show you how to deploy a very basic Go web application o
 If you wish to follow this demo and try it yourself, please make sure you comply with following requirements.
 
 - You need the Go compiler;
-- A Virtual Machine publicly available (Im using a Digital Ocean VM for this demo);
-- A domain name and access to it’s DNS settings. You’ll not need this if your cloud provides a public shared name like: yourvn0001.yourcloud.net
+- A Virtual Machine publicly available (I'm using a Digital Ocean VM for this demo);
+- A domain name and access to it’s DNS settings. You’ll not need this if your cloud provides a public shared name, for example: `yourvn0001.yourcloud.net`.
 
 ## Autocert
 
-Autocert is Go package that simplifies the communication and certificate fetch process with Let’s Encrypt. This is the only external dependency you will need.
+Autocert is a Go package that implements the ACME protocol used to generates certificates on Let’s Encrypt. This is the only external dependency you will need, no other install or package is required.
 
-First thing you got to do is install autocert. You can install it with the following command.
+You can get it as any other Go package.
 
-Go get ...
+```
+$ go get golang.org/x/crypto/acme/autocert
+```
 
-## The code
+## The ~~magic~~ code
 
-Create your new project and paste this on your main file.
+```
+package main
 
-...
+import (
+	"crypto/tls"
+	"fmt"
+	"net/http"
 
-Let me explain what’s happening here.
+	"golang.org/x/crypto/acme/autocert"
+)
+
+func helloWorld(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "Hello Secure World")
+}
+
+func main() {
+	mux := http.NewServeMux()
+	mux.HandleFunc("/", helloWorld)
+
+	certManager := autocert.Manager{
+		Prompt: autocert.AcceptTOS,
+		Cache:  autocert.DirCache("certs"),
+	}
+	server := &http.Server{
+		Addr:    ":443",
+		Handler: mux,
+	}
+	server.TLSConfig = &tls.Config{
+		GetCertificate: certManager.GetCertificate,
+	}
+
+	server.ListenAndServeTLS("", "")
+}
+```
+
 
 We basically import the autocert dependency and create an autocert.Manager struct that is responsible for communicating with Let’s Encrypt.
 
