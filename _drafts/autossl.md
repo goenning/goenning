@@ -26,7 +26,7 @@ You can get it as any other Go package.
 $ go get golang.org/x/crypto/acme/autocert
 ```
 
-## The ~~magic~~ code
+## The ~~magic~~ code explained step by step
 
 ```
 package main
@@ -39,18 +39,18 @@ import (
 	"golang.org/x/crypto/acme/autocert"
 )
 
-func helloWorld(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Hello Secure World")
-}
 
 func main() {
 	mux := http.NewServeMux()
-	mux.HandleFunc("/", helloWorld)
+	mux.HandleFunc("/", func (w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintf(w, "Hello Secure World")
+	})
 
 	certManager := autocert.Manager{
 		Prompt: autocert.AcceptTOS,
 		Cache:  autocert.DirCache("certs"),
 	}
+
 	server := &http.Server{
 		Addr:    ":443",
 		Handler: mux,
@@ -63,32 +63,32 @@ func main() {
 }
 ```
 
+We start the `main` function by creating a `mux` with a simple Hello World message on path `/`. In this example we're using the Go's default Mux, but it could be easily replaced by any other third-party router. 
 
-We basically import the autocert dependency and create an autocert.Manager struct that is responsible for communicating with Let’s Encrypt.
+The next step we create an instance of `autocert.Manager`. This struct is responsible for communicating with Let’s Encrypt and fetch the SSL certificates. The `Cache` field is an interface that defines on how and where `autocert.Manager` should store and load the certificates. In this example we're using `autocert.DirCache` that stores the certificates in a local folder. This is the easiest way to get started, but might not be best one for websites hosted on multiple servers, because each server will have it's own cache.
 
-...
-Cache
-GetCeetificate
-Enpty Strings
+The last step is to create a `http.Server` that listen on port `443` and uses our `mux` instance. We then create `tls.Config` object and assign it to the server. Here's is probably **the most import part**. `GetCertificate` is a method that we can use to tell the server where to load the certificate whenever a new HTTPS is received. This method gives us the opportunity to choose what certificate to use instead of returning a specific one for every request. We then use `certManager.GetCertificate` which will try to get a matching certificate from the cache or fetch a new one from Let's Encrypt.
+
+After that, all we need to do is start the server with `server.ListenAndServeTLS("", "")`. If you've worked with a HTTPS server on Go before, you probably remember that these two parameters are the `Certificate` and the `Privatey Key`. When using `autocert`, we don't need these so we pass an empty string.
 
 
 ## Let’s run it!
 
-You can run it like any other Go web app, but if you do it on your local machine, it fail. The reason being that Let’s Encrypt requires that your app is publicly available through a know DNS name. When you run it locally, Let’s Encrypt cannot ping back your domain for verification purposes and it’ll fail miserably.
+You can run it like any other Go web app, but if you do it on your local machine, it will fail. The reason being that Let’s Encrypt requires that the webiste to be publicly available through a know DNS name. When you run it locally, Let’s Encrypt cannot ping back your domain for verification purposes and it’ll fail miserably.
 
 At this point I expect you to have your VM and your domain access. 
 
 1) First of all, create a new DNS A record using your VM public IP.
-2) Compile your Go app with “blá-blá-blá”
-3) Copy your binary to the server with “blá-blá-blá”
+2) Compile your Go app with `CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o autossl` or different parameters if your target paltform is not linux/amd64
+3) Copy your binary to the server.
 4) Log into your server with SSH and start your Go server by simply running the binary you have just copied.
 5) Open your browser with the address of your DNS domain.
 
-Boom!
+![](/public/images/2017/11/auto-ssl-golang.png)
 
-You should see the SSL lock icon and the green check (depending on the browser you’ve used).
+Ta-Da! You should now see the `Hello Secure World` message and the green SSL lock icon.
 
-You might notice that it takes a while to load the first request. That’s because all the SSL certificate generation process is happening on the background. Consecutive request should be lightning fast as the certificate is already cached.
+You might notice that it takes a while to load the first request. That’s because the SSL certificate generation process is happening on the background. Consecutive request should be lightning fast as the certificate is already cached.
 
 ## Important notes and suggestions:
 
