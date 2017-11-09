@@ -33,6 +33,8 @@ You can get it as any other Go package.
 go get golang.org/x/crypto/acme/autocert
 ```
 
+*Those looking for more information on ACME or alternative packages, I recommend this talk [dotGo 2016 - Matthew Holt - Go with ACME](https://www.youtube.com/watch?v=KdX51QJWQTA)*
+
 ## The ~~magic~~ code explained step by step
 
 ```golang
@@ -46,10 +48,9 @@ import (
 	"golang.org/x/crypto/acme/autocert"
 )
 
-
 func main() {
 	mux := http.NewServeMux()
-	mux.HandleFunc("/", func (w http.ResponseWriter, r *http.Request) {
+	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, "Hello Secure World")
 	})
 
@@ -61,9 +62,9 @@ func main() {
 	server := &http.Server{
 		Addr:    ":443",
 		Handler: mux,
-	}
-	server.TLSConfig = &tls.Config{
-		GetCertificate: certManager.GetCertificate,
+		TLSConfig: &tls.Config{
+			GetCertificate: certManager.GetCertificate,
+		},
 	}
 
 	server.ListenAndServeTLS("", "")
