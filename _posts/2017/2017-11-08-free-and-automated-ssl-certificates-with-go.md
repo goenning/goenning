@@ -82,7 +82,7 @@ After that, all we need to do is start the server with `server.ListenAndServeTLS
 
 ## Let’s run it!
 
-*You can run it like any other Go web app, but it'll fail if you do it on your local machine. The reason being that Let’s Encrypt requires the webiste to be publicly available through a know DNS name. When you run it locally, Let’s Encrypt cannot ping back your domain for verification purposes and it fails.*
+*You can run it like any other Go web app, but it'll fail if you do it on your local machine. The reason being that Let’s Encrypt requires the website to be publicly available through a know DNS name. When you run it locally, Let’s Encrypt cannot ping back your domain for verification purposes and it fails.*
 
 1. Create a new DNS A record targeting your VM public IP.
 2. Compile your Go app with `CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o autossl` or different parameters if your target platform is not linux/amd64.
