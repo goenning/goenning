@@ -7,6 +7,8 @@ tags: [go, golang, https, security]
 abstract: HTTPS has become a must nowadays. Not only for its security purpose, but also because search engines like Google are giving better rank to websites that run on a secure protocol over those using plain HTTP. It's 2017 and gone are the days that we could use the price as an excuse to not have HTTPS our our websites. Learn here how to generate SSL Certificates fully automated and free on Go web applications.
 ---
 
+***13-01-2018**: This post has been updated to use HTTP challenge as Let's Encrypt disabled the TLS-SNI challenge, which we were using before.*
+
 HTTPS has become a must nowadays. Not only for its security purpose, but also because search engines like Google are giving better rank to websites that run on a secure protocol over those using plain HTTP.
 
 It's 2017 and gone are the days that we could use the price as an excuse to not have HTTPS our our websites.
@@ -66,6 +68,7 @@ func main() {
 		GetCertificate: certManager.GetCertificate,
 	}
 
+	go http.ListenAndServe(":80", certManager.HTTPHandler(nil))
 	server.ListenAndServeTLS("", "")
 }
 ```
@@ -76,8 +79,11 @@ The next step we create an instance of `autocert.Manager`. This struct is respon
 
 The last step is to create a `http.Server` that listen on port `443` and uses our `mux` instance. We then create `tls.Config` object and assign it to the server. Now is where **the "magic" happens**. `GetCertificate` is a method that we can use to tell the server where to load the certificate whenever a new HTTPS request is starting. This method gives us the opportunity to choose what certificate to use instead of returning a specific one for every request like most applications does. We then use `certManager.GetCertificate` which will first try to get a matching certificate from the cache, if there's none matching, then a new certificate is fetched from Let's Encrypt using the ACME protocol.
 
+Early 2018, [Let's Encrypt disabled TLS-SNI challenge](https://community.letsencrypt.org/t/2018-01-11-update-regarding-acme-tls-sni-and-shared-hosting-infrastructure/50188) due to security reasons. The recommendation is to use [HTTP challenge](https://tools.ietf.org/html/draft-ietf-acme-acme-07#section-8.3), and we do so by using `certManager.HTTPHandler(nil)` and attaching it a new http listener on port 80.
+
 After that, all we need to do is start the server with `server.ListenAndServeTLS("", "")`. If you've worked with a HTTPS server on Go before, you probably remember that these two parameters are the `Certificate` and the `Privatey Key`. When using `autocert`, we don't need these so we pass an empty string.
 
+It worths to mention that, when using `certManager.HTTPHandler(nil)`, all traffic comming into HTTP will be redirect to HTTPS automatically. You can override this behaviour by passing a http.Handler instead of nil as first parameter.
 
 ## Let’s run it!
 
