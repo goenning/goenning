@@ -35,6 +35,8 @@ You can get it as any other Go package.
 go get golang.org/x/crypto/acme/autocert
 ```
 
+*Those looking for more information on ACME or alternative packages, I recommend this talk [dotGo 2016 - Matthew Holt - Go with ACME](https://www.youtube.com/watch?v=KdX51QJWQTA)*
+
 ## The ~~magic~~ code explained step by step
 
 ```golang
@@ -48,10 +50,9 @@ import (
 	"golang.org/x/crypto/acme/autocert"
 )
 
-
 func main() {
 	mux := http.NewServeMux()
-	mux.HandleFunc("/", func (w http.ResponseWriter, r *http.Request) {
+	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, "Hello Secure World")
 	})
 
@@ -63,9 +64,9 @@ func main() {
 	server := &http.Server{
 		Addr:    ":443",
 		Handler: mux,
-	}
-	server.TLSConfig = &tls.Config{
-		GetCertificate: certManager.GetCertificate,
+		TLSConfig: &tls.Config{
+			GetCertificate: certManager.GetCertificate,
+		},
 	}
 
 	go http.ListenAndServe(":80", certManager.HTTPHandler(nil))
@@ -87,7 +88,7 @@ It worths to mention that, when using `certManager.HTTPHandler(nil)`, all traffi
 
 ## Let’s run it!
 
-*You can run it like any other Go web app, but it'll fail if you do it on your local machine. The reason being that Let’s Encrypt requires the webiste to be publicly available through a know DNS name. When you run it locally, Let’s Encrypt cannot ping back your domain for verification purposes and it fails.*
+*You can run it like any other Go web app, but it'll fail if you do it on your local machine. The reason being that Let’s Encrypt requires the website to be publicly available through a know DNS name. When you run it locally, Let’s Encrypt cannot ping back your domain for verification purposes and it fails.*
 
 1. Create a new DNS A record targeting your VM public IP.
 2. Compile your Go app with `CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o autossl` or different parameters if your target platform is not linux/amd64.
