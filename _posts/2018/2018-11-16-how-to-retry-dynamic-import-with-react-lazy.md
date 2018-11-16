@@ -9,7 +9,7 @@ abstract: React 16.6 has been released and it's now even easier to do code split
 
 React 16.6 has been released and it's now even easier to do code split within our React applications by using lazy and Suspense.
 
-If you don't know what I'm talking about, you should definitely read this https://reactjs.org/blog/2018/10/23/react-v-16-6.html
+If you don't know what I'm talking about, you should definitely read this [https://reactjs.org/blog/2018/10/23/react-v-16-6.html](https://reactjs.org/blog/2018/10/23/react-v-16-6.html)
 
 After a few days monitoring a production application that is using lazy, I noticed some client-side errors like this:
 
