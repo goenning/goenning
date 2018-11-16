@@ -58,7 +58,7 @@ Now we just need to chain it into our import function.
 
 ```javascript
 // Code split without retry login
-const ProductList = lazy(() => import("./path/to/productlist");
+const ProductList = lazy(() => import("./path/to/productlist"));
 
 // Code split with retry login
 const ProductList = lazy(() => retry(() => import("./path/to/productlist")));
