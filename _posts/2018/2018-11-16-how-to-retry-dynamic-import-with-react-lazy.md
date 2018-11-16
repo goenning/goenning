@@ -54,7 +54,7 @@ function retry(fn, retriesLeft = 5, interval = 1000) {
 ```
 > Source: [https://gist.github.com/briancavalier/842626](https://gist.github.com/briancavalier/842626)
 
-Now we just need to chain it into our import function.
+Now we just need to apply it to our lazy import.
 
 ```javascript
 // Code split without retry login
