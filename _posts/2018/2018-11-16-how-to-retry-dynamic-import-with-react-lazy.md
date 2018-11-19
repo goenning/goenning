@@ -64,7 +64,7 @@ const ProductList = lazy(() => import("./path/to/productlist"));
 const ProductList = lazy(() => retry(() => import("./path/to/productlist")));
 ```
 
-If the browser fails to download the module, it'll try again 5 times with a 1 second delay between each try. If even after 5 tries it import it, then an error is thrown.
+If the browser fails to download the module, it'll try again 5 times with a 1 second delay between each attempt. If even after 5 tries it import it, then an error is thrown.
 
 That's all! 🎉
 
