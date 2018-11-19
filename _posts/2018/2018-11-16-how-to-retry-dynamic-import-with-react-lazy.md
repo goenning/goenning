@@ -1,13 +1,13 @@
 ---
 layout: post
-title: How to retry dynamic import with React lazy
+title: How to retry when React lazy fails
 comments: true
 lang: en
 tags: [react, lazy, suspense]
-abstract: React 16.6 has been released and it's now even easier to do code split within our React applications by using lazy and Suspense. After a few days monitoring a production application that is using lazy, I noticed a couple of client-side errors when downloading asynchronous modules. Learn how to mitigate this.
+abstract: React 16.6 has been released and it's now easier than ever to do code split within our React applications by using lazy and Suspense. After a few days monitoring a production application that is using lazy, I noticed a couple of client-side errors when downloading asynchronous modules. Learn how to mitigate this.
 ---
 
-React 16.6 has been released and it's now even easier to do code split within our React applications by using lazy and Suspense.
+React 16.6 has been released and it's now easier than ever to do code split within our React applications by using lazy and Suspense.
 
 If you don't know what I'm talking about, you should definitely read this [https://reactjs.org/blog/2018/10/23/react-v-16-6.html](https://reactjs.org/blog/2018/10/23/react-v-16-6.html)
 
@@ -28,7 +28,7 @@ We can do the same thing that everyone does when a network request fails: retry 
 
 **How?**
 
-The thing is that the **import** we use on lazy is just a function that returns a Promise. Which basically means that you can chain it just like any other Promise.
+Did you know that the **import(...)** function that we use on lazy is just a function that returns a Promise? Which basically means that you can chain it just like any other Promise.
 
 Below you can find a basic implementation of a retry function.
 
