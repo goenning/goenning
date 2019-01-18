@@ -6,7 +6,7 @@ lang: pt
 tags: [irlanda, dublin, trabalho, imigração]
 cover: /public/images/2016/12/Hapenny-Bridge-Dublin-362k.jpg
 series: brasilparairlanda
-abstract: Nossa história de vida é um conjunto de fatos. Tomamos uma decisão que irá mudar completamente nossas vidas. Estamos nos mudando para Dublin, Irlanda.
+description: Nossa história de vida é um conjunto de fatos. Tomamos uma decisão que irá mudar completamente nossas vidas. Estamos nos mudando para Dublin, Irlanda.
 ---
 
 Nossa história de vida é um **conjunto de fatos**. Fatos estes que ocorrem baseado em decisões, não somente nossas, mas muitas vezes também de outros.

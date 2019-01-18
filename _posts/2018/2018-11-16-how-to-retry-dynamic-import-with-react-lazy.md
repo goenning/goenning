@@ -4,7 +4,7 @@ title: How to retry when React lazy fails
 comments: true
 lang: en
 tags: [react, lazy, suspense]
-abstract: React 16.6 has been released and it's now easier than ever to do code split within our React applications by using lazy and Suspense. After a few days monitoring a production application that is using lazy, I noticed a couple of client-side errors when downloading asynchronous modules. Learn how to mitigate this.
+description: React 16.6 has been released and it's now easier than ever to do code split within our React applications by using lazy and Suspense. After a few days monitoring a production application that is using lazy, I noticed a couple of client-side errors when downloading asynchronous modules. Learn how to mitigate this.
 ---
 
 React 16.6 has been released and it's now easier than ever to do code split within our React applications by using lazy and Suspense.

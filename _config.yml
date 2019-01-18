@@ -2,6 +2,7 @@
 # This file contains configuration flags to customize your site
 #
 name: '@goenning'
+author: '@goenning'
 description: loop at { code; run; read; blog; eat; bike ride; } until tired;
 avatar: //www.gravatar.com/avatar/ba158e6c8c0e4a7869f4b9f0a45db0fe?s=200
 env: production
@@ -94,6 +95,9 @@ sass:
 gems:
   - jekyll-sitemap # Create a sitemap using the official Jekyll sitemap gem
   - jekyll-feed # Create an Atom feed using the official Jekyll feed gem
+  - jekyll-seo-tag # Canonical URL
+
+google_site_verification: WraSi7yk7t06aD0joTVQTURdcHKZkdB0Qhcn4xa9QQ0
 
 # Exclude these files from your production _site
 exclude:

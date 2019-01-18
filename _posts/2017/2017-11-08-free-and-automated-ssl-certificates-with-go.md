@@ -4,7 +4,7 @@ title: Free and Automated SSL Certificates with Go
 comments: true
 lang: en
 tags: [go, golang, https, security]
-abstract: HTTPS has become a must nowadays. Not only for its security purpose, but also because search engines like Google are giving better rank to websites that run on a secure protocol over those using plain HTTP. It's 2017 and gone are the days that we could use the price as an excuse to not have HTTPS our our websites. Learn here how to generate SSL Certificates fully automated and free on Go web applications.
+description: HTTPS has become a must nowadays. Not only for its security purpose, but also because search engines like Google are giving better rank to websites that run on a secure protocol over those using plain HTTP. It's 2017 and gone are the days that we could use the price as an excuse to not have HTTPS our our websites. Learn here how to generate SSL Certificates fully automated and free on Go web applications.
 ---
 
 ***Jan 13, 2018**: This post has been updated to use HTTP challenge as Let's Encrypt disabled the TLS-SNI challenge, which we were using before.*
