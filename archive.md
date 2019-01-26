@@ -36,7 +36,7 @@ ref: archive
     {% endfor %}
   </ul>
 
-  <h2>Talks</h2>
+  <h2 id="talks">Talks</h2>
   <ul>
     <li>
       <a href="https://drive.google.com/file/d/1AHY5SDg3ZnTL5AZGyTCQmdKvry17F9z0/view">Reducing bundle size of TypeScript applications with tslib</a>
@@ -45,6 +45,14 @@ ref: archive
     <li>
       <a href="https://www.meetup.com/Dublin-TypeScript-Meetup/events/240961384/">How TypeScript can help you write better E2E tests</a>
       <span class="archive-post-date">August/2018 (Dublin - Ireland)</span>
+    </li>
+    <li>
+      <a href="https://drive.google.com/file/d/1aEd5Bl2fqRWjIsWOsufp2L4ZdUsljlam/view">Introdução ao TypeScript + React</a>
+      <span class="archive-post-date">Novembro/2016 (Blumenau/SC - Brazil)</span>
+    </li>
+    <li>
+      <a href="https://drive.google.com/file/d/1V_J9_TxxT-Jb3UH-dduf4DvrV4WuBR3g/view">Aplicando Coding Dojo no Ensino Técnico</a>
+      <span class="archive-post-date">Novembro/2010 (Joinville/SC - Brazil)</span>
     </li>
   </ul>
 </div>
