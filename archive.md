@@ -35,4 +35,16 @@ ref: archive
       {% capture last_year %}{{ this_year }}{% endcapture %}
     {% endfor %}
   </ul>
+
+  <h2>Talks</h2>
+  <ul>
+    <li>
+      <a href="https://drive.google.com/file/d/1AHY5SDg3ZnTL5AZGyTCQmdKvry17F9z0/view">Reducing bundle size of TypeScript applications with tslib</a>
+      <span class="archive-post-date">October/2018 (Dublin - Ireland)</span>
+    </li>
+    <li>
+      <a href="https://www.meetup.com/Dublin-TypeScript-Meetup/events/240961384/">How TypeScript can help you write better E2E tests</a>
+      <span class="archive-post-date">August/2018 (Dublin - Ireland)</span>
+    </li>
+  </ul>
 </div>

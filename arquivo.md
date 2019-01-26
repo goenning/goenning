@@ -36,11 +36,15 @@ ref: archive
     {% endfor %}
   </ul>
 
-  <h2>Talks</h2>
+  <h2>Apresentações</h2>
   <ul>
     <li>
-      <a href="https://drive.google.com/file/d/0B65Y6FNYSEywTXZJQ1NITXBJeE0/view">Introdução ao TypeScript + React</a>
-      <span class="archive-post-date">Novembro/2016 (Blumenau/SC)</span>
+      <a href="https://drive.google.com/file/d/1aEd5Bl2fqRWjIsWOsufp2L4ZdUsljlam/view">Introdução ao TypeScript + React</a>
+      <span class="archive-post-date">Novembro/2016 (Blumenau/SC - Brazil)</span>
+    </li>
+    <li>
+      <a href="https://drive.google.com/file/d/1V_J9_TxxT-Jb3UH-dduf4DvrV4WuBR3g/view">Aplicando Coding Dojo no Ensino Técnico</a>
+      <span class="archive-post-date">Novembro/2010 (Joinville/SC - Brazil)</span>
     </li>
   </ul>
 </div>
