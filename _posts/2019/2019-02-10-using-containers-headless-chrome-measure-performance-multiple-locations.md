@@ -4,22 +4,22 @@ title: Using Containers and Headless Chrome to measure the performance of a webs
 comments: true
 lang: en
 tags: [docker, web, performance, azure]
-description: Measuring the performance of a website from multiple locations around the world is crucial with the current global scale of the internet. In most cases your visitors are not only based in your home country, but from all other countries too. From Canada to Australia, from Chile to Russia, your website is being visited by more people than you think. There are a number of paid services that allows you to constantly monitor your website performance from multiple locations around the world. But maybe you're a geek and you want to do it yourself?
+description: Measuring the performance of a website from multiple locations around the world is crucial with the current global scale of the internet. In most cases, your visitors are not only based in your home country but from all other countries too. From Canada to Australia, from Chile to Russia, your website is being visited by more people than you think. There are a number of paid services that allow you to constantly monitor your website performance from multiple locations around the world. But maybe you're a geek and you want to do it yourself?
 ---
 
 ## Global metrics for websites with global visitors 
 
-Measuring the performance of a website from multiple locations around the world is crucial with the current global scale of the internet. In most cases your visitors are not only based in your home country, but from all other countries too. From Canada to Australia, from Chile to Russia, your website is being visited by more people than you think.
+Measuring the performance of a website from multiple locations around the world is crucial with the current global scale of the internet. In most cases, your visitors are not only based in your home country but from all other countries too. From Canada to Australia, from Chile to Russia, your website is being visited by more people than you think.
 
 It's easy to forget this fact and simply measure the performance of a website from the local machine, where it's usually close to the website Data Center. Not only that, but this machine is probably a beast too, it can open multiple tabs of Google Chrome and load any page with an insane amount of JavaScript in half a second.
 
-But in reality your visitors are using a 10 years old laptop with Windows 7 and are connected to the internet via 3G network connection. Your Data Center is in San Francisco and these visitors are from The Philippines. Even your smartphone has 10x higher speed and lower latency than theirs.
+But in reality, your visitors are using a 10 years old laptop with Windows 7 and are connected to the internet via a 3G network connection. Your Data Center is in San Francisco and these visitors are from The Philippines. Even your smartphone has 10x higher speed and lower latency than theirs.
 
-There are a number of paid services that allows you to constantly monitor your website performance from multiple locations around the world.
+There are a number of paid services that allow you to constantly monitor your website performance from multiple locations around the world.
 
 But maybe you're a geek and you want to do it yourself?
 
-On this post I want to show you how to collect website performance from multiple locations using open source tools on a low monthly cost.
+On this post, I want to show you how to collect website performance from multiple locations using open source tools on a low monthly cost.
 
 ## webpage-timing
 
@@ -123,9 +123,9 @@ To go one step further we'll use machines on the Cloud to run this container fro
 
 But there's a better way 😀
 
-Azure has a service called [Azure Container Instances](https://azure.microsoft.com/en-us/services/container-instances/). It allows you to run a Docker container on the cloud without having to worry about the infrastructure behind it. The best of all? You only pay per execution time. If you start a container that runs for 5 seconds, you'll pay $0.000080. On this post I'll show you how to perform this operation on Azure, but If prefer AWS, search for `AWS Fargate`, tt's a similar service, so you apply the same idea presented here.
+Azure has a service called [Azure Container Instances](https://azure.microsoft.com/en-us/services/container-instances/). It allows you to run a Docker container on the cloud without having to worry about the infrastructure behind it. The best of all? You only pay per execution time. If you start a container that runs for 5 seconds, you'll pay $0.000080. On this post, I'll show you how to perform this operation on Azure, but If prefer AWS, search for `AWS Fargate`, tt's a similar service, so you apply the same idea presented here.
 
-What we're going to do is create dozens of Azure Container Instance on each of its 17 regions and configure it to execute `goenning/webpage-timing` with our custom parameters. We'll also need to store the data from all locations to query it later. In this example I'll be using [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) because it has a free tier and can also be hosted on Azure.
+What we're going to do is create dozens of Azure Container Instance on each of its 17 regions and configure it to execute `goenning/webpage-timing` with our custom parameters. We'll also need to store the data from all locations to query it later. In this example, I'll be using [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) because it has a free tier and can also be hosted on Azure.
 
 Assuming that you have an Azure Account and the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli) is installed, run the following commands.
 
@@ -191,21 +191,21 @@ This first step will simply create a Resource Group based on configured name. Yo
 $ ./aci.sh run
 ```
 
-This is the important part of the script. It'll basically loop through each configured location and create 20 Azure Container Instance on that location.
+This is the most important part of the script. It'll basically loop through each configured location and create 20 Azure Container Instance on that location.
 
-By the end of the execution you should have something similar to this on your Azure Portal.
+By the end of the execution, you should have something similar to this on your Azure Portal.
 
 ![](/public/images/2019/02/aci-webpage-timing.png)
 
-Notice that there are 340 container instances, 20 on each region. Some of them have already finished processing, while other are still in progress. This process can will take a few extra seconds as Azure needs to pull the images from Docker Hub Registry first.
+Notice that there are 340 container instances, 20 on each region. Some of them have already finished processing, while others are still in progress. This process can will take a few extra seconds as Azure needs to pull the images from Docker Hub Registry first.
 
-A few seconds later all 340 instances should be on "Succeeded" state. By the end of process, these instances will remain on Azure until you remove it. You can do so by executing `./aci.sh clean`, which removes the Resource Group and all of its container instances.
+A few seconds later all 340 instances should be on "Succeeded" state. By the end of this process, these instances will remain on Azure until you remove it. You can do so by executing `./aci.sh clean`, which removes the Resource Group and all of its container instances.
 
 But if you plan to periodically execute this, you can keep the resources on Azure and simply execute `./aci.sh run` again. The script is smart enough to restart the container if it already exists on Azure. You can repeat this process as many times as you want.
 
 ## The results
 
-By the end of this process we'll have 340 documents on MongoDB, we can now look at the data and perform some analysis. We could hook up any BI tool to this MongoDB instance, extract the data and plot some charts.
+We should now have 340 documents on our MongoDB database, so we can now look at the data and perform some analysis. We could hook up any BI tool to this MongoDB instance, extract the data and plot some charts.
 
 But there is also [MongoDB Charts](https://www.mongodb.com/products/charts), which is a data visualization tool to create visual representations of our MongoDB Data. At the time of this writing, this service is on beta and free to use, so I decided to give it a try. This is what I got from my execution.
 
@@ -219,13 +219,14 @@ You could go one step further and actually analyze the `entries` array to find o
 
 If you liked this and want to take it to the next level, here are some ideas:
 
-1. Reduce the Docker Image size. The smaller the image is, the faster it'll be executed on the Cloud, which means less 💸
-2. Fork the project and enhance it with extra timing information you need
-3. Use puppeteer to emulate a slower network and CPU
-4. Change the script to be a multi-step process. If you have an e-commerce and you want to measure how long does it take for a user to find a product and buy it. You can use this script as a starting point and include the extra steps of this process
-5. Change the script to retry the container execution if it fails.
-6. There is an option to deploy multiple container in a single Azure Container Instance resource by using YAML file. I haven't tried it yet, but that should give better performance and scale, but the script would become more complitated, hence why I decided to keep this example simple and create one resource per container
-7. After implementing #6, go wild and deploy 100 container per region 😁, just keep in mind that it'll also increase your 💸
+1. Schedule this script to execute every X minutes
+2. Reduce the Docker Image size. The smaller the image is, the faster it'll be executed on the Cloud, which means less 💸
+3. Fork the project and enhance it with extra timing information you need
+4. Use puppeteer to emulate a slower network and CPU
+5. Change the script to be a multi-step process. If you have an e-commerce and you want to measure how long does it take for a user to find a product and buy it. You can use this script as a starting point and include the extra steps of this process
+6. Change the script to retry the container execution if it fails.
+7. There is an option to deploy multiple containers in a single Azure Container Instance resource by using YAML file. I haven't tried it yet, but that should give better performance and scale, but the script would become more complicated, hence why I decided to keep this example simple and create one resource per container
+8. After implementing #7, go wild and deploy hundreds of containers per region 😁, just keep in mind that it'll also increase your 💸
 
 ## That's all! 🎉
 
