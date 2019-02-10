@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Using Containers and Headless Chrome to measure the performance of a website from multiple locations
+title: Measuring the performance of a website from multiple locations on a budget
 comments: true
 lang: en
 tags: [docker, web, performance, azure]
@@ -219,7 +219,7 @@ You could go one step further and actually analyze the `entries` array to find o
 
 If you liked this and want to take it to the next level, here are some ideas:
 
-1. Schedule this script to execute every X minutes
+1. Schedule this script to execute every X hours
 2. Reduce the Docker Image size. The smaller the image is, the faster it'll be executed on the Cloud, which means less 💸
 3. Fork the project and enhance it with extra timing information you need
 4. Use puppeteer to emulate a slower network and CPU
