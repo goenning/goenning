@@ -36,69 +36,69 @@ Go on, give it a try and execute this on your Terminal.
 You should get a response similar to this:
 
 ```json
-{ start: 2019-02-10T16:32:25.655Z,
-  start_ts: 1549816345655,
-  duration: 430,
-  origin: 'iMac.local',
-  request_url: 'https://example.org',
-  metrics:
-   { Timestamp: 300473.456095,
-     Documents: 2,
-     Frames: 1,
-     JSEventListeners: 0,
-     Nodes: 39,
-     LayoutCount: 1,
-     RecalcStyleCount: 2,
-     LayoutDuration: 0.053402,
-     RecalcStyleDuration: 0.000584,
-     ScriptDuration: 0.000015,
-     TaskDuration: 0.068091,
-     JSHeapUsedSize: 2108152,
-     JSHeapTotalSize: 3936256 },
-  entries:
-   [ { name: 'https://example.org/',
-       entryType: 'navigation',
-       startTime: 0,
-       duration: 427.6149999932386,
-       initiatorType: 'navigation',
-       nextHopProtocol: 'h2',
-       workerStart: 0,
-       redirectStart: 0,
-       redirectEnd: 0,
-       fetchStart: 0.2899999963119626,
-       domainLookupStart: 7.634999987203628,
-       domainLookupEnd: 8.984999964013696,
-       connectStart: 8.984999964013696,
-       connectEnd: 313.34999995306134,
-       secureConnectionStart: 0,
-       requestStart: 313.6149999918416,
-       responseStart: 414.7049999446608,
-       responseEnd: 415.8099999767728,
-       transferSize: 800,
-       encodedBodySize: 606,
-       decodedBodySize: 1270,
-       serverTiming: [],
-       unloadEventStart: 0,
-       unloadEventEnd: 0,
-       domInteractive: 426.6899999929592,
-       domContentLoadedEventStart: 426.7049999907613,
-       domContentLoadedEventEnd: 426.7049999907613,
-       domComplete: 427.6049999753013,
-       loadEventStart: 427.6149999932386,
-       loadEventEnd: 427.6149999932386,
-       type: 'navigate',
-       redirectCount: 0 },
-     { name: 'first-paint',
-       entryType: 'paint',
-       startTime: 491.65999999968335,
-       duration: 0 },
-     { name: 'first-contentful-paint',
-       entryType: 'paint',
-       startTime: 491.68499995721504,
-       duration: 0 } ] }
+{ "start": "2019-02-10T16:32:25.655Z",
+  "start_ts": 1549816345655,
+  "duration": 430,
+  "origin": "iMac.local",
+  "request_url": "https://example.org",
+  "metrics":
+   { "Timestamp": 300473.456095,
+     "Documents": 2,
+     "Frames": 1,
+     "JSEventListeners": 0,
+     "Nodes": 39,
+     "LayoutCount": 1,
+     "RecalcStyleCount": 2,
+     "LayoutDuration": 0.053402,
+     "RecalcStyleDuration": 0.000584,
+     "ScriptDuration": 0.000015,
+     "TaskDuration": 0.068091,
+     "JSHeapUsedSize": 2108152,
+     "JSHeapTotalSize": 3936256 },
+  "entries":
+   [ { "name": "https://example.org/",
+       "entryType": "navigation",
+       "startTime": 0,
+       "duration": 427.6149999932386,
+       "initiatorType": "navigation",
+       "nextHopProtocol": "h2",
+       "workerStart": 0,
+       "redirectStart": 0,
+       "redirectEnd": 0,
+       "fetchStart": 0.2899999963119626,
+       "domainLookupStart": 7.634999987203628,
+       "domainLookupEnd": 8.984999964013696,
+       "connectStart": 8.984999964013696,
+       "connectEnd": 313.34999995306134,
+       "secureConnectionStart": 0,
+       "requestStart": 313.6149999918416,
+       "responseStart": 414.7049999446608,
+       "responseEnd": 415.8099999767728,
+       "transferSize": 800,
+       "encodedBodySize": 606,
+       "decodedBodySize": 1270,
+       "serverTiming": [],
+       "unloadEventStart": 0,
+       "unloadEventEnd": 0,
+       "domInteractive": 426.6899999929592,
+       "domContentLoadedEventStart": 426.7049999907613,
+       "domContentLoadedEventEnd": 426.7049999907613,
+       "domComplete": 427.6049999753013,
+       "loadEventStart": 427.6149999932386,
+       "loadEventEnd": 427.6149999932386,
+       "type": "navigate",
+       "redirectCount": 0 },
+     { "name": "first-paint",
+       "entryType": "paint",
+       "startTime": 491.65999999968335,
+       "duration": 0 },
+     { "name": "first-contentful-paint",
+       "entryType": "paint",
+       "startTime": 491.68499995721504,
+       "duration": 0 } ] }
 ```
 
-This is a `Timing` object, it contains a number of information collected from the Headless Chrome that executed inside the container. In the example above, it took **430ms** to load **https://example.org**. If this page had any CSS/JavaScript/Image files, it'd also download it and the duration would have been higher.
+This is a `Timing` object, it contains some information collected from the Headless Chrome that executed inside the container. In the example above, it took **430ms** to load **https://example.org**. If this page had any CSS/JavaScript/Image files, it'd also download it and the duration would have been higher.
 
 You can also specify some custom arguments, which allows you to collect metrics from any page. 
 
@@ -123,7 +123,7 @@ To go one step further we'll use machines on the Cloud to run this container fro
 
 But there's a better way 😀
 
-Azure has a service called [Azure Container Instances](https://azure.microsoft.com/en-us/services/container-instances/). It allows you to run a Docker container on the cloud without having to worry about the infrastructure behind it. The best of all? You only pay per execution time. If you start a container that runs for 5 seconds, you'll pay $0.000080. On this post, I'll show you how to perform this operation on Azure, but If prefer AWS, search for `AWS Fargate`, tt's a similar service, so you apply the same idea presented here.
+Azure has a service called [Azure Container Instances](https://azure.microsoft.com/en-us/services/container-instances/). It allows you to run a Docker container on the cloud without having to worry about the infrastructure behind it. The best of all? You only pay per execution time. If you start a container that runs for 5 seconds, you'll pay $0.000080. On this post, I'll show you how to perform this operation on Azure, but If prefer AWS, search for `AWS Fargate`, it's a similar service, so you apply the same idea presented here.
 
 What we're going to do is create dozens of Azure Container Instance on each of its 17 regions and configure it to execute `goenning/webpage-timing` with our custom parameters. We'll also need to store the data from all locations to query it later. In this example, I'll be using [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) because it has a free tier and can also be hosted on Azure.
 
@@ -185,7 +185,7 @@ The first lines are the parameters, configured it based on given comments and ex
 $ ./aci.sh init
 ```
 
-This first step will simply create a Resource Group based on configured name. You can skip this step if you prefer to do it manually through Azure Portal.
+This first step will simply create a Resource Group based on the configured name. You can skip this step if you prefer to do it manually through Azure Portal.
 
 ```sh
 $ ./aci.sh run
@@ -197,7 +197,7 @@ By the end of the execution, you should have something similar to this on your A
 
 ![](/public/images/2019/02/aci-webpage-timing.png)
 
-Notice that there are 340 container instances, 20 on each region. Some of them have already finished processing, while others are still in progress. This process can will take a few extra seconds as Azure needs to pull the images from Docker Hub Registry first.
+Notice that there are 340 container instances, 20 on each region. Some of them have already finished processing, while others are still in progress. This process can take a few extra seconds as Azure needs to pull the images from Docker Hub Registry first.
 
 A few seconds later all 340 instances should be on "Succeeded" state. By the end of this process, these instances will remain on Azure until you remove it. You can do so by executing `./aci.sh clean`, which removes the Resource Group and all of its container instances.
 
@@ -224,7 +224,7 @@ If you liked this and want to take it to the next level, here are some ideas:
 3. Fork the project and enhance it with extra timing information you need
 4. Use puppeteer to emulate a slower network and CPU
 5. Change the script to be a multi-step process. If you have an e-commerce and you want to measure how long does it take for a user to find a product and buy it. You can use this script as a starting point and include the extra steps of this process
-6. Change the script to retry the container execution if it fails.
+6. Change the script to retry when the container fails
 7. There is an option to deploy multiple containers in a single Azure Container Instance resource by using YAML file. I haven't tried it yet, but that should give better performance and scale, but the script would become more complicated, hence why I decided to keep this example simple and create one resource per container
 8. After implementing #7, go wild and deploy hundreds of containers per region 😁, just keep in mind that it'll also increase your 💸
 
