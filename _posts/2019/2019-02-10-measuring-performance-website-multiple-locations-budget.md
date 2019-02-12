@@ -315,9 +315,7 @@ If you liked this and want to take it to the next level, here are some ideas:
 3. Fork the project and enhance it with extra timing information you need
 4. Use puppeteer to emulate a slower network and CPU
 5. Change the script to be a multi-step process. If you have an e-commerce and you want to measure how long does it take for a user to find a product and buy it. You can use this script as a starting point and include the extra steps of this process
-6. Change the script to retry when the container fails
-7. There is an option to deploy multiple containers in a single Azure Container Instance resource by using YAML file. I haven't tried it yet, but that should give better performance and scale, but the script would become more complicated, hence why I decided to keep this example simple and create one resource per container
-8. After implementing #7, go wild and deploy hundreds of containers per region 😁, just keep in mind that it'll also increase your 💸
+6. Go wild and deploy hundreds of containers per region 😁, just keep in mind that it'll also increase your 💸
 
 ## That's all! 🎉
 
