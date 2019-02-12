@@ -134,7 +134,92 @@ $ az login
 $ az account set --subscription "<YOUR_SUBSCRIPTION NAME>" # you can skip this if your account has only one subscription
 ```
 
-Create a file `aci.sh` with the following content:
+Create a file `template.yaml` with this content:
+
+```yaml
+apiVersion: 2018-06-01
+type: Microsoft.ContainerInstance/containerGroups
+location: $location$
+name: $name$
+properties:
+  containers:
+  - name: $name$-01
+    properties:
+      image: goenning/webpage-timing
+      environmentVariables:
+        - name: 'ORIGIN'
+          value: '$location$'
+        - name: 'REQUEST_URL'
+          value: '$request_url$'
+        - name: 'MONGO_URL'
+          secureValue: '$mongo_url$'
+      resources:
+        requests:
+          cpu: 0.4
+          memoryInGb: 0.7
+  - name: $name$-02
+    properties:
+      image: goenning/webpage-timing
+      environmentVariables:
+        - name: 'ORIGIN'
+          value: '$location$'
+        - name: 'REQUEST_URL'
+          value: '$request_url$'
+        - name: 'MONGO_URL'
+          secureValue: '$mongo_url$'
+      resources:
+        requests:
+          cpu: 0.4
+          memoryInGb: 0.7
+  - name: $name$-03
+    properties:
+      image: goenning/webpage-timing
+      environmentVariables:
+        - name: 'ORIGIN'
+          value: '$location$'
+        - name: 'REQUEST_URL'
+          value: '$request_url$'
+        - name: 'MONGO_URL'
+          secureValue: '$mongo_url$'
+      resources:
+        requests:
+          cpu: 0.4
+          memoryInGb: 0.7
+  - name: $name$-04
+    properties:
+      image: goenning/webpage-timing
+      environmentVariables:
+        - name: 'ORIGIN'
+          value: '$location$'
+        - name: 'REQUEST_URL'
+          value: '$request_url$'
+        - name: 'MONGO_URL'
+          secureValue: '$mongo_url$'
+      resources:
+        requests:
+          cpu: 0.4
+          memoryInGb: 0.7
+  - name: $name$-05
+    properties:
+      image: goenning/webpage-timing
+      environmentVariables:
+        - name: 'ORIGIN'
+          value: '$location$'
+        - name: 'REQUEST_URL'
+          value: '$request_url$'
+        - name: 'MONGO_URL'
+          secureValue: '$mongo_url$'
+      resources:
+        requests:
+          cpu: 0.4
+          memoryInGb: 0.7
+  osType: Linux
+  restartPolicy: OnFailure
+```
+
+This template will be loaded into Azure Container Service and it'll create 5 containers using the same image and parameters. It's also been configured to use up to 0.4 of the CPU and only 700MB of Memory.
+
+Create another file `aci.sh` with the following content:
 
 ```sh
 # The name of the resource group to be used on Azure
@@ -147,7 +232,7 @@ locations=( "westus" "eastus" "westeurope" "westus2" "northeurope" "southeastasi
 request_url="https://github.com/docker"
 
 # The connection string to a MongoDB instance
-mongo_url="mongodb://user:pass@your-server:port/db"
+mongo_url="mongodb+srv://webtiming:webtiming@cluster0-s5g8l.azure.mongodb.net/webtiming?retryWrites=true"
 
 if [ $1 == "init" ]
 then
@@ -156,20 +241,26 @@ fi
 
 if [ $1 == "run" ]
 then
+  rm -rf ./out
+  mkdir ./out
   for loc in "${locations[@]}"
   do
-    for i in {1..20}
-    do
-      status=$(az container show -n $loc-wt-$i --resource-group webtiming-rg --query containers[0].instanceView.currentState.state 2>/dev/null)
-      if [ $? -eq 0 ]
-      then
-        az container start -g $resource_group --name "$loc-wt-$i" &
-        echo "$loc-wt-$i has started..."
-      else
-        az container create -g $resource_group --name "$loc-wt-$i" --image goenning/webpage-timing --cpu 1 --memory 1 --location $loc --restart-policy Never --no-wait --ip-address Private --environment-variables ORIGIN=$loc REQUEST_URL=$request_url --secure-environment-variables MONGO_URL=$mongo_url
-        echo "$loc-wt-$i has been created..."
-      fi
-    done
+    cat ./template.yaml | 
+    sed 's|\$name\$|'$loc'-wt|' | 
+    sed 's|\$request_url\$|'$request_url'|' | 
+    sed 's|\$location\$|'$loc'|' | 
+    sed 's|\$mongo_url\$|'$mongo_url'|' | 
+    sed 's|\$location\$|'$loc'|' > "./out/$loc-wt.yaml"
+
+    status=$(az container show -n $loc-wt --resource-group $resource_group --query containers[0].instanceView.currentState.state 2>/dev/null)
+    if [ $? -eq 0 ]
+    then
+      az container start -g $resource_group --name "$loc-wt" &
+      echo "$loc-wt has started..."
+    else
+      az container create -g $resource_group --location $loc --file "./out/$loc-wt.yaml" --no-wait
+      echo "$loc-wt has been created..."
+    fi
   done
 fi
 
@@ -191,27 +282,27 @@ This first step will simply create a Resource Group based on the configured name
 $ ./aci.sh run
 ```
 
-This is the most important part of the script. It'll basically loop through each configured location and create 20 Azure Container Instance on that location.
+This is the most important part of the script. It'll basically loop through each configured location and create a YAML file based on `template.yaml`.
 
 By the end of the execution, you should have something similar to this on your Azure Portal.
 
 ![](/public/images/2019/02/aci-webpage-timing.png)
 
-Notice that there are 340 container instances, 20 on each region. Some of them have already finished processing, while others are still in progress. This process can take a few extra seconds as Azure needs to pull the images from Docker Hub Registry first.
+Notice that there are 17 container groups (1 per region) with 5 containers on each. Some of them have already finished processing, while others are still in progress. This process can take a few extra seconds as Azure needs to pull the images from Docker Hub Registry first.
 
-A few seconds later all 340 instances should be on "Succeeded" state. By the end of this process, these instances will remain on Azure until you remove it. You can do so by executing `./aci.sh clean`, which removes the Resource Group and all of its container instances.
+A few seconds later all groups should be on "Succeeded" state. By the end of this process, these instances will remain on Azure until you remove it. You can do so by executing `./aci.sh clean`, which removes the Resource Group and all of its container instances.
 
 But if you plan to periodically execute this, you can keep the resources on Azure and simply execute `./aci.sh run` again. The script is smart enough to restart the container if it already exists on Azure. You can repeat this process as many times as you want.
 
 ## The results
 
-We should now have 340 documents on our MongoDB database, so we can now look at the data and perform some analysis. We could hook up any BI tool to this MongoDB instance, extract the data and plot some charts.
+We should now have a few documents on our MongoDB database, so we can now look at the data and perform some analysis. We could hook up any BI tool to this MongoDB instance, extract the data and plot some charts.
 
 But there is also [MongoDB Charts](https://www.mongodb.com/products/charts), which is a data visualization tool to create visual representations of our MongoDB Data. At the time of this writing, this service is on beta and free to use, so I decided to give it a try. This is what I got from my execution.
 
 ![](/public/images/2019/02/mongodb-charts.png)
 
-As we can see, we have collected 337 timings (3 instances have failed...) and the global average is 2385ms. The chart shows that loading `https://github.com/docker` on US regions is 2x faster than on Asian Data Centers, which is expected since GitHub is hosted in the US.
+As we can see, we have collected 595 timings and the global average is 4165ms. The chart shows that loading `https://github.com/docker` on Asian is 2seconds slower when compared to US.
 
 You could go one step further and actually analyze the `entries` array to find out which HTTP resources took longer to load.
 
@@ -230,4 +321,4 @@ If you liked this and want to take it to the next level, here are some ideas:
 
 ## That's all! 🎉
 
-Please leave a comment, suggestion or feedback!
+What do you think about this? Please leave a comment if you any suggestion or feedback.
