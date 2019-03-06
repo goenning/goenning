@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Measuring the performance of a website from multiple locations on a budget
+title: Using Azure Container Instances to measure performance of a website from multiple locations
 comments: true
 lang: en
 tags: [docker, web, performance, azure]
