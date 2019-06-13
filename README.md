@@ -1,3 +1,1 @@
-This is my blog. 
-
-Visit at http://goenning.net
+Visit my blog at http://goenning.net
