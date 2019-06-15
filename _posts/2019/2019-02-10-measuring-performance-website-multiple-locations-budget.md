@@ -301,7 +301,7 @@ But there is also [MongoDB Charts](https://www.mongodb.com/products/charts), whi
 
 ![](/public/images/2019/02/mongodb-charts.png)
 
-As we can see, we have collected 595 timings and the global average is 4165ms. The chart shows that loading `https://github.com/docker` on Asian is 2seconds slower when compared to US.
+As we can see, we have collected 595 timings and the global average is 4165ms. The chart shows that loading `https://github.com/docker` on Asia is 2 seconds slower when compared to US.
 
 You could go one step further and actually analyze the `entries` array to find out which HTTP resources took longer to load.
 
