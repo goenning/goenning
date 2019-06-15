@@ -1,7 +1,6 @@
 ---
 title: Field-Symbol para iniciantes
 layout: post
-comments: true
 lang: pt
 tags: [abap, field-symbol]
 ---

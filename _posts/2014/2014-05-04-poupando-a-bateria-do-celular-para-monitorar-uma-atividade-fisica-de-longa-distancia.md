@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Poupando a bateria do celular para monitorar atividades física de longa distância
-comments: true
 lang: pt
 tags: [android, bateria, strava]
 ---

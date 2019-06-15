@@ -1,7 +1,6 @@
 ---
 title: Trabalhando com Funções e BAPI
 layout: post
-comments: true
 lang: pt
 tags: [abap, bapi, function, se37]
 ---

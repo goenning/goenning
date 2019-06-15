@@ -1,7 +1,6 @@
 ---
 title: Escrevendo código ABAP pelo Eclipse ADT
 layout: post
-comments: true
 lang: pt
 tags: [ abap, ambiente, eclipse adt]
 ---

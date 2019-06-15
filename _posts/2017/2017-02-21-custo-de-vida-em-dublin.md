@@ -1,11 +1,9 @@
 ---
 layout: post
 title: Custo de vida em Dublin
-comments: true
 lang: pt
 tags: [custo, salário, trabalho]
 series: brasilparairlanda
-cover: /public/images/2017/02/tesco.jpg
 ---
 
 Este é um dos tópicos que mais pesquisamos antes de nos mudarmos para cá. Conhecemos muito bem nossos custos mensais no Brasil, então fica fácil avaliar se o salário será suficiente para os custos mensais e, é claro, um extra para lazer e economias. Agora quando se trata de um país novo, será que vamos conseguir viver bem com determinado salário?

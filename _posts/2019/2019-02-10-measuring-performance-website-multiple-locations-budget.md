@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Using Azure Container Instances to measure performance of a website from multiple locations
-comments: true
 lang: en
 tags: [docker, web, performance, azure]
 description: Measuring the performance of a website from multiple locations around the world is crucial with the current global scale of the internet. In most cases, your visitors are not only based in your home country but from all other countries too. From Canada to Australia, from Chile to Russia, your website is being visited by more people than you think. There are a number of paid services that allow you to constantly monitor your website performance from multiple locations around the world. But maybe you're a geek and you want to do it yourself?

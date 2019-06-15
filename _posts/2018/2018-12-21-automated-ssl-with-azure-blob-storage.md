@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Using Azure Blob Storage as a cache backend for Go acme/autocert
-comments: true
 lang: en
 tags: [go, azure, autocert]
 description: By default, acme/autocert stores provisioned certificates on local disk for long-term caching. What happens is that the next time an user visits the same page, this package will fetch the certificate from the local disk instead of provisioning a new one. But what if your service is deployed across multiple machines? How do you ensure that all services are using the same cache? Come along and see how to solve this problem.

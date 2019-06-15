@@ -1,10 +1,8 @@
 ---
 layout: post
 title: De mudança para a Irlanda
-comments: true
 lang: pt
 tags: [irlanda, dublin, trabalho, imigração]
-cover: /public/images/2016/12/Hapenny-Bridge-Dublin-362k.jpg
 series: brasilparairlanda
 description: Nossa história de vida é um conjunto de fatos. Tomamos uma decisão que irá mudar completamente nossas vidas. Estamos nos mudando para Dublin, Irlanda.
 ---

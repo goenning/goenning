@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Audax Floripa 2014. Mais 200km para o currículo.
-comments: true
 lang: pt
 tags: [audax, audax floripa, volta à ilha]
 ---

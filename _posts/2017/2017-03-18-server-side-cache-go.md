@@ -1,10 +1,8 @@
 ---
 layout: post
 title: "Server side cache with Go"
-comments: true
 lang: en
 tags: [go, golang, web, performance, cache]
-cover: /public/images/2017/03/server-side-cache-go.png
 description: 
   Go is fast and everyone knows that. But how can we make it ever faster when running web applications on it? On this post I'll try to cover how can we achieve an even better response time for web applications using server side cache, because you know, performance IS a feature and I don't know anyone who enjoys spinning wheels.
 ---

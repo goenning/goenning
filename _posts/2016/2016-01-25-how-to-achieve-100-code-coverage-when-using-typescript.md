@@ -1,7 +1,6 @@
 ---
 layout: post
 title: How to achieve 100% code coverage when using TypeScript
-comments: true
 lang: en
 tags: [typescript, istambul, code-coverage]
 ---

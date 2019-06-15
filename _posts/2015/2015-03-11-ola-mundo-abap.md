@@ -1,7 +1,6 @@
 ---
 title: Olá Mundo ABAP
 layout: post
-comments: true
 lang: pt
 tags: [abap, hello world, se80]
 ---

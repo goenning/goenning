@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Montando um ambiente de desenvolvimento ABAP
-comments: true
 lang: pt
 tags: [sap, abap, tecnologia]
 ---

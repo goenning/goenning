@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Instalando modulos globais do NPM sem sudo no macOS / Linux
-comments: true
 lang: pt
 tags: [npm, macOS, node.js]
 ---

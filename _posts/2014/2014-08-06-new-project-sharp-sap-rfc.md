@@ -1,7 +1,6 @@
 ---
 layout: post
 title: 'New project: SharpSapRfc'
-comments: true
 lang: en
 tags: [sap, abap, rfc, sharpsaprfc]
 ref: new-project-sharp-sap-rfc

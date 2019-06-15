@@ -1,7 +1,6 @@
 ---
 layout: post
 title: How to safely store configuration settings in web.config
-comments: true
 lang: en
 tags: [C#, asp.net, web, security]
 ref: how-to-safely-store-configuration-settings-in-webconfig

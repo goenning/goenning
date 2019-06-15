@@ -1,7 +1,6 @@
 ---
 title: 'Novo projeto: Sharp SAP RFC'
 layout: post
-comments: true
 lang: pt
 tags: [abap, github, opensource, sharpsaprfc]
 ref: new-project-sharp-sap-rfc

@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Introdução ao ABAP
-comments: true
 lang: pt
 tags: [sap, abap, tecnologia]
 ---

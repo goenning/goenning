@@ -1,7 +1,6 @@
 ---
 title: Como funciona o Binary Search
 layout: post
-comments: true
 lang: pt
 tags: [abap, binary search, performance, tabelas]
 ---

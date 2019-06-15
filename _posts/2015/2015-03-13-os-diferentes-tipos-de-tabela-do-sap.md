@@ -1,7 +1,6 @@
 ---
 title: Os diferentes tipos de tabela do SAP
 layout: post
-comments: true
 lang: pt
 tags: [abap, cluster table, internal table, pooled table, sap, sap tables, transparent table]
 ---

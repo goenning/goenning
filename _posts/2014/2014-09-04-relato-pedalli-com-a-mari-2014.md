@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Relato Pedalli com a Mari 2014
-comments: true
 lang: pt
 tags: [bike, pedal da mari]
 ---

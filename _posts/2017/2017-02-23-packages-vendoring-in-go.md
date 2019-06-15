@@ -1,12 +1,10 @@
 ---
 layout: post
 title: "Packages and vendoring in Go"
-comments: true
 lang: en
 tags: [go, golang, web, gostore]
 series: firstwebappgo
 ref: packages-vendoring-in-go
-cover: /public/images/2017/02/go-packages.jpg
 ---
 
 On the last post of this series we finished a simple, but fully working web app written in Go using only the standard library. During this post you’ll learn how package management works in Go by adding a very famous third-party package.

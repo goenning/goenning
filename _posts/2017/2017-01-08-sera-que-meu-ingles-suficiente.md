@@ -1,11 +1,9 @@
 ---
 layout: post
 title: Será que meu inglês é suficiente?
-comments: true
 lang: pt
 tags: [inglês, trabalho]
 series: brasilparairlanda
-cover: /public/images/2017/01/fique-calmo-and-speak-english.jpeg
 ---
 
 Esta foi uma das perguntas que me fiz durante muito tempo antes de chegar aqui na Irlanda. Sempre fiquei preocupado que meu nível de inglês não seria suficiente, principalmente depois de falar com um nativo pelo telefone. Caramba, vocês tem noção do quanto é difícil entender um irlandês falando? Agora imagina por telefone então. Mas enfim, tomei todas as medidas possíveis e agora estou aqui para compartilhar um pouco do que aprendi neste um mês de vida na Irlanda.

@@ -1,7 +1,6 @@
 ---
 title: Performance de leitura por tipo de tabela
 layout: post
-comments: true
 lang: pt
 tags: [ abap,  desempenho, performance, tabelas internas, tipos de tabela]
 ---

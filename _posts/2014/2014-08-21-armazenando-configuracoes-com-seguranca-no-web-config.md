@@ -1,7 +1,6 @@
 ---
 title: Armazenando configurações com segurança no web.config
 layout: post
-comments: true
 lang: pt
 tags: [aspnet, criptografia, segurança]
 ref: how-to-safely-store-configuration-settings-in-webconfig

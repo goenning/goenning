@@ -1,7 +1,6 @@
 ---
 title: Manipulando XML com ABAP
 layout: post
-comments: true
 lang: pt
 tags: [abap, sax reader, xml, xml dom, xml parser, xpath]
 ---

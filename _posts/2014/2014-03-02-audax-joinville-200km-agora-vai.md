@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Audax Joinville 200km. Agora vai!
-comments: true
 lang: pt
 tags: [audax, bike, esporte]
 ---

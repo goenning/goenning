@@ -1,7 +1,6 @@
 ---
 layout: post
 title: 'Pedal da Mari &#8211; Pedalando até o seminário de Corupá'
-comments: true
 lang: pt
 tags: [bike, cicloturismo, pedal da mari]
 ---

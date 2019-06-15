@@ -1,7 +1,6 @@
 ---
 layout: post
 title: 'Relato: Pedal da Mari - Ribeirão Grande'
-comments: true
 lang: pt
 tags: [bike, esporte]
 ---

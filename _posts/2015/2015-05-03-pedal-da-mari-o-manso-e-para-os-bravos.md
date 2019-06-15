@@ -1,7 +1,6 @@
 ---
 title: 'Pedal da Mari: O manso é para os bravos'
 layout: post
-comments: true
 lang: pt
 tags: [bike, manso é para os bravos ,pedal da mari]
 ---

@@ -1,7 +1,6 @@
 ---
 title: Adicionando segurança no uso do ICF e RFC
 layout: post
-comments: true
 lang: pt
 tags: [icf, security, sap, abap, rfc]
 ref: adding-security-to-icf-and-soap-rfc

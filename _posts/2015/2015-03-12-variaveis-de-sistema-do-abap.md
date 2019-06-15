@@ -1,7 +1,6 @@
 ---
 title: Variáveis de Sistema do ABAP
 layout: post
-comments: true
 lang: pt
 tags: [abap, variaveis de sistema]
 ---

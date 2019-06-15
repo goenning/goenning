@@ -12,9 +12,10 @@ permalink: /pt
 
       <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h1>
 
-      {% if post.cover %}
-        <img class="cover" src="{{ post.cover }}" />
-      {% endif %}
+      <small>
+        {% include post_date.html lang=post.lang date=post.date %}
+        {% include post_read_time.html lang=post.lang content=post.content %}
+      </small>
 
       <div class="entry">
         {% if post.abstract %}

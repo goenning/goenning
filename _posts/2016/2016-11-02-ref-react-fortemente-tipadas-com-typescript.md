@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Referências do React fortemente tipadas com TypeScript
-comments: true
 lang: pt
 tags: [typescript, react]
 ref: strongly-typed-react-refs-with-typescript

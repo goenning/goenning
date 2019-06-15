@@ -1,7 +1,6 @@
 ---
 title: Explorando o FOR ALL ENTRIES IN
 layout: post
-comments: true
 lang: pt
 tags: [abap, for all entries in, opensql]
 ---

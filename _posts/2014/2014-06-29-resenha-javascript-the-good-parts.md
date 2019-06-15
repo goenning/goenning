@@ -1,7 +1,6 @@
 ---
 title: 'Resenha: JavaScript: The Good Parts'
 layout: post
-comments: true
 lang: pt
 tags: [angular.js, javascript, livros, resenhas]
 ---

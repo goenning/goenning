@@ -1,7 +1,6 @@
 ---
 title: Chamando funções .NET com SAP RFC
 layout: post
-comments: true
 lang: pt
 tags: [abap, github, jco, nco, rfc, rfc server]
 ---

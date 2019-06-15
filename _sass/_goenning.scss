@@ -1,29 +1,5 @@
-code.highlighter-rouge {
-  line-height: 1.5;
-  white-space: nowrap;
-  margin: 0 2px;
-  padding: 0 5px;
-  border: 1px solid #f7f7f7;
-  background-color: #efefef;
-  border-radius: 3px;
-}
-
-body {
-  color: #515151;
-  overflow-x: hidden;
-}
-
 h1.site-name {
   margin-bottom:10px;
-}
-
-body {
-  font-family: 'PT Sans', Helvetica, Arial, sans-serif !important;
-  text-rendering: optimizelegibility;
-}
-
-html {
-  font-size: 1em;
 }
 
 h1 {
@@ -50,14 +26,6 @@ h1, h2, h3, h4, h5, h6 {
   border-bottom: 1px solid #ddd !important;
 }
 
-.post .date {
-  display: block;
-  margin-top: -.5rem;
-  margin-bottom: 1rem;
-  color: #9a9a9a;
-  font-size: 18px
-}
-
 .post table {
   thead {
     font-weight: bold;
@@ -72,23 +40,9 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-.post .reading-time {
-  font-size: 12px;
-  display: block;
-}
-
 .left {
   float:left;
   margin-right: 10px;
-}
-
-.post .cover {
-  @media screen and (min-width: 640px) {
-    float: left;
-    margin-right: 10px;
-    max-height: 200px;
-    max-width: 300px;
-  }
 }
 
 .posts article.post {

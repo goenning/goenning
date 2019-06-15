@@ -1,12 +1,10 @@
 ---
 layout: post
 title: "Pacotes e vendoring em Go"
-comments: true
 lang: pt
 tags: [go, golang, web, gostore]
 series: primeirawebappgo
 ref: packages-vendoring-in-go
-cover: /public/images/2017/02/go-packages.jpg
 ---
 
 No último post desta série terminamos uma aplicação web simples, porém completamente funcional usando apenas a biblioteca padrão. Durante este post você irá aprender como funciona o gerenciamento de pacotes em Go usando um pacote de terceiros que é bem famoso.

@@ -1,7 +1,6 @@
 ---
 title: LOOP FROM INDEX em tabelas sorted
 layout: post
-comments: true
 lang: pt
 tags: [abap, loop, performance, tipos de tabela]
 ---

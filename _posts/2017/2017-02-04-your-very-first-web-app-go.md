@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Your very first web app using Go"
-comments: true
 lang: en
 tags: [go, golang, web, gostore]
 series: firstwebappgo

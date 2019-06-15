@@ -1,7 +1,6 @@
 ---
 title: Tipos de dados, variáveis e constantes
 layout: post
-comments: true
 lang: pt
 tags: [abap, tipos de dados ,variáveis]
 ---

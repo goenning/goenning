@@ -1,7 +1,6 @@
 ---
 title: Open SQL vs Native SQL
 layout: post
-comments: true
 lang: pt
 tags: [abap, db interface, native sql, open sql]
 ---

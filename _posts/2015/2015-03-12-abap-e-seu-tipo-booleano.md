@@ -1,7 +1,6 @@
 ---
 title: ABAP e seu tipo booleano
 layout: post
-comments: true
 lang: pt
 tags: [abap, boolean, se11, typegroup]
 ---

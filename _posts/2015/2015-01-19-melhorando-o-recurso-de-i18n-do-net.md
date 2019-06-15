@@ -1,6 +1,5 @@
 ---
 title: Melhorando o recurso de i18n do .Net
-comments: true
 lang: pt
 layout: post
 tags: [csharp, i18n, oop, polimorfismo]

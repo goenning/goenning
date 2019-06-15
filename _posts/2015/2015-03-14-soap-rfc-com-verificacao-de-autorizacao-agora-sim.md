@@ -1,7 +1,6 @@
 ---
 title: SOAP RFC com verificação de autorização, agora sim!
 layout: post
-comments: true
 lang: pt
 tags: [sap, abap, rfc, soap]
 ref: soap-rfc-with-real-authorization-verification

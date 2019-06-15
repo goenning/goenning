@@ -1,7 +1,6 @@
 ---
 title: Introdução à Testes Unitários em ABAP
 layout: post
-comments: true
 lang: pt
 tags: [abap, abap unit test, se24, test class, teste automatizado, unit test]
 ---

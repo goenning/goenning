@@ -1,7 +1,6 @@
 ---
 title: Entendendo a arquitetura do SAP
 layout: post
-comments: true
 lang: pt
 tags: [abap, application server, arquitetura, camadas, sap]
 ---

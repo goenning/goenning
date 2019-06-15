@@ -1,7 +1,6 @@
 ---
 layout: post
 title: SOAP RFC with real authorization verification
-comments: true
 lang: en
 tags: [sap, abap, rfc, soap]
 ref: soap-rfc-with-real-authorization-verification

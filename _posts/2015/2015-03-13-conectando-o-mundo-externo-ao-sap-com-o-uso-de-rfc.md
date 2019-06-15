@@ -1,7 +1,6 @@
 ---
 title: Conectando o mundo externo ao SAP com o uso de RFC
 layout: post
-comments: true
 lang: pt
 tags: [jco, módulo de função, nco, rfc, sap connector]
 ---

@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Better i18n with .Net
-comments: true
 lang: en
 tags: [.net, i18n]
 ref: better-i18n-with-net

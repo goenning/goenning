@@ -1,7 +1,6 @@
 ---
 title: 'SELECT * e a mágica do Database Interface'
 layout: post
-comments: true
 lang: pt
 tags: [sap, abap]
 ref: select-all-and-the-magic-behind-database-interface
