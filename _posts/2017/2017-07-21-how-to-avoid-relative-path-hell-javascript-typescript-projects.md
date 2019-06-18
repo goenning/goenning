@@ -3,6 +3,7 @@ layout: post
 title: How to avoid relative path hell in JavaScript / TypeScript projects
 lang: en
 tags: [typescript, javascript, module resolution]
+ref: how-to-avoid-relative-path-hell-javascript-typescript-projects
 description: Relative path hell is a common pain point on large JavaScript/TypeScript projects. Learn how Webpack can help you avoid this problem.
 ---
 
@@ -14,13 +15,13 @@ Those who ever worked on a JavaScript project are familiar with relative path he
 Whenever a local module A depends on another local module B, it has to be imported using relative path, like these two examples.
 
 ```typescript
-import { DefaultRenderer } from '../../../rendereders'
+import { DefaultRenderer } from '../../../renderers'
 import { PayPalClient } from '../../services/PayPal'
 ```
 
 This approach brings some issues to the table whenever your codebase starts to grow. There's a need to know where both the current and target module are in the folder structure. This is a big hurdle to refactoring and readability. 
 
-Where is `../../../rendereders` located? Can you easily find it? One or two folders above might be ok, but more than that you get a ticket to hell.
+Where is `../../../renderers` located? Can you easily find it? One or two folders above might be ok, but more than that you get a ticket to hell.
 
 On regards to refactoring, every time **ANY module** is moved up or down the tree, there'll be a need to fix the relative path of both consumers and imported modules. Not a fun thing to do, right?
 
