@@ -3,6 +3,7 @@ layout: post
 title: "Server side cache with Go"
 lang: en
 tags: [go, golang, web, performance, cache]
+ref: server-side-cache-go
 description: 
   Go is fast and everyone knows that. But how can we make it ever faster when running web applications on it? On this post I'll try to cover how can we achieve an even better response time for web applications using server side cache, because you know, performance IS a feature and I don't know anyone who enjoys spinning wheels.
 ---
@@ -21,11 +22,11 @@ But what about HTML pages? How do we cache them? It's certainly not useful to ca
 
 That's where server cache comes into play. Building the index page of a news portal possible requires multiple IO operations like database queries or API calls. After the HTML of the index page is built for an user it's possible to cache it on the server and use this cached version to respond to all subsequent requests to the same page. By doing this on the server, we have full control on when to invalidate a given set of cached content when a new article is published. 
 
-It does now save the user from sending a HTTP request like the browser cache does, but it'll certainly speed up the the server respond to it.
+It does now save the user from sending a HTTP request like the browser cache does, but it'll certainly speed up the way the server responds to it.
 
 ### How do we do it in Go?
 
-Go is not just fast, it's also easy, and thus implementing this is not different.
+Go is not just fast, it's also easy, and thus a simple implementation is no more than a few lines of code.
 
 The difficult part is to decide where you want to cache the page. Common strategies are usually to store it in process memory, disk or a database. Either of these approaches are fine, but understanding the drawbacks of each of them is important to make a decision.
 
@@ -103,7 +104,7 @@ func cached(duration string, handler func(w http.ResponseWriter, r *http.Request
 To use it we just need to wrap our HTTP handler function inside a `cached` call, like the following. Thanks to Go's `time` package, we can use human friendly string to represent a duration. For instance, **10s** is much easier to understand than **10 * 1000**. On the following example, only the index route is being cached.
 
 ```go
-// both idex and about are: func (w http.ResponseWriter, r *http.Request) { ... }
+// both index and about are: func (w http.ResponseWriter, r *http.Request) { ... }
 http.Handle("/", cached("10s", index)) 
 http.HandleFunc("/about", about)
 http.ListenAndServe(...)
