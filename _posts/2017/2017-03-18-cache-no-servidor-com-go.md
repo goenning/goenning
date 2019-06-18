@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Cache no Servidor com Go"
-lang: en
+lang: pt
 tags: [go, golang, web, performance, cache]
 ref: server-side-cache-go
 description:
