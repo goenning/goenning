@@ -1,9 +1,10 @@
 ---
 layout: post
-title: Free and Automated SSL Certificates with Go
+title: Free and Automated SSL/TLS Certificates with Go
 lang: en
 tags: [go, golang, https, security]
-description: HTTPS has become a must nowadays. Not only for its security purpose, but also because search engines like Google are giving better rank to websites that run on a secure protocol over those using plain HTTP. It's 2017 and gone are the days that we could use the price as an excuse to not have HTTPS our our websites. Learn here how to generate SSL Certificates fully automated and free on Go web applications.
+description: HTTPS has become a must nowadays. Not only for its security purpose, but also because search engines like Google are giving better rank to websites that run on a secure protocol over those using plain HTTP. It's 2017 and gone are the days that we could use the price as an excuse to not have HTTPS our our websites. Learn here how to generate SSL/TLS Certificates fully automated and free on Go web applications.
+ref: free-and-automated-ssl-certificates-with-go
 ---
 
 ***Jan 13, 2018**: This post has been updated to use HTTP challenge as Let's Encrypt disabled the TLS-SNI challenge, which we were using before.*
@@ -12,7 +13,7 @@ HTTPS has become a must nowadays. Not only for its security purpose, but also be
 
 It's 2017 and gone are the days that we could use the price as an excuse to not have HTTPS our our websites.
 
-On this post I'll explain how to create a Go web application that automatically generates SSL Certificates and use them to run itself on HTTPS. The best part is: **It's free!**
+On this post I'll explain how to create a Go web application that automatically generates SSL/TLS Certificates and use them to run itself on HTTPS. The best part is: **It's free!**
 
 ## Requirements
 
@@ -20,13 +21,13 @@ If you wish to follow this demo and try it yourself, please make sure you comply
 
 - You need the Go compiler;
 - A server that is publicly available. *If you don't have one, I suggest using a VM on [Digital Ocean](https://www.digitalocean.com/). If you run it for 24 hours, you'll pay only $0.15;*
-- A domain name and access to it’s DNS settings. You’ll not need this if your cloud provides a public shared name, for example: `yourvn0001.yourcloud.net`.
+- A domain name and access to it’s DNS settings. You’ll not need this if your cloud provides a public shared name, for example: `yourvm0001.yourcloud.net`.
 
 ## Let’s Encrypt and the ACME protocol
 
-[Let’s Encrypt](https://letsencrypt.org/) is a very well known and trusted SSL certificate issuer that provides a free and automated generation process. It is possible to issue a certificate in less than a second without any registration process or payment.
+[Let’s Encrypt](https://letsencrypt.org/) is a very well known and trusted SSL/TLS certificate issuer that provides a free and automated generation process. It is possible to issue a certificate in less than a second without any registration process or payment.
 
-**Autocert** is a Go package that implements the ACME protocol used to generates certificates on Let’s Encrypt. This is the only package dependency that you will need, no other installation or package is required.
+**Autocert** is a Go package that implements a client of the ACME protocol used to generates certificates on Let’s Encrypt. This is the only package dependency that you will need, no other installation or package is required.
 
 You can get it as any other Go package.
 
@@ -75,7 +76,7 @@ func main() {
 
 We start the `main` function by creating a `mux` with a simple Hello World message on path `/`. In this example we're using the Go's default Mux, but it could be easily replaced by any other third-party router. 
 
-The next step we create an instance of `autocert.Manager`. This struct is responsible for communicating with Let’s Encrypt and fetch the SSL certificates. The `Cache` field is an interface that defines how and where `autocert.Manager` should store and load the certificates from. In this example we're using `autocert.DirCache` that stores the certificates in a local folder. This is the easiest way to get started, but might not be the best one for websites hosted on multiple servers, because each server will have it's own cache.
+The next step we create an instance of `autocert.Manager`. This struct is responsible for communicating with Let’s Encrypt and fetch the SSL/TLS certificates. The `Cache` field is an interface that defines how and where `autocert.Manager` should store and load the certificates from. In this example we're using `autocert.DirCache` that stores the certificates in a local folder. This is the easiest way to get started, but might not be the best one for websites hosted on multiple servers, because each server will have it's own cache.
 
 The last step is to create a `http.Server` that listen on port `443` and uses our `mux` instance. We then create `tls.Config` object and assign it to the server. Now is where **the "magic" happens**. `GetCertificate` is a method that we can use to tell the server where to load the certificate whenever a new HTTPS request is starting. This method gives us the opportunity to choose what certificate to use instead of returning a specific one for every request like most applications does. We then use `certManager.GetCertificate` which will first try to get a matching certificate from the cache, if there's none matching, then a new certificate is fetched from Let's Encrypt using the ACME protocol.
 
@@ -99,9 +100,9 @@ It worths to mention that, when using `certManager.HTTPHandler(nil)`, all traffi
 
 Ta-Da! 🎉 
 
-You should now see the `Hello Secure World` message and the green SSL lock icon.
+You should now see the `Hello Secure World` message and the green HTTPS lock icon.
 
-You might notice that it might take a few seconds to load the first request. That’s because the SSL certificate generation process is happening on the background. Consecutive request should be lightning fast as the certificate is already cached.
+You might notice that it might take a few seconds to load the first request. That’s because the SSL/TLS certificate generation process is happening on the background. Consecutive request should be lightning fast as the certificate is already cached.
 
 ## Important notes and suggestions:
 
