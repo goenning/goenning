@@ -2,7 +2,7 @@
 title: Introdução à Testes Unitários em ABAP
 layout: post
 lang: pt
-tags: [abap, abap unit test, se24, test class, teste automatizado, unit test]
+tags: [abap, automação de testes]
 ---
 
 Ouvi falar de testes automatizados pela primeira vez ainda durante meu estágio. Lembro bem do momento em que estava criando um projeto no Microsoft Visual Studio e notei um tipo de projeto chamado de &#8220;Unit Tests&#8221;. Mal sabia eu que este viria a ser um recurso que tanto gosto. Posso dizer que tive um dejavú quando estava criando uma classe na transação se24 e vi uma opção chamada &#8220;Test Class (ABAP Unit)&#8221;.

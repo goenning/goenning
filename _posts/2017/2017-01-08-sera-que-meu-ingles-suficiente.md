@@ -2,7 +2,7 @@
 layout: post
 title: Será que meu inglês é suficiente?
 lang: pt
-tags: [inglês, trabalho]
+tags: [irlanda]
 series: brasilparairlanda
 ---
 

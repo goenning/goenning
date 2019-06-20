@@ -53,3 +53,16 @@ h1, h2, h3, h4, h5, h6 {
   color: #9a9a9a;
   font-size: 12px;
 }
+
+.site-tag {
+  a {
+    margin: 2px;
+    padding: 5px;
+    display: block;
+    display: inline-block;
+    background-color: #eee;
+    &:hover {
+      background-color: #ddd;
+    }
+  }
+}

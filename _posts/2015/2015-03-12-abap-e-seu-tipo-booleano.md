@@ -2,7 +2,7 @@
 title: ABAP e seu tipo booleano
 layout: post
 lang: pt
-tags: [abap, boolean, se11, typegroup]
+tags: [abap]
 ---
 Se você já programa em outra linguagem e leu o artigo sobre [tipos de dados](/2015/03/11/tipos-de-dados-variaveis-e-constantes/) deve ter percebido que não falei nada sobre o **Boolean**. Não comentei sobre isto, pois ele **não existe** no ABAP. Isto é verdade, por mais estranho que pareça. Este é o tipo de dado mais primitivo que pode existir, afinal é o único que cabe em um único **bit**, e mesmo assim não existe.
 

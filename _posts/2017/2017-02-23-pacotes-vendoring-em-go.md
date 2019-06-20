@@ -2,7 +2,7 @@
 layout: post
 title: "Pacotes e vendoring em Go"
 lang: pt
-tags: [go, golang, web, gostore]
+tags: [go, web]
 series: primeirawebappgo
 ref: packages-vendoring-in-go
 ---

@@ -2,7 +2,7 @@
 title: Field-Symbol para iniciantes
 layout: post
 lang: pt
-tags: [abap, field-symbol]
+tags: [abap]
 ---
 ![](/public/images/2015/03/abap-fieldsymbol.png)
 

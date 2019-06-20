@@ -2,7 +2,7 @@
 layout: post
 title: Dicas para conseguir um emprego no exterior estando no Brasil
 lang: pt
-tags: [emprego, exterior, entrevista, ti, irlanda, dublin, europa]
+tags: [irlanda]
 series: brasilparairlanda
 description: | 
   Após ter me mudado para a Irlanda resolvei compartilhar com os leitores como foi o processo e passar algumas dicas de como você também pode fazer o mesmo sem sair de casa. Quero mostrar que isto é perfeitamente possível e como o processo pode ser mais fácil do que você imagina.

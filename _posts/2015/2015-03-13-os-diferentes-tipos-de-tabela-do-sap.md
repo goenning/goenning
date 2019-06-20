@@ -2,7 +2,7 @@
 title: Os diferentes tipos de tabela do SAP
 layout: post
 lang: pt
-tags: [abap, cluster table, internal table, pooled table, sap, sap tables, transparent table]
+tags: [abap]
 ---
 
 No SAP existem pelo menos quatro tipos diferentes de tabela, cada qual com suas características, vantagens, restrições e modo de uso. Neste post vamos estudar um pouco sobre ada uma delas. Primeiro vamos conhecer quais são. Temos a **Internal Table**, **Transparent Table**, **Pooled Table** e a **Cluster Table**.

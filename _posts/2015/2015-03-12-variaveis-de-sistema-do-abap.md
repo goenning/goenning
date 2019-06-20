@@ -2,7 +2,7 @@
 title: Variáveis de Sistema do ABAP
 layout: post
 lang: pt
-tags: [abap, variaveis de sistema]
+tags: [abap]
 ---
 
 O ABAP possui uma extensa quantidade de variáveis de sistema para as mais diferentes ocasiões. São variáveis que estão disponíveis em todos os programas e sempre possuem o prefixo **sy-**, por exemplo **sy-uname** e **sy-subrc**. Neste post vou mostrar somente os mais usados, para uma lista completa de todas as variáveis disponíveis acesse [este endereço](http://help.sap.com/saphelp_wp/helpdata/en/7b/fb96c8882811d295a90000e8353423/content.htm) do help.sap.

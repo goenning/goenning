@@ -2,7 +2,7 @@
 layout: post
 title: Introdução ao ABAP
 lang: pt
-tags: [sap, abap, tecnologia]
+tags: [abap]
 ---
 O ABAP é uma linguagem de programação proprietária da SAP e utilizado na construção e evolução do ERP SAP. Foi concebido como uma  linguagem de programação estruturada e posteriormente com o advento da programação orientada a objetos foi atualizada para suportar também este novo paradigma.
 

@@ -2,7 +2,7 @@
 layout: post
 title: Free and Automated SSL/TLS Certificates with Go
 lang: en
-tags: [go, golang, https, security]
+tags: [go, security]
 description: HTTPS has become a must nowadays. Not only for its security purpose, but also because search engines like Google are giving better rank to websites that run on a secure protocol over those using plain HTTP. It's 2017 and gone are the days that we could use the price as an excuse to not have HTTPS our our websites. Learn here how to generate SSL/TLS Certificates fully automated and free on Go web applications.
 ref: free-and-automated-ssl-certificates-with-go
 ---

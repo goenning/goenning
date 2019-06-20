@@ -2,7 +2,7 @@
 layout: post
 title: 'Pedal da Mari &#8211; Pedalando até o seminário de Corupá'
 lang: pt
-tags: [bike, cicloturismo, pedal da mari]
+tags: [ciclismo]
 ---
 Aconteceu neste domingo o pedal de Cicloturismo Pedalando até o seminário de Corupá, organizado pela Marines Ronchi. Foram 25km de ida e mais 25km de retorno, contando com a presença de mais de 250 ciclistas.
 

@@ -2,7 +2,7 @@
 layout: post
 title: Um simples cache no lado servidor para Express.js em Node.js
 lang: pt
-tags: [express, nodejs, cache, performance]
+tags: [node.js, cache, performance]
 ref: simple-server-side-cache-for-expressjs
 ---
 

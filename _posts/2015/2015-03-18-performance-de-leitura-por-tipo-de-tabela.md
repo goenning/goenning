@@ -2,7 +2,7 @@
 title: Performance de leitura por tipo de tabela
 layout: post
 lang: pt
-tags: [ abap,  desempenho, performance, tabelas internas, tipos de tabela]
+tags: [abap, performance]
 ---
 
 No artigo [os diferentes tipos de tabela do SAP](/2015/03/13/os-diferentes-tipos-de-tabela-do-sap/ "Os diferentes tipos de tabela do SAP") descrevemos a diferença dos três tipos de tabela interna: **Standard**, **Sorted** e **Hashed**.

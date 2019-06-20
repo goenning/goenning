@@ -2,7 +2,7 @@
 title: Olá Mundo ABAP
 layout: post
 lang: pt
-tags: [abap, hello world, se80]
+tags: [abap]
 ---
 
 Hello World é provavelmente o programa mais conhecido no mundo da programação. É o programa mais simples de se escrever e por isto é constantemente usado para dar o ponta pé inicial nos estudos de ma nova linguagem. Aqui não vai ser diferente, vamos fazer o famoso programa em ABAP.

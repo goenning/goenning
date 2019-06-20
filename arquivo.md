@@ -55,4 +55,28 @@ ref: archive
       <span class="archive-post-date">Novembro/2010 (Joinville/SC - Brazil)</span>
     </li>
   </ul>
+
+  {% assign tags = "" | split: "," %}
+  {% for post in posts  %}
+    {% assign tags = tags | concat: post.tags | sort %}
+  {% endfor %}
+
+  <h1>Tags</h1>  
+  {% assign currTag = "" %}
+  {% for tag in tags %}
+    {% if currTag == "" %}
+      {% assign currTag = tag %}
+      {% assign tagCount = 1 %}
+    {% else %}
+      {% if currTag == tag %}
+        {% assign tagCount = tagCount | plus: 1 %}
+      {% else %}
+        <span class="site-tag" style="font-size: {{ tagCount | times: 4 | plus: 70  }}%">
+          <a href="/tags/pt#{{ currTag | slugify }}">{{ currTag | replace:'-', ' ' }} ({{ tagCount }})</a>
+        </span>
+        {% assign currTag = tag %}
+        {% assign tagCount = 1 %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
 </div>

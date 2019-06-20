@@ -2,7 +2,7 @@
 layout: post
 title: Using Docker to make OSS contribution easier
 lang: en
-tags: [node.js, Docker, open source]
+tags: [node.js, docker, open source]
 ref: using-docker-to-make-oss-contribution-easier
 ---
 

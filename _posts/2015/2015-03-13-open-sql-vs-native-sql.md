@@ -2,7 +2,7 @@
 title: Open SQL vs Native SQL
 layout: post
 lang: pt
-tags: [abap, db interface, native sql, open sql]
+tags: [abap]
 ---
 O assunto que vamos explorar aqui são os comandos e os componentes envolvidos no acesso ao banco de dados na plataforma ABAP.
 

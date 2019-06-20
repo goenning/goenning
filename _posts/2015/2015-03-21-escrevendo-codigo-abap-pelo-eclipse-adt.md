@@ -2,7 +2,7 @@
 title: Escrevendo código ABAP pelo Eclipse ADT
 layout: post
 lang: pt
-tags: [ abap, ambiente, eclipse adt]
+tags: [abap]
 ---
 **Eclipse ADT** (ABAP Development Tool) é uma versão da IDE mais conhecida com complementos que permitem que possamos programar em ABAP fora do SAP. A [SAP já alertou](http://scn.sap.com/docs/DOC-29113#jive_content_id_Will_SAP_stop_investing_in_the_ABAP_workbench_SE80_or_even_disable_it) de que no futuro novos recursos exclusivos serão adicionados ao ADT. Então este será o futuro, queira você quer ou não. Quanto antes você se acostumar, melhor. Vejamos alguns outros motivos para optar pelo uso do Eclipse ADT.
 

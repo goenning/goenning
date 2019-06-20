@@ -2,7 +2,7 @@
 title: Explorando o FOR ALL ENTRIES IN
 layout: post
 lang: pt
-tags: [abap, for all entries in, opensql]
+tags: [abap]
 ---
 ![](/public/images/2015/03/2014-05-05-20_57_24-Documentação-palavra-chave-ABAP.png)
 

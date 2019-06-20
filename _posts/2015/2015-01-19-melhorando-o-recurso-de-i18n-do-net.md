@@ -2,7 +2,7 @@
 title: Melhorando o recurso de i18n do .Net
 lang: pt
 layout: post
-tags: [csharp, i18n, oop, polimorfismo]
+tags: [.net]
 ref: better-i18n-with-net
 ---
 

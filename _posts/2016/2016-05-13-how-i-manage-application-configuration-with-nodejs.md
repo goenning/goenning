@@ -2,7 +2,7 @@
 layout: post
 title: How I manage application configuration with Node.js
 lang: en
-tags: [node.js, environment, configuration]
+tags: [node.js]
 ---
 
 Every application needs configuration settings and most programming languages/frameworks ecosystem has some kind of default support and convention for it.

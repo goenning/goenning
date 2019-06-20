@@ -2,7 +2,7 @@
 title: Tipos de dados, variáveis e constantes
 layout: post
 lang: pt
-tags: [abap, tipos de dados ,variáveis]
+tags: [abap]
 ---
 Conhecer o fundamento dos tipos de dados e suas opções é essencial para podermos construir programas de qualidade, principalmente a partir da versão 4.5 onde a linguagem passou a suportar os modelos de programação estruturado e orientado a objetos de forma mista. Parece besteira, mas o funcionamento dos tipos de dados em ABAP possui uma diferença considerável quando comparada com outras linguagens.
 

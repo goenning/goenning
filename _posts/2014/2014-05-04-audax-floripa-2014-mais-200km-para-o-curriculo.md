@@ -2,7 +2,7 @@
 layout: post
 title: Audax Floripa 2014. Mais 200km para o currículo.
 lang: pt
-tags: [audax, audax floripa, volta à ilha]
+tags: [ciclismo]
 ---
 Meu objetivo este ano era completar apenas os 200km do [Audax Joinville](/2014/04/02/audax-joinville-200km-agora-foi/), mas gostei tanto da brincadeira que resolvi fazer também os 200km de Florianópolis. Nunca havia feito a volta na ilha de Floripa e esta era uma excelente oportunidade para pedalar com a turma, completar mais um brevet e ainda fazer este fantástico passeio pela ilha da magia.
 

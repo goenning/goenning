@@ -2,7 +2,7 @@
 layout: post
 title: Audax Joinville 200km. Agora foi!
 lang: pt
-tags: [audax, bike, esporte]
+tags: [ciclismo]
 ---
 
 ![](/public/images/2014/04/aj200-largada.jpg)

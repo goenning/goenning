@@ -2,7 +2,7 @@
 layout: post
 title: Poupando a bateria do celular para monitorar atividades física de longa distância
 lang: pt
-tags: [android, bateria, strava]
+tags: [ciclismo]
 ---
 ![](/public/images/2014/05/bateria-acabando.jpg)
 

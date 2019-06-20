@@ -2,7 +2,7 @@
 title: Habilitando SAP ICF na instalação MiniSAP
 layout: post
 lang: pt
-tags: [abap, icf, minisap, sap]
+tags: [sap]
 ref: how-to-enable-sap-icf-in-minisap-installation
 ---
 

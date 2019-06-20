@@ -2,7 +2,7 @@
 layout: post
 title: Como repetir quando React lazy falha
 lang: pt
-tags: [react, lazy, suspense]
+tags: [react]
 description: React 16.6 foi lançado e agora é mais fácil do que nunca fazer importacão dinâmica de componentes usando a nova funcão chamda lazy. Após alguns dias monitorando uma aplicação em produção que estava usando lazy, notamos errors no Browser onde alguns usuários não estavam conseguindo carregar os componentes dinâmicos. Aprenda aqui como mitigar este problema.
 ref: retry-react-lazy-fails
 ---

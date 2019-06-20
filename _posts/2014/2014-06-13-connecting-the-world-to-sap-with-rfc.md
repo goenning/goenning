@@ -2,7 +2,7 @@
 layout: post
 title: Connecting the world to SAP with RFC
 lang: en
-tags: [sap, abap, rfc]
+tags: [abap]
 ---
 
 RFC is the standard interface of communication between SAP systems. It is through this protocol that data are exchanged between different environments. To make this work it is necessary to configure what is know as `RFC Destination`. A new destination can be created at `SM59` transaction, where we input technical configuration and a public name. This name is used when we need to call a function in a remote SAP system.

@@ -2,7 +2,7 @@
 title: LOOP FROM INDEX em tabelas sorted
 layout: post
 lang: pt
-tags: [abap, loop, performance, tipos de tabela]
+tags: [abap, performance]
 ---
 
 No artigo [Performance de leitura por tipo de tabela](/2015/03/18/performance-de-leitura-por-tipo-de-tabela/ "Performance de leitura por tipo de tabela") descobrimos a real diferença no tempo de exeucução para leituras nos três tipos de tabela: standard, sorted e hashed. Neste exemplo em questão fizemos os testes somente com a operação de READ TABLE que é usada quando precisamos de apenas um registro da tabela. Quando é necessário operar com um conjunto de registros de uma tabela interna precisamos usar LOOP&#8230;WHERE. Em termos de desempenho o resultado é semelhante, pois o LOOP nada mais é que diversas operações de READ até ter lido todos os registros que satisfazem a condição especificado no filtro WHERE. Mas existe uma técnica conhecida como **LOOP FROM INDEX** que promete diminuir o tempo de leitura nestas situações.

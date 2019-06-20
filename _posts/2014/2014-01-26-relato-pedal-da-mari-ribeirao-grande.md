@@ -2,7 +2,7 @@
 layout: post
 title: 'Relato: Pedal da Mari - Ribeirão Grande'
 lang: pt
-tags: [bike, esporte]
+tags: [ciclismo]
 ---
 
 Nem mesmo a má previsão do tempo e a garoa que fazia quando acordei foram suficientes para me fazer desistir deste excelente evento de cicloturismo.

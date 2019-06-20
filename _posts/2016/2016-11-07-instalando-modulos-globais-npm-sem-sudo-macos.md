@@ -2,7 +2,7 @@
 layout: post
 title: Instalando modulos globais do NPM sem sudo no macOS / Linux
 lang: pt
-tags: [npm, macOS, node.js]
+tags: [node.js]
 ---
 
 Quando instalamos um módulo global do NPM os arquivos são colocados dentro da pasta `/usr/local`.

@@ -2,7 +2,7 @@
 title: 'Resenha: JavaScript: The Good Parts'
 layout: post
 lang: pt
-tags: [angular.js, javascript, livros, resenhas]
+tags: [javascript]
 ---
 JavaScript foi uma das linguagens que aprendi sem querer. Sempre vi como uma linguagem complementar para criação de aplicações web e por isto nunca dediquei um tempo para estudar. Tudo o que aprendi foi com auxílio de amigos, Google e é claro o StackOverflow. Além disto, posso dizer que conheço mais de jQuery do que de JavaScript puro.
 

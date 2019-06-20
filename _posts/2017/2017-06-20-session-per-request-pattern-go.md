@@ -2,7 +2,7 @@
 layout: post
 title: "Session per Request pattern in Go"
 lang: en
-tags: [go, golang, web, database, transaction, pattern]
+tags: [go, web, sql]
 description: There is a particular pattern that is very common on these languages that is hard to find any mentions about in the Go community. The pattern is called Session per Request and is particularly useful to decouple business components from database transaction management. This post will drive you through what it is, how to implement, pros/cons and some examples written in Go.
 ---
 

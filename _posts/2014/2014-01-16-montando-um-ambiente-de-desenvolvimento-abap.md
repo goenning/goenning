@@ -2,7 +2,7 @@
 layout: post
 title: Montando um ambiente de desenvolvimento ABAP
 lang: pt
-tags: [sap, abap, tecnologia]
+tags: [abap]
 ---
 
 Para quem acha que aprender ABAP é caro devido ao alto custo de aquisição do sistema SAP, este tutorial vai mostrar que isto não é verdade. É possível instalar o SAP sem pagar nada. Na verdade a instalação que vou mostrar é apenas um pedaço do SAP, mas é o suficiente para quem quer começar a aprender o mundo da programação ABAP.

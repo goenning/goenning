@@ -2,7 +2,7 @@
 layout: post
 title: De mudança para a Irlanda
 lang: pt
-tags: [irlanda, dublin, trabalho, imigração]
+tags: [irlanda]
 series: brasilparairlanda
 description: Nossa história de vida é um conjunto de fatos. Tomamos uma decisão que irá mudar completamente nossas vidas. Estamos nos mudando para Dublin, Irlanda.
 ---

@@ -2,7 +2,7 @@
 title: Chamando funções .NET com SAP RFC
 layout: post
 lang: pt
-tags: [abap, github, jco, nco, rfc, rfc server]
+tags: [abap]
 ---
 No post [Conectando o mundo externo ao SAP com o uso de RFC](/2015/03/13/conectando-o-mundo-externo-ao-sap-com-o-uso-de-rfc/) falamos sobre como fazer aplicações Java e .NET acessarem funções do SAP através do protocolo RFC.
 

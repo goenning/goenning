@@ -2,7 +2,7 @@
 title: 'Pedal da Mari: O manso é para os bravos'
 layout: post
 lang: pt
-tags: [bike, manso é para os bravos ,pedal da mari]
+tags: [ciclismo]
 ---
 Dia 1 de Maio de 2015, feriado nacional em homenagem aos trabalhadores. Uma excelente oportunidade para ficar em casa e fazer aquilo que nunca temos tempo: **nada**.
 

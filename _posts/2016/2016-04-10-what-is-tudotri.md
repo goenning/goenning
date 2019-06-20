@@ -2,7 +2,7 @@
 layout: post
 title: Business and technical overview of tudoTRI
 lang: en
-tags: [livecoding, programming, triathlon]
+tags: [triathlon]
 ---
 
 I've always wanted to build an useful website that could help others somehow. I decided to do it by combining two of my life passions: computer programming and triathlon.

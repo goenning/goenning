@@ -2,7 +2,7 @@
 layout: post
 title: Como evitar o caos de caminho relativo em projetos JavaScript / TypeScript
 lang: pt
-tags: [typescript, javascript, module resolution]
+tags: [typescript, javascript]
 ref: how-to-avoid-relative-path-hell-javascript-typescript-projects
 description: Caso na importação de módulos usando caminho relativo é algo bem comum em grandes projetos JavaScript/TypeScript. Aprenda aqui como usar Webpack para resolver este problema.
 ---

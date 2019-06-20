@@ -2,7 +2,7 @@
 layout: post
 title: How to avoid relative path hell in JavaScript / TypeScript projects
 lang: en
-tags: [typescript, javascript, module resolution]
+tags: [typescript, javascript]
 ref: how-to-avoid-relative-path-hell-javascript-typescript-projects
 description: Relative path hell is a common pain point on large JavaScript/TypeScript projects. Learn how Webpack can help you avoid this problem.
 ---

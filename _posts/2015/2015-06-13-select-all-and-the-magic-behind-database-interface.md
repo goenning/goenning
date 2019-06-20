@@ -2,7 +2,7 @@
 layout: post
 title: SELECT * and the magic behind database interface
 lang: en
-tags: [sap, abap]
+tags: [abap]
 ref: select-all-and-the-magic-behind-database-interface
 ---
 

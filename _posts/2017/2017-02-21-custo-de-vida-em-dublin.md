@@ -2,7 +2,7 @@
 layout: post
 title: Custo de vida em Dublin
 lang: pt
-tags: [custo, salário, trabalho]
+tags: [irlanda]
 series: brasilparairlanda
 ---
 

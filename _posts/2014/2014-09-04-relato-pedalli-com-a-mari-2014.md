@@ -2,7 +2,7 @@
 layout: post
 title: Relato Pedalli com a Mari 2014
 lang: pt
-tags: [bike, pedal da mari]
+tags: [ciclismo]
 ---
 
 ![](/public/images/2014/09/G0272787.jpg)
@@ -44,11 +44,3 @@ Desta vez consegui levar a Daina junto, o que me deixou muito feliz por poder co
 Viu, quem mandou me ensinar, agora aguenta, pois vou te levar junto em todos os passeios.
 
 ![](/public/images/2014/09/G0392874.jpg)
-
-Um pouco do que consegui capturar do evento:
-
-<iframe class="youtube-player" type="text/html" width="648" height="395" src="http://www.youtube.com/embed/ohtNpEC-syc?version=3&amp;rel=1&amp;fs=1&amp;autohide=2&amp;showsearch=0&amp;showinfo=1&amp;iv_load_policy=1&amp;wmode=transparent" frameborder="0" allowfullscreen="true"></iframe>
-
-Percurso no Garmin:
-
-<iframe width="465" height="548" frameborder="0" src="http://connect.garmin.com:80/activity/embed/575816209"></iframe>

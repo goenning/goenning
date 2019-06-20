@@ -2,7 +2,7 @@
 layout: post
 title: Better i18n with .Net
 lang: en
-tags: [.net, i18n]
+tags: [.net]
 ref: better-i18n-with-net
 ---
 

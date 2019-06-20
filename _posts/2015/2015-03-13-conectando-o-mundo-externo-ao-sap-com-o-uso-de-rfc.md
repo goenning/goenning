@@ -2,7 +2,7 @@
 title: Conectando o mundo externo ao SAP com o uso de RFC
 layout: post
 lang: pt
-tags: [jco, módulo de função, nco, rfc, sap connector]
+tags: [abap]
 ---
 RFC é a interface padrão de comunicação entre sistemas SAP. É através deste protocolo que as informações são trocadas entre diferentes ambientes. Para que isto funcione é necessário configurar na transação SM59 o que são chamados de **RFC Destination**. Quando criamos uma RFC Destination é necessário informar as configurações técnicas, logon e também um nome. É este nome que é usado quando precisamos chamar uma função no sistema de destino.
 

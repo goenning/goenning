@@ -2,7 +2,7 @@
 layout: post
 title: Certificados SSL/TLS Gratuitos e Automatizados com Go
 lang: pt
-tags: [go, golang, https, security]
+tags: [go, segurança]
 description: HTTPS se tornou obrigatório hoje em dia. Não só por questões de segurança, mas também pelo fato de que o Google da prioridade aos sites que estão acessíveis através de um protocolo seguro. Estamos em 2017 e já passou o tempo de que custo era uma desculpa aceitável para não ter HTTPS em nosso websites. Aprenda aqui como gerar certificados SSL/TLS de forma automática e sem gastar um centavo.
 ref: free-and-automated-ssl-certificates-with-go
 ---

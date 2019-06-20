@@ -2,7 +2,7 @@
 layout: post
 title: Connecting to SAP with SOAP RFC
 lang: en
-tags: [sap, abap, rfc, soap, icf, sharpsaprfc]
+tags: [abap, sharpsaprfc]
 ref: connecting-to-sap-with-soap-rfc
 ---
 

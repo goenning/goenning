@@ -2,7 +2,7 @@
 title: Manipulando XML com ABAP
 layout: post
 lang: pt
-tags: [abap, sax reader, xml, xml dom, xml parser, xpath]
+tags: [abap]
 ---
 
 O XML tornou-se o padrão mais aceito para troca de informações entre sistemas pela sua simplicidade e versatilidade. Apesar de eu achar que ele está perdendo o posto de líder para o mais novo queridinho do pedaço, o JSON, ainda veremos muitos e muitos documentos XML sendo usado para integração de sistemas. Em toda linguagem de programação encontramos pelo menos mais de uma forma de se trabalhar com estes documentos. As mais usadas acabam sendo funções de string (substring, indexOf, etc.), XML DOM e SAX Parser.

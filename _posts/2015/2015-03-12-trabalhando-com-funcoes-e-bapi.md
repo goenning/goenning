@@ -2,7 +2,7 @@
 title: Trabalhando com Funções e BAPI
 layout: post
 lang: pt
-tags: [abap, bapi, function, se37]
+tags: [abap]
 ---
 
 No ABAP — assim como em diversas outras linguagens estruturadas — temos a possibilidade de criar pedaços de código que são reutilizáveis. Estes códigos são chamados de funções e estão disponíveis para que qualquer programa faça uso deles.

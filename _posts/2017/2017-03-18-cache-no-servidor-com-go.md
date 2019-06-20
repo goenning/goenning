@@ -2,7 +2,7 @@
 layout: post
 title: "Cache no Servidor com Go"
 lang: pt
-tags: [go, golang, web, performance, cache]
+tags: [go, web, performance, cache]
 ref: server-side-cache-go
 description:
   Go é muito rápido e todos nós sabemos disto. Mas como fazemos para nossas aplicações web serem ainda mais rápidas? Neste post vou mostrar como podemos obter tempos de resposta ainda menores using cache no lado do servidor, afinal, performance é importante e ninguém gosta de ficar olhando barra de progresso, não é?

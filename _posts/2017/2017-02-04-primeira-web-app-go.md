@@ -2,7 +2,7 @@
 layout: post
 title: Sua primeira aplicação web usando Go
 lang: pt
-tags: [go, golang, web, gostore]
+tags: [go, web]
 series: primeirawebappgo
 ref: your-very-first-web-app-go
 ---

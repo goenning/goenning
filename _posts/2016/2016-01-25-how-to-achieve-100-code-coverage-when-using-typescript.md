@@ -2,7 +2,7 @@
 layout: post
 title: How to achieve 100% code coverage when using TypeScript
 lang: en
-tags: [typescript, istambul, code-coverage]
+tags: [typescript, test automation]
 ---
 
 An implication of using transpile-to-javascript languages is that the compiler may emit some code that you did not expect. TypeScript does it for what he calls helper functions. These functions are emitted on each of the compiled files that need them. The same function, over and over again.
