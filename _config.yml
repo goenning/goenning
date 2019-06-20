@@ -3,8 +3,8 @@
 #
 name: '@goenning'
 author: '@goenning'
-description: loop at { code; run; read; blog; eat; bike ride; } until tired;
-avatar: //www.gravatar.com/avatar/ba158e6c8c0e4a7869f4b9f0a45db0fe?s=200
+description: loop at { run; code; blog; swim; eat; cycle; } until tired;
+cavatar: //www.gravatar.com/avatar/ba158e6c8c0e4a7869f4b9f0a45db0fe?s=200
 env: production
 
 #
