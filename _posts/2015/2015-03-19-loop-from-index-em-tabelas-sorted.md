@@ -66,7 +66,7 @@ Quanto mais para a direita, maior a quantidade de registros em cada tabela. Para
 
 Veja que no final a diferença total entre os dois métodos é de apenas **0,2 segundos**. Estamos falando de uma tabela de 5.000 registros e outra de 5.000.000, o que não é muito comum na maioria dos programas. 
 
-Então me diga, vale a pena complicar nosso código por conta destes poucos milissegundos? Sinceramente, se o seu programa está lento não é isto que irá fazer a diferença. Invista seu tempo e esforço nos problemas que realmente trarão benefícios, certamente este não é um dos problemas.
+Então me diga, vale a pena complicar nosso código por conta destes poucos milissegundos? Sinceramente, se o seu programa está lento não é isto que fará a diferença. Invista seu tempo e esforço nos problemas que realmente trarão benefícios, certamente este não é um dos problemas.
 
 ## O código do programa de teste
 

@@ -10,7 +10,7 @@ Este é um dos tópicos que mais pesquisamos antes de nos mudarmos para cá. Con
 
 ![](/public/images/2017/02/tesco.jpg)
 
-Pensando nisto descrevemos abaixo os principais custos e quanto você irá gastar em média. Vale a pena reforçar que estes valores refletem um padrão de vida médio de um casal, o que pode ser diferente do seu caso. 
+Pensando nisto descrevemos abaixo os principais custos e quanto você gastará em média. Vale a pena reforçar que estes valores refletem um padrão de vida médio de um casal, o que pode ser diferente do seu caso. 
 
 | Despesa | Sozinho | Compartilhado |
 |---|:---:|:---:|
@@ -50,7 +50,7 @@ A energia aqui de casa é pré-paga e funciona da seguinte maneira. Nós compram
 
 Nossa conta gira em torno de €40 por mês. [Este site](http://www.bonkers.ie/guides/gas-electricity/national-average-energy-consumption/) fez uma pesquisa da média nacional aqui na Irlanda em relação à consumo de energia e gás. Fazendo as contas é possível ver que nosso gasto está de acordo com a média.
 
-Dependendo da residência, você poderá até escolher qual a companhia que te irá oferecer o serviço, mas o preço não irá ser muito diferente.
+Dependendo da residência, você poderá até escolher qual a companhia que te oferecerá o serviço, mas o preço não será muito diferente.
 
 <a id="gas"></a>
 
@@ -82,7 +82,7 @@ Existe bastante discussão em torno deste tópico aqui na Irlanda. A água sempr
 
 ### Taxa de Lixo
 
-Assim como a energia, talvez você possa escolher qual empresa irá recolher seu lixo. Digo talvez, pois se for um condomínio, não terá outra opção a não ser usar a mesma companhia de todo o condomínio.
+Assim como a energia, talvez você possa escolher qual empresa recolherá seu lixo. Digo talvez, pois se for um condomínio, não terá outra opção a não ser usar a mesma companhia de todo o condomínio.
 
 O pagamento é mensal e vai depender da quantidade de latões de lixo que você enche. Considere €20 por mês, porém algumas residências contam com taxa de lixo incluso, principalmente se for condomínio onde os latões de lixo são compartilhados e consequentemente mais barato.
 
@@ -100,7 +100,7 @@ Existe também o jeitinho brasileiro de burlar esta taxa, mas vou deixar isto en
 
 ### Transporte
 
-Se forem usar transporte público, a primeira coisa que você deve fazer é um Leap Card (https://www.leapcard.ie). Este cartão te permite utilizar qualquer modo de transporte público com um desconto. Considerando que você pegue um ônibus todo dia para ir e outro para voltar, o custo diário será de no máximo € 5,20. Digo no máximo, pois a cobrança é feito com base onde você irá descer, então dependendo da distância é possível pagar um valor menor.
+Se forem usar transporte público, a primeira coisa que você deve fazer é um Leap Card (https://www.leapcard.ie). Este cartão te permite utilizar qualquer modo de transporte público com um desconto. Considerando que você pegue um ônibus todo dia para ir e outro para voltar, o custo diário será de no máximo € 5,20. Digo no máximo, pois a cobrança é feito com base onde você vai descer, então dependendo da distância é possível pagar um valor menor.
 
 Por mês o valor total será de mais ou menos €100. Existem outras formas de transporte públic, como o DART e o LUAS, mas o valor mensal vai ficar por volta disto também.
 
@@ -133,7 +133,7 @@ Aqui vão algumas dicas para economizar um pouco na hora de fazer compras no mer
 
 Apesar de não estar diretamente ligado com custos de vida, acho que vale a pena comentar sobre o poder de compra na Europa comparado com o Brasil.
 
-A moeda europeia vale muito mais que o Real, então é de se esperar que os produtos em geral aqui sejam mais baratos, seja roupa, brinquedo, eletrônicos ou automóveis. Porém muitas vezes nos deparamos com um produto que, quando convertemos seu preço para o Real (*não faça isto, sério, mas eu sei que você irá fazer...*), o preço chega a ser quase igual ao do Brasil.
+A moeda europeia vale muito mais que o Real, então é de se esperar que os produtos em geral aqui sejam mais baratos, seja roupa, brinquedo, eletrônicos ou automóveis. Porém muitas vezes nos deparamos com um produto que, quando convertemos seu preço para o Real (*não faça isto, sério, mas eu sei que você fará...*), o preço chega a ser quase igual ao do Brasil.
 
 Isto não quer dizer que o produto está caro, longe disto. A diferença está no salário mínimo (e médio) da Europa. Imagina que um trabalhador no Brasil consegue economizar R$ 500. O que ele consegue fazer com isto? Não muito, certo? Agora é se você economiza €500, já pensou em tudo o que é possível fazer com esta quantia? A diferença do salário é ENORME e isto, é claro, faz com que o poder de compra seja maior.
 

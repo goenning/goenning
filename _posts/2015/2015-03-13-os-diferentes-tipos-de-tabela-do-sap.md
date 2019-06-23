@@ -103,7 +103,7 @@ Este tipo de tabela é bastante usado pelo SAP para tabela de parâmetros de sis
 
 # Cluster Table
 
-As Cluster Tables possuem uma certa semelhança com a Pooled Table. Isto porque quando criamos uma tabela deste tipo precisamos informar qual será a tabela do banco de dados que irá armazenar os dados fisicamente. Várias Cluster Tables compartilham a mesma tabela física. Igual ao Pooled Table, correto? Até aqui sim, a grande diferença é que quando criamos um cluster de tabelas devemos informar qual a chave primária da tabela e todas as tabelas lógicas que compõem este cluster precisam conter a mesma chave. Isto é necessário pela forma com que o SAP armazena estes registros na tabela física. Vamos ver um exemplo disto na prática.
+As Cluster Tables possuem uma certa semelhança com a Pooled Table. Isto porque quando criamos uma tabela deste tipo precisamos informar qual será a tabela do banco de dados que armazenará os dados fisicamente. Várias Cluster Tables compartilham a mesma tabela física. Igual ao Pooled Table, correto? Até aqui sim, a grande diferença é que quando criamos um cluster de tabelas devemos informar qual a chave primária da tabela e todas as tabelas lógicas que compõem este cluster precisam conter a mesma chave. Isto é necessário pela forma com que o SAP armazena estes registros na tabela física. Vamos ver um exemplo disto na prática.
 
 Vamos tomar como exemplo um sistema de Recursos Humanos. Na ficha cadastral de um funcionário existem diversas informações que são separadas por categoria. Ex.: dados básicos, dados de endereço, dados profissionais, dados familiares, dados de veículos e etc.
   

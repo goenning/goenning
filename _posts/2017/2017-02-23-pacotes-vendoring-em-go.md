@@ -7,7 +7,7 @@ series: primeirawebappgo
 ref: packages-vendoring-in-go
 ---
 
-No último post desta série terminamos uma aplicação web simples, porém completamente funcional usando apenas a biblioteca padrão. Durante este post você irá aprender como funciona o gerenciamento de pacotes em Go usando um pacote de terceiros que é bem famoso.
+No último post desta série terminamos uma aplicação web simples, porém completamente funcional usando apenas a biblioteca padrão. Durante este post você aprenderá como funciona o gerenciamento de pacotes em Go usando um pacote de terceiros que é bem famoso.
 
 ![](/public/images/2017/02/go-packages.jpg)
 
@@ -88,7 +88,7 @@ Você pode obtê-lo usando o seguinte comando em seu terminal.
 
 > go get github.com/gorilla/mux
 
-O que `go get` irá fazer é baixar o código fonte do GitHub e colocar os arquivos em `$GOPATH/src/github.com/gorilla/mux`. Você pode confirmar isto inspecionando o diretório `$GOPATH` em seu sistema operacional.
+O que `go get` fará é baixar o código fonte do GitHub e colocar os arquivos em `$GOPATH/src/github.com/gorilla/mux`. Você pode confirmar isto inspecionando o diretório `$GOPATH` em seu sistema operacional.
 
 Ótimo! Agora você pode criar qualquer aplicação em Go e utilizar `github.com/gorilla/mux`.
 
@@ -132,11 +132,11 @@ Parabéns! Você acaba de aprender a usar um pacote de terceiros em Go :)
 
 ### Vendoring 
 
-Este projeto irá funcionar em seu computador desde que você tenha executado o comando `go get` para baixar a dependência. Mas como podemos compartilhar este código entre nosso coletas ou a comunidade e garantir que todos tenham as dependências baixas e, o mais importante, a versão correta de cada dependência.
+Este projeto funcionará em seu computador desde que você tenha executado o comando `go get` para baixar a dependência. Mas como podemos compartilhar este código entre nosso coletas ou a comunidade e garantir que todos tenham as dependências baixas e, o mais importante, a versão correta de cada dependência.
 
 É aí que o conceito de `vendoring` entra em jogo. Basicamente á uma funcionalidade introduzida no Go 1.5 que permite aplicações Go utilizar dependências não só de `$GOPATH/src`, mas também de um diretório chamado `vendor` dentro de cada projeto.
 
-Isto significa que você pode colocar suas dependências dentro do diretório vendor ao invés de compartilhá-la globalmente no diretório $GOPATH. O compilador do Go irá primeiro procurar pelos pacotes dentro do diretório vendor, antes de procurar em $GOPATH.
+Isto significa que você pode colocar suas dependências dentro do diretório vendor ao invés de compartilhá-la globalmente no diretório $GOPATH. O compilador do Go primeiramente procurará pelos pacotes dentro do diretório vendor, antes de procurar em $GOPATH.
 
 Foi ai que surgiu um punhado de ferramentas criadas pela comunidade que permite que as aplicações descrevam explicitamente suas dependências em um arquivo e a opção de restaurá-las através de um simples comando.
 
@@ -150,9 +150,9 @@ O Glide está disponível em diversas plataformas, faça o download e instale a 
 
 Feito isto, você pode verificar se tudo ocorreu bem executando o comando `glide -v`.
 
-O primeiro comando que deve ser utilizado uma única vez para cada novo projeto é `glide init`, que irá basicamente criar um arquivo `glide.yaml` que descreve todas as dependências de nosso projeto.
+O primeiro comando que deve ser utilizado uma única vez para cada novo projeto é `glide init`, que basicamente criará um arquivo `glide.yaml` que descreve todas as dependências de nosso projeto.
 
-Como nós já havíamos importado `github.com/gorilla/mux` usando `go get`, este comando irá descobrí-lo e automaticamente definí-lo como uma dependência do projeto. Mas você poderia instalar este ou qualquer outra dependência executando o mesmo comando `go get`, apenas trocando `go` por `glide`.
+Como nós já havíamos importado `github.com/gorilla/mux` usando `go get`, este comando o descobrirá e automaticamente definí-lo como uma dependência do projeto. Mas você poderia instalar este ou qualquer outra dependência executando o mesmo comando `go get`, apenas trocando `go` por `glide`.
 
 > glide get github.com/gorilla/mux
 
@@ -186,7 +186,7 @@ Gin (e muitos web hosts, como Heroku) disponibilizam uma variável de ambiente n
 
 Ao invés de `go run`, você agora pode executar apeans `gin` e navegar até o endereço `http://localhost:3000` para ver sua aplicação funcionando.
 
-Assim que você fizer qualquer alteração em um arquivo Go, Gin irá recompilar e reexecutar seu app sem que você tenha que executar nada no terminal, apenas recarregue a página e veja a diferença. Esta ferramente é ótimo para acelerar o desenvolvimento, use e abuse :)
+Assim que você fizer qualquer alteração em um arquivo Go, Gin recompilará e reexecutará seu app sem que você tenha que executar nada no terminal, apenas recarregue a página e veja a diferença. Esta ferramente é ótimo para acelerar o desenvolvimento, use e abuse :)
 
 ### Vamos recapituar o que aprendemos até agora:
 

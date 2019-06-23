@@ -5,7 +5,7 @@ lang: pt
 tags: [abap]
 ---
 
-Hello World é provavelmente o programa mais conhecido no mundo da programação. É o programa mais simples de se escrever e por isto é constantemente usado para dar o ponta pé inicial nos estudos de ma nova linguagem. Aqui não vai ser diferente, vamos fazer o famoso programa em ABAP.
+Hello World é provavelmente o programa mais conhecido no mundo da programação. É o programa mais simples de se escrever e por isto é constantemente usado para dar o ponta pé inicial nos estudos de ma nova linguagem. Aqui não será diferente, vamos fazer o famoso programa em ABAP.
 
 Mas antes de escrevermos qualquer linha de código, gostaria de explicar rapidamente sobre o workbench.
 
@@ -64,7 +64,7 @@ WRITE: 'Olá ', p_nome.
 
 Foi criado um parâmetro de entrada chamado **p_nome** do tipo caractere e de no máximo 20 posições. O comando WRITE também foi modificado para receber desta vez duas strings.
   
-Note que após o comando write foi incluído o caractere &#8220;:&#8221;. Quando for necessário executar várias vezes o mesmo comando em ABAP você pode adicionar &#8220;:&#8221; após o comando e em seguida passar os parâmetros separados por uma vírtula &#8220;,&#8221;. Desta forma o ABAP irá executar este comando uma vez para cada parâmetro. Ou seja, o WRITE acima tem o mesmo resultado que o exemplo abaixo.
+Note que após o comando write foi incluído o caractere &#8220;:&#8221;. Quando for necessário executar várias vezes o mesmo comando em ABAP você pode adicionar &#8220;:&#8221; após o comando e em seguida passar os parâmetros separados por uma vírtula &#8220;,&#8221;. Desta forma o ABAP executará este comando uma vez para cada parâmetro. Ou seja, o WRITE acima tem o mesmo resultado que o exemplo abaixo.
 
 ~~~
 WRITE 'Olá'.

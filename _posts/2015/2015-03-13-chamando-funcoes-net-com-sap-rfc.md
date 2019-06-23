@@ -100,7 +100,7 @@ Lembram que falei do PROGRAM ID? Vejam que aqui estamos usando os mesmos valores
 Vamos precisar de apenas duas classes:
 
   * **Program:** O ponto de início da aplicação console. Responsável pela criação e inicialização do servidor RFC.
-  * **MyRfcHandler:** Classe que irá conter os métodos que são invocados remotamente.
+  * **MyRfcHandler:** Classe que conterá os métodos que são invocados remotamente.
 
 O código delas ficou assim:
 

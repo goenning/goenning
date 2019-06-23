@@ -10,7 +10,7 @@ tags: [abap]
     
 ![](/public/images//2015/03/eclipse-adt-abas.png)
 
-* **Apenas código:** Uma das características que mais odeio no workbench é que alguns objetos são apresentados em forma de um formulário. Já viu que para adicionar um novo parâmetro em uma função você precisa acessar a aba de parâmetros e preencher um ALV? É quase um gerador de código. Pior ainda é criar uma classe. Quem aqui nunca se perdeu navegando na tela da se24 na procura por um método e seus parâmetros? É tudo muito confuso. Parece que o workbench tentou facilitar, mas programadores querem ver código e o Eclipse ADT faz exatamente isto. Tudo o que você vai fazer aqui é ler e escrever código e mais código. 
+* **Apenas código:** Uma das características que mais odeio no workbench é que alguns objetos são apresentados em forma de um formulário. Já viu que para adicionar um novo parâmetro em uma função você precisa acessar a aba de parâmetros e preencher um ALV? É quase um gerador de código. Pior ainda é criar uma classe. Quem aqui nunca se perdeu navegando na tela da se24 na procura por um método e seus parâmetros? É tudo muito confuso. Parece que o workbench tentou facilitar, mas programadores querem ver código e o Eclipse ADT faz exatamente isto. Tudo o que você fará aqui é ler e escrever código e mais código. 
 ![](/public/images//2015/03/eclipse-adt-salv-table.png)
   
 * **Recursos nativos:** O editor do Eclipse já vem com inúmeros recursos e muitos destes estão habilitados para uso em ABAP também. Renomear, bookmark, depuração, refatorar, lista de tarefas, janelas personalizadas a seu gosto, ambiente de execução de testes unitários, entre outros. 

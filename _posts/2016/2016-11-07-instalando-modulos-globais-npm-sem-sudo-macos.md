@@ -21,7 +21,7 @@ Você pode remover um por um, usando `sudo npm -g rm <nome>` ou então algo mais
 
 > $ npm ls -gp --depth=0 | awk -F/ '/node_modules/ && !/\/npm$/ {print $NF}' | xargs npm -g rm
 
-A explicação está contida [neste post](http://stackoverflow.com/questions/9283472/command-to-remove-all-npm-modules-globally), mas basicamente ele irá percorrer todos módulos globais e executar o `npm rm` para cada um.
+A explicação está contida [neste post](http://stackoverflow.com/questions/9283472/command-to-remove-all-npm-modules-globally), mas basicamente ele percorrerá todos módulos globais e executar o `npm rm` para cada um.
 
 ### 2. Pasta padrão
 
@@ -44,7 +44,7 @@ export PATH=~/.npm-global/bin:$PATH
 
 Salve o arquivo e reinicie seu terminal (ou recarregue-o com `source ~/.bash_profile`).
 
-Se tudo ocorrer bem, o comando `npm config get prefix` agora irá imprimir `/Users/oenning/.npm-global`.
+Se tudo ocorrer bem, o comando `npm config get prefix` agora imprimirá `/Users/oenning/.npm-global`.
 
 ### 4. Instalando pacotes sem sudo
 

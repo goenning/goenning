@@ -46,7 +46,7 @@ Mas terão algumas empresas que irão te surpreender com um e-mail contendo: "Go
 
 Seja ela uma startup ou multinacional, você só vai descobrir se você **tentar**! A questão é: não se abale em receber um não. Continue a tentar.
 
-Se você ainda não está 100% certo de que esta é a hora de realmente se mudar, seja qual for o motivo, você ainda assim pode aplicar para estas vagas só para praticar e ver como você se sai. Se te rejeitarem durante a entrevista, pelo menos você vai ter aprendido alguma coisa. Agora se você for aceito, é só rejeitar a oferta, simples assim. Ou se for muito boa, aceite! A questão é que participando dos processos de recrutamento mesmo quando não está procurando um novo emprego é um excelente forma de mensurar o quanto o mercado está procurando alguém como você.
+Se você ainda não está 100% certo de que esta é a hora de realmente se mudar, seja qual for o motivo, você ainda assim pode aplicar para estas vagas só para praticar e ver como você se sai. Se te rejeitarem durante a entrevista, pelo menos você terá aprendido alguma coisa. Agora se você for aceito, é só rejeitar a oferta, simples assim. Ou se for muito boa, aceite! A questão é que participando dos processos de recrutamento mesmo quando não está procurando um novo emprego é um excelente forma de mensurar o quanto o mercado está procurando alguém como você.
 
 Quando estiver decidido que a hora de se mudar chegou, você terá noção de como funciona os processos fora do Brasil, quanto o mercado está disposto a te pagar e se seu inglês é suficiente ou não.
 
@@ -60,9 +60,9 @@ Lembre-se que ao aplicar para uma vaga você estará competindo pela vaga não s
 
 Em algum momento na entrevista vão te perguntar quando você consegue começar a trabalhar. Então faça seu checklist de saída do país e se possível antecipe algumas atividades. As empresas sabem que uma mudança desta não é rápida, então não se preocupe em pedir dois o mais meses. Lembre-se que se você não possui cidadania européia você terá que aguardar sua autorização de trabalho ficar pronta, só isto pode levar mais de um mês.
 
-##### 2) Já fez as contas de quanto você vai gastar por mês com aluguel, alimentação, transporte, etc? Quanto seria o salário que você estaria disposto a aceitar para se mudar?
+##### 2) Já fez as contas de quanto você gastará por mês com aluguel, alimentação, transporte, etc? Quanto seria o salário que você estaria disposto a aceitar para se mudar?
 
-O quanto você vai gastar por mês depende do seu estilo de vida. A Irlanda, por exemplo, não estipula um valor mínimo de Euros que você precisa trazer durante a imigração, mas muitos países possuem, faça uma pesquisa antes para não ter uma surpresa depois. 
+O quanto você gastará por mês depende do seu estilo de vida. A Irlanda, por exemplo, não estipula um valor mínimo de Euros que você precisa trazer durante a imigração, mas muitos países possuem, faça uma pesquisa antes para não ter uma surpresa depois. 
 
 O site [numbeo](https://www.numbeo.com/cost-of-living) é um bom começo para ter uma primeira noção de quanto custam as coisas em seu país de destino. Em breve pretendo escrever melhor sobre gastos mensais aqui em Dublin.
 
@@ -111,13 +111,13 @@ Outro tipo de teste muito usado é quando o entrevistador solicita que você des
 
 Não, você não precisa ser bonito(a).
 
-A questão é que muitas empresas de TI valorizam **MUITO** quando você o candidato é um participante ativo de comunidades online, como GitHub, Stack Overflow, Google Developers Group, blogosfera, etc. Não precisa ser famoso e nem estar no ranking de algum site, mas só de contribuir — mesmo que de forma singela — com projetos e a comunidade já vai dar uma destacada legal em seu currículo, além de também estar ajudando ao próximo. 
+A questão é que muitas empresas de TI valorizam **MUITO** quando você o candidato é um participante ativo de comunidades online, como GitHub, Stack Overflow, Google Developers Group, blogosfera, etc. Não precisa ser famoso e nem estar no ranking de algum site, mas só de contribuir — mesmo que de forma singela — com projetos e a comunidade já dará uma destacada legal em seu currículo, além de também estar ajudando ao próximo. 
 
 Invista um tempo neste assunto e mostre ao mundo o quão tecnicamente atraente você é, além de enriquecer seu currículo e montar seu próprio portfólio online, você estará fazendo parte de uma enorme rede de talentosos contatos que um dia poderão te surpreender.
 
 ##### 9) E o mais importante, você gostou da empresa em que vai se aplicar? 
 
-Não saia aplicando em qualquer empresa só para poder sair do Brasil e depois se arrepender por estar perdendo tempo. Invista em seu futuro escolhendo um local que irá te proporcionar crescimento pessoal e profissional. Pesquise muito sobre a empresa, aproveite que vivemos na era digital e navegue por todo os sites e redes sociais, busque conhecer o máximo sobre ela, leia as notícias, pesquisa sobre quem trabalha lá, leia os reviews no [Glassdoor](https://www.glassdoor.com).
+Não saia aplicando em qualquer empresa só para poder sair do Brasil e depois se arrepender por estar perdendo tempo. Invista em seu futuro escolhendo um local que proporcionará crescimento pessoal e profissional. Pesquise muito sobre a empresa, aproveite que vivemos na era digital e navegue por todo os sites e redes sociais, busque conhecer o máximo sobre ela, leia as notícias, pesquisa sobre quem trabalha lá, leia os reviews no [Glassdoor](https://www.glassdoor.com).
 
 A Irlanda, por exemplo, possui uma regra em que um imigrante deve ficar pelo menos 12 meses na empresa antes de conseguir uma nova autorização para trabalhar em outra empresa. Você não gostaria de queimar um ano de sua vida trabalhando em um local em que você não gosta, não é? 
 

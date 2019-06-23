@@ -43,7 +43,7 @@ O sotaque da língua nativa de alguns países é muito forte e isto geralmente i
 
 No post [Dicas para conseguir um emprego no exterior estando no Brasil](/2016/12/29/dicas-para-conseguir-um-emprego-no-exterior-estando-no-brasil/) eu deixei umas dicas de como praticar seu inglês. Dá uma olhada lá, pois foi exatamente isto que fiz para deixar meu inglês na ponta da lingua.
 
-Em resumo, se você estiver na mesma situação que eu, onde você consegue entender e ser entendido, mas continua com receio, a sugestão é: **arrisque, faça as entrevistas e deixe que o recrutador defina se seu inglês é suficiente ou não.** O que posso adiantar é que, a não ser que você tenha um inglês muito básico, ninguém irá se importar com seu sotaque e erros desde que suas habilidades interpessoais, experência profissional e conhecimento técnico atendam aos requisitos da vaga. A fluência em um segundo idioma só vem depois de muito tempo, e eles sabem disto.
+Em resumo, se você estiver na mesma situação que eu, onde você consegue entender e ser entendido, mas continua com receio, a sugestão é: **arrisque, faça as entrevistas e deixe que o recrutador defina se seu inglês é suficiente ou não.** O que posso adiantar é que, a não ser que você tenha um inglês muito básico, ninguém se importará com seu sotaque e erros desde que suas habilidades interpessoais, experência profissional e conhecimento técnico atendam aos requisitos da vaga. A fluência em um segundo idioma só vem depois de muito tempo, e eles sabem disto.
 
 Agora que estou mais confortável com o inglês, é hora de partir para o terceiro idioma e ver se estas pesquisas estão certas.
 

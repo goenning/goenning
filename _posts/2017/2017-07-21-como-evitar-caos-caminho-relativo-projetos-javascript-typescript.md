@@ -58,7 +58,7 @@ Vale a pena mencionar que isto também funciona com arquivos SCSS, mas é necess
 
 ## Você usa TypeScript? Sem problemas, também temos uma solução para você
 
-Caso esteja usando TypeScript e tentar implementar o alias do webpack, logo irá notar que o compilador não consegue encontrar os módulos, afinal o TypeScript não faz noção da configuração que fizemos no Webpack.
+Caso esteja usando TypeScript e tentar implementar o alias do webpack, logo notará que o compilador não consegue encontrar os módulos, afinal o TypeScript não faz noção da configuração que fizemos no Webpack.
 
 Existe uma configuração no compilador semelhantes ao do Wepback
 

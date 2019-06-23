@@ -126,7 +126,7 @@ START-OF-SELECTION.
 REPORT  zgdc_inttab_perf_test.
 
 TYPES:
-  " Tipo de dado que irá ser armazenado
+  " Tipo de dado que será armazenado
   BEGIN OF ty_object,
     pgmid	    TYPE pgmid,
     object    TYPE trobjtype,

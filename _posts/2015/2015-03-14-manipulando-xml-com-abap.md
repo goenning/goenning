@@ -255,7 +255,7 @@ FORM print_xpath USING lv_expression TYPE string
 
   WRITE: /, 'XPath:', lv_expression.
 
-  lo_xslt->set_expression( expression = lv_expression ). "Atributui ao processador qual vai ser a expressão a ser resolvida
+  lo_xslt->set_expression( expression = lv_expression ). "Atributui ao processador qual será a expressão a ser resolvida
   lo_xslt->run( '' ). "Faz a busca pelos elementos. Após finalizado, o resultado pode ser obtido pelo método get_nodes.
 
 * Os próximos comandos são usados para fazer um loop no

@@ -28,7 +28,7 @@ Isto não remove a necessidade de fazer uma requisição HTTP para a página HTM
 
 Go não é apenas rápido, é também muito fácil, então uma implementação simples requer apenas algunas linhas de código.
 
-A parte mais difícil é decidir onde é que você vai armazenar o cache. Os meios mais comuns são: em memória, disco ou banco de dados. Qualquer um destes vai funcionar muito bem, mas entender os pontos fortes e negativos de cada um é muito importante antes de tomar uma decisão.
+A parte mais difícil é decidir onde é que você armazenará o cache. Os meios mais comuns são: em memória, disco ou banco de dados. Qualquer um destes funcionará muito bem, mas entender os pontos fortes e negativos de cada um é muito importante antes de tomar uma decisão.
 
 **Em memória**: Toda página é armazenada na memória do process que está hospedando a página. Isto faz com que o acesso seja o mais rápido possível e também o mais fácil de implementar. O grande ponto negativo é que como o cache é local, cada servidor terá sua própria cópia. Além disto, caso o processo reinicie por qualquer motivo, o cache é perdido e terá será reconstruido assim que receber novas requisições.
 
@@ -118,13 +118,13 @@ A primeira requisição demora **2 segundos** enquanto a segunda apenas **27ms**
 
 ![](/public/images/2017/03/load-two.png)
 
-10 segundos após a primeira requisição, o cache é removido e a próxima requisição irá novamente demorar 2 segundos.
+10 segundos após a primeira requisição, o cache é removido e a próxima requisição novamente demorará 2 segundos.
 
 ### O que você deve tomar cuidado quando estiver implementando cache no lado do servidor
 
 O primeiro passo é **nuncan** fazer cache de requisições POST, PUT ou DELETE, afinal estas operação são usadas para alterar dados e não retornar, por isto não faz sentido fazer cache disto. Dito isto, apenas requisições GET devem ser cacheadas. **Dica**: é possível implementar algumas validações no middleware para evitar enganos como este :)
 
-Tome um cuidado extra com conteúdo baseado no usuário autenticado. Aplicações e sites que possuiem opção de autenticação também podem ser cacheadas, porém um cuidado extra deve ser tomado para que a chave de identificação do usuário também deve fazer parte da chave do cache, caso contrário sua aplicação irá retornar conteúdo de um usuário para outro, o que seria um grande vazamento de dados. A desvantagem aqui é a quantidade de páginas a ser cacheadas será bem maior, tenha isto em mente!
+Tome um cuidado extra com conteúdo baseado no usuário autenticado. Aplicações e sites que possuiem opção de autenticação também podem ser cacheadas, porém um cuidado extra deve ser tomado para que a chave de identificação do usuário também deve fazer parte da chave do cache, caso contrário sua aplicação retornará o conteúdo de um usuário para outro, o que seria um grande vazamento de dados. A desvantagem aqui é a quantidade de páginas a ser cacheadas será bem maior, tenha isto em mente!
 
 Outra sugestão é implementar alguma forma que seja fácil de desativar o cache, pois isto pode ser bem incoveniente durante o desenvolvimento.
 

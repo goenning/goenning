@@ -4,7 +4,7 @@ title: De mudança para a Irlanda
 lang: pt
 tags: [irlanda]
 series: brasilparairlanda
-description: Nossa história de vida é um conjunto de fatos. Tomamos uma decisão que irá mudar completamente nossas vidas. Estamos nos mudando para Dublin, Irlanda.
+description: Nossa história de vida é um conjunto de fatos. Tomamos uma decisão que mudará completamente nossas vidas. Estamos nos mudando para Dublin, Irlanda.
 ---
 
 Nossa história de vida é um **conjunto de fatos**. Fatos estes que ocorrem baseado em decisões, não somente nossas, mas muitas vezes também de outros.

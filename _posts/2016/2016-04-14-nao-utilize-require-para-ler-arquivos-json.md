@@ -49,7 +49,7 @@ No meu caso eu estava usando em um teste unitário e isto estava me causando mai
 
 Indo direto ao ponto...
 
-`require()` sempre irá fazer o cache do módulo (ou arquivo, neste caso). A próxima ver que `require()` for invocado para ler o mesmo módulo, o seu conteúdo será restaurado do cache ao invés de ser lido novamente. Isto parece ótimo, porém...
+`require()` sempre fará o cache do módulo (ou arquivo, neste caso). A próxima ver que `require()` for invocado para ler o mesmo módulo, o seu conteúdo será restaurado do cache ao invés de ser lido novamente. Isto parece ótimo, porém...
 
 Eu estava lendo o arquivo em cada caso de teste. O primeiro teste modificada o conteúdo, e por conta do cache, o conteúdo modificado também estava disponível no segundo caso de teste. Eu esperava que no segundo teste o conteúdo seria igual ao original, mas não era. O resultado? Um teste quebrado.
 
@@ -73,7 +73,7 @@ describe("Require", () => {
 })
 ~~~
 
-Talvez você espere que os dois testes passam, mas o segundo não vai. O segundo irá falhar pois `settings.tags` agora contém `"v8"`.
+Talvez você espere que os dois testes passam, mas o segundo não vai. O segundo falhará pois `settings.tags` agora contém `"v8"`.
 
 Há também outro problema com esta implementação. `require()` é síncrono. Como bons desenvolvedores node.js, sabemos o quanto I/O blocante é perigoso. Utilizar require para carregar módulos nativos ou pacotes NPM é OK, afinal, precisamos que seja síncrono e cacheado, mas com arquivos JSON a história é diferente.
 

@@ -21,6 +21,6 @@ O algoritmo começa obtendo o valor exatamente no meio da lista, que no nosso ca
 
 Foram necessárias 3 iterações para encontramos o valor pretendido, muito menos do que as 7 iterações se tivéssemos usado Linear Search. Imagine agora a diferença caso nossa tabela tivesse milhares de registros.
 
-Reforço mais uma vez que a tabela **precisa estar ordenada**, caso contrário o algoritmo vai se perder e não vai conseguir encontrar o registro desejado. Se você estiver começando agora a programar em ABAP, anote ai, pois um dia você vai esquecer disto. Quando este dia chegar o programa não vai funcionar e você irá arrancar os cabelos durante o debug. Vai dizer que é bug do ABAP, mas no fundo é apenas uma tabela não ordenada.
+Reforço mais uma vez que a tabela **precisa estar ordenada**, caso contrário o algoritmo se perderá e não conseguirá encontrar o registro desejado. Se você estiver começando agora a programar em ABAP, anote ai, pois um dia você esquecerá disto. Quando este dia chegar o programa não funcionará e você arrancará os cabelos durante o debug. Dirá que é bug do ABAP, mas no fundo é apenas uma tabela não ordenada.
 
 Ah, tem outro detalhe. Vale a pena usar Binary Search para tabelas com poucos registros? A resposta é **não faz diferença**. Ok, mas devo usar? Eu defendo a ideia de que, sempre que possível, deve-se optar por fazer leituras usando Binary Search, independente do tamanho da tabela. Nestes casos é mais uma questão de padronização do que de desempenho.

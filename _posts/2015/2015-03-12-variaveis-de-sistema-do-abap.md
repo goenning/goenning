@@ -102,7 +102,7 @@ ENDDO.
 
 ### SY-TABIX
 
-O SY-TABIX é semelhante ao SY-INDEX, com a diferença de que este é para uso em laços de repetição LOOP&#8230;ENDLOOP, usados para fazer iteração em uma tabela interna. Esta variável irá conter o número do índice da linha atual dentro da tabela interna que está sendo trabalhada.
+O SY-TABIX é semelhante ao SY-INDEX, com a diferença de que este é para uso em laços de repetição LOOP&#8230;ENDLOOP, usados para fazer iteração em uma tabela interna. Esta variável conterá o número do índice da linha atual dentro da tabela interna que está sendo trabalhada.
 
 ~~~
 LOOP AT alunos INTO wa_aluno.

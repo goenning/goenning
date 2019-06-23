@@ -4,6 +4,7 @@ title: How we reduced our initial JS/CSS size by 67%
 lang: en
 tags: [react, performance, web]
 description: We have been working on reducing the amount of bytes that we send to all Fider users. Being a web application built with React, we have focused on JS and CSS. On this post we share our learnings, some concepts and suggestions on how you can do the same with your web application.
+ref: how-we-reduced-initial-jscss-size
 ---
 
 ![](/public/images/2018/11/bundle-size-improvements.png)
@@ -16,7 +17,7 @@ Fider is built with React and Webpack on the frontend, so the topics below will 
 - <a href="#long-term-caching-with-content-hash">Long term caching with content hash</a>
 - <a href="#the-common-bundle">The common bundle</a>
 - <a href="#code-splitting-on-route-level">Code Splitting on route level</a>
-- <a href="#loading-external-dependencies-on-demand">Loading external dependencies on demand
+- <a href="#loading-external-dependencies-on-demand">Loading external dependencies on demand</a>
 - <a href="#font-awesome-and-tree-shaking">Font Awesome and Tree Shaking</a>
 - <a href="#switching-from-big-to-small-npm-packages">Switching from big to small NPM packages</a>
 - <a href="#optimising-the-main-bundle-is-crucial">Optimising the main bundle is crucial</a>
@@ -71,7 +72,7 @@ The idea of Code Splitting is to generate multiple smaller bundles, usually one 
 It seems complicated, but thanks to React and Webpack, this is not rocket science anymore. For those using React <= 16.5, we recommend [react-loadable](https://github.com/jamiebuilds/react-loadable). If you’re already on React 16.6, then you can use React.lazy() which has been a new addition to this version.
 
 - In this PR you can find how <a href="https://github.com/cfilby">@cfilby</a> (thank you!) added code splitting to Fider with react-loadable: [PR #596](https://github.com/getfider/fider/pull/596)
-- After we migrated to React 16.6, we have then replaced this external package with React.lazy and Suspense: [PR #646](https://github.com/getfider/fider/pull/646)
+- After we migrated to React 16.6, we have then replaced this external package with React.lazy: [PR #646](https://github.com/getfider/fider/pull/646)
 
 We also had issues with some rare events where users were having issues to download asynchronous bundles. A potential solution has been documented on [How to retry when React lazy fails](https://goenning.net/2018/11/16/how-to-retry-dynamic-import-with-react-lazy/).
 
@@ -128,8 +129,8 @@ Curious about it? Check out [PR #643](https://github.com/getfider/fider/pull/643
 
 You can also compare these two packages on bundlephobia:
 
-- https://bundlephobia.com/result?p=marked@0.5.2
-- https://bundlephobia.com/result?p=markdown-it@8.4.2
+- [https://bundlephobia.com/result?p=marked@0.5.2](https://bundlephobia.com/result?p=marked@0.5.2)
+- [https://bundlephobia.com/result?p=markdown-it@8.4.2](https://bundlephobia.com/result?p=markdown-it@8.4.2)
 
 Think twice before adding a large package. Do you really need it? Can your team implement a simpler alternative? If not, can you find another package that does the same job with less bytes? Ultimately, you can still add the NPM package and load it asynchronously like we did with react-toastify mentioned above.
 

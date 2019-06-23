@@ -40,7 +40,7 @@ Por se tratar de uma linguagem 4GL, não temos as formalidades de uma linguagem 
 
 Dentro do ambiente SAP é necessário começar qualquer programa ou tabela usando a letra Z ou Y. Quando estiver analisando um objeto que comece com uma destas letras, saiba que este um objeto que não veio por padrão no SAP, provavelmente foi desenvolvido por alguém e implantado no sistema. Isto ajuda bastante na hora de identificar o que é standard do que é customizado no sistema. Não existe uma regra para distinguir o uso de Z ou Y. Apesar de Z ser a mais comum, o Y também está disponível. Inclusive não há nenhuma diferença técnica entre um e outro. Cabe a cliente definir uma regra para uso destas letras. Exemplos de uso:
 
-  * Y é usado pela consultoria e Z pelo cliente. &#8211; Não gostei, pois em algum momento alguém vai ter que dar manutenção no código do outro. E quando isto acontecer o padrão vai por água abaixo.
+  * Y é usado pela consultoria e Z pelo cliente. &#8211; Não gostei, pois em algum momento alguém terá que dar manutenção no código do outro. E quando isto acontecer o padrão irá por água abaixo.
   * Y é usado para objetos temporários (não devem sair do DEV) e Z são objetos oficiais. &#8211; Eu gostei deste. Podemos criar programas Y que servem unicamente para auxiliar na programação e por isto não devem estar no ambiente de QA e PRD.
   * Usar apenas o Z e esquecer o Y.
 

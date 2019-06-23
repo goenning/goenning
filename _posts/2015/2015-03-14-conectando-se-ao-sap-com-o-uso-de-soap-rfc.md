@@ -20,7 +20,7 @@ Este serviço retorna a especificação detalhada dos parâmetros de **input** e
 
 ## SOAP RFC: sap/bc/soap/rfc
 
-Este é o endpoint padrão do WSDL do bc/soap/wsdl. É este serviço que efetivamente irá executa a função com os parâmetros que passarmos no corpo da requisição HTTP. O retorno será sempre um XML com a estrutura definidas no WSDL e com os valores processados pela função invocada no SAP. Bem simples, veja só o exemplo abaixo
+Este é o endpoint padrão do WSDL do bc/soap/wsdl. É este serviço que efetivamente executará a função com os parâmetros que passarmos no corpo da requisição HTTP. O retorno será sempre um XML com a estrutura definidas no WSDL e com os valores processados pela função invocada no SAP. Bem simples, veja só o exemplo abaixo
 
 ## Um exemplo prático
 
@@ -44,7 +44,7 @@ ENDFUNCTION.
 
 Bem simples, apenas soma os parâmetros e retorna o resultado.
 
-Se eu digitar o endereço **http://sap-vm:8000/sap/bc/soap/wsdl?sap-client=001&services=Z\_SSRT\_SUM** em meu navegador vai ser solicitado usuário e senha. Caso estejam corretos o WSDL será retornado.
+Se eu digitar o endereço **http://sap-vm:8000/sap/bc/soap/wsdl?sap-client=001&services=Z\_SSRT\_SUM** em meu navegador será solicitado usuário e senha. Caso estejam corretos o WSDL será retornado.
   
 O meu WSDL ficou assim:
 

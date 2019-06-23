@@ -33,7 +33,7 @@ Cidadãos europeus não precisam solicitar este documento.
 
 O custo do GNIB é  de`€300,00 por pessoa` e só pode ser pago em cartão, seja ele débito, crédito ou até mesmo Visa Travel Money (VTM). A única restrição é que o cartão deve estar no nome de alguém que esteja com você na hora do pagamento.
 
-Para retirar seu GNIB você deve fazer primeiro o agendamento na [site de imigração](https://burghquayregistrationoffice.inis.gov.ie/) e então comparecer ao local na data e hora escolhido. Minha recomendação é que você faça isto enquanto ainda estiver no Brasil. Veja a data que você irá chegar aqui e já faça o agendamento. O agendamente é muito concorrido e você pode demorar a conseguir uma vaga.
+Para retirar seu GNIB você deve fazer primeiro o agendamento na [site de imigração](https://burghquayregistrationoffice.inis.gov.ie/) e então comparecer ao local na data e hora escolhido. Minha recomendação é que você faça isto enquanto ainda estiver no Brasil. Veja a data que você chegará aqui e já faça o agendamento. O agendamente é muito concorrido e você pode demorar a conseguir uma vaga.
 
 Certifique-se de que você esteja com o passaporte e work permit original em mãos. Para quem for casado, a certidão de casamento com tradução juramentada também é obrigatório.
 
@@ -45,7 +45,7 @@ Outro documento de grande importância é o PPS. Pode ser comparado ao CPF no Br
 
 A solicitação do PPS também deve ser feita por agendamento, mas desta vez no website da [MyWelfare](https://www.mywelfare.ie/Account/Login).
 
-Para conseguir o PPS você terá que informar por qual motivo o está solicitando. Como você vai trabalhar e terá que pagar imposto, você é obrigado a ter este número. Então leve seu passaporte, work permit original e comprovante de residência. Se estiver solicitando PPS para o casal, leve também sua certidão de casamento juramentada. Existe um benefício de crédito de imposto adicional para quem for casado e um dos dois não estiver trabalhando, então mesmo que seu parceiro(a) ainda não tenha um emprego, faça a solicitação do PPS dele(a).
+Para conseguir o PPS você terá que informar por qual motivo o está solicitando. Como você trabalhará e terá que pagar imposto, você é obrigado a ter este número. Então leve seu passaporte, work permit original e comprovante de residência. Se estiver solicitando PPS para o casal, leve também sua certidão de casamento juramentada. Existe um benefício de crédito de imposto adicional para quem for casado e um dos dois não estiver trabalhando, então mesmo que seu parceiro(a) ainda não tenha um emprego, faça a solicitação do PPS dele(a).
 
 É recomendado levar uma carta da empresa com sua matrícula de funcionário e alegando que você é novo no país, pois eles podem solicitar algum comprovante da empresa relacionado ao work permit.
 
@@ -85,13 +85,13 @@ Ainda estou pesquisando sobre o assunto. O que sei até agora é que a CNH brasi
 
 ### Passando pela imigração no aeroporto 
 
-Está parte deveria ser fácil. Normalmente é, mas você pode ser azarado como nós, então vai aqui um relato e nossas dicas para evitar problemas na hora de passar pela imigração. 
+Está parte deveria ser fácil. Normalmente é, mas você pode ser azarado como nós, então aqui está um relato e nossas dicas para evitar problemas na hora de passar pela imigração. 
 
 Nossa primeira imigração foi em Londres, pois foi onde fizemos a escala antes de vir para Dublin. 
 
 Havia lido muito sobre a imigração britânica ser bem criteriosa e exigente, mas conosco até que foi bem tranquilo. A conversa foi mais ou menos assim:
 
-- Agente: O que você vai fazer na Irlanda? 
+- Agente: O que você fará na Irlanda? 
 - Eu: Recebi uma oferta de trabalho lá. Aqui está a permissão de trabalho.
 - A: De onde você é?
 - E: Do Brasil, aqui está meu passaporte.
@@ -99,7 +99,7 @@ Havia lido muito sobre a imigração britânica ser bem criteriosa e exigente, m
 - E: Não sei, não temos uma data definida.
 - A: Quem é ela? (olhando para minha esposa)
 - E: Minha esposa.
-- A: O que sua esposa vai fazer enquanto você trabalha?
+- A: O que sua esposa fará enquanto você trabalha?
 - E: Ela vai estudar e procurar um trabalho também.
 - A: Qual a experiência dela?
 - E: Ela trabalha com TI, assim como eu.
@@ -112,7 +112,7 @@ Depois de quase 20 minutos discutindo que por sermos casados e eu estar imigrand
 
 O comum é que cada imigrante receba 90 dias de estadia ao entrar no país, tempo suficiente para obter o GNIB e extender o prazo por mais 1 ano. Porém, ao carimbar nosso passaporte, ela me deu apenas 7 dias, enquanto minha esposa recebeu 30 dias. Ou seja, se em 7 dias eu não obtivesse meu GNIB, eu estaria morando ilegalmente aqui. Por sorte fiz o agendamento do GNIB para 5 dias após a minha chegada, então no final deu tudo certo. Mas o susto foi grande e o medo de nos separarmos também.
 
-A nossa dica de um modo geral é nunca responder mais do que você te perguntarem. `Seja objetivo em suas respostas, não enrole e não fale muito`. Se vier com cônjuge, a melhor resposta para este tipo de pergunta é um simples `estou vindo acompanhar meu marido/esposa`, não diga que vai estudar ou trabalhar, mesmo que este seja seu plano. 
+A nossa dica de um modo geral é nunca responder mais do que você te perguntarem. `Seja objetivo em suas respostas, não enrole e não fale muito`. Se vier com cônjuge, a melhor resposta para este tipo de pergunta é um simples `estou vindo acompanhar meu marido/esposa`, não diga que estudará ou trabalhará, mesmo que este seja seu plano. 
 
 A página [Residence rights of family members
 ](http://www.citizensinformation.ie/en/moving_country/moving_to_ireland/rights_of_residence_in_ireland/residence_rights_of_family_members.html) afirma que cidadãos não-europeus portadores de Critical Skill Employment Permit podem trazer sua família junto imediatamente. Se eu pudesse voltar atrás teria impresso esta página e deixado junto com meus documentos para situações como esta.

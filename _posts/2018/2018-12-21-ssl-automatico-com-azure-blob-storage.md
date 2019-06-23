@@ -53,7 +53,7 @@ O processo funciona assim:
 2. autocert verifica se meusite.com.br se este certificado está no cache em memória, se estiver, o certificado é retornado ao cliente
 3. caso não encontre, autocert então verifica se o certificado de meusite.com.br está no Azure Blob Storage, se estiver, o certificado é retornado ao cliente
 4. caso não encontre, autocert obtem um novo certificado através do Let's Encrypt e armazena tanto no cache em memória quanto no Azure Blob Storage
-5. Durante a próxima requisição, mesmo que um servidor diferente esteja encarregado de processá-la, o certificao já vai estar no Azure Blob Storage, pronto para ser reutilizado
+5. Durante a próxima requisição, mesmo que um servidor diferente esteja encarregado de processá-la, o certificao já estará no Azure Blob Storage, pronto para ser reutilizado
 
 **NOTE:** o cache em memória é perdido quando o processo é reiniciado, por isto é tão importante armazenar os certificados em algum local que seja resiliente
 

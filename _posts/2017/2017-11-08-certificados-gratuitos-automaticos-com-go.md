@@ -17,7 +17,7 @@ Neste post vou mostrar como criar uma aplicação web em Go que automaticamente 
 
 ## Requerimentos
 
-Se você quer acompanhar este demo, você irá precisar de:
+Se você quer acompanhar este demo, você precisará de:
 
 - O compilador do Go;
 - Um servidor que esteja disponível na internet; *Caso você não tenha nenhum, eu recomendo uma Máquina Virtual da [Digital Ocean](https://www.digitalocean.com/). Use por 24 horas e pague apenas $0.15.*
@@ -27,7 +27,7 @@ Se você quer acompanhar este demo, você irá precisar de:
 
 [Let’s Encrypt](https://letsencrypt.org/) é um emissor de certificados SSL/TLS que é bastante conhecida e aceita pela grande maioria dos navegadores. É possível emitir um certificado em menos de um segundo sem qualquer processo de registro ou pagamento.
 
-**Autocert** é um pacote Go que implementa um cliente do protocolo ACME que é utilizado para comunicação com o Let’s Encrypt. Este pacote é a única dependência externa que você vai precisar, nenhuma outra instalação é necessária.
+**Autocert** é um pacote Go que implementa um cliente do protocolo ACME que é utilizado para comunicação com o Let’s Encrypt. Este pacote é a única dependência externa que você precisará, nenhuma outra instalação é necessária.
 
 Você consegue obter este pacote utilizando o comando a seguir.
 
@@ -78,7 +78,7 @@ Começamos a função `main` criando um `mux` com uma simples mensagem de Hello 
 
 No próximo passo criamos uma instância do `autocert.Manager`. Esta estrutura é responsável pela comunicação com o Let's Encrypt para obter o certificado SSL/TLS. O campo `Cache` é uma interface que define como e onde o Manager deve armazenar os certificados. Neste exemplo estamos usando `autocert.DirCache` que armazena os certificados em um diretório local. Esta é a forma mais fácil de começar, mas pode não ser a melhor alternativa quando o site é hospedado em múltiplos servidores, afinal cada servidor terá seu próprio cache.
 
-O último passo é criar um `http.Server` que escuta a porta `443` e usa nosso `mux`. Criamos então o objeto `tls.Config` e atribuímos ao Server. Agora é que a **mágica** acontece. `GetCertificate` é a função que o servidor usa para carregar o certificado quando uma nova requisição HTTPS chega ao servidor. Este método nos da a oportunidade de escolher qual certificado usar ao invés de retornar sempre o mesmo. O que fazemos agora é delegar esta responsabilidade ao `certManager.GetCertificate` na qual irá primeiro procurar o certificado no cache, caso não seja encontrado, um novo certificado é emitido no Let's Encrypt através do protocolo ACME.
+O último passo é criar um `http.Server` que escuta a porta `443` e usa nosso `mux`. Criamos então o objeto `tls.Config` e atribuímos ao Server. Agora é que a **mágica** acontece. `GetCertificate` é a função que o servidor usa para carregar o certificado quando uma nova requisição HTTPS chega ao servidor. Este método nos da a oportunidade de escolher qual certificado usar ao invés de retornar sempre o mesmo. O que fazemos agora é delegar esta responsabilidade ao `certManager.GetCertificate` na qual primeiro procurará o certificado no cache, caso não seja encontrado, um novo certificado é emitido no Let's Encrypt através do protocolo ACME.
 
 No começo de 2018, [Let's Encrypt desabilitou o desafio de TLS-SNI](https://community.letsencrypt.org/t/2018-01-11-update-regarding-acme-tls-sni-and-shared-hosting-infrastructure/50188). A recomendação agora é usar o [desafio HTTP](https://tools.ietf.org/html/draft-ietf-acme-acme-07#section-8.3), e é por isto que usamos o `certManager.HTTPHandler(nil)`.
 
@@ -88,7 +88,7 @@ Vale a pena comentar que o `certManager.HTTPHandler(nil)` redireciona todo o tr�
 
 ## Está na hora de testarmos!
 
-*Você pode executar este código como qualquer outra aplicação Go, mas irá falhar se fizer isto em sua máquina local. O motivo é que o Let's Encrypt precisa que seu site esteja público através de um node de DNS conhecido. Quando executado localmente, o Let’s Encrypt não tem como encontrar seu site na internet e o processo de verificação de domínio falha.*
+*Você pode executar este código como qualquer outra aplicação Go, mas falhará se fizer isto em sua máquina local. O motivo é que o Let's Encrypt precisa que seu site esteja público através de um node de DNS conhecido. Quando executado localmente, o Let’s Encrypt não tem como encontrar seu site na internet e o processo de verificação de domínio falha.*
 
 1. Crie um novo registro de DNS A apontando para o IP público de sua máquina virtual.
 2. Compile seu código Go com `CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o autossl`. Ajuste os parâmetros caso seu servidor não seja linux/amd64.
