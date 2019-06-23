@@ -3,7 +3,8 @@ layout: post
 title: "Session per Request pattern in Go"
 lang: en
 tags: [go, web, sql]
-description: There is a particular pattern that is very common on these languages that is hard to find any mentions about in the Go community. The pattern is called Session per Request and is particularly useful to decouple business components from database transaction management. This post will drive you through what it is, how to implement, pros/cons and some examples written in Go.
+description: There is a particular pattern that is very common in C# and Java, but is hard to find any mentions about in the Go community. The pattern is called Session per Request and is particularly useful to decouple business components from database transaction management. This post will drive you through what it is, how to implement, pros/cons and some examples written in Go.
+ref: session-per-request-pattern-go
 ---
 
 Prior to start coding in Go, I've implemented multiple web applications in C# and Java. There is a particular pattern that is very common on these languages that is hard to find any mentions about in the Go community. 
@@ -194,7 +195,7 @@ On the other hand, you might want to keep your HTTP requests as fast as possible
 
 This pattern can be easily implemented in bare Go code (like example above) or any other web framework. 
 
-If you're looking for some inspiration, you can check my current OSS project called [Fider](https://github.com/getfider/fider) where I'm using echo framework, this pattern and plenty more things.
+If you're looking for some inspiration, you can check my current OSS project called [Fider](https://github.com/getfider/fider) where I'm using this pattern and plenty more things.
 
 *I'd like hear back from you. What do you think? Is this useful? Did I miss something?*
 
