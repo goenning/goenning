@@ -39,6 +39,10 @@ ref: archive
   <h2 id="talks">Apresentações</h2>
   <ul>
     <li>
+      <a href="https://goenning-my.sharepoint.com/:b:/g/personal/me_goenning_net/Ec3ZjmJhGk9Pv4ydhizGBiwBZA2ROSZfWr5avhsy1Gsjhw?e=SdxIKh">Introduction to Angular Change Detection</a>
+      <span class="archive-post-date">August/2019 (Dublin - Ireland)</span>
+    </li>
+    <li>
       <a href="https://goenning-my.sharepoint.com/:b:/g/personal/me_goenning_net/EXt9iDtzYOFMmrux6_bYzpkBgLCn45uJ7gPvQyKnYw0Y4g?e=Syh1ZN">Reducing bundle size of TypeScript applications with tslib</a>
       <span class="archive-post-date">October/2018 (Dublin - Ireland)</span>
     </li>
