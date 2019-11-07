@@ -6,8 +6,6 @@ tags: [spa, seo]
 description: SPA and SEO are two acronyms that don’t fit well together on the same sentence. Even though Google is able to crawl and index client-side rendered websites since 2015, there are a few reasons why this is not yet recommended. On this post I’ll take you though an alternative solution on how to make a SPA page SEO-ready using a technique called “Dynamic Rendering” and an open source project called Rendergun.
 ---
 
-## Adding SEO to Single Page Applications with Rendergun
-
 SPA and SEO are two acronyms that don’t fit well together on the same sentence. Even though Google is able to crawl and index client-side rendered websites since 2015, there are a few reasons why this is not yet recommended.
 
 On this post I’ll take you though an alternative solution on how to make a SPA page SEO-ready using a technique called “Dynamic Rendering” and an open source project called Rendergun.
