@@ -39,11 +39,11 @@ ref: archive
   <h2 id="talks">Talks</h2>
   <ul>
     <li>
-      <a href="https://goenning-my.sharepoint.com/:b:/g/personal/me_goenning_net/Ec3ZjmJhGk9Pv4ydhizGBiwBZA2ROSZfWr5avhsy1Gsjhw?e=SdxIKh">Introduction to Angular Change Detection</a>
+      <a href="https://1drv.ms/b/s!AkX1H2lInF_rgcgeIxvFvMSkB7ZHrw?e=Z71608">Introduction to Angular Change Detection</a>
       <span class="archive-post-date">August/2019 (Dublin - Ireland)</span>
     </li>
     <li>
-      <a href="https://goenning-my.sharepoint.com/:b:/g/personal/me_goenning_net/EXt9iDtzYOFMmrux6_bYzpkBgLCn45uJ7gPvQyKnYw0Y4g?e=Syh1ZN">Reducing bundle size of TypeScript applications with tslib</a>
+      <a href="https://1drv.ms/b/s!AkX1H2lInF_rgcgf1CWPqPzXVlrYyQ?e=ff5wPp">Reducing bundle size of TypeScript applications with tslib</a>
       <span class="archive-post-date">October/2018 (Dublin - Ireland)</span>
     </li>
     <li>
@@ -51,11 +51,11 @@ ref: archive
       <span class="archive-post-date">August/2018 (Dublin - Ireland)</span>
     </li>
     <li>
-      <a href="https://goenning-my.sharepoint.com/:p:/g/personal/me_goenning_net/ERJrhvOP_d9CsFlq6WP0ufUBQ2_YJh2RxDnStIFImMC6pw?e=nA3JpX">Introdução ao TypeScript + React</a>
+      <a href="https://1drv.ms/p/s!AkX1H2lInF_rgcggwgIFoj4SGzM-QQ?e=xccBMx">Introdução ao TypeScript + React</a>
       <span class="archive-post-date">Novembro/2016 (Blumenau/SC - Brazil)</span>
     </li>
     <li>
-      <a href="https://goenning-my.sharepoint.com/:p:/g/personal/me_goenning_net/EaKDJIn9iTdOlM-Hc3zqEiQBMRYhk-ByametNatmaYeoxQ?e=G1NBBF">Aplicando Coding Dojo no Ensino Técnico</a>
+      <a href="https://1drv.ms/p/s!AkX1H2lInF_rgcghAi9w7jFpe6zXBA?e=Ep50QL">Aplicando Coding Dojo no Ensino Técnico</a>
       <span class="archive-post-date">Novembro/2010 (Joinville/SC - Brazil)</span>
     </li>
   </ul>
