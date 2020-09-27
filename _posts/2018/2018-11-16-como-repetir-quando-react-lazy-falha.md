@@ -47,7 +47,7 @@ function retry(fn, retriesLeft = 5, interval = 1000) {
           }
 
           // Passing on "reject" is the important part
-          retry(fn, interval, retriesLeft - 1).then(resolve, reject);
+          retry(fn, retriesLeft - 1, interval).then(resolve, reject);
         }, interval);
       });
   });
