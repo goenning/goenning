@@ -6,21 +6,17 @@ tags: [javascript, node.js]
 ref: stop-reading-json-files-with-require
 ---
 
-And there you are, coding at 11:00 PM, trying to get your unit testing back to the green field. You try as hard as you can, you add `console.log` to every function and you `just can't find WHY!`. 
+There you are, coding at 11:00 PM, trying to get your unit tests back to a green state and no matter how hard you try, you **just can't find why**. Not even a dozen of console.log can help you.
 
-Why isn't it working anymore? Why?!
-
-That was me last night.
+Well, that was me last night.
 
 ![](/public/images/hate-programming.jpg)
 
-After yesterday, I should probably tattoo **stop reading JSON files with node's require function** or even put it up somewhere on the wall. But after losing 1 hour while troubleshooting, this reserves at least a blog post.
+At this stage I should probably make a tattoo **stop reading JSON files with node's require function** or even put it up somewhere on the wall. Ok, that's too much, but after losing 1 hour troubleshooting it deserves at least a blog post.
 
 ### Reading JSON files with Node.js
 
-JavaScript is beautiful when it comes to working with JSON. You don't need a third-party `JSON Parser libraries`, (such as  [Json.NET](http://www.newtonsoft.com/json) or [Gson](https://github.com/google/gson), that is used to parse a JSON string into an object — in which, of course, you need to create classes, even if you're going to use it only once.
-
-I've always used `require()` to read json files into a variable, like this:
+JavaScript is beautiful when it comes to JSON. There is no need for a third-party `JSON Parser libraries`, (such as [Json.NET](http://www.newtonsoft.com/json) or [Gson](https://github.com/google/gson)) and it's pretty straightforward to parse a JSON file into a variable, just use `require()`, like this:
 
 `settings.json`
 
@@ -41,15 +37,15 @@ var settings = require('./settings.json')
 console.log(settings.tags) // ['nodejs', 'javascript']
 ~~~
 
-Easy and clean, right?
+Easy and readable, right?
 
-But it has a *side effect* that can be both `good` and `bad`, that will depend on the context of your application.
+But that function has an important *side effect* that can be both `good` and `bad`, that will depend on the context of your application.
 
 In my case, I was using it in a unit test and it was causing more harm than good.
 
 Ok, let's get straight to the point.
 
-`require()` will always cache the content of the loaded module (or file, in this case). The next time `require()` is called again, it will restore it from the cache instead of reading it again. That's awesome! But...
+`require()` will always cache the content of the loaded module (our JSON file, in this case). The next time `require()` is called for the same module, it will restore it from the cache instead of reading it again. That's awesome! But...
 
 I was reading the file once for each test case. The first test changed a value on that JSON, and because the content was cached by `require()`, the changed value was available on the second test case too. I was expecting it to be the original value, but it wasn't. The result? A broken test.
 
@@ -77,9 +73,7 @@ You might expect that both tests cases will pass. But they won't. The second wil
 
 There is also another problem with this approach. `require()` is synchronous. As a good node.js developer, you know that blocking I/O is dangerous. It's ok to use it to load native or NPM modules, because we need it to be synchronous and cached, but JSON files are a separate story.
 
-The solution is easy, stick with `fs` module when reading JSON files.
-
-I'm now using the following helper function.
+The solution is quite easy, just use the built-in `fs` module when reading JSON files. I'm now using the following helper function.
 
 ~~~javascript
 var readJson = (path, cb) => {

@@ -10,15 +10,15 @@ description: There is a lot more awareness on privacy these days and quite a few
 
 > **Note 2**: This post is using Universal Analytics from Google and it DOES NOT WORK with Google Analytics 4. I tried many times and I could not make it work with GA4, if you know how, please share!
 
-It might be useful for us to start with why cookies are needed in Google Analytics. Without cookies the script is not be able to identify if the user visited that site before, which would cause all page views to be counted as unique. The bounce rate would also be severally impacted. 
+It might be useful for us to start with why cookies are needed in Google Analytics. Without cookies the script is not be able to identify if the user visited that site before, which would cause all page views to be counted as unique.
 
 To solve that, Google Analytics scripts creates a cookie on every user machine during the first visit. On a subsequent visit, the scripts can use that information to know if that's a new or returning visitor.
 
-Thankfully there are solutions for this that do not rely on Cookies.
+Thankfully there are solutions that do not rely on Cookies.
 
 ## First step: No more cookies
 
-We need to tell GA to not store anything client side. The way we do it is via the `gtag` function.
+We need to tell GA to not store anything client side. We can do so via some custom params on the `gtag` function.
 
 ```js
 gtag('config', TRACKING_ID, { client_storage: 'none', anonymize_ip: true })
@@ -32,9 +32,9 @@ The code above is enough to remove cookies, but it doesn’t solve the unique us
 
 The same `gtag` function above supports an additional property called `client_id`. Instead of letting GA generate a client id and storing on a cookie, we can generate one ourselves and send them. 
 
-But after generating an ID, where do we store it? Most public websites do not require users to be logged in, so it's not possible to have a unique id per user as visitors are often anonymous.
+But after generating an ID, where do we store it? Most visitors onpublic websites are not authenticated, so it's not possible to have a unique id per user.
 
-One option is to use an algorithm that generates an ID based on the information available on the browser that could **potentially** identify a user. The following example is a function written in Node.js that generates a user ID based on their Browser, IP Address and Language. We can also add the current week to get a distinct ID every week even if all other properties have not changed. 
+One option is to use an algorithm that generates an ID based on public information from the user that does not change often and could potentially identify them. The following example is a function written in Node.js that generates a user ID based on their Browser, IP Address and Language. We can also add the current week to get a distinct ID every week even if all other properties have not changed. 
 
 A week is probably enough to get meaningful unique user visits like return users, but depending on your needs, it’s possible to use other values, like the Month or Day.
 
