@@ -26,8 +26,6 @@ permalink: /pt
           {{ post.excerpt }}
         {% endif %}
       </div>
-
-      <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">CONTINUE LENDO</a>
     </article>
   {% endfor %}
 </div>
