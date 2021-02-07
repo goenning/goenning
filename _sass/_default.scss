@@ -199,39 +199,71 @@ img {
 }
 
 nav {
+  display: flex;
+  flex-direction: row;
   margin-top: 40px;
-  font-size: 18px;
+  align-items: center;
 
   @include mobile {
-    float: none;
-    margin-top: 9px;
-    display: block;
-    font-size: 16px;
+    gap: 12px;
+    margin-top: 20px;
+    flex-direction: column;
   }
 
   > a {
     margin-right: 20px;
+    text-transform: uppercase;
     color: $darkGray;
-    text-align: right;
-    font-weight: 300;
-    letter-spacing: 1px;
+    font-weight: 500;
 
     @include mobile {
-      margin: 0 10px;
+      margin-right: 0;
     }
   }
 
-  .langs {
-    float: right;
+  > .langs {
+    margin-left: auto;
 
     @include mobile {
-      float: none;
-      display: block;
-      margin: 0 auto;
-      margin-top: 20px;
+      margin-left: 0;
     }
   }
 }
+
+// nav {
+//   margin-top: 40px;
+//   font-size: 18px;
+
+//   @include mobile {
+//     float: none;
+//     margin-top: 9px;
+//     display: block;
+//     font-size: 16px;
+//   }
+
+//   > a {
+//     margin-right: 20px;
+//     color: $darkGray;
+//     text-align: right;
+//     font-weight: 300;
+//     letter-spacing: 1px;
+
+//     @include mobile {
+//       margin: 0 10px;
+//     }
+//   }
+
+//   .langs {
+//     float: right;
+
+//     @include mobile {
+//       float: none;
+//       display: block;
+//       margin: 0 auto;
+//       margin-top: 20px;
+//     }
+//   }
+// }
 
 //
 // .main
