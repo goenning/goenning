@@ -11,6 +11,7 @@ body {
   color: $darkerGray;
   font-family: $defaultFont;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
 .container {
