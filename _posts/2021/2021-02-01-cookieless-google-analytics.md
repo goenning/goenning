@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Cookieless Google Analytics
+title: How to set up a Cookieless Google Analytics website
 lang: en
 tags: [privacy, googleanalytics, cookieless]
 description: There is a lot more awareness on privacy these days and quite a few solutions that are cookieless. Google Analytics is notorious for using Cookies, but did you know that you can actually configure it to be Cookieless as well? This post has everything you need to get started.

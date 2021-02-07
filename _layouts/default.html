@@ -5,14 +5,9 @@
 
     {% include meta.html %}
 
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
     <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />  <!-- Icons -->
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />  <!-- Font Awesome -->
     {% include analytics.html %}
     {% seo %}
   </head>
@@ -21,7 +16,7 @@
     <div class="wrapper-masthead">
       <div class="container">
         <header class="masthead clearfix">
-          <a href="{{ site.baseurl }}{{site.navigation[page.lang].index.url}}" class="site-avatar"><img src="{{ site.avatar }}" /></a>
+          <a href="{{ site.baseurl }}{{site.navigation[page.lang].index.url}}" class="site-avatar"><img alt="{{ site.name }}" src="{{ site.avatar }}" /></a>
 
           <div class="site-info">
             <h1 class="site-name"><a href="{{ site.baseurl }}{{site.navigation[page.lang].index.url}}">{{ site.name }}</a></h1>
@@ -61,11 +56,11 @@
                 {% endif %}
               {% endif %}
               
-              <a href="{{ pt_url }}">
-                <img src="/public/icons/pt.svg" title="Português" alt="Português" width="26">
+              <a href="{{ pt_url }}" title="Português" class="flag">
+                {% include icons/pt.svg %}
               </a>
-              <a href="{{ en_url }}">
-                <img src="/public/icons/en.svg" title="English" alt="English" width="26">
+              <a href="{{ en_url }}" title="English" class="flag">
+                {% include icons/en.svg %}
               </a>
         </div>
           </nav>
@@ -84,6 +79,5 @@
         </footer>
       </div>
     </div>
-    {% include social.html %}
   </body>
 </html>
