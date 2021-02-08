@@ -18,4 +18,4 @@ Here's a list of open source projects I'm working on (or have worked in the past
         </div>
     </li>
 {% endfor %}
-<ul>
+</ul>

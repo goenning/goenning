@@ -18,4 +18,4 @@ Uma lista de projetos open source que eu mantenho (ou mantive no passado).
         </div>
     </li>
 {% endfor %}
-<ul>
+</ul>
