@@ -12,9 +12,9 @@ Uma lista de projetos open source que eu mantenho (ou mantive no passado).
 {% for item in site.data.projects %}
     <li>
         <div>
-            <h4>{{ item.name }} &middot; <a href="{{ item.link }}">{{ item.link }}</a></h4>
+            <h4>{{ item.name }} &middot; <a href="{{ item.link }}" target="_blank" rel="noopener noreferrer">{{ item.link }}</a></h4>
             <span>{{ item.desc_pt }}</span>
-            <a class="github" href="{{ item.github }}">{% include icons/github.svg %} {{ item.github }}</a>
+            <a class="github" href="{{ item.github }}" target="_blank" rel="noopener noreferrer">{% include icons/github.svg %} {{ item.github }}</a>
         </div>
     </li>
 {% endfor %}
