@@ -78,3 +78,34 @@ h1, h2, h3, h4, h5, h6 {
     }
   }
 }
+
+.projects-list {
+  h4 {
+    margin-bottom: 0;
+
+    a {
+      font-size: 14px;
+    }
+  }
+
+  li {
+    margin-bottom: 40px;
+
+    span {
+      margin: 4px 0;
+      display: block;
+    }
+
+    a.github {
+      display: flex;
+      flex-direction: row;
+      font-size: 12px;
+      align-items: center;
+  
+      svg {
+        margin-right: 10px;
+        width: 18px;
+      }
+    }
+  }
+}

@@ -19,9 +19,9 @@ navigation:
     archive:
       name: "Archive"
       url: "/archive"
-    # projects:
-    #   name: "Projects"
-    #   url: "/projects"
+    projects:
+      name: "Projects"
+      url: "/projects"
   pt:
     index:
       name: "Blog"
@@ -29,9 +29,9 @@ navigation:
     archive:
       name: "Arquivo"
       url: "/arquivo"
-    # projects:
-    #   name: "Projetos"
-    #   url: "/projetos"
+    projects:
+      name: "Projetos"
+      url: "/projetos"
 
 
 # Includes an icon in the footer for each username you enter
