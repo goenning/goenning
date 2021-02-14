@@ -13,9 +13,9 @@
     <link rel="alternate" type="application/rss+xml" title="@goenning - loop at { run; code; blog; swim; eat; cycle; } until tired;" href="/feed.xml" />
     
 
-    <!-- Begin Jekyll SEO tag v2.5.0 -->
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>Adding security to ICF and SOAP RFC | @goenning</title>
-<meta name="generator" content="Jekyll v3.8.5" />
+<meta name="generator" content="Jekyll v4.2.0" />
 <meta property="og:title" content="Adding security to ICF and SOAP RFC" />
 <meta name="author" content="@goenning" />
 <meta property="og:locale" content="en" />
@@ -26,8 +26,10 @@
 <meta property="og:site_name" content="@goenning" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2014-09-15T00:00:00-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Adding security to ICF and SOAP RFC" />
 <script type="application/ld+json">
-{"headline":"Adding security to ICF and SOAP RFC","dateModified":"2014-09-15T00:00:00-05:00","datePublished":"2014-09-15T00:00:00-05:00","url":"https://goenning.net/2014/09/15/adding-security-to-icf-and-soap-rfc/","author":{"@type":"Person","name":"@goenning"},"description":"loop at { run; code; blog; swim; eat; cycle; } until tired;","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://goenning.net/2014/09/15/adding-security-to-icf-and-soap-rfc/"},"@context":"http://schema.org"}</script>
+{"author":{"@type":"Person","name":"@goenning"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://goenning.net/2014/09/15/adding-security-to-icf-and-soap-rfc/"},"@type":"BlogPosting","description":"loop at { run; code; blog; swim; eat; cycle; } until tired;","headline":"Adding security to ICF and SOAP RFC","dateModified":"2014-09-15T00:00:00-05:00","url":"https://goenning.net/2014/09/15/adding-security-to-icf-and-soap-rfc/","datePublished":"2014-09-15T00:00:00-05:00","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   </head>
@@ -161,16 +163,16 @@
 
 <p>There is a risk when enabling and using RFC in a SAP environment.</p>
 
-<p>SAP system ships with many useful functions with <code class="highlighter-rouge">Remote-Enabled Function</code> that are enabled by default. This mean any user with valid credentials can create unwanted Purchase Orders or Sales Orders by using the standard Remote-Enabled Functions. Or even worse, it is also possible to create a new users through RFC.</p>
+<p>SAP system ships with many useful functions with <code class="language-plaintext highlighter-rouge">Remote-Enabled Function</code> that are enabled by default. This mean any user with valid credentials can create unwanted Purchase Orders or Sales Orders by using the standard Remote-Enabled Functions. Or even worse, it is also possible to create a new users through RFC.</p>
 
 <p><img src="/public/images/bapi_create_user.png" alt="" /></p>
 
 <p>Fortunately SAP has an excellent built-in authorization module that also covers RFC. In this post you are going to learn how to protect your system from these unwanted RFC calls.</p>
 
-<p>There are four authorization objects, but this post will only cover the two most used, <code class="highlighter-rouge">S_RFC</code> and <code class="highlighter-rouge">S_ICF</code>.
+<p>There are four authorization objects, but this post will only cover the two most used, <code class="language-plaintext highlighter-rouge">S_RFC</code> and <code class="language-plaintext highlighter-rouge">S_ICF</code>.
 If you are new to authorization objects, this <a href="http://scn.sap.com/docs/DOC-17023">SCN article</a> may come in handy.</p>
 
-<p>First you got to understand how the <code class="highlighter-rouge">auth/rfc_authority_check</code> parameter works. This parameter defines in what level your SAP system will check for authority during a RFC.</p>
+<p>First you got to understand how the <code class="language-plaintext highlighter-rouge">auth/rfc_authority_check</code> parameter works. This parameter defines in what level your SAP system will check for authority during a RFC.</p>
 
 <p>The possible values are:</p>
 
@@ -186,7 +188,7 @@ If you are new to authorization objects, this <a href="http://scn.sap.com/docs/D
   <li><strong>9:</strong> Verification is active for all function calls</li>
 </ul>
 
-<p>They all look like the same, there is only a small change between each other. For those who prefer code than documentation, look for function <code class="highlighter-rouge">AUTHORITY_CHECK_RFC</code>, this parameter is used inside it.</p>
+<p>They all look like the same, there is only a small change between each other. For those who prefer code than documentation, look for function <code class="language-plaintext highlighter-rouge">AUTHORITY_CHECK_RFC</code>, this parameter is used inside it.</p>
 
 <h3 id="s_rfc">S_RFC</h3>
 
@@ -198,7 +200,7 @@ If you are new to authorization objects, this <a href="http://scn.sap.com/docs/D
 
 <p><em>RFC_NAME:</em> This is where you can set the name of Function Group or Function Module, depending on what you set on RFC_TYPE.</p>
 
-<p><em>Tip:</em> To be able to call RFC functions using SAP Connector it is necessary to authorize some basic functions along side with business functions you may need. These functions are used to test the connection and to query metadata from function and structures. You can safely add these function groups <code class="highlighter-rouge">SYST</code>, <code class="highlighter-rouge">RFC1</code> e <code class="highlighter-rouge">RFC_METADATA</code>.</p>
+<p><em>Tip:</em> To be able to call RFC functions using SAP Connector it is necessary to authorize some basic functions along side with business functions you may need. These functions are used to test the connection and to query metadata from function and structures. You can safely add these function groups <code class="language-plaintext highlighter-rouge">SYST</code>, <code class="language-plaintext highlighter-rouge">RFC1</code> e <code class="language-plaintext highlighter-rouge">RFC_METADATA</code>.</p>
 
 <p>This is an example of a custom profile with RFC enabled. Z_SSRT is the function group that contains many functions that the user needs to call remotely.</p>
 
@@ -210,9 +212,9 @@ If you are new to authorization objects, this <a href="http://scn.sap.com/docs/D
 
 <p>When doing a remote function call through SOAP Handler (ICF) there is no authority check at all. Any user (with correct credentials) can call any remote function through ICF without any additional permissions. S_RFC authority object is not used in this case. That’s certainly not a good thing, but fortunately there is an authority object called S_ICF that come in handy. The problem is that it’s a so simple mechanism that it is almost useless.</p>
 
-<p>With S_ICF it is possible to define which ICF <em>Services</em> are enabled for each user, but it is still does not allow us to choose which <em>Functions</em> are enabled when using <code class="highlighter-rouge">sap/bc/soap/rfc</code> service.</p>
+<p>With S_ICF it is possible to define which ICF <em>Services</em> are enabled for each user, but it is still does not allow us to choose which <em>Functions</em> are enabled when using <code class="language-plaintext highlighter-rouge">sap/bc/soap/rfc</code> service.</p>
 
-<p>To enable S_ICF, enter SICF transation and go to the desired service, which is sap/bc/soap/rfc in this case. Go to field <code class="highlighter-rouge">SAP Authoriz.</code> and input any value, eg.: RFC_CHECK. Edit the user profile and add the S_ICF authority object. Two parameters will be prompted: <code class="highlighter-rouge">ICF_FIELD</code> e <code class="highlighter-rouge">ICF_VALUE</code>. For ICF_FIELD input SERVICE and for ICF_VALUE input the same value used in SICF, in this case it is RFC_CHECK.</p>
+<p>To enable S_ICF, enter SICF transation and go to the desired service, which is sap/bc/soap/rfc in this case. Go to field <code class="language-plaintext highlighter-rouge">SAP Authoriz.</code> and input any value, eg.: RFC_CHECK. Edit the user profile and add the S_ICF authority object. Two parameters will be prompted: <code class="language-plaintext highlighter-rouge">ICF_FIELD</code> e <code class="language-plaintext highlighter-rouge">ICF_VALUE</code>. For ICF_FIELD input SERVICE and for ICF_VALUE input the same value used in SICF, in this case it is RFC_CHECK.</p>
 
 <p>This configuration will tie users of this profile to services from SICF in which the field SAP Authoriz. is empty or equal to the ICF_VALUE parameter.</p>
 
@@ -221,7 +223,7 @@ If you are new to authorization objects, this <a href="http://scn.sap.com/docs/D
 <p>That’s not the ideal solution, because it is not safe to allow all functions to be remotely executed. I found weird that there is no standard way of doing this kind of restriction.</p>
 
 <p>I’ve then started debugging through class CL_HTTP_EXT_SOAPHANDLER_RFC and found something really useful.
-There is a peace of code that checks wherever the function can be executed by looking at a white list table. The table is named <code class="highlighter-rouge">SRT_WHITE_LIST</code>, and when it’s empty (and it is by default) all functions are allowed. When this table has at least a single row, then only the functions registered in this table are allowed to be called by SOAP.</p>
+There is a peace of code that checks wherever the function can be executed by looking at a white list table. The table is named <code class="language-plaintext highlighter-rouge">SRT_WHITE_LIST</code>, and when it’s empty (and it is by default) all functions are allowed. When this table has at least a single row, then only the functions registered in this table are allowed to be called by SOAP.</p>
 
 <p><img src="/public/images/SRT_WHITE_LIST.png" alt="" /></p>
 

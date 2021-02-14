@@ -13,9 +13,9 @@
     <link rel="alternate" type="application/rss+xml" title="@goenning - loop at { run; code; blog; swim; eat; cycle; } until tired;" href="/feed.xml" />
     
 
-    <!-- Begin Jekyll SEO tag v2.5.0 -->
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>ABAP e seu tipo booleano | @goenning</title>
-<meta name="generator" content="Jekyll v3.8.5" />
+<meta name="generator" content="Jekyll v4.2.0" />
 <meta property="og:title" content="ABAP e seu tipo booleano" />
 <meta name="author" content="@goenning" />
 <meta property="og:locale" content="pt" />
@@ -26,8 +26,10 @@
 <meta property="og:site_name" content="@goenning" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2015-03-12T00:00:00-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="ABAP e seu tipo booleano" />
 <script type="application/ld+json">
-{"headline":"ABAP e seu tipo booleano","dateModified":"2015-03-12T00:00:00-05:00","datePublished":"2015-03-12T00:00:00-05:00","url":"https://goenning.net/2015/03/12/abap-e-seu-tipo-booleano/","author":{"@type":"Person","name":"@goenning"},"description":"Se você já programa em outra linguagem e leu o artigo sobre tipos de dados deve ter percebido que não falei nada sobre o Boolean. Não comentei sobre isto, pois ele não existe no ABAP. Isto é verdade, por mais estranho que pareça. Este é o tipo de dado mais primitivo que pode existir, afinal é o único que cabe em um único bit, e mesmo assim não existe.","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://goenning.net/2015/03/12/abap-e-seu-tipo-booleano/"},"@context":"http://schema.org"}</script>
+{"author":{"@type":"Person","name":"@goenning"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://goenning.net/2015/03/12/abap-e-seu-tipo-booleano/"},"@type":"BlogPosting","description":"Se você já programa em outra linguagem e leu o artigo sobre tipos de dados deve ter percebido que não falei nada sobre o Boolean. Não comentei sobre isto, pois ele não existe no ABAP. Isto é verdade, por mais estranho que pareça. Este é o tipo de dado mais primitivo que pode existir, afinal é o único que cabe em um único bit, e mesmo assim não existe.","headline":"ABAP e seu tipo booleano","dateModified":"2015-03-12T00:00:00-05:00","url":"https://goenning.net/2015/03/12/abap-e-seu-tipo-booleano/","datePublished":"2015-03-12T00:00:00-05:00","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   </head>
@@ -164,7 +166,7 @@
 
 <p>É bem simples, veja um exemplo de como fica a utilização.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>REPORT zabapbool.
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>REPORT zabapbool.
 
 DATA: gv_finalizado(1) TYPE c.
 
@@ -185,7 +187,7 @@ ENDIF.
 
 <p><img src="/public/images/2015/03/se11-type-group-abap.png" alt="" /></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>types:
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>types:
   abap_bool type c length 1.
 
 constants:
@@ -198,7 +200,7 @@ constants:
 
 <p>Veja que um dos primeiros tipos de dados declarado é <strong>abap_bool</strong>. Veja também que existem algumas constantes relacionadas ao tipo booleano. Vamos reescrever nosso exemplo acima usando estes novos tipos:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>REPORT zabapbool.
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>REPORT zabapbool.
 
 TYPE-POOLS abap.
 

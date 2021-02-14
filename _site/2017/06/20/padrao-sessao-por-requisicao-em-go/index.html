@@ -13,9 +13,9 @@
     <link rel="alternate" type="application/rss+xml" title="@goenning - loop at { run; code; blog; swim; eat; cycle; } until tired;" href="/feed.xml" />
     
 
-    <!-- Begin Jekyll SEO tag v2.5.0 -->
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>Implementando o Padrão de Sessão por Requisição em Go | @goenning</title>
-<meta name="generator" content="Jekyll v3.8.5" />
+<meta name="generator" content="Jekyll v4.2.0" />
 <meta property="og:title" content="Implementando o Padrão de Sessão por Requisição em Go" />
 <meta name="author" content="@goenning" />
 <meta property="og:locale" content="pt" />
@@ -26,8 +26,10 @@
 <meta property="og:site_name" content="@goenning" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2017-06-20T00:00:00-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Implementando o Padrão de Sessão por Requisição em Go" />
 <script type="application/ld+json">
-{"headline":"Implementando o Padrão de Sessão por Requisição em Go","dateModified":"2017-06-20T00:00:00-05:00","datePublished":"2017-06-20T00:00:00-05:00","url":"https://goenning.net/2017/06/20/padrao-sessao-por-requisicao-em-go/","author":{"@type":"Person","name":"@goenning"},"description":"Há um padrão de projeto muito comum em C# e Java, porém dificil de encontrar qualquer referência sobre em Go. O padrão é conhecido como Sessão por Requisição (Session per Request) e é particularmente útil para desacoplhar lógica de negócio do gerenciamente de transações com o banco de dados. Neste post vou falar sobre o que é, como implementar, as vantagens e desvantagens, assim como exemplos em Go.","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://goenning.net/2017/06/20/padrao-sessao-por-requisicao-em-go/"},"@context":"http://schema.org"}</script>
+{"author":{"@type":"Person","name":"@goenning"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://goenning.net/2017/06/20/padrao-sessao-por-requisicao-em-go/"},"@type":"BlogPosting","description":"Há um padrão de projeto muito comum em C# e Java, porém dificil de encontrar qualquer referência sobre em Go. O padrão é conhecido como Sessão por Requisição (Session per Request) e é particularmente útil para desacoplhar lógica de negócio do gerenciamente de transações com o banco de dados. Neste post vou falar sobre o que é, como implementar, as vantagens e desvantagens, assim como exemplos em Go.","headline":"Implementando o Padrão de Sessão por Requisição em Go","dateModified":"2017-06-20T00:00:00-05:00","url":"https://goenning.net/2017/06/20/padrao-sessao-por-requisicao-em-go/","datePublished":"2017-06-20T00:00:00-05:00","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   </head>
@@ -149,7 +151,7 @@
 
 
   
-    • 11 minutos para ler
+    • 9 minutos para ler
   
 
     • 
@@ -172,60 +174,60 @@
 
 <p>O código a seguir é um exemplo simples de como as transações geralmente são gerenciadas, não apenas em Go, mas como em qualquer outra linguagem.</p>
 
-<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">func</span><span class="x"> </span><span class="n">index</span><span class="p">(</span><span class="n">w</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">ResponseWriter</span><span class="p">,</span><span class="x"> </span><span class="n">r</span><span class="x"> </span><span class="o">*</span><span class="n">http</span><span class="o">.</span><span class="n">Request</span><span class="p">)</span><span class="x"> </span><span class="p">{</span><span class="x">
-	</span><span class="n">tx</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">db</span><span class="o">.</span><span class="n">Begin</span><span class="p">()</span><span class="x">
-	</span><span class="k">if</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">!=</span><span class="x"> </span><span class="no">nil</span><span class="x"> </span><span class="p">{</span><span class="x">
-		</span><span class="n">w</span><span class="o">.</span><span class="n">WriteHeader</span><span class="p">(</span><span class="n">http</span><span class="o">.</span><span class="n">StatusInternalServerError</span><span class="p">)</span><span class="x">
-		</span><span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="n">err</span><span class="p">)</span><span class="x">
-		</span><span class="k">return</span><span class="x">
-	</span><span class="p">}</span><span class="x">
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">func</span> <span class="n">index</span><span class="p">(</span><span class="n">w</span> <span class="n">http</span><span class="o">.</span><span class="n">ResponseWriter</span><span class="p">,</span> <span class="n">r</span> <span class="o">*</span><span class="n">http</span><span class="o">.</span><span class="n">Request</span><span class="p">)</span> <span class="p">{</span>
+	<span class="n">tx</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">db</span><span class="o">.</span><span class="n">Begin</span><span class="p">()</span>
+	<span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+		<span class="n">w</span><span class="o">.</span><span class="n">WriteHeader</span><span class="p">(</span><span class="n">http</span><span class="o">.</span><span class="n">StatusInternalServerError</span><span class="p">)</span>
+		<span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+		<span class="k">return</span>
+	<span class="p">}</span>
 
-	</span><span class="k">var</span><span class="x"> </span><span class="n">id</span><span class="x"> </span><span class="kt">int</span><span class="x">
-	</span><span class="n">err</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="n">tx</span><span class="o">.</span><span class="n">QueryRow</span><span class="p">(</span><span class="s">"SELECT id FROM pages WHERE url = $1"</span><span class="p">,</span><span class="x"> </span><span class="n">r</span><span class="o">.</span><span class="n">URL</span><span class="o">.</span><span class="n">Path</span><span class="p">)</span><span class="o">.</span><span class="n">Scan</span><span class="p">(</span><span class="o">&amp;</span><span class="n">id</span><span class="p">)</span><span class="x">
-	</span><span class="k">if</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">!=</span><span class="x"> </span><span class="no">nil</span><span class="x"> </span><span class="o">&amp;&amp;</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">!=</span><span class="x"> </span><span class="n">sql</span><span class="o">.</span><span class="n">ErrNoRows</span><span class="x"> </span><span class="p">{</span><span class="x">
-		</span><span class="n">tx</span><span class="o">.</span><span class="n">Rollback</span><span class="p">()</span><span class="x">
-		</span><span class="n">w</span><span class="o">.</span><span class="n">WriteHeader</span><span class="p">(</span><span class="n">http</span><span class="o">.</span><span class="n">StatusInternalServerError</span><span class="p">)</span><span class="x">
-		</span><span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">err</span><span class="p">)</span><span class="x">
-		</span><span class="k">return</span><span class="x">
-	</span><span class="p">}</span><span class="x">
+	<span class="k">var</span> <span class="n">id</span> <span class="kt">int</span>
+	<span class="n">err</span> <span class="o">=</span> <span class="n">tx</span><span class="o">.</span><span class="n">QueryRow</span><span class="p">(</span><span class="s">"SELECT id FROM pages WHERE url = $1"</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">URL</span><span class="o">.</span><span class="n">Path</span><span class="p">)</span><span class="o">.</span><span class="n">Scan</span><span class="p">(</span><span class="o">&amp;</span><span class="n">id</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="o">&amp;&amp;</span> <span class="n">err</span> <span class="o">!=</span> <span class="n">sql</span><span class="o">.</span><span class="n">ErrNoRows</span> <span class="p">{</span>
+		<span class="n">tx</span><span class="o">.</span><span class="n">Rollback</span><span class="p">()</span>
+		<span class="n">w</span><span class="o">.</span><span class="n">WriteHeader</span><span class="p">(</span><span class="n">http</span><span class="o">.</span><span class="n">StatusInternalServerError</span><span class="p">)</span>
+		<span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+		<span class="k">return</span>
+	<span class="p">}</span>
 
-	</span><span class="k">if</span><span class="x"> </span><span class="n">id</span><span class="x"> </span><span class="o">==</span><span class="x"> </span><span class="m">0</span><span class="x"> </span><span class="p">{</span><span class="x">
-		</span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">tx</span><span class="o">.</span><span class="n">QueryRow</span><span class="p">(</span><span class="s">"INSERT INTO pages (url, visitors) VALUES ($1, 0) RETURNING id"</span><span class="p">,</span><span class="x"> </span><span class="n">r</span><span class="o">.</span><span class="n">URL</span><span class="o">.</span><span class="n">Path</span><span class="p">)</span><span class="o">.</span><span class="n">Scan</span><span class="p">(</span><span class="o">&amp;</span><span class="n">id</span><span class="p">)</span><span class="x">
-		</span><span class="k">if</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">!=</span><span class="x"> </span><span class="no">nil</span><span class="x"> </span><span class="p">{</span><span class="x">
-			</span><span class="n">tx</span><span class="o">.</span><span class="n">Rollback</span><span class="p">()</span><span class="x">
-			</span><span class="n">w</span><span class="o">.</span><span class="n">WriteHeader</span><span class="p">(</span><span class="n">http</span><span class="o">.</span><span class="n">StatusInternalServerError</span><span class="p">)</span><span class="x">
-			</span><span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">err</span><span class="p">)</span><span class="x">
-			</span><span class="k">return</span><span class="x">
-		</span><span class="p">}</span><span class="x">
-	</span><span class="p">}</span><span class="x">
+	<span class="k">if</span> <span class="n">id</span> <span class="o">==</span> <span class="m">0</span> <span class="p">{</span>
+		<span class="n">err</span> <span class="o">:=</span> <span class="n">tx</span><span class="o">.</span><span class="n">QueryRow</span><span class="p">(</span><span class="s">"INSERT INTO pages (url, visitors) VALUES ($1, 0) RETURNING id"</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">URL</span><span class="o">.</span><span class="n">Path</span><span class="p">)</span><span class="o">.</span><span class="n">Scan</span><span class="p">(</span><span class="o">&amp;</span><span class="n">id</span><span class="p">)</span>
+		<span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+			<span class="n">tx</span><span class="o">.</span><span class="n">Rollback</span><span class="p">()</span>
+			<span class="n">w</span><span class="o">.</span><span class="n">WriteHeader</span><span class="p">(</span><span class="n">http</span><span class="o">.</span><span class="n">StatusInternalServerError</span><span class="p">)</span>
+			<span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+			<span class="k">return</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
 
-	</span><span class="n">_</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="n">tx</span><span class="o">.</span><span class="n">Exec</span><span class="p">(</span><span class="s">"UPDATE pages SET visitors = visitors + 1 WHERE id = $1"</span><span class="p">,</span><span class="x"> </span><span class="n">id</span><span class="p">)</span><span class="x">
-	</span><span class="k">if</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">!=</span><span class="x"> </span><span class="no">nil</span><span class="x"> </span><span class="p">{</span><span class="x">
-		</span><span class="n">tx</span><span class="o">.</span><span class="n">Rollback</span><span class="p">()</span><span class="x">
-		</span><span class="n">w</span><span class="o">.</span><span class="n">WriteHeader</span><span class="p">(</span><span class="n">http</span><span class="o">.</span><span class="n">StatusInternalServerError</span><span class="p">)</span><span class="x">
-		</span><span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">err</span><span class="p">)</span><span class="x">
-		</span><span class="k">return</span><span class="x">
-	</span><span class="p">}</span><span class="x">
+	<span class="n">_</span><span class="p">,</span> <span class="n">err</span> <span class="o">=</span> <span class="n">tx</span><span class="o">.</span><span class="n">Exec</span><span class="p">(</span><span class="s">"UPDATE pages SET visitors = visitors + 1 WHERE id = $1"</span><span class="p">,</span> <span class="n">id</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+		<span class="n">tx</span><span class="o">.</span><span class="n">Rollback</span><span class="p">()</span>
+		<span class="n">w</span><span class="o">.</span><span class="n">WriteHeader</span><span class="p">(</span><span class="n">http</span><span class="o">.</span><span class="n">StatusInternalServerError</span><span class="p">)</span>
+		<span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+		<span class="k">return</span>
+	<span class="p">}</span>
 
-	</span><span class="n">_</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="n">tx</span><span class="o">.</span><span class="n">Exec</span><span class="p">(</span><span class="s">"INSERT INTO page_visitors (page_id, ip, datetime) VALUES ($1, $2, $3)"</span><span class="p">,</span><span class="x"> </span><span class="n">id</span><span class="p">,</span><span class="x"> </span><span class="n">r</span><span class="o">.</span><span class="n">RemoteAddr</span><span class="p">,</span><span class="x"> </span><span class="n">time</span><span class="o">.</span><span class="n">Now</span><span class="p">())</span><span class="x">
-	</span><span class="k">if</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">!=</span><span class="x"> </span><span class="no">nil</span><span class="x"> </span><span class="p">{</span><span class="x">
-		</span><span class="n">tx</span><span class="o">.</span><span class="n">Rollback</span><span class="p">()</span><span class="x">
-		</span><span class="n">w</span><span class="o">.</span><span class="n">WriteHeader</span><span class="p">(</span><span class="n">http</span><span class="o">.</span><span class="n">StatusInternalServerError</span><span class="p">)</span><span class="x">
-		</span><span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">err</span><span class="p">)</span><span class="x">
-		</span><span class="k">return</span><span class="x">
-	</span><span class="p">}</span><span class="x">
+	<span class="n">_</span><span class="p">,</span> <span class="n">err</span> <span class="o">=</span> <span class="n">tx</span><span class="o">.</span><span class="n">Exec</span><span class="p">(</span><span class="s">"INSERT INTO page_visitors (page_id, ip, datetime) VALUES ($1, $2, $3)"</span><span class="p">,</span> <span class="n">id</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">RemoteAddr</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">Now</span><span class="p">())</span>
+	<span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+		<span class="n">tx</span><span class="o">.</span><span class="n">Rollback</span><span class="p">()</span>
+		<span class="n">w</span><span class="o">.</span><span class="n">WriteHeader</span><span class="p">(</span><span class="n">http</span><span class="o">.</span><span class="n">StatusInternalServerError</span><span class="p">)</span>
+		<span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+		<span class="k">return</span>
+	<span class="p">}</span>
 
-	</span><span class="n">err</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="n">tx</span><span class="o">.</span><span class="n">Commit</span><span class="p">()</span><span class="x">
-	</span><span class="k">if</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">!=</span><span class="x"> </span><span class="no">nil</span><span class="x"> </span><span class="p">{</span><span class="x">
-		</span><span class="n">w</span><span class="o">.</span><span class="n">WriteHeader</span><span class="p">(</span><span class="n">http</span><span class="o">.</span><span class="n">StatusInternalServerError</span><span class="p">)</span><span class="x">
-		</span><span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">err</span><span class="p">)</span><span class="x">
-		</span><span class="k">return</span><span class="x">
-	</span><span class="p">}</span><span class="x">
+	<span class="n">err</span> <span class="o">=</span> <span class="n">tx</span><span class="o">.</span><span class="n">Commit</span><span class="p">()</span>
+	<span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+		<span class="n">w</span><span class="o">.</span><span class="n">WriteHeader</span><span class="p">(</span><span class="n">http</span><span class="o">.</span><span class="n">StatusInternalServerError</span><span class="p">)</span>
+		<span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+		<span class="k">return</span>
+	<span class="p">}</span>
 
-	</span><span class="n">w</span><span class="o">.</span><span class="n">Write</span><span class="p">([]</span><span class="kt">byte</span><span class="p">(</span><span class="n">fmt</span><span class="o">.</span><span class="n">Sprintf</span><span class="p">(</span><span class="s">"Thanks for visiting '%s'"</span><span class="p">,</span><span class="x"> </span><span class="n">r</span><span class="o">.</span><span class="n">URL</span><span class="o">.</span><span class="n">Path</span><span class="p">)))</span><span class="x">
-	</span><span class="k">return</span><span class="x">
-</span><span class="p">}</span><span class="x">
-</span></code></pre></div></div>
+	<span class="n">w</span><span class="o">.</span><span class="n">Write</span><span class="p">([]</span><span class="kt">byte</span><span class="p">(</span><span class="n">fmt</span><span class="o">.</span><span class="n">Sprintf</span><span class="p">(</span><span class="s">"Thanks for visiting '%s'"</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">URL</span><span class="o">.</span><span class="n">Path</span><span class="p">)))</span>
+	<span class="k">return</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
 <p>Este código basicamente inicia uma transação no início da função e executa alguns comandos, se a qualquer momento algum erro acontecer, é feito um rollback da transação e uma resposta 500 é retornada ao cliente. Se tudo ocorrer bem, é feito o commit da transação e uma resposta 200 é retornada.</p>
 
@@ -243,94 +245,94 @@
 
 <h5 id="middleware">Middleware</h5>
 
-<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">type</span><span class="x"> </span><span class="n">CustomHandler</span><span class="x"> </span><span class="k">func</span><span class="p">(</span><span class="n">http</span><span class="o">.</span><span class="n">ResponseWriter</span><span class="p">,</span><span class="x"> </span><span class="o">*</span><span class="n">http</span><span class="o">.</span><span class="n">Request</span><span class="p">)</span><span class="x"> </span><span class="kt">error</span><span class="x">
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">type</span> <span class="n">CustomHandler</span> <span class="k">func</span><span class="p">(</span><span class="n">http</span><span class="o">.</span><span class="n">ResponseWriter</span><span class="p">,</span> <span class="o">*</span><span class="n">http</span><span class="o">.</span><span class="n">Request</span><span class="p">)</span> <span class="kt">error</span>
 
-</span><span class="k">type</span><span class="x"> </span><span class="n">contextKey</span><span class="x"> </span><span class="kt">int</span><span class="x">
+<span class="k">type</span> <span class="n">contextKey</span> <span class="kt">int</span>
 
-</span><span class="k">const</span><span class="x"> </span><span class="p">(</span><span class="x">
-	</span><span class="n">txContextKey</span><span class="x"> </span><span class="n">contextKey</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="no">iota</span><span class="x">
-</span><span class="p">)</span><span class="x">
+<span class="k">const</span> <span class="p">(</span>
+	<span class="n">txContextKey</span> <span class="n">contextKey</span> <span class="o">=</span> <span class="no">iota</span>
+<span class="p">)</span>
 
-</span><span class="k">func</span><span class="x"> </span><span class="n">transaction</span><span class="p">(</span><span class="n">next</span><span class="x"> </span><span class="n">CustomHandler</span><span class="p">)</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">Handler</span><span class="x"> </span><span class="p">{</span><span class="x">
-	</span><span class="k">return</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">HandlerFunc</span><span class="p">(</span><span class="k">func</span><span class="p">(</span><span class="n">w</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">ResponseWriter</span><span class="p">,</span><span class="x"> </span><span class="n">r</span><span class="x"> </span><span class="o">*</span><span class="n">http</span><span class="o">.</span><span class="n">Request</span><span class="p">)</span><span class="x"> </span><span class="p">{</span><span class="x">
-		</span><span class="n">tx</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">db</span><span class="o">.</span><span class="n">Begin</span><span class="p">()</span><span class="x">
-		</span><span class="k">if</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">!=</span><span class="x"> </span><span class="no">nil</span><span class="x"> </span><span class="p">{</span><span class="x">
-			</span><span class="n">w</span><span class="o">.</span><span class="n">WriteHeader</span><span class="p">(</span><span class="n">http</span><span class="o">.</span><span class="n">StatusInternalServerError</span><span class="p">)</span><span class="x">
-			</span><span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"Open transaction failed: %s </span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="o">.</span><span class="n">Error</span><span class="p">())</span><span class="x">
-			</span><span class="k">return</span><span class="x">
-		</span><span class="p">}</span><span class="x">
+<span class="k">func</span> <span class="n">transaction</span><span class="p">(</span><span class="n">next</span> <span class="n">CustomHandler</span><span class="p">)</span> <span class="n">http</span><span class="o">.</span><span class="n">Handler</span> <span class="p">{</span>
+	<span class="k">return</span> <span class="n">http</span><span class="o">.</span><span class="n">HandlerFunc</span><span class="p">(</span><span class="k">func</span><span class="p">(</span><span class="n">w</span> <span class="n">http</span><span class="o">.</span><span class="n">ResponseWriter</span><span class="p">,</span> <span class="n">r</span> <span class="o">*</span><span class="n">http</span><span class="o">.</span><span class="n">Request</span><span class="p">)</span> <span class="p">{</span>
+		<span class="n">tx</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">db</span><span class="o">.</span><span class="n">Begin</span><span class="p">()</span>
+		<span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+			<span class="n">w</span><span class="o">.</span><span class="n">WriteHeader</span><span class="p">(</span><span class="n">http</span><span class="o">.</span><span class="n">StatusInternalServerError</span><span class="p">)</span>
+			<span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"Open transaction failed: %s </span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">err</span><span class="o">.</span><span class="n">Error</span><span class="p">())</span>
+			<span class="k">return</span>
+		<span class="p">}</span>
 
-		</span><span class="n">r</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="n">r</span><span class="o">.</span><span class="n">WithContext</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">WithValue</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">Context</span><span class="p">(),</span><span class="x"> </span><span class="n">txContextKey</span><span class="p">,</span><span class="x"> </span><span class="n">tx</span><span class="p">))</span><span class="x">
+		<span class="n">r</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">WithContext</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">WithValue</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">Context</span><span class="p">(),</span> <span class="n">txContextKey</span><span class="p">,</span> <span class="n">tx</span><span class="p">))</span>
 
-		</span><span class="k">defer</span><span class="x"> </span><span class="k">func</span><span class="p">()</span><span class="x"> </span><span class="p">{</span><span class="x">
-			</span><span class="k">if</span><span class="x"> </span><span class="n">r</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="nb">recover</span><span class="p">();</span><span class="x"> </span><span class="n">r</span><span class="x"> </span><span class="o">!=</span><span class="x"> </span><span class="no">nil</span><span class="x"> </span><span class="p">{</span><span class="x">
-				</span><span class="k">var</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="kt">error</span><span class="x">
-				</span><span class="k">switch</span><span class="x"> </span><span class="n">r</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">r</span><span class="o">.</span><span class="p">(</span><span class="k">type</span><span class="p">)</span><span class="x"> </span><span class="p">{</span><span class="x">
-				</span><span class="k">case</span><span class="x"> </span><span class="kt">error</span><span class="o">:</span><span class="x">
-					</span><span class="n">err</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="n">r</span><span class="x">
-				</span><span class="k">default</span><span class="o">:</span><span class="x">
-					</span><span class="n">err</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="n">fmt</span><span class="o">.</span><span class="n">Errorf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="x"> </span><span class="n">r</span><span class="p">)</span><span class="x">
-				</span><span class="p">}</span><span class="x">
-				</span><span class="n">w</span><span class="o">.</span><span class="n">WriteHeader</span><span class="p">(</span><span class="n">http</span><span class="o">.</span><span class="n">StatusInternalServerError</span><span class="p">)</span><span class="x">
-				</span><span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"Transaction is being rolled back: %s </span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="o">.</span><span class="n">Error</span><span class="p">())</span><span class="x">
-				</span><span class="n">tx</span><span class="o">.</span><span class="n">Rollback</span><span class="p">()</span><span class="x">
-				</span><span class="k">return</span><span class="x">
-			</span><span class="p">}</span><span class="x">
-		</span><span class="p">}()</span><span class="x">
+		<span class="k">defer</span> <span class="k">func</span><span class="p">()</span> <span class="p">{</span>
+			<span class="k">if</span> <span class="n">r</span> <span class="o">:=</span> <span class="nb">recover</span><span class="p">();</span> <span class="n">r</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+				<span class="k">var</span> <span class="n">err</span> <span class="kt">error</span>
+				<span class="k">switch</span> <span class="n">r</span> <span class="o">:=</span> <span class="n">r</span><span class="o">.</span><span class="p">(</span><span class="k">type</span><span class="p">)</span> <span class="p">{</span>
+				<span class="k">case</span> <span class="kt">error</span><span class="o">:</span>
+					<span class="n">err</span> <span class="o">=</span> <span class="n">r</span>
+				<span class="k">default</span><span class="o">:</span>
+					<span class="n">err</span> <span class="o">=</span> <span class="n">fmt</span><span class="o">.</span><span class="n">Errorf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
+				<span class="p">}</span>
+				<span class="n">w</span><span class="o">.</span><span class="n">WriteHeader</span><span class="p">(</span><span class="n">http</span><span class="o">.</span><span class="n">StatusInternalServerError</span><span class="p">)</span>
+				<span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"Transaction is being rolled back: %s </span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">err</span><span class="o">.</span><span class="n">Error</span><span class="p">())</span>
+				<span class="n">tx</span><span class="o">.</span><span class="n">Rollback</span><span class="p">()</span>
+				<span class="k">return</span>
+			<span class="p">}</span>
+		<span class="p">}()</span>
 
-		</span><span class="n">err</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="n">next</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="x"> </span><span class="n">r</span><span class="p">)</span><span class="x">
-		</span><span class="k">if</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">!=</span><span class="x"> </span><span class="no">nil</span><span class="x"> </span><span class="p">{</span><span class="x">
-			</span><span class="n">w</span><span class="o">.</span><span class="n">WriteHeader</span><span class="p">(</span><span class="n">http</span><span class="o">.</span><span class="n">StatusInternalServerError</span><span class="p">)</span><span class="x">
-			</span><span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"Transaction is being rolled back: %s </span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="o">.</span><span class="n">Error</span><span class="p">())</span><span class="x">
-			</span><span class="n">tx</span><span class="o">.</span><span class="n">Rollback</span><span class="p">()</span><span class="x">
-			</span><span class="k">return</span><span class="x">
-		</span><span class="p">}</span><span class="x">
+		<span class="n">err</span> <span class="o">=</span> <span class="n">next</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
+		<span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+			<span class="n">w</span><span class="o">.</span><span class="n">WriteHeader</span><span class="p">(</span><span class="n">http</span><span class="o">.</span><span class="n">StatusInternalServerError</span><span class="p">)</span>
+			<span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"Transaction is being rolled back: %s </span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">err</span><span class="o">.</span><span class="n">Error</span><span class="p">())</span>
+			<span class="n">tx</span><span class="o">.</span><span class="n">Rollback</span><span class="p">()</span>
+			<span class="k">return</span>
+		<span class="p">}</span>
 
-		</span><span class="n">err</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="n">tx</span><span class="o">.</span><span class="n">Commit</span><span class="p">()</span><span class="x">
-		</span><span class="k">if</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">!=</span><span class="x"> </span><span class="no">nil</span><span class="x"> </span><span class="p">{</span><span class="x">
-			</span><span class="n">w</span><span class="o">.</span><span class="n">WriteHeader</span><span class="p">(</span><span class="n">http</span><span class="o">.</span><span class="n">StatusInternalServerError</span><span class="p">)</span><span class="x">
-			</span><span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"Transaction commit failed: %s </span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="o">.</span><span class="n">Error</span><span class="p">())</span><span class="x">
-		</span><span class="p">}</span><span class="x"> </span><span class="k">else</span><span class="x"> </span><span class="p">{</span><span class="x">
-			</span><span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"Transaction has been committed"</span><span class="p">)</span><span class="x">
-		</span><span class="p">}</span><span class="x">
-	</span><span class="p">})</span><span class="x">
-</span><span class="p">}</span><span class="x">
-</span></code></pre></div></div>
+		<span class="n">err</span> <span class="o">=</span> <span class="n">tx</span><span class="o">.</span><span class="n">Commit</span><span class="p">()</span>
+		<span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+			<span class="n">w</span><span class="o">.</span><span class="n">WriteHeader</span><span class="p">(</span><span class="n">http</span><span class="o">.</span><span class="n">StatusInternalServerError</span><span class="p">)</span>
+			<span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"Transaction commit failed: %s </span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">err</span><span class="o">.</span><span class="n">Error</span><span class="p">())</span>
+		<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+			<span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"Transaction has been committed"</span><span class="p">)</span>
+		<span class="p">}</span>
+	<span class="p">})</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
 <h4 id="handler">Handler</h4>
 
-<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">func</span><span class="x"> </span><span class="n">inder</span><span class="p">(</span><span class="n">w</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">ResponseWriter</span><span class="p">,</span><span class="x"> </span><span class="n">r</span><span class="x"> </span><span class="o">*</span><span class="n">http</span><span class="o">.</span><span class="n">Request</span><span class="p">)</span><span class="x"> </span><span class="kt">error</span><span class="x"> </span><span class="p">{</span><span class="x">
-	</span><span class="n">tx</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">r</span><span class="o">.</span><span class="n">Context</span><span class="p">()</span><span class="o">.</span><span class="n">Value</span><span class="p">(</span><span class="n">txContextKey</span><span class="p">)</span><span class="o">.</span><span class="p">(</span><span class="o">*</span><span class="n">sql</span><span class="o">.</span><span class="n">Tx</span><span class="p">)</span><span class="x">
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">func</span> <span class="n">inder</span><span class="p">(</span><span class="n">w</span> <span class="n">http</span><span class="o">.</span><span class="n">ResponseWriter</span><span class="p">,</span> <span class="n">r</span> <span class="o">*</span><span class="n">http</span><span class="o">.</span><span class="n">Request</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
+	<span class="n">tx</span> <span class="o">:=</span> <span class="n">r</span><span class="o">.</span><span class="n">Context</span><span class="p">()</span><span class="o">.</span><span class="n">Value</span><span class="p">(</span><span class="n">txContextKey</span><span class="p">)</span><span class="o">.</span><span class="p">(</span><span class="o">*</span><span class="n">sql</span><span class="o">.</span><span class="n">Tx</span><span class="p">)</span>
 
-	</span><span class="k">var</span><span class="x"> </span><span class="n">id</span><span class="x"> </span><span class="kt">int</span><span class="x">
-	</span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">tx</span><span class="o">.</span><span class="n">QueryRow</span><span class="p">(</span><span class="s">"SELECT id FROM pages WHERE url = $1"</span><span class="p">,</span><span class="x"> </span><span class="n">r</span><span class="o">.</span><span class="n">URL</span><span class="o">.</span><span class="n">Path</span><span class="p">)</span><span class="o">.</span><span class="n">Scan</span><span class="p">(</span><span class="o">&amp;</span><span class="n">id</span><span class="p">)</span><span class="x">
-	</span><span class="k">if</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">!=</span><span class="x"> </span><span class="no">nil</span><span class="x"> </span><span class="o">&amp;&amp;</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">!=</span><span class="x"> </span><span class="n">sql</span><span class="o">.</span><span class="n">ErrNoRows</span><span class="x"> </span><span class="p">{</span><span class="x">
-		</span><span class="k">return</span><span class="x"> </span><span class="n">err</span><span class="x">
-	</span><span class="p">}</span><span class="x">
+	<span class="k">var</span> <span class="n">id</span> <span class="kt">int</span>
+	<span class="n">err</span> <span class="o">:=</span> <span class="n">tx</span><span class="o">.</span><span class="n">QueryRow</span><span class="p">(</span><span class="s">"SELECT id FROM pages WHERE url = $1"</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">URL</span><span class="o">.</span><span class="n">Path</span><span class="p">)</span><span class="o">.</span><span class="n">Scan</span><span class="p">(</span><span class="o">&amp;</span><span class="n">id</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="o">&amp;&amp;</span> <span class="n">err</span> <span class="o">!=</span> <span class="n">sql</span><span class="o">.</span><span class="n">ErrNoRows</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="n">err</span>
+	<span class="p">}</span>
 
-	</span><span class="k">if</span><span class="x"> </span><span class="n">id</span><span class="x"> </span><span class="o">==</span><span class="x"> </span><span class="m">0</span><span class="x"> </span><span class="p">{</span><span class="x">
-		</span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">tx</span><span class="o">.</span><span class="n">QueryRow</span><span class="p">(</span><span class="s">"INSERT INTO pages (url, visitors) VALUES ($1, 0) RETURNING id"</span><span class="p">,</span><span class="x"> </span><span class="n">r</span><span class="o">.</span><span class="n">URL</span><span class="o">.</span><span class="n">Path</span><span class="p">)</span><span class="o">.</span><span class="n">Scan</span><span class="p">(</span><span class="o">&amp;</span><span class="n">id</span><span class="p">)</span><span class="x">
-		</span><span class="k">if</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">!=</span><span class="x"> </span><span class="no">nil</span><span class="x"> </span><span class="p">{</span><span class="x">
-			</span><span class="k">return</span><span class="x"> </span><span class="n">err</span><span class="x">
-		</span><span class="p">}</span><span class="x">
-	</span><span class="p">}</span><span class="x">
+	<span class="k">if</span> <span class="n">id</span> <span class="o">==</span> <span class="m">0</span> <span class="p">{</span>
+		<span class="n">err</span> <span class="o">:=</span> <span class="n">tx</span><span class="o">.</span><span class="n">QueryRow</span><span class="p">(</span><span class="s">"INSERT INTO pages (url, visitors) VALUES ($1, 0) RETURNING id"</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">URL</span><span class="o">.</span><span class="n">Path</span><span class="p">)</span><span class="o">.</span><span class="n">Scan</span><span class="p">(</span><span class="o">&amp;</span><span class="n">id</span><span class="p">)</span>
+		<span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+			<span class="k">return</span> <span class="n">err</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
 
-	</span><span class="n">_</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="n">tx</span><span class="o">.</span><span class="n">Exec</span><span class="p">(</span><span class="s">"UPDATE pages SET visitors = visitors + 1 WHERE id = $1"</span><span class="p">,</span><span class="x"> </span><span class="n">id</span><span class="p">)</span><span class="x">
-	</span><span class="k">if</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">!=</span><span class="x"> </span><span class="no">nil</span><span class="x"> </span><span class="p">{</span><span class="x">
-		</span><span class="k">return</span><span class="x"> </span><span class="n">err</span><span class="x">
-	</span><span class="p">}</span><span class="x">
+	<span class="n">_</span><span class="p">,</span> <span class="n">err</span> <span class="o">=</span> <span class="n">tx</span><span class="o">.</span><span class="n">Exec</span><span class="p">(</span><span class="s">"UPDATE pages SET visitors = visitors + 1 WHERE id = $1"</span><span class="p">,</span> <span class="n">id</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="n">err</span>
+	<span class="p">}</span>
 
-	</span><span class="n">_</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="n">tx</span><span class="o">.</span><span class="n">Exec</span><span class="p">(</span><span class="s">"INSERT INTO page_visitors (page_id, ip, datetime) VALUES ($1, $2, $3)"</span><span class="p">,</span><span class="x"> </span><span class="n">id</span><span class="p">,</span><span class="x"> </span><span class="n">r</span><span class="o">.</span><span class="n">RemoteAddr</span><span class="p">,</span><span class="x"> </span><span class="n">time</span><span class="o">.</span><span class="n">Now</span><span class="p">())</span><span class="x">
-	</span><span class="k">if</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">!=</span><span class="x"> </span><span class="no">nil</span><span class="x"> </span><span class="p">{</span><span class="x">
-		</span><span class="k">return</span><span class="x"> </span><span class="n">err</span><span class="x">
-	</span><span class="p">}</span><span class="x">
+	<span class="n">_</span><span class="p">,</span> <span class="n">err</span> <span class="o">=</span> <span class="n">tx</span><span class="o">.</span><span class="n">Exec</span><span class="p">(</span><span class="s">"INSERT INTO page_visitors (page_id, ip, datetime) VALUES ($1, $2, $3)"</span><span class="p">,</span> <span class="n">id</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">RemoteAddr</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">Now</span><span class="p">())</span>
+	<span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="n">err</span>
+	<span class="p">}</span>
 
-	</span><span class="n">w</span><span class="o">.</span><span class="n">Write</span><span class="p">([]</span><span class="kt">byte</span><span class="p">(</span><span class="n">fmt</span><span class="o">.</span><span class="n">Sprintf</span><span class="p">(</span><span class="s">"Thanks for visiting '%s'"</span><span class="p">,</span><span class="x"> </span><span class="n">r</span><span class="o">.</span><span class="n">URL</span><span class="o">.</span><span class="n">Path</span><span class="p">)))</span><span class="x">
-	</span><span class="k">return</span><span class="x"> </span><span class="no">nil</span><span class="x">
-</span><span class="p">}</span><span class="x">
-</span></code></pre></div></div>
+	<span class="n">w</span><span class="o">.</span><span class="n">Write</span><span class="p">([]</span><span class="kt">byte</span><span class="p">(</span><span class="n">fmt</span><span class="o">.</span><span class="n">Sprintf</span><span class="p">(</span><span class="s">"Thanks for visiting '%s'"</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">URL</span><span class="o">.</span><span class="n">Path</span><span class="p">)))</span>
+	<span class="k">return</span> <span class="no">nil</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
-<p>O código do <code class="highlighter-rouge">index</code> ficou muito menor e mais simples agora. Tudo o que é feito é extrair a transação ativa que está no contexto e utilizá-la. Se algo errado acontecer, a função retornar um objeto <code class="highlighter-rouge">error</code> para o middleware. O codigo do middleware pode parecer meio estranho, mas depois criado basta reutilizá-lo em qualquer outro handler da aplicação.</p>
+<p>O código do <code class="language-plaintext highlighter-rouge">index</code> ficou muito menor e mais simples agora. Tudo o que é feito é extrair a transação ativa que está no contexto e utilizá-la. Se algo errado acontecer, a função retornar um objeto <code class="language-plaintext highlighter-rouge">error</code> para o middleware. O codigo do middleware pode parecer meio estranho, mas depois criado basta reutilizá-lo em qualquer outro handler da aplicação.</p>
 
 <p>Este padrão também traz alguns benefícios, como por exemplo:</p>
 

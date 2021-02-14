@@ -13,9 +13,9 @@
     <link rel="alternate" type="application/rss+xml" title="@goenning - loop at { run; code; blog; swim; eat; cycle; } until tired;" href="/feed.xml" />
     
 
-    <!-- Begin Jekyll SEO tag v2.5.0 -->
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>Referências do React fortemente tipadas com TypeScript | @goenning</title>
-<meta name="generator" content="Jekyll v3.8.5" />
+<meta name="generator" content="Jekyll v4.2.0" />
 <meta property="og:title" content="Referências do React fortemente tipadas com TypeScript" />
 <meta name="author" content="@goenning" />
 <meta property="og:locale" content="pt" />
@@ -26,8 +26,10 @@
 <meta property="og:site_name" content="@goenning" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2016-11-02T00:00:00-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Referências do React fortemente tipadas com TypeScript" />
 <script type="application/ld+json">
-{"headline":"Referências do React fortemente tipadas com TypeScript","dateModified":"2016-11-02T00:00:00-05:00","datePublished":"2016-11-02T00:00:00-05:00","url":"https://goenning.net/2016/11/02/ref-react-fortemente-tipadas-com-typescript/","author":{"@type":"Person","name":"@goenning"},"description":"Quem já trabalhou com React por algum tempo provavelmente já descobriu que refs são bem fáceis de se trabalhar, porém começam a se tornar inflexíveis a partir de certo ponto.","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://goenning.net/2016/11/02/ref-react-fortemente-tipadas-com-typescript/"},"@context":"http://schema.org"}</script>
+{"author":{"@type":"Person","name":"@goenning"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://goenning.net/2016/11/02/ref-react-fortemente-tipadas-com-typescript/"},"@type":"BlogPosting","description":"Quem já trabalhou com React por algum tempo provavelmente já descobriu que refs são bem fáceis de se trabalhar, porém começam a se tornar inflexíveis a partir de certo ponto.","headline":"Referências do React fortemente tipadas com TypeScript","dateModified":"2016-11-02T00:00:00-05:00","url":"https://goenning.net/2016/11/02/ref-react-fortemente-tipadas-com-typescript/","datePublished":"2016-11-02T00:00:00-05:00","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   </head>
@@ -160,42 +162,42 @@
   </small>
 
   <div class="entry">
-    <p>Quem já trabalhou com React por algum tempo provavelmente já descobriu que <a href="https://facebook.github.io/react/docs/refs-and-the-dom.html"><code class="highlighter-rouge">refs</code></a> são bem fáceis de se trabalhar, 
+    <p>Quem já trabalhou com React por algum tempo provavelmente já descobriu que <a href="https://facebook.github.io/react/docs/refs-and-the-dom.html"><code class="language-plaintext highlighter-rouge">refs</code></a> são bem fáceis de se trabalhar, 
 porém começam a se tornar <a href="http://stackoverflow.com/questions/29503213/use-state-or-refs-in-react-js-form-components">inflexíveis</a> a partir de certo ponto.</p>
 
-<p>De qualquer forma, <code class="highlighter-rouge">refs</code> estão disponíveis e funcionam muito bem. Então por que não utilizadas, correto?</p>
+<p>De qualquer forma, <code class="language-plaintext highlighter-rouge">refs</code> estão disponíveis e funcionam muito bem. Então por que não utilizadas, correto?</p>
 
 <p>Quando trabalhamos com TypeScript é uma pratica comum ter tudo o mais tipado possível.</p>
 
-<p>Infelizmente <code class="highlighter-rouge">refs</code> é tipado como <code class="highlighter-rouge">[key: string]: ReactInstance</code>, o que nos forca a digitar <code class="highlighter-rouge">this.refs["myInput]</code>. Definitivamente não é o que queremos.</p>
+<p>Infelizmente <code class="language-plaintext highlighter-rouge">refs</code> é tipado como <code class="language-plaintext highlighter-rouge">[key: string]: ReactInstance</code>, o que nos forca a digitar <code class="language-plaintext highlighter-rouge">this.refs["myInput]</code>. Definitivamente não é o que queremos.</p>
 
 <h3 id="usando-referências-como-callbacks">Usando referências como callbacks</h3>
 
-<p><code class="highlighter-rouge">ref</code> como callback é a prática recomendada atualmente e a solução com TypeScript é bem simples.</p>
+<p><code class="language-plaintext highlighter-rouge">ref</code> como callback é a prática recomendada atualmente e a solução com TypeScript é bem simples.</p>
 
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="o">*</span> <span class="k">as</span> <span class="nx">React</span> <span class="k">from</span> <span class="s2">"react"</span><span class="p">;</span>
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="o">*</span> <span class="k">as</span> <span class="nx">React</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">react</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="k">export</span> <span class="kd">class</span> <span class="nx">CustomTextInput</span> <span class="kd">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span><span class="o">&lt;</span><span class="p">{},</span> <span class="p">{}</span><span class="o">&gt;</span> <span class="p">{</span>
-  <span class="kr">private</span> <span class="na">textInput</span><span class="p">:</span> <span class="nx">HTMLInputElement</span><span class="p">;</span>
+  <span class="k">private</span> <span class="na">textInput</span><span class="p">:</span> <span class="nx">HTMLInputElement</span><span class="p">;</span>
 
   <span class="kd">constructor</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">super</span><span class="p">();</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">focus</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">focus</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
   <span class="p">}</span>
 
-  <span class="kr">public</span> <span class="nx">focus</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">public</span> <span class="nx">focus</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">textInput</span><span class="p">.</span><span class="nx">focus</span><span class="p">();</span>
   <span class="p">}</span>
 
-  <span class="kr">public</span> <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">public</span> <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">return</span> <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
               <span class="o">&lt;</span><span class="nx">input</span>
-                <span class="nx">type</span><span class="o">=</span><span class="s2">"text"</span>
+                <span class="kd">type</span><span class="o">=</span><span class="dl">"</span><span class="s2">text</span><span class="dl">"</span>
                 <span class="nx">ref</span><span class="o">=</span><span class="p">{(</span><span class="nx">ref</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">textInput</span> <span class="o">=</span> <span class="nx">ref</span><span class="p">}</span>
               <span class="sr">/</span><span class="err">&gt;
 </span>              <span class="o">&lt;</span><span class="nx">input</span>
-                <span class="nx">type</span><span class="o">=</span><span class="s2">"button"</span>
-                <span class="nx">value</span><span class="o">=</span><span class="s2">"Focus the text input"</span>
+                <span class="kd">type</span><span class="o">=</span><span class="dl">"</span><span class="s2">button</span><span class="dl">"</span>
+                <span class="nx">value</span><span class="o">=</span><span class="dl">"</span><span class="s2">Focus the text input</span><span class="dl">"</span>
                 <span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">focus</span><span class="p">}</span>
               <span class="sr">/</span><span class="err">&gt;
 </span>           <span class="o">&lt;</span><span class="sr">/div&gt;</span><span class="err">;
@@ -204,17 +206,17 @@ porém começam a se tornar <a href="http://stackoverflow.com/questions/29503213
 
 
 <span class="k">export</span> <span class="kd">class</span> <span class="nx">AutoFocusTextInput</span> <span class="kd">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span><span class="o">&lt;</span><span class="p">{},</span> <span class="p">{}</span><span class="o">&gt;</span> <span class="p">{</span>
-  <span class="kr">private</span> <span class="na">input</span><span class="p">:</span> <span class="nx">CustomTextInput</span><span class="p">;</span>
+  <span class="k">private</span> <span class="na">input</span><span class="p">:</span> <span class="nx">CustomTextInput</span><span class="p">;</span>
 
   <span class="kd">constructor</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">super</span><span class="p">();</span>
   <span class="p">}</span>
 
-  <span class="kr">protected</span> <span class="nx">componentDidMount</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">protected</span> <span class="nx">componentDidMount</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">input</span><span class="p">.</span><span class="nx">focus</span><span class="p">();</span>
   <span class="p">}</span>
 
-  <span class="kr">public</span> <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">public</span> <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">return</span> <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
               <span class="o">&lt;</span><span class="nx">CustomTextInput</span>
                 <span class="nx">ref</span><span class="o">=</span><span class="p">{(</span><span class="nx">ref</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">input</span> <span class="o">=</span> <span class="nx">ref</span><span class="p">}</span>
@@ -226,18 +228,18 @@ porém começam a se tornar <a href="http://stackoverflow.com/questions/29503213
 </code></pre></div></div>
 
 <p>Este exemplo é <strong>exatamente</strong> igual ao da <a href="https://facebook.github.io/react/docs/refs-and-the-dom.html">documentação oficial</a>.
-A única pequena diferença é que adicionamentos uma propriedade tipada em nossa classe <code class="highlighter-rouge">private textInput: HTMLInputElement;</code>.
-Com isto agora é possível digitarmos <code class="highlighter-rouge">this.input.value</code>, <code class="highlighter-rouge">this.input.focus()</code>, <code class="highlighter-rouge">this.input.maxLength</code> e assim por diante, sem erros de compilação.</p>
+A única pequena diferença é que adicionamentos uma propriedade tipada em nossa classe <code class="language-plaintext highlighter-rouge">private textInput: HTMLInputElement;</code>.
+Com isto agora é possível digitarmos <code class="language-plaintext highlighter-rouge">this.input.value</code>, <code class="language-plaintext highlighter-rouge">this.input.focus()</code>, <code class="language-plaintext highlighter-rouge">this.input.maxLength</code> e assim por diante, sem erros de compilação.</p>
 
 <h3 id="usando-referências-como-string">Usando referências como string</h3>
 
 <p><a href="https://github.com/facebook/react/issues/6250">Referências como string eventualmente serão depreciadas</a>. 
 Mas caso você ainda esteja utilizando e não quer migrar para callbacks, é também muito fácil adicionar tipagem à elas.</p>
 
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="o">*</span> <span class="k">as</span> <span class="nx">React</span> <span class="k">from</span> <span class="s2">"react"</span><span class="p">;</span>
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="o">*</span> <span class="k">as</span> <span class="nx">React</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">react</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="k">export</span> <span class="kd">class</span> <span class="nx">CustomTextInput</span> <span class="kd">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span><span class="o">&lt;</span><span class="p">{},</span> <span class="p">{}</span><span class="o">&gt;</span> <span class="p">{</span>
-  <span class="kr">public</span> <span class="na">refs</span><span class="p">:</span> <span class="p">{</span>
+  <span class="k">public</span> <span class="na">refs</span><span class="p">:</span> <span class="p">{</span>
     <span class="na">textInput</span><span class="p">:</span> <span class="nx">HTMLInputElement</span><span class="p">;</span>
   <span class="p">};</span>
 
@@ -246,19 +248,19 @@ Mas caso você ainda esteja utilizando e não quer migrar para callbacks, é tam
     <span class="k">this</span><span class="p">.</span><span class="nx">focus</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">focus</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
   <span class="p">}</span>
 
-  <span class="kr">public</span> <span class="nx">focus</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">public</span> <span class="nx">focus</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">refs</span><span class="p">.</span><span class="nx">textInput</span><span class="p">.</span><span class="nx">focus</span><span class="p">();</span>
   <span class="p">}</span>
 
-  <span class="kr">public</span> <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">public</span> <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">return</span> <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
               <span class="o">&lt;</span><span class="nx">input</span>
-                <span class="nx">type</span><span class="o">=</span><span class="s2">"text"</span>
-                <span class="nx">ref</span><span class="o">=</span><span class="s2">"textInput"</span>
+                <span class="kd">type</span><span class="o">=</span><span class="dl">"</span><span class="s2">text</span><span class="dl">"</span>
+                <span class="nx">ref</span><span class="o">=</span><span class="dl">"</span><span class="s2">textInput</span><span class="dl">"</span>
               <span class="o">/&gt;</span>
               <span class="o">&lt;</span><span class="nx">input</span>
-                <span class="nx">type</span><span class="o">=</span><span class="s2">"button"</span>
-                <span class="nx">value</span><span class="o">=</span><span class="s2">"Focus the text input"</span>
+                <span class="kd">type</span><span class="o">=</span><span class="dl">"</span><span class="s2">button</span><span class="dl">"</span>
+                <span class="nx">value</span><span class="o">=</span><span class="dl">"</span><span class="s2">Focus the text input</span><span class="dl">"</span>
                 <span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">focus</span><span class="p">}</span>
               <span class="sr">/</span><span class="err">&gt;
 </span>           <span class="o">&lt;</span><span class="sr">/div&gt;</span><span class="err">;
@@ -266,9 +268,9 @@ Mas caso você ainda esteja utilizando e não quer migrar para callbacks, é tam
 <span class="p">}</span>
 </code></pre></div></div>
 
-<p>Estamos simplesmente sobrescrevendo a propriedade <code class="highlighter-rouge">refs</code> para ser fortemente tipada. Sim, isto é tudo.</p>
+<p>Estamos simplesmente sobrescrevendo a propriedade <code class="language-plaintext highlighter-rouge">refs</code> para ser fortemente tipada. Sim, isto é tudo.</p>
 
-<p>A única diferença entre este exemplo e o de cima é que neste estamos usando a propriedade padrão do React <code class="highlighter-rouge">refs</code>, enquanto no outro estamos definindo uma nova.</p>
+<p>A única diferença entre este exemplo e o de cima é que neste estamos usando a propriedade padrão do React <code class="language-plaintext highlighter-rouge">refs</code>, enquanto no outro estamos definindo uma nova.</p>
 
 <p>Seja qual for sua preferência, apenas lembre-se de sempre “tipar” seus componentes React tanto quanto possível.</p>
 

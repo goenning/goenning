@@ -13,9 +13,9 @@
     <link rel="alternate" type="application/rss+xml" title="@goenning - loop at { run; code; blog; swim; eat; cycle; } until tired;" href="/feed.xml" />
     
 
-    <!-- Begin Jekyll SEO tag v2.5.0 -->
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>Stop reading JSON files with require | @goenning</title>
-<meta name="generator" content="Jekyll v3.8.5" />
+<meta name="generator" content="Jekyll v4.2.0" />
 <meta property="og:title" content="Stop reading JSON files with require" />
 <meta name="author" content="@goenning" />
 <meta property="og:locale" content="en" />
@@ -26,8 +26,10 @@
 <meta property="og:site_name" content="@goenning" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2016-04-14T00:00:00-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Stop reading JSON files with require" />
 <script type="application/ld+json">
-{"headline":"Stop reading JSON files with require","dateModified":"2016-04-14T00:00:00-05:00","datePublished":"2016-04-14T00:00:00-05:00","url":"https://goenning.net/2016/04/14/stop-reading-json-files-with-require/","author":{"@type":"Person","name":"@goenning"},"description":"There you are, coding at 11:00 PM, trying to get your unit tests back to a green state and no matter how hard you try, you just can’t find why. Not even a dozen of console.log can help you.","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://goenning.net/2016/04/14/stop-reading-json-files-with-require/"},"@context":"http://schema.org"}</script>
+{"author":{"@type":"Person","name":"@goenning"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://goenning.net/2016/04/14/stop-reading-json-files-with-require/"},"@type":"BlogPosting","description":"There you are, coding at 11:00 PM, trying to get your unit tests back to a green state and no matter how hard you try, you just can’t find why. Not even a dozen of console.log can help you.","headline":"Stop reading JSON files with require","dateModified":"2016-04-14T00:00:00-05:00","url":"https://goenning.net/2016/04/14/stop-reading-json-files-with-require/","datePublished":"2016-04-14T00:00:00-05:00","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   </head>
@@ -146,7 +148,7 @@
 
 
   
-    • 4 minutes read
+    • 5 minutes read
   
 
     • 
@@ -167,61 +169,61 @@
 
 <h3 id="reading-json-files-with-nodejs">Reading JSON files with Node.js</h3>
 
-<p>JavaScript is beautiful when it comes to JSON. There is no need for a third-party <code class="highlighter-rouge">JSON Parser libraries</code>, (such as <a href="http://www.newtonsoft.com/json">Json.NET</a> or <a href="https://github.com/google/gson">Gson</a>) and it’s pretty straightforward to parse a JSON file into a variable, just use <code class="highlighter-rouge">require()</code>, like this:</p>
+<p>JavaScript is beautiful when it comes to JSON. There is no need for a third-party <code class="language-plaintext highlighter-rouge">JSON Parser libraries</code>, (such as <a href="http://www.newtonsoft.com/json">Json.NET</a> or <a href="https://github.com/google/gson">Gson</a>) and it’s pretty straightforward to parse a JSON file into a variable, just use <code class="language-plaintext highlighter-rouge">require()</code>, like this:</p>
 
-<p><code class="highlighter-rouge">settings.json</code></p>
+<p><code class="language-plaintext highlighter-rouge">settings.json</code></p>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Application Name"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Application Name"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="s2">"nodejs"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"javascript"</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 
-<p><code class="highlighter-rouge">index.js</code></p>
+<p><code class="language-plaintext highlighter-rouge">index.js</code></p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">settings</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./settings.json'</span><span class="p">)</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">settings</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">./settings.json</span><span class="dl">'</span><span class="p">)</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">settings</span><span class="p">.</span><span class="nx">tags</span><span class="p">)</span> <span class="c1">// ['nodejs', 'javascript']</span>
 </code></pre></div></div>
 
 <p>Easy and readable, right?</p>
 
-<p>But that function has an important <em>side effect</em> that can be both <code class="highlighter-rouge">good</code> and <code class="highlighter-rouge">bad</code>, that will depend on the context of your application.</p>
+<p>But that function has an important <em>side effect</em> that can be both <code class="language-plaintext highlighter-rouge">good</code> and <code class="language-plaintext highlighter-rouge">bad</code>, that will depend on the context of your application.</p>
 
 <p>In my case, I was using it in a unit test and it was causing more harm than good.</p>
 
 <p>Ok, let’s get straight to the point.</p>
 
-<p><code class="highlighter-rouge">require()</code> will always cache the content of the loaded module (our JSON file, in this case). The next time <code class="highlighter-rouge">require()</code> is called for the same module, it will restore it from the cache instead of reading it again. That’s awesome! But…</p>
+<p><code class="language-plaintext highlighter-rouge">require()</code> will always cache the content of the loaded module (our JSON file, in this case). The next time <code class="language-plaintext highlighter-rouge">require()</code> is called for the same module, it will restore it from the cache instead of reading it again. That’s awesome! But…</p>
 
-<p>I was reading the file once for each test case. The first test changed a value on that JSON, and because the content was cached by <code class="highlighter-rouge">require()</code>, the changed value was available on the second test case too. I was expecting it to be the original value, but it wasn’t. The result? A broken test.</p>
+<p>I was reading the file once for each test case. The first test changed a value on that JSON, and because the content was cached by <code class="language-plaintext highlighter-rouge">require()</code>, the changed value was available on the second test case too. I was expecting it to be the original value, but it wasn’t. The result? A broken test.</p>
 
 <p>For those who like to see code, here is a practical hypothetical example.</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">expect</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'chai'</span><span class="p">).</span><span class="nx">expect</span>
-<span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'fs'</span><span class="p">)</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">expect</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">chai</span><span class="dl">'</span><span class="p">).</span><span class="nx">expect</span>
+<span class="kd">var</span> <span class="nx">fs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">fs</span><span class="dl">'</span><span class="p">)</span>
 
-<span class="nx">describe</span><span class="p">(</span><span class="s2">"Require"</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="nx">it</span><span class="p">(</span><span class="s2">"should be able to change settings values"</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">settings</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./settings.json'</span><span class="p">)</span>
-    <span class="nx">settings</span><span class="p">.</span><span class="nx">tags</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">'v8'</span><span class="p">)</span>
-    <span class="nx">expect</span><span class="p">(</span><span class="nx">settings</span><span class="p">.</span><span class="nx">tags</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">deep</span><span class="p">.</span><span class="nx">equal</span><span class="p">([</span><span class="s2">"nodejs"</span><span class="p">,</span> <span class="s2">"javascript"</span><span class="p">,</span><span class="s2">"v8"</span><span class="p">])</span>
+<span class="nx">describe</span><span class="p">(</span><span class="dl">"</span><span class="s2">Require</span><span class="dl">"</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">it</span><span class="p">(</span><span class="dl">"</span><span class="s2">should be able to change settings values</span><span class="dl">"</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">settings</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">./settings.json</span><span class="dl">'</span><span class="p">)</span>
+    <span class="nx">settings</span><span class="p">.</span><span class="nx">tags</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="dl">'</span><span class="s1">v8</span><span class="dl">'</span><span class="p">)</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">settings</span><span class="p">.</span><span class="nx">tags</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">deep</span><span class="p">.</span><span class="nx">equal</span><span class="p">([</span><span class="dl">"</span><span class="s2">nodejs</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">javascript</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">v8</span><span class="dl">"</span><span class="p">])</span>
   <span class="p">})</span>
 
-  <span class="nx">it</span><span class="p">(</span><span class="s2">"should reload settings file"</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">settings</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./settings.json'</span><span class="p">)</span>
-    <span class="nx">expect</span><span class="p">(</span><span class="nx">settings</span><span class="p">.</span><span class="nx">tags</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">deep</span><span class="p">.</span><span class="nx">equal</span><span class="p">([</span><span class="s2">"nodejs"</span><span class="p">,</span> <span class="s2">"javascript"</span><span class="p">])</span>
+  <span class="nx">it</span><span class="p">(</span><span class="dl">"</span><span class="s2">should reload settings file</span><span class="dl">"</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">settings</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">./settings.json</span><span class="dl">'</span><span class="p">)</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">settings</span><span class="p">.</span><span class="nx">tags</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">deep</span><span class="p">.</span><span class="nx">equal</span><span class="p">([</span><span class="dl">"</span><span class="s2">nodejs</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">javascript</span><span class="dl">"</span><span class="p">])</span>
   <span class="p">})</span>
 <span class="p">})</span>
 </code></pre></div></div>
 
-<p>You might expect that both tests cases will pass. But they won’t. The second will fail, because <code class="highlighter-rouge">settings.tags</code> now contains <code class="highlighter-rouge">"v8"</code>.</p>
+<p>You might expect that both tests cases will pass. But they won’t. The second will fail, because <code class="language-plaintext highlighter-rouge">settings.tags</code> now contains <code class="language-plaintext highlighter-rouge">"v8"</code>.</p>
 
-<p>There is also another problem with this approach. <code class="highlighter-rouge">require()</code> is synchronous. As a good node.js developer, you know that blocking I/O is dangerous. It’s ok to use it to load native or NPM modules, because we need it to be synchronous and cached, but JSON files are a separate story.</p>
+<p>There is also another problem with this approach. <code class="language-plaintext highlighter-rouge">require()</code> is synchronous. As a good node.js developer, you know that blocking I/O is dangerous. It’s ok to use it to load native or NPM modules, because we need it to be synchronous and cached, but JSON files are a separate story.</p>
 
-<p>The solution is quite easy, just use the built-in <code class="highlighter-rouge">fs</code> module when reading JSON files. I’m now using the following helper function.</p>
+<p>The solution is quite easy, just use the built-in <code class="language-plaintext highlighter-rouge">fs</code> module when reading JSON files. I’m now using the following helper function.</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">readJson</span> <span class="o">=</span> <span class="p">(</span><span class="nx">path</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="nx">fs</span><span class="p">.</span><span class="nx">readFile</span><span class="p">(</span><span class="nx">require</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">path</span><span class="p">),</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
@@ -235,18 +237,18 @@
 
 <p>And our example would be rewritten to:</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">describe</span><span class="p">(</span><span class="s2">"File System"</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="nx">it</span><span class="p">(</span><span class="s2">"should be able to change settings values"</span><span class="p">,</span> <span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="nx">readJson</span><span class="p">(</span><span class="s1">'./settings.json'</span><span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">settings</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-      <span class="nx">settings</span><span class="p">.</span><span class="nx">tags</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">'v8'</span><span class="p">)</span>
-      <span class="nx">expect</span><span class="p">(</span><span class="nx">settings</span><span class="p">.</span><span class="nx">tags</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">deep</span><span class="p">.</span><span class="nx">equal</span><span class="p">([</span><span class="s2">"nodejs"</span><span class="p">,</span> <span class="s2">"javascript"</span><span class="p">,</span><span class="s2">"v8"</span><span class="p">])</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">describe</span><span class="p">(</span><span class="dl">"</span><span class="s2">File System</span><span class="dl">"</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">it</span><span class="p">(</span><span class="dl">"</span><span class="s2">should be able to change settings values</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">readJson</span><span class="p">(</span><span class="dl">'</span><span class="s1">./settings.json</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">settings</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">settings</span><span class="p">.</span><span class="nx">tags</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="dl">'</span><span class="s1">v8</span><span class="dl">'</span><span class="p">)</span>
+      <span class="nx">expect</span><span class="p">(</span><span class="nx">settings</span><span class="p">.</span><span class="nx">tags</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">deep</span><span class="p">.</span><span class="nx">equal</span><span class="p">([</span><span class="dl">"</span><span class="s2">nodejs</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">javascript</span><span class="dl">"</span><span class="p">,</span><span class="dl">"</span><span class="s2">v8</span><span class="dl">"</span><span class="p">])</span>
       <span class="nx">done</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
     <span class="p">})</span>
   <span class="p">})</span>
 
-  <span class="nx">it</span><span class="p">(</span><span class="s2">"should reload settings file"</span><span class="p">,</span> <span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="nx">readJson</span><span class="p">(</span><span class="s1">'./settings.json'</span><span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">settings</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-      <span class="nx">expect</span><span class="p">(</span><span class="nx">settings</span><span class="p">.</span><span class="nx">tags</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">deep</span><span class="p">.</span><span class="nx">equal</span><span class="p">([</span><span class="s2">"nodejs"</span><span class="p">,</span> <span class="s2">"javascript"</span> <span class="p">])</span>
+  <span class="nx">it</span><span class="p">(</span><span class="dl">"</span><span class="s2">should reload settings file</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">readJson</span><span class="p">(</span><span class="dl">'</span><span class="s1">./settings.json</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">settings</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">expect</span><span class="p">(</span><span class="nx">settings</span><span class="p">.</span><span class="nx">tags</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">deep</span><span class="p">.</span><span class="nx">equal</span><span class="p">([</span><span class="dl">"</span><span class="s2">nodejs</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">javascript</span><span class="dl">"</span> <span class="p">])</span>
       <span class="nx">done</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
     <span class="p">})</span>
   <span class="p">})</span>

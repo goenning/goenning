@@ -13,9 +13,9 @@
     <link rel="alternate" type="application/rss+xml" title="@goenning - loop at { run; code; blog; swim; eat; cycle; } until tired;" href="/feed.xml" />
     
 
-    <!-- Begin Jekyll SEO tag v2.5.0 -->
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>New project: SharpSapRfc | @goenning</title>
-<meta name="generator" content="Jekyll v3.8.5" />
+<meta name="generator" content="Jekyll v4.2.0" />
 <meta property="og:title" content="New project: SharpSapRfc" />
 <meta name="author" content="@goenning" />
 <meta property="og:locale" content="en" />
@@ -26,8 +26,10 @@
 <meta property="og:site_name" content="@goenning" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2014-08-06T00:00:00-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="New project: SharpSapRfc" />
 <script type="application/ld+json">
-{"headline":"New project: SharpSapRfc","dateModified":"2014-08-06T00:00:00-05:00","datePublished":"2014-08-06T00:00:00-05:00","url":"https://goenning.net/2014/08/06/new-project-sharp-sap-rfc/","author":{"@type":"Person","name":"@goenning"},"description":"If you are new to SAP RFC, I suggest you to first read the post Connecting the world to SAP with RFC.","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://goenning.net/2014/08/06/new-project-sharp-sap-rfc/"},"@context":"http://schema.org"}</script>
+{"author":{"@type":"Person","name":"@goenning"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://goenning.net/2014/08/06/new-project-sharp-sap-rfc/"},"@type":"BlogPosting","description":"If you are new to SAP RFC, I suggest you to first read the post Connecting the world to SAP with RFC.","headline":"New project: SharpSapRfc","dateModified":"2014-08-06T00:00:00-05:00","url":"https://goenning.net/2014/08/06/new-project-sharp-sap-rfc/","datePublished":"2014-08-06T00:00:00-05:00","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   </head>
@@ -231,14 +233,14 @@
 </code></pre></div></div>
 
 <blockquote>
-  <p><code class="highlighter-rouge">Z_SSRT_GET_ALL_CUSTOMERS</code> is a function that returns a table category.</p>
+  <p><code class="language-plaintext highlighter-rouge">Z_SSRT_GET_ALL_CUSTOMERS</code> is a function that returns a table category.</p>
 </blockquote>
 
 <p>As you can see, we don’t even need to map all columns. We do need, however, to map columns in which the name is different from the remote name.</p>
 
 <h3 id="update">Update</h3>
 
-<p>In version <code class="highlighter-rouge">1.0.2</code> I’ve add support to <code class="highlighter-rouge">DateTime</code> properties (that was Slaski’s souggestion through issue <a href="https://github.com/goenning/SharpSapRfc/issues/10">#10</a>).</p>
+<p>In version <code class="language-plaintext highlighter-rouge">1.0.2</code> I’ve add support to <code class="language-plaintext highlighter-rouge">DateTime</code> properties (that was Slaski’s souggestion through issue <a href="https://github.com/goenning/SharpSapRfc/issues/10">#10</a>).</p>
 
 <p>I’ve noticed that SAP’s date and hour fields are always splited in two columns, while in C# we commonly use DateTime type which contains both information.</p>
 

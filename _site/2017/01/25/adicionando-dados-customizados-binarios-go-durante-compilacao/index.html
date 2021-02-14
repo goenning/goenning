@@ -13,9 +13,9 @@
     <link rel="alternate" type="application/rss+xml" title="@goenning - loop at { run; code; blog; swim; eat; cycle; } until tired;" href="/feed.xml" />
     
 
-    <!-- Begin Jekyll SEO tag v2.5.0 -->
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>Adicionando dados customizados em binários Go durante a compilação | @goenning</title>
-<meta name="generator" content="Jekyll v3.8.5" />
+<meta name="generator" content="Jekyll v4.2.0" />
 <meta property="og:title" content="Adicionando dados customizados em binários Go durante a compilação" />
 <meta name="author" content="@goenning" />
 <meta property="og:locale" content="pt" />
@@ -26,8 +26,10 @@
 <meta property="og:site_name" content="@goenning" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2017-01-25T00:00:00-06:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Adicionando dados customizados em binários Go durante a compilação" />
 <script type="application/ld+json">
-{"headline":"Adicionando dados customizados em binários Go durante a compilação","dateModified":"2017-01-25T00:00:00-06:00","datePublished":"2017-01-25T00:00:00-06:00","url":"https://goenning.net/2017/01/25/adicionando-dados-customizados-binarios-go-durante-compilacao/","author":{"@type":"Person","name":"@goenning"},"description":"As vezes é realmente útil obter informações sobre seus binários Go, por exemplo: quando ele foi compilado, qual o usuário que o compilou, qual o hash do último commit usado, etc. Estas informações são especialmente úteis para versionamento de binários, para análise de bugs ou então só para ter uma referência para o código fonte. Como você faria isto? Poderíamos criar um arquivo json/yml/xml para armazenar estas informações. Sim, poderíamos, mas você quer atualizar manualmente a cada nova compilação? Você também teria que distribuir dois arquivos ao invés de apenas um. Que tal uma estrutura global no pacote version? Bom, já seria melhor, pois no final teríamos apenas o binário e não mais um arquivo de metadatos. Mas ainda assim, teríamos que atualizar o conteúdo da estrutura manualmente a cada compilação. Parâmetros de compilação ao resgate Já ouviu falar de -ldflags? Este parâmetro de compilação é usado pelo go install|build para sobrescrever variáveis Go variables em nossos programas. Então se tivermos isto em nosso main package. package main var saySomething string Se executarmos go build -ldflags &quot;-X main.saySomething=HelloWorld&quot;, o compilador iria atribuir o valor HelloWorld para a variável main.saySomething. Você também poderia ter o seguinte código. package main import ( &quot;fmt&quot; ) var ( buildTime string commitHash string ) func main() { fmt.Printf(&quot;Build Time: %s\\n&quot;, buildTime) fmt.Printf(&quot;Commit Hash: %s\\n&quot;, commitHash) } E compilar assim. go build -ldflags “-X main.buildTime=$(date +”%Y.%m.%d.%H%M%S”) -X main.commitHash=$(git log –pretty=format:’%h’ -n 1)” O resultado seria algo assim. Build Time: 2017.01.25.070111 Commit Hash: 1e4e7b5 Não há problema se você não atribuir um valor para estas variáveis durante a compilação, pois o máximo que acontece é elas ficaram sem valor. Ok? Trabalhando com pacotes Eu poderia encerrar o post aqui, mas não posso deixar você sair sem saber disto. Como você pode ver em nosso último exemplo, foi necessário especificar ambos o pacote (main) e o nome da variável (buildTime e commitHash). Isto significa que também podemos utilizar este parâmetro para injetar variáveis em pacotes. Se tivéssemos o seguinte pacote. package info var ( BuildTime string CommitHash string ) Poderíamos então definir seus valores utilizando a seguinte instrução. go build -ldflags “-X github.com/goenning/hello-go/info.BuildTime=$(date +”%Y.%m.%d.%H%M%S”) -X github.com/goenning/hello-go/info.CommitHash=$(git log –pretty=format:’%h’ -n 1)” Apenas lembre que como estamos escrevendo um pacote que será importado em algum outro lugar, nossas variáveis precisam começar com uma letra maíuscula. Outra opção seria deixá-las interna e implementar algum tipo de encapsulamento para ter acesso à estas valores de fora do pacote. Isto é tudo por hoje Espero que estas dicas possam te ajudar a construir binários ricos em informações que te ajudem a evitar dores de cabeça durante a caça aos bugs :)","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://goenning.net/2017/01/25/adicionando-dados-customizados-binarios-go-durante-compilacao/"},"@context":"http://schema.org"}</script>
+{"author":{"@type":"Person","name":"@goenning"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://goenning.net/2017/01/25/adicionando-dados-customizados-binarios-go-durante-compilacao/"},"@type":"BlogPosting","description":"As vezes é realmente útil obter informações sobre seus binários Go, por exemplo: quando ele foi compilado, qual o usuário que o compilou, qual o hash do último commit usado, etc. Estas informações são especialmente úteis para versionamento de binários, para análise de bugs ou então só para ter uma referência para o código fonte. Como você faria isto? Poderíamos criar um arquivo json/yml/xml para armazenar estas informações. Sim, poderíamos, mas você quer atualizar manualmente a cada nova compilação? Você também teria que distribuir dois arquivos ao invés de apenas um. Que tal uma estrutura global no pacote version? Bom, já seria melhor, pois no final teríamos apenas o binário e não mais um arquivo de metadatos. Mas ainda assim, teríamos que atualizar o conteúdo da estrutura manualmente a cada compilação. Parâmetros de compilação ao resgate Já ouviu falar de -ldflags? Este parâmetro de compilação é usado pelo go install|build para sobrescrever variáveis Go variables em nossos programas. Então se tivermos isto em nosso main package. package main var saySomething string Se executarmos go build -ldflags &quot;-X main.saySomething=HelloWorld&quot;, o compilador iria atribuir o valor HelloWorld para a variável main.saySomething. Você também poderia ter o seguinte código. package main import ( &quot;fmt&quot; ) var ( buildTime string commitHash string ) func main() { fmt.Printf(&quot;Build Time: %s\\n&quot;, buildTime) fmt.Printf(&quot;Commit Hash: %s\\n&quot;, commitHash) } E compilar assim. go build -ldflags “-X main.buildTime=$(date +”%Y.%m.%d.%H%M%S”) -X main.commitHash=$(git log –pretty=format:’%h’ -n 1)” O resultado seria algo assim. Build Time: 2017.01.25.070111 Commit Hash: 1e4e7b5 Não há problema se você não atribuir um valor para estas variáveis durante a compilação, pois o máximo que acontece é elas ficaram sem valor. Ok? Trabalhando com pacotes Eu poderia encerrar o post aqui, mas não posso deixar você sair sem saber disto. Como você pode ver em nosso último exemplo, foi necessário especificar ambos o pacote (main) e o nome da variável (buildTime e commitHash). Isto significa que também podemos utilizar este parâmetro para injetar variáveis em pacotes. Se tivéssemos o seguinte pacote. package info var ( BuildTime string CommitHash string ) Poderíamos então definir seus valores utilizando a seguinte instrução. go build -ldflags “-X github.com/goenning/hello-go/info.BuildTime=$(date +”%Y.%m.%d.%H%M%S”) -X github.com/goenning/hello-go/info.CommitHash=$(git log –pretty=format:’%h’ -n 1)” Apenas lembre que como estamos escrevendo um pacote que será importado em algum outro lugar, nossas variáveis precisam começar com uma letra maíuscula. Outra opção seria deixá-las interna e implementar algum tipo de encapsulamento para ter acesso à estas valores de fora do pacote. Isto é tudo por hoje Espero que estas dicas possam te ajudar a construir binários ricos em informações que te ajudem a evitar dores de cabeça durante a caça aos bugs :)","headline":"Adicionando dados customizados em binários Go durante a compilação","dateModified":"2017-01-25T00:00:00-06:00","url":"https://goenning.net/2017/01/25/adicionando-dados-customizados-binarios-go-durante-compilacao/","datePublished":"2017-01-25T00:00:00-06:00","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   </head>
@@ -149,7 +151,7 @@
 
 
   
-    • 3 minutos para ler
+    • 2 minutos para ler
   
 
     • 
@@ -165,43 +167,43 @@
 <p>Como você faria isto?</p>
 
 <ul>
-  <li>Poderíamos criar um arquivo <code class="highlighter-rouge">json/yml/xml</code> para armazenar estas informações. Sim, poderíamos, mas você quer atualizar manualmente a cada nova compilação? Você também teria que distribuir dois arquivos ao invés de apenas um.</li>
-  <li>Que tal uma estrutura global no pacote <code class="highlighter-rouge">version</code>? Bom, já seria melhor, pois no final teríamos apenas o binário e não mais um arquivo de metadatos. Mas ainda assim, teríamos que atualizar o conteúdo da estrutura manualmente a cada compilação.</li>
+  <li>Poderíamos criar um arquivo <code class="language-plaintext highlighter-rouge">json/yml/xml</code> para armazenar estas informações. Sim, poderíamos, mas você quer atualizar manualmente a cada nova compilação? Você também teria que distribuir dois arquivos ao invés de apenas um.</li>
+  <li>Que tal uma estrutura global no pacote <code class="language-plaintext highlighter-rouge">version</code>? Bom, já seria melhor, pois no final teríamos apenas o binário e não mais um arquivo de metadatos. Mas ainda assim, teríamos que atualizar o conteúdo da estrutura manualmente a cada compilação.</li>
 </ul>
 
 <h3 id="parâmetros-de-compilação-ao-resgate">Parâmetros de compilação ao resgate</h3>
 
-<p>Já ouviu falar de <code class="highlighter-rouge">-ldflags</code>?</p>
+<p>Já ouviu falar de <code class="language-plaintext highlighter-rouge">-ldflags</code>?</p>
 
-<p>Este parâmetro de compilação é usado pelo <code class="highlighter-rouge">go install|build</code> para sobrescrever variáveis Go variables em nossos programas.</p>
+<p>Este parâmetro de compilação é usado pelo <code class="language-plaintext highlighter-rouge">go install|build</code> para sobrescrever variáveis Go variables em nossos programas.</p>
 
-<p>Então se tivermos isto em nosso <code class="highlighter-rouge">main package</code>.</p>
+<p>Então se tivermos isto em nosso <code class="language-plaintext highlighter-rouge">main package</code>.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">package</span> <span class="n">main</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>package main
 
-<span class="n">var</span> <span class="n">saySomething</span> <span class="k">string</span>
+var saySomething string
 </code></pre></div></div>
 
-<p>Se executarmos <code class="highlighter-rouge">go build -ldflags "-X main.saySomething=HelloWorld"</code>, o compilador iria atribuir o valor <code class="highlighter-rouge">HelloWorld</code> para a variável <code class="highlighter-rouge">main.saySomething</code>.</p>
+<p>Se executarmos <code class="language-plaintext highlighter-rouge">go build -ldflags "-X main.saySomething=HelloWorld"</code>, o compilador iria atribuir o valor <code class="language-plaintext highlighter-rouge">HelloWorld</code> para a variável <code class="language-plaintext highlighter-rouge">main.saySomething</code>.</p>
 
 <p>Você também poderia ter o seguinte código.</p>
 
-<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">package</span><span class="x"> </span><span class="n">main</span><span class="x">
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">package</span> <span class="n">main</span>
 
-</span><span class="k">import</span><span class="x"> </span><span class="p">(</span><span class="x">
-	</span><span class="s">"fmt"</span><span class="x">
-</span><span class="p">)</span><span class="x">
+<span class="k">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+<span class="p">)</span>
 
-</span><span class="k">var</span><span class="x"> </span><span class="p">(</span><span class="x">
-	</span><span class="n">buildTime</span><span class="x">  </span><span class="kt">string</span><span class="x">
-	</span><span class="n">commitHash</span><span class="x"> </span><span class="kt">string</span><span class="x">
-</span><span class="p">)</span><span class="x">
+<span class="k">var</span> <span class="p">(</span>
+	<span class="n">buildTime</span>  <span class="kt">string</span>
+	<span class="n">commitHash</span> <span class="kt">string</span>
+<span class="p">)</span>
 
-</span><span class="k">func</span><span class="x"> </span><span class="n">main</span><span class="p">()</span><span class="x"> </span><span class="p">{</span><span class="x">
-	</span><span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"Build Time: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="x"> </span><span class="n">buildTime</span><span class="p">)</span><span class="x">
-	</span><span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"Commit Hash: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="x"> </span><span class="n">commitHash</span><span class="p">)</span><span class="x">
-</span><span class="p">}</span><span class="x">
-</span></code></pre></div></div>
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"Build Time: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">buildTime</span><span class="p">)</span>
+	<span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"Commit Hash: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">commitHash</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
 <p>E compilar assim.</p>
 
@@ -211,7 +213,7 @@
 
 <p>O resultado seria algo assim.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Build Time: 2017.01.25.070111
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Build Time: 2017.01.25.070111
 Commit Hash: 1e4e7b5
 </code></pre></div></div>
 
@@ -221,16 +223,16 @@ Commit Hash: 1e4e7b5
 
 <p>Eu poderia encerrar o post aqui, mas não posso deixar você sair sem saber disto.</p>
 
-<p>Como você pode ver em nosso último exemplo, foi necessário especificar ambos o pacote (<code class="highlighter-rouge">main</code>) e o nome da variável  (<code class="highlighter-rouge">buildTime</code> e <code class="highlighter-rouge">commitHash</code>). Isto significa que também podemos utilizar este parâmetro para injetar variáveis em pacotes.</p>
+<p>Como você pode ver em nosso último exemplo, foi necessário especificar ambos o pacote (<code class="language-plaintext highlighter-rouge">main</code>) e o nome da variável  (<code class="language-plaintext highlighter-rouge">buildTime</code> e <code class="language-plaintext highlighter-rouge">commitHash</code>). Isto significa que também podemos utilizar este parâmetro para injetar variáveis em pacotes.</p>
 
 <p>Se tivéssemos o seguinte pacote.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">package</span> <span class="n">info</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>package info
 
-<span class="n">var</span> <span class="p">(</span>
-	<span class="n">BuildTime</span> <span class="k">string</span>
-	<span class="n">CommitHash</span> <span class="k">string</span>
-<span class="p">)</span>
+var (
+	BuildTime string
+	CommitHash string
+)
 </code></pre></div></div>
 
 <p>Poderíamos então definir seus valores utilizando a seguinte instrução.</p>

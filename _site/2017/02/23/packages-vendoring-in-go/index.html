@@ -13,9 +13,9 @@
     <link rel="alternate" type="application/rss+xml" title="@goenning - loop at { run; code; blog; swim; eat; cycle; } until tired;" href="/feed.xml" />
     
 
-    <!-- Begin Jekyll SEO tag v2.5.0 -->
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>Packages and vendoring in Go | @goenning</title>
-<meta name="generator" content="Jekyll v3.8.5" />
+<meta name="generator" content="Jekyll v4.2.0" />
 <meta property="og:title" content="Packages and vendoring in Go" />
 <meta name="author" content="@goenning" />
 <meta property="og:locale" content="en" />
@@ -26,8 +26,10 @@
 <meta property="og:site_name" content="@goenning" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2017-02-23T00:00:00-06:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Packages and vendoring in Go" />
 <script type="application/ld+json">
-{"headline":"Packages and vendoring in Go","dateModified":"2017-02-23T00:00:00-06:00","datePublished":"2017-02-23T00:00:00-06:00","url":"https://goenning.net/2017/02/23/packages-vendoring-in-go/","author":{"@type":"Person","name":"@goenning"},"description":"On the last post of this series we finished a simple, but fully working web app written in Go using only the standard library. During this post you’ll learn how package management works in Go by adding a very famous third-party package.","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://goenning.net/2017/02/23/packages-vendoring-in-go/"},"@context":"http://schema.org"}</script>
+{"author":{"@type":"Person","name":"@goenning"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://goenning.net/2017/02/23/packages-vendoring-in-go/"},"@type":"BlogPosting","description":"On the last post of this series we finished a simple, but fully working web app written in Go using only the standard library. During this post you’ll learn how package management works in Go by adding a very famous third-party package.","headline":"Packages and vendoring in Go","dateModified":"2017-02-23T00:00:00-06:00","url":"https://goenning.net/2017/02/23/packages-vendoring-in-go/","datePublished":"2017-02-23T00:00:00-06:00","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   </head>
@@ -163,27 +165,27 @@
 
 <h3 id="packages">Packages</h3>
 
-<p>Go projects are organized into packages. You can create your own packages, like the <code class="highlighter-rouge">main</code> that was created on previous post, or you can make use of third-party packages to speed up your development process. By default Go comes with what is known as standard library (or stdlib for short). We’ve used this before when we typed things like import <code class="highlighter-rouge">html/template</code> and <code class="highlighter-rouge">net/http</code>.</p>
+<p>Go projects are organized into packages. You can create your own packages, like the <code class="language-plaintext highlighter-rouge">main</code> that was created on previous post, or you can make use of third-party packages to speed up your development process. By default Go comes with what is known as standard library (or stdlib for short). We’ve used this before when we typed things like import <code class="language-plaintext highlighter-rouge">html/template</code> and <code class="language-plaintext highlighter-rouge">net/http</code>.</p>
 
 <p>As Go is a compiled language, whenever you build a project that references one or more packages, your code and all the source code from those packages are fetched from local folders and compiled into a single native machine code executable. This means that we really don’t need any Go tooling installed on production environment, everything is contained in this single binary, even the external packages.</p>
 
 <p>Let’s start making use of packages to organize our project.</p>
 
-<p>Go doesn’t allow we to have two packages inside the same folder, that’s why we have to create a folder for our new package and put our code in there. Create an <code class="highlighter-rouge">env</code> folder and a <code class="highlighter-rouge">env.go</code> file inside it.</p>
+<p>Go doesn’t allow we to have two packages inside the same folder, that’s why we have to create a folder for our new package and put our code in there. Create an <code class="language-plaintext highlighter-rouge">env</code> folder and a <code class="language-plaintext highlighter-rouge">env.go</code> file inside it.</p>
 
-<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">package</span><span class="x"> </span><span class="n">env</span><span class="x">
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">package</span> <span class="n">env</span>
 
-</span><span class="k">import</span><span class="x"> </span><span class="s">"os"</span><span class="x">
+<span class="k">import</span> <span class="s">"os"</span>
 
-</span><span class="c">//GetEnvOrDefault returns environment value if it's available, otherwise returns given default value</span><span class="x">
-</span><span class="k">func</span><span class="x"> </span><span class="n">GetEnvOrDefault</span><span class="p">(</span><span class="n">env</span><span class="x"> </span><span class="kt">string</span><span class="p">,</span><span class="x"> </span><span class="n">def</span><span class="x"> </span><span class="kt">string</span><span class="p">)</span><span class="x"> </span><span class="kt">string</span><span class="x"> </span><span class="p">{</span><span class="x">
-	</span><span class="n">v</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">os</span><span class="o">.</span><span class="n">Getenv</span><span class="p">(</span><span class="n">env</span><span class="p">)</span><span class="x">
-	</span><span class="k">if</span><span class="x"> </span><span class="n">v</span><span class="x"> </span><span class="o">!=</span><span class="x"> </span><span class="s">""</span><span class="x"> </span><span class="p">{</span><span class="x">
-		</span><span class="k">return</span><span class="x"> </span><span class="n">v</span><span class="x">
-	</span><span class="p">}</span><span class="x">
-	</span><span class="k">return</span><span class="x"> </span><span class="n">def</span><span class="x">
-</span><span class="p">}</span><span class="x">
-</span></code></pre></div></div>
+<span class="c">//GetEnvOrDefault returns environment value if it's available, otherwise returns given default value</span>
+<span class="k">func</span> <span class="n">GetEnvOrDefault</span><span class="p">(</span><span class="n">env</span> <span class="kt">string</span><span class="p">,</span> <span class="n">def</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">string</span> <span class="p">{</span>
+	<span class="n">v</span> <span class="o">:=</span> <span class="n">os</span><span class="o">.</span><span class="n">Getenv</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
+	<span class="k">if</span> <span class="n">v</span> <span class="o">!=</span> <span class="s">""</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="n">v</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="n">def</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
 <p>Different than others languages in which you have to explicitly reference what you want to import, Go only cares about the package name, so you can name your file whatever you want. Once a package is imported, you’ll have access to all of its exported objects.</p>
 
@@ -191,46 +193,46 @@
 
 <p>So this is another neat thing about Go. You don’t need to explicitly export anything or set something as private or public, all you have to do is follow a convention.</p>
 
-<p>Everything that starts with capital letter is exported from that package. Whenever it’s lowercase is considered internal to the package and can’t be used outside of it. So in our example, <code class="highlighter-rouge">GetEnvOrDefault</code> is public because we need to use it in our <code class="highlighter-rouge">main</code> package. Cool, isn’t it?</p>
+<p>Everything that starts with capital letter is exported from that package. Whenever it’s lowercase is considered internal to the package and can’t be used outside of it. So in our example, <code class="language-plaintext highlighter-rouge">GetEnvOrDefault</code> is public because we need to use it in our <code class="language-plaintext highlighter-rouge">main</code> package. Cool, isn’t it?</p>
 
 <p>We can now change our entry point to use our new package and its function.</p>
 
-<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">package</span><span class="x"> </span><span class="n">main</span><span class="x">
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">package</span> <span class="n">main</span>
 
-</span><span class="k">import</span><span class="x"> </span><span class="p">(</span><span class="x">
-	</span><span class="s">"fmt"</span><span class="x">
-	</span><span class="s">"html/template"</span><span class="x">
-	</span><span class="s">"net/http"</span><span class="x">
+<span class="k">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+	<span class="s">"html/template"</span>
+	<span class="s">"net/http"</span>
 
-	</span><span class="s">"github.com/goenning/gostore/env"</span><span class="x">
-</span><span class="p">)</span><span class="x">
+	<span class="s">"github.com/goenning/gostore/env"</span>
+<span class="p">)</span>
 
-</span><span class="k">func</span><span class="x"> </span><span class="n">index</span><span class="p">(</span><span class="n">w</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">ResponseWriter</span><span class="p">,</span><span class="x"> </span><span class="n">r</span><span class="x"> </span><span class="o">*</span><span class="n">http</span><span class="o">.</span><span class="n">Request</span><span class="p">)</span><span class="x"> </span><span class="p">{</span><span class="x">
-	</span><span class="n">tpl</span><span class="p">,</span><span class="x"> </span><span class="n">_</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">template</span><span class="o">.</span><span class="n">ParseFiles</span><span class="p">(</span><span class="s">"index.html"</span><span class="p">)</span><span class="x">
-	</span><span class="n">data</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span><span class="x">
-		</span><span class="s">"Title"</span><span class="o">:</span><span class="x"> </span><span class="s">"Go Store :)"</span><span class="p">,</span><span class="x">
-	</span><span class="p">}</span><span class="x">
-	</span><span class="n">w</span><span class="o">.</span><span class="n">WriteHeader</span><span class="p">(</span><span class="n">http</span><span class="o">.</span><span class="n">StatusOK</span><span class="p">)</span><span class="x">
-	</span><span class="n">tpl</span><span class="o">.</span><span class="n">Execute</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="x"> </span><span class="n">data</span><span class="p">)</span><span class="x">
-</span><span class="p">}</span><span class="x">
+<span class="k">func</span> <span class="n">index</span><span class="p">(</span><span class="n">w</span> <span class="n">http</span><span class="o">.</span><span class="n">ResponseWriter</span><span class="p">,</span> <span class="n">r</span> <span class="o">*</span><span class="n">http</span><span class="o">.</span><span class="n">Request</span><span class="p">)</span> <span class="p">{</span>
+	<span class="n">tpl</span><span class="p">,</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">template</span><span class="o">.</span><span class="n">ParseFiles</span><span class="p">(</span><span class="s">"index.html"</span><span class="p">)</span>
+	<span class="n">data</span> <span class="o">:=</span> <span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span>
+		<span class="s">"Title"</span><span class="o">:</span> <span class="s">"Go Store :)"</span><span class="p">,</span>
+	<span class="p">}</span>
+	<span class="n">w</span><span class="o">.</span><span class="n">WriteHeader</span><span class="p">(</span><span class="n">http</span><span class="o">.</span><span class="n">StatusOK</span><span class="p">)</span>
+	<span class="n">tpl</span><span class="o">.</span><span class="n">Execute</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+<span class="p">}</span>
 
-</span><span class="k">func</span><span class="x"> </span><span class="n">main</span><span class="p">()</span><span class="x"> </span><span class="p">{</span><span class="x">
-	</span><span class="n">port</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">env</span><span class="o">.</span><span class="n">GetEnvOrDefault</span><span class="p">(</span><span class="s">"PORT"</span><span class="p">,</span><span class="x"> </span><span class="s">"8080"</span><span class="p">)</span><span class="x">
-	</span><span class="n">http</span><span class="o">.</span><span class="n">HandleFunc</span><span class="p">(</span><span class="s">"/"</span><span class="p">,</span><span class="x"> </span><span class="n">index</span><span class="p">)</span><span class="x">
-	</span><span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"Server is up and listening on port %s.</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="x"> </span><span class="n">port</span><span class="p">)</span><span class="x">
-	</span><span class="n">http</span><span class="o">.</span><span class="n">ListenAndServe</span><span class="p">(</span><span class="s">":"</span><span class="o">+</span><span class="n">port</span><span class="p">,</span><span class="x"> </span><span class="no">nil</span><span class="p">)</span><span class="x">
-</span><span class="p">}</span><span class="x">
-</span></code></pre></div></div>
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="n">port</span> <span class="o">:=</span> <span class="n">env</span><span class="o">.</span><span class="n">GetEnvOrDefault</span><span class="p">(</span><span class="s">"PORT"</span><span class="p">,</span> <span class="s">"8080"</span><span class="p">)</span>
+	<span class="n">http</span><span class="o">.</span><span class="n">HandleFunc</span><span class="p">(</span><span class="s">"/"</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span>
+	<span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"Server is up and listening on port %s.</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">port</span><span class="p">)</span>
+	<span class="n">http</span><span class="o">.</span><span class="n">ListenAndServe</span><span class="p">(</span><span class="s">":"</span><span class="o">+</span><span class="n">port</span><span class="p">,</span> <span class="no">nil</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
-<p>Note how we need to add full path to our <code class="highlighter-rouge">env</code> package. Curious why? Just keep reading :)</p>
+<p>Note how we need to add full path to our <code class="language-plaintext highlighter-rouge">env</code> package. Curious why? Just keep reading :)</p>
 
 <h3 id="go-and-its-dependency-management">Go and its Dependency Management</h3>
 
 <p>Go dependencies are managed in a totally different way when compare to platforms like .NET, Java and Node.js. Instead of an dependency registry, Go relies on public url that simply hosts some Go files using a common VCS system like Git, SVN or Mercurial.</p>
 
-<p>All packages are imported by specifying full path starting from <code class="highlighter-rouge">$GOPATH/src</code>, which is why <code class="highlighter-rouge">$GOPATH</code> needs to be setup before using packages in Go. The only exception for this rule is <code class="highlighter-rouge">stdlib</code>, which is imported from <code class="highlighter-rouge">$GOROOT/src</code>.</p>
+<p>All packages are imported by specifying full path starting from <code class="language-plaintext highlighter-rouge">$GOPATH/src</code>, which is why <code class="language-plaintext highlighter-rouge">$GOPATH</code> needs to be setup before using packages in Go. The only exception for this rule is <code class="language-plaintext highlighter-rouge">stdlib</code>, which is imported from <code class="language-plaintext highlighter-rouge">$GOROOT/src</code>.</p>
 
-<p>Let’s start by doing something very simple. As we’ve seen before, Go’s default router is not that flexible and has some drawbacks. We’ll replace it with <code class="highlighter-rouge">github.com/gorilla/mux</code>, a battle tested and very popular router for Go.</p>
+<p>Let’s start by doing something very simple. As we’ve seen before, Go’s default router is not that flexible and has some drawbacks. We’ll replace it with <code class="language-plaintext highlighter-rouge">github.com/gorilla/mux</code>, a battle tested and very popular router for Go.</p>
 
 <p>You can get it by running following command on your terminal.</p>
 
@@ -238,42 +240,42 @@
   <p>go get github.com/gorilla/mux</p>
 </blockquote>
 
-<p>What <code class="highlighter-rouge">go get</code> will do is download the source code from GitHub and place the files into <code class="highlighter-rouge">$GOPATH/src/github.com/gorilla/mux</code>. You can verify this by going to your <code class="highlighter-rouge">$GOPATH</code> folder and inspecting its tree.</p>
+<p>What <code class="language-plaintext highlighter-rouge">go get</code> will do is download the source code from GitHub and place the files into <code class="language-plaintext highlighter-rouge">$GOPATH/src/github.com/gorilla/mux</code>. You can verify this by going to your <code class="language-plaintext highlighter-rouge">$GOPATH</code> folder and inspecting its tree.</p>
 
-<p>You can now create any Go app and use <code class="highlighter-rouge">github.com/gorilla/mux</code> as a dependency.</p>
+<p>You can now create any Go app and use <code class="language-plaintext highlighter-rouge">github.com/gorilla/mux</code> as a dependency.</p>
 
-<p>The following code is an example on how to change our HTTP server to use <code class="highlighter-rouge">github.com/gorilla/mux</code> instead of the default.</p>
+<p>The following code is an example on how to change our HTTP server to use <code class="language-plaintext highlighter-rouge">github.com/gorilla/mux</code> instead of the default.</p>
 
-<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">package</span><span class="x"> </span><span class="n">main</span><span class="x">
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">package</span> <span class="n">main</span>
 
-</span><span class="k">import</span><span class="x"> </span><span class="p">(</span><span class="x">
-	</span><span class="s">"fmt"</span><span class="x">
-	</span><span class="s">"html/template"</span><span class="x">
-	</span><span class="s">"net/http"</span><span class="x">
+<span class="k">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+	<span class="s">"html/template"</span>
+	<span class="s">"net/http"</span>
 
-	</span><span class="s">"github.com/goenning/gostore/env"</span><span class="x">
-	</span><span class="s">"github.com/gorilla/mux"</span><span class="x">
-</span><span class="p">)</span><span class="x">
+	<span class="s">"github.com/goenning/gostore/env"</span>
+	<span class="s">"github.com/gorilla/mux"</span>
+<span class="p">)</span>
 
-</span><span class="k">func</span><span class="x"> </span><span class="n">index</span><span class="p">(</span><span class="n">w</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">ResponseWriter</span><span class="p">,</span><span class="x"> </span><span class="n">r</span><span class="x"> </span><span class="o">*</span><span class="n">http</span><span class="o">.</span><span class="n">Request</span><span class="p">)</span><span class="x"> </span><span class="p">{</span><span class="x">
-	</span><span class="n">tpl</span><span class="p">,</span><span class="x"> </span><span class="n">_</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">template</span><span class="o">.</span><span class="n">ParseFiles</span><span class="p">(</span><span class="s">"index.html"</span><span class="p">)</span><span class="x">
-	</span><span class="n">data</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span><span class="x">
-		</span><span class="s">"Title"</span><span class="o">:</span><span class="x"> </span><span class="s">"Go Store :)"</span><span class="p">,</span><span class="x">
-	</span><span class="p">}</span><span class="x">
-	</span><span class="n">w</span><span class="o">.</span><span class="n">WriteHeader</span><span class="p">(</span><span class="n">http</span><span class="o">.</span><span class="n">StatusOK</span><span class="p">)</span><span class="x">
-	</span><span class="n">tpl</span><span class="o">.</span><span class="n">Execute</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="x"> </span><span class="n">data</span><span class="p">)</span><span class="x">
-</span><span class="p">}</span><span class="x">
+<span class="k">func</span> <span class="n">index</span><span class="p">(</span><span class="n">w</span> <span class="n">http</span><span class="o">.</span><span class="n">ResponseWriter</span><span class="p">,</span> <span class="n">r</span> <span class="o">*</span><span class="n">http</span><span class="o">.</span><span class="n">Request</span><span class="p">)</span> <span class="p">{</span>
+	<span class="n">tpl</span><span class="p">,</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">template</span><span class="o">.</span><span class="n">ParseFiles</span><span class="p">(</span><span class="s">"index.html"</span><span class="p">)</span>
+	<span class="n">data</span> <span class="o">:=</span> <span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span>
+		<span class="s">"Title"</span><span class="o">:</span> <span class="s">"Go Store :)"</span><span class="p">,</span>
+	<span class="p">}</span>
+	<span class="n">w</span><span class="o">.</span><span class="n">WriteHeader</span><span class="p">(</span><span class="n">http</span><span class="o">.</span><span class="n">StatusOK</span><span class="p">)</span>
+	<span class="n">tpl</span><span class="o">.</span><span class="n">Execute</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+<span class="p">}</span>
 
-</span><span class="k">func</span><span class="x"> </span><span class="n">main</span><span class="p">()</span><span class="x"> </span><span class="p">{</span><span class="x">
-	</span><span class="n">port</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">env</span><span class="o">.</span><span class="n">GetEnvOrDefault</span><span class="p">(</span><span class="s">"PORT"</span><span class="p">,</span><span class="x"> </span><span class="s">"8080"</span><span class="p">)</span><span class="x">
-	</span><span class="n">r</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">mux</span><span class="o">.</span><span class="n">NewRouter</span><span class="p">()</span><span class="x">
-	</span><span class="n">r</span><span class="o">.</span><span class="n">HandleFunc</span><span class="p">(</span><span class="s">"/"</span><span class="p">,</span><span class="x"> </span><span class="n">index</span><span class="p">)</span><span class="x">
-	</span><span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"Server is up and listening on port %s.</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="x"> </span><span class="n">port</span><span class="p">)</span><span class="x">
-	</span><span class="n">http</span><span class="o">.</span><span class="n">ListenAndServe</span><span class="p">(</span><span class="s">":"</span><span class="o">+</span><span class="n">port</span><span class="p">,</span><span class="x"> </span><span class="n">r</span><span class="p">)</span><span class="x">
-</span><span class="p">}</span><span class="x">
-</span></code></pre></div></div>
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="n">port</span> <span class="o">:=</span> <span class="n">env</span><span class="o">.</span><span class="n">GetEnvOrDefault</span><span class="p">(</span><span class="s">"PORT"</span><span class="p">,</span> <span class="s">"8080"</span><span class="p">)</span>
+	<span class="n">r</span> <span class="o">:=</span> <span class="n">mux</span><span class="o">.</span><span class="n">NewRouter</span><span class="p">()</span>
+	<span class="n">r</span><span class="o">.</span><span class="n">HandleFunc</span><span class="p">(</span><span class="s">"/"</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span>
+	<span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"Server is up and listening on port %s.</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">port</span><span class="p">)</span>
+	<span class="n">http</span><span class="o">.</span><span class="n">ListenAndServe</span><span class="p">(</span><span class="s">":"</span><span class="o">+</span><span class="n">port</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
-<p>The only thing that has changed is that we now create a new router using <code class="highlighter-rouge">mux.NewRouter()</code>, register all handler into this router and use it to serve on given port. Remember that before we had a <code class="highlighter-rouge">nil</code> value as the second parameter? That’s the <code class="highlighter-rouge">router</code> parameter, so when it’s <code class="highlighter-rouge">nil</code>, it uses the default one.</p>
+<p>The only thing that has changed is that we now create a new router using <code class="language-plaintext highlighter-rouge">mux.NewRouter()</code>, register all handler into this router and use it to serve on given port. Remember that before we had a <code class="language-plaintext highlighter-rouge">nil</code> value as the second parameter? That’s the <code class="language-plaintext highlighter-rouge">router</code> parameter, so when it’s <code class="language-plaintext highlighter-rouge">nil</code>, it uses the default one.</p>
 
 <p>You can now build and run your Go project just like before.</p>
 
@@ -281,9 +283,9 @@
 
 <h3 id="vendoring">Vendoring</h3>
 
-<p>This project will work on your machine as long as you have runned <code class="highlighter-rouge">go get</code> locally to fetch the dependency. But how would we share this code between our coworkers/community and ensure that everyone has all dependencies fetched and, mostly important, the correct version of each dependency.</p>
+<p>This project will work on your machine as long as you have runned <code class="language-plaintext highlighter-rouge">go get</code> locally to fetch the dependency. But how would we share this code between our coworkers/community and ensure that everyone has all dependencies fetched and, mostly important, the correct version of each dependency.</p>
 
-<p>That’s where <code class="highlighter-rouge">vendoring</code> kicks in. It’s basically a feature introduced on Go 1.5 that allows Go apps to fetch dependencies not only from <code class="highlighter-rouge">$GOPATH/src</code>, but also from a child folder named <code class="highlighter-rouge">vendor</code> inside each project.</p>
+<p>That’s where <code class="language-plaintext highlighter-rouge">vendoring</code> kicks in. It’s basically a feature introduced on Go 1.5 that allows Go apps to fetch dependencies not only from <code class="language-plaintext highlighter-rouge">$GOPATH/src</code>, but also from a child folder named <code class="language-plaintext highlighter-rouge">vendor</code> inside each project.</p>
 
 <p>This means that you can place your dependencies into your project’s vendor folder instead of globally shared $GOPATH. Go compiler will first look into vendor folder before trying to fetch something from $GOPATH.</p>
 
@@ -297,11 +299,11 @@
 
 <p>Glide is available on many platforms, just download and install based on whatever OS you’re on <a href="https://github.com/Masterminds/glide/releases">https://github.com/Masterminds/glide/releases</a>.</p>
 
-<p>You should then be able to run <code class="highlighter-rouge">glide -v</code>.</p>
+<p>You should then be able to run <code class="language-plaintext highlighter-rouge">glide -v</code>.</p>
 
-<p>The first command that has to be run once for each new project is <code class="highlighter-rouge">glide init</code>, which will basically create a <code class="highlighter-rouge">glide.yaml</code> that describe all your project dependencies.</p>
+<p>The first command that has to be run once for each new project is <code class="language-plaintext highlighter-rouge">glide init</code>, which will basically create a <code class="language-plaintext highlighter-rouge">glide.yaml</code> that describe all your project dependencies.</p>
 
-<p>As we have already imported <code class="highlighter-rouge">github.com/gorilla/mux</code> using <code class="highlighter-rouge">go get</code>, this command will discover it and already set it as a dependency. But you could just install this or any other dependency by running the same <code class="highlighter-rouge">go get</code> command, just replacing <code class="highlighter-rouge">go</code> with <code class="highlighter-rouge">glide</code>.</p>
+<p>As we have already imported <code class="language-plaintext highlighter-rouge">github.com/gorilla/mux</code> using <code class="language-plaintext highlighter-rouge">go get</code>, this command will discover it and already set it as a dependency. But you could just install this or any other dependency by running the same <code class="language-plaintext highlighter-rouge">go get</code> command, just replacing <code class="language-plaintext highlighter-rouge">go</code> with <code class="language-plaintext highlighter-rouge">glide</code>.</p>
 
 <blockquote>
   <p>glide get github.com/gorilla/mux</p>
@@ -310,8 +312,8 @@
 <p>When this command is executed, two things happens.</p>
 
 <ol>
-  <li><code class="highlighter-rouge">github.com/gorilla/mux</code> is downloaded into your vendor folder instead of <code class="highlighter-rouge">$GOPATH/src</code>.</li>
-  <li><code class="highlighter-rouge">glide.yaml</code> is updated with your newly added dependency.</li>
+  <li><code class="language-plaintext highlighter-rouge">github.com/gorilla/mux</code> is downloaded into your vendor folder instead of <code class="language-plaintext highlighter-rouge">$GOPATH/src</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">glide.yaml</code> is updated with your newly added dependency.</li>
 </ol>
 
 <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">package</span><span class="pi">:</span> <span class="s">github.com/goenning/gostore</span>
@@ -320,25 +322,25 @@
   <span class="na">version</span><span class="pi">:</span> <span class="s">^1.3.0</span>
 </code></pre></div></div>
 
-<p>So what you have now is a <code class="highlighter-rouge">glide.yaml</code> that describes all your project dependencies, so anyone with Glide installed can simply run <code class="highlighter-rouge">glide install</code>, compile and run your app.</p>
+<p>So what you have now is a <code class="language-plaintext highlighter-rouge">glide.yaml</code> that describes all your project dependencies, so anyone with Glide installed can simply run <code class="language-plaintext highlighter-rouge">glide install</code>, compile and run your app.</p>
 
-<p>There is also the <code class="highlighter-rouge">glide.lock</code> file, which is basically a lock file used by Glide to ensure that your project is always using the same version for each dependency whenever <code class="highlighter-rouge">glide install</code> is ran.</p>
+<p>There is also the <code class="language-plaintext highlighter-rouge">glide.lock</code> file, which is basically a lock file used by Glide to ensure that your project is always using the same version for each dependency whenever <code class="language-plaintext highlighter-rouge">glide install</code> is ran.</p>
 
 <h3 id="auto-rebuilding-our-app-with-gin-cli">Auto rebuilding our app with Gin CLI</h3>
 
-<p><code class="highlighter-rouge">Gin</code> is a CLI tool built in Go that runs your web app and make sure it’s restarted everytime a Go file changes.</p>
+<p><code class="language-plaintext highlighter-rouge">Gin</code> is a CLI tool built in Go that runs your web app and make sure it’s restarted everytime a Go file changes.</p>
 
-<p>We can install this by running by using <code class="highlighter-rouge">go get</code>.</p>
+<p>We can install this by running by using <code class="language-plaintext highlighter-rouge">go get</code>.</p>
 
 <blockquote>
   <p>go get https://github.com/codegangsta/gin</p>
 </blockquote>
 
-<p>As Gin is a CLI package, it’s compiled into a binary file placed into <code class="highlighter-rouge">$GOPATH/bin</code>, which is why it’s recommended to add this path on your <code class="highlighter-rouge">$PATH</code>.</p>
+<p>As Gin is a CLI package, it’s compiled into a binary file placed into <code class="language-plaintext highlighter-rouge">$GOPATH/bin</code>, which is why it’s recommended to add this path on your <code class="language-plaintext highlighter-rouge">$PATH</code>.</p>
 
-<p>Gin (and many other application hosts, like Heroku) expose an environment variable named <code class="highlighter-rouge">$PORT</code> with the port number that your app needs to listen to in order to work properly. This is exactly how gin works, so make sure you didnt skip first section of this post where we changes our project to use <code class="highlighter-rouge">GetEnvOrDefault</code>.</p>
+<p>Gin (and many other application hosts, like Heroku) expose an environment variable named <code class="language-plaintext highlighter-rouge">$PORT</code> with the port number that your app needs to listen to in order to work properly. This is exactly how gin works, so make sure you didnt skip first section of this post where we changes our project to use <code class="language-plaintext highlighter-rouge">GetEnvOrDefault</code>.</p>
 
-<p>Instead of <code class="highlighter-rouge">go run</code> you can now just run <code class="highlighter-rouge">gin</code> on your terminal and navigate to <code class="highlighter-rouge">http://localhost:3000</code> to see your app running.</p>
+<p>Instead of <code class="language-plaintext highlighter-rouge">go run</code> you can now just run <code class="language-plaintext highlighter-rouge">gin</code> on your terminal and navigate to <code class="language-plaintext highlighter-rouge">http://localhost:3000</code> to see your app running.</p>
 
 <p>Whenever you change a Go file, Gin will reload your app and you won’t need to run any command, just refresh the page and see the difference. It’s a game changer for a better developer experience, you should definitely try it.</p>
 

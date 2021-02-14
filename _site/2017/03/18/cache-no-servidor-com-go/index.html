@@ -13,9 +13,9 @@
     <link rel="alternate" type="application/rss+xml" title="@goenning - loop at { run; code; blog; swim; eat; cycle; } until tired;" href="/feed.xml" />
     
 
-    <!-- Begin Jekyll SEO tag v2.5.0 -->
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>Cache no Servidor com Go | @goenning</title>
-<meta name="generator" content="Jekyll v3.8.5" />
+<meta name="generator" content="Jekyll v4.2.0" />
 <meta property="og:title" content="Cache no Servidor com Go" />
 <meta name="author" content="@goenning" />
 <meta property="og:locale" content="pt" />
@@ -26,8 +26,10 @@
 <meta property="og:site_name" content="@goenning" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2017-03-18T00:00:00-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Cache no Servidor com Go" />
 <script type="application/ld+json">
-{"headline":"Cache no Servidor com Go","dateModified":"2017-03-18T00:00:00-05:00","datePublished":"2017-03-18T00:00:00-05:00","url":"https://goenning.net/2017/03/18/cache-no-servidor-com-go/","author":{"@type":"Person","name":"@goenning"},"description":"Go é muito rápido e todos nós sabemos disto. Mas como fazemos para nossas aplicações web serem ainda mais rápidas? Neste post vou mostrar como podemos obter tempos de resposta ainda menores using cache no lado do servidor, afinal, performance é importante e ninguém gosta de ficar olhando barra de progresso, não é?","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://goenning.net/2017/03/18/cache-no-servidor-com-go/"},"@context":"http://schema.org"}</script>
+{"author":{"@type":"Person","name":"@goenning"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://goenning.net/2017/03/18/cache-no-servidor-com-go/"},"@type":"BlogPosting","description":"Go é muito rápido e todos nós sabemos disto. Mas como fazemos para nossas aplicações web serem ainda mais rápidas? Neste post vou mostrar como podemos obter tempos de resposta ainda menores using cache no lado do servidor, afinal, performance é importante e ninguém gosta de ficar olhando barra de progresso, não é?","headline":"Cache no Servidor com Go","dateModified":"2017-03-18T00:00:00-05:00","url":"https://goenning.net/2017/03/18/cache-no-servidor-com-go/","datePublished":"2017-03-18T00:00:00-05:00","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   </head>
@@ -149,7 +151,7 @@
 
 
   
-    • 9 minutos para ler
+    • 8 minutos para ler
   
 
     • 
@@ -172,7 +174,7 @@
 
 <h2 id="o-que-é-cache-no-lado-do-servidor">O que é cache no lado do servidor?</h2>
 
-<p>A maioria dos desenvolvedores web já está familizariado com o cache de navegador, aquele que usa o cabeçalho HTTP <code class="highlighter-rouge">Cache-Control</code>. Este parâmetro que é definido pelo servidor é usado para informar ao navegador quando e por quanto tempo é que ele pode fazer o cache da resposta HTTP. Isto é extremamente importante a devemos sempre usar para arquivos estáticos como JavaScript, CSS e Imagens.</p>
+<p>A maioria dos desenvolvedores web já está familizariado com o cache de navegador, aquele que usa o cabeçalho HTTP <code class="language-plaintext highlighter-rouge">Cache-Control</code>. Este parâmetro que é definido pelo servidor é usado para informar ao navegador quando e por quanto tempo é que ele pode fazer o cache da resposta HTTP. Isto é extremamente importante a devemos sempre usar para arquivos estáticos como JavaScript, CSS e Imagens.</p>
 
 <p>Mas e as páginas HTML? Podemos fazer cache delas também? Certamente não é recomendável fazer isto no lado do navegador, afinal se o conteúdo de nossa página for alterado, alguns visitantes continuariam a visualizar o conteúdo antigo. Imagine um portal de notícias como o G1 ou R7. Como eles podem oferecer um serviço tão rápido para milhões de pessoas? Se um novo artigo for publicado, todos os visitantes devem podem visualizar imediatamente na próxima atualização da página.</p>
 
@@ -198,70 +200,70 @@
 
 <p>O primeiro passo foi criar uma interface chamada de <a href="https://github.com/goenning/go-cache-demo/blob/master/cache/cache.go">Storage</a> que pode ser usada para ler ou escrever no cache. Isto é uma interface, pois o consumidor não deveria estar acoplado à uma implementação específica.</p>
 
-<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">type</span><span class="x"> </span><span class="n">Storage</span><span class="x"> </span><span class="k">interface</span><span class="x"> </span><span class="p">{</span><span class="x">
-	</span><span class="n">Get</span><span class="p">(</span><span class="n">key</span><span class="x"> </span><span class="kt">string</span><span class="p">)</span><span class="x"> </span><span class="p">[]</span><span class="kt">byte</span><span class="x">
-	</span><span class="n">Set</span><span class="p">(</span><span class="n">key</span><span class="x"> </span><span class="kt">string</span><span class="p">,</span><span class="x"> </span><span class="n">content</span><span class="x"> </span><span class="p">[]</span><span class="kt">byte</span><span class="p">,</span><span class="x"> </span><span class="n">duration</span><span class="x"> </span><span class="n">time</span><span class="o">.</span><span class="n">Duration</span><span class="p">)</span><span class="x">
-</span><span class="p">}</span><span class="x">
-</span></code></pre></div></div>
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">type</span> <span class="n">Storage</span> <span class="k">interface</span> <span class="p">{</span>
+	<span class="n">Get</span><span class="p">(</span><span class="n">key</span> <span class="kt">string</span><span class="p">)</span> <span class="p">[]</span><span class="kt">byte</span>
+	<span class="n">Set</span><span class="p">(</span><span class="n">key</span> <span class="kt">string</span><span class="p">,</span> <span class="n">content</span> <span class="p">[]</span><span class="kt">byte</span><span class="p">,</span> <span class="n">duration</span> <span class="n">time</span><span class="o">.</span><span class="n">Duration</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
-<p>Em seguida temos duas structs que implementam esta interface, <a href="https://github.com/goenning/go-cache-demo/blob/master/cache/memory/cache.go">memory.Storage</a> que utiliza um objeto <code class="highlighter-rouge">map</code> para armazenar o cache e o <a href="https://github.com/goenning/go-cache-demo/blob/master/cache/redis/cache.go">redis.Storage</a> que utiliza um cliente de Redis.</p>
+<p>Em seguida temos duas structs que implementam esta interface, <a href="https://github.com/goenning/go-cache-demo/blob/master/cache/memory/cache.go">memory.Storage</a> que utiliza um objeto <code class="language-plaintext highlighter-rouge">map</code> para armazenar o cache e o <a href="https://github.com/goenning/go-cache-demo/blob/master/cache/redis/cache.go">redis.Storage</a> que utiliza um cliente de Redis.</p>
 
-<p>A implementação destas structs é simples de entender, então vou pular esta parte. Você pode tentar implementar um Storage para gravar o cache em disco. Apenas crie uma nova struct que implemente a interface e utilize o pacote <code class="highlighter-rouge">os</code> ou <code class="highlighter-rouge">ioutil</code> do Go para ler e escrever em arquivos.</p>
+<p>A implementação destas structs é simples de entender, então vou pular esta parte. Você pode tentar implementar um Storage para gravar o cache em disco. Apenas crie uma nova struct que implemente a interface e utilize o pacote <code class="language-plaintext highlighter-rouge">os</code> ou <code class="language-plaintext highlighter-rouge">ioutil</code> do Go para ler e escrever em arquivos.</p>
 
-<p><code class="highlighter-rouge">cached</code> é um middleware HTTP que é executado antes do HTTP handler e retorna a página imediatamente caso ela já esteja no cache. Caso contrário, o handler é executado e a responsta é armazenada no cache por algum tempo. Pelo fato desta funcão ser um middleware, fica fácil habilitar/desabilitar o cache para página específicas. Continue lendo para ver um exemplo.</p>
+<p><code class="language-plaintext highlighter-rouge">cached</code> é um middleware HTTP que é executado antes do HTTP handler e retorna a página imediatamente caso ela já esteja no cache. Caso contrário, o handler é executado e a responsta é armazenada no cache por algum tempo. Pelo fato desta funcão ser um middleware, fica fácil habilitar/desabilitar o cache para página específicas. Continue lendo para ver um exemplo.</p>
 
-<p>Estou usando <code class="highlighter-rouge">RequestURI</code> como a chave do cache, pois o objetivo aqui é fazer o cache utilizando a URL completa, incluindo o path e a querystring. Isto significa que as páginas <code class="highlighter-rouge">/users?page=1</code> e <code class="highlighter-rouge">/users?page=2</code> são armazenadas separadamente, mesmo que o HTTP handler seja o mesmo para ambas URL.</p>
+<p>Estou usando <code class="language-plaintext highlighter-rouge">RequestURI</code> como a chave do cache, pois o objetivo aqui é fazer o cache utilizando a URL completa, incluindo o path e a querystring. Isto significa que as páginas <code class="language-plaintext highlighter-rouge">/users?page=1</code> e <code class="language-plaintext highlighter-rouge">/users?page=2</code> são armazenadas separadamente, mesmo que o HTTP handler seja o mesmo para ambas URL.</p>
 
 <p>O código do middleware é o seguinte.</p>
 
-<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">package</span><span class="x"> </span><span class="n">main</span><span class="x">
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">package</span> <span class="n">main</span>
 
-</span><span class="k">import</span><span class="x"> </span><span class="p">(</span><span class="x">
-	</span><span class="s">"fmt"</span><span class="x">
-	</span><span class="s">"net/http"</span><span class="x">
-	</span><span class="s">"net/http/httptest"</span><span class="x">
-	</span><span class="s">"time"</span><span class="x">
-</span><span class="p">)</span><span class="x">
+<span class="k">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+	<span class="s">"net/http"</span>
+	<span class="s">"net/http/httptest"</span>
+	<span class="s">"time"</span>
+<span class="p">)</span>
 
-</span><span class="k">func</span><span class="x"> </span><span class="n">cached</span><span class="p">(</span><span class="n">duration</span><span class="x"> </span><span class="kt">string</span><span class="p">,</span><span class="x"> </span><span class="n">handler</span><span class="x"> </span><span class="k">func</span><span class="p">(</span><span class="n">w</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">ResponseWriter</span><span class="p">,</span><span class="x"> </span><span class="n">r</span><span class="x"> </span><span class="o">*</span><span class="n">http</span><span class="o">.</span><span class="n">Request</span><span class="p">))</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">Handler</span><span class="x"> </span><span class="p">{</span><span class="x">
-	</span><span class="k">return</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">HandlerFunc</span><span class="p">(</span><span class="k">func</span><span class="p">(</span><span class="n">w</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">ResponseWriter</span><span class="p">,</span><span class="x"> </span><span class="n">r</span><span class="x"> </span><span class="o">*</span><span class="n">http</span><span class="o">.</span><span class="n">Request</span><span class="p">)</span><span class="x"> </span><span class="p">{</span><span class="x">
+<span class="k">func</span> <span class="n">cached</span><span class="p">(</span><span class="n">duration</span> <span class="kt">string</span><span class="p">,</span> <span class="n">handler</span> <span class="k">func</span><span class="p">(</span><span class="n">w</span> <span class="n">http</span><span class="o">.</span><span class="n">ResponseWriter</span><span class="p">,</span> <span class="n">r</span> <span class="o">*</span><span class="n">http</span><span class="o">.</span><span class="n">Request</span><span class="p">))</span> <span class="n">http</span><span class="o">.</span><span class="n">Handler</span> <span class="p">{</span>
+	<span class="k">return</span> <span class="n">http</span><span class="o">.</span><span class="n">HandlerFunc</span><span class="p">(</span><span class="k">func</span><span class="p">(</span><span class="n">w</span> <span class="n">http</span><span class="o">.</span><span class="n">ResponseWriter</span><span class="p">,</span> <span class="n">r</span> <span class="o">*</span><span class="n">http</span><span class="o">.</span><span class="n">Request</span><span class="p">)</span> <span class="p">{</span>
 
-		</span><span class="n">content</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">storage</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">RequestURI</span><span class="p">)</span><span class="x">
-		</span><span class="k">if</span><span class="x"> </span><span class="n">content</span><span class="x"> </span><span class="o">!=</span><span class="x"> </span><span class="no">nil</span><span class="x"> </span><span class="p">{</span><span class="x">
-			</span><span class="n">fmt</span><span class="o">.</span><span class="n">Print</span><span class="p">(</span><span class="s">"Cache Hit!</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span><span class="x">
-			</span><span class="n">w</span><span class="o">.</span><span class="n">Write</span><span class="p">(</span><span class="n">content</span><span class="p">)</span><span class="x">
-		</span><span class="p">}</span><span class="x"> </span><span class="k">else</span><span class="x"> </span><span class="p">{</span><span class="x">
-			</span><span class="n">c</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">httptest</span><span class="o">.</span><span class="n">NewRecorder</span><span class="p">()</span><span class="x">
-			</span><span class="n">handler</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="x"> </span><span class="n">r</span><span class="p">)</span><span class="x">
+		<span class="n">content</span> <span class="o">:=</span> <span class="n">storage</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">RequestURI</span><span class="p">)</span>
+		<span class="k">if</span> <span class="n">content</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+			<span class="n">fmt</span><span class="o">.</span><span class="n">Print</span><span class="p">(</span><span class="s">"Cache Hit!</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
+			<span class="n">w</span><span class="o">.</span><span class="n">Write</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+		<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+			<span class="n">c</span> <span class="o">:=</span> <span class="n">httptest</span><span class="o">.</span><span class="n">NewRecorder</span><span class="p">()</span>
+			<span class="n">handler</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
 
-			</span><span class="k">for</span><span class="x"> </span><span class="n">k</span><span class="p">,</span><span class="x"> </span><span class="n">v</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="k">range</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">HeaderMap</span><span class="x"> </span><span class="p">{</span><span class="x">
-				</span><span class="n">w</span><span class="o">.</span><span class="n">Header</span><span class="p">()[</span><span class="n">k</span><span class="p">]</span><span class="x"> </span><span class="o">=</span><span class="x"> </span><span class="n">v</span><span class="x">
-			</span><span class="p">}</span><span class="x">
+			<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="n">c</span><span class="o">.</span><span class="n">HeaderMap</span> <span class="p">{</span>
+				<span class="n">w</span><span class="o">.</span><span class="n">Header</span><span class="p">()[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
+			<span class="p">}</span>
 
-			</span><span class="n">w</span><span class="o">.</span><span class="n">WriteHeader</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">Code</span><span class="p">)</span><span class="x">
-			</span><span class="n">content</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">c</span><span class="o">.</span><span class="n">Body</span><span class="o">.</span><span class="n">Bytes</span><span class="p">()</span><span class="x">
+			<span class="n">w</span><span class="o">.</span><span class="n">WriteHeader</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">Code</span><span class="p">)</span>
+			<span class="n">content</span> <span class="o">:=</span> <span class="n">c</span><span class="o">.</span><span class="n">Body</span><span class="o">.</span><span class="n">Bytes</span><span class="p">()</span>
 
-			</span><span class="k">if</span><span class="x"> </span><span class="n">d</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">time</span><span class="o">.</span><span class="n">ParseDuration</span><span class="p">(</span><span class="n">duration</span><span class="p">);</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">==</span><span class="x"> </span><span class="no">nil</span><span class="x"> </span><span class="p">{</span><span class="x">
-				</span><span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"New page cached: %s for %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="x"> </span><span class="n">r</span><span class="o">.</span><span class="n">RequestURI</span><span class="p">,</span><span class="x"> </span><span class="n">duration</span><span class="p">)</span><span class="x">
-				</span><span class="n">storage</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">RequestURI</span><span class="p">,</span><span class="x"> </span><span class="n">content</span><span class="p">,</span><span class="x"> </span><span class="n">d</span><span class="p">)</span><span class="x">
-			</span><span class="p">}</span><span class="x"> </span><span class="k">else</span><span class="x"> </span><span class="p">{</span><span class="x">
-				</span><span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"Page not cached. err: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="p">)</span><span class="x">
-			</span><span class="p">}</span><span class="x">
+			<span class="k">if</span> <span class="n">d</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">time</span><span class="o">.</span><span class="n">ParseDuration</span><span class="p">(</span><span class="n">duration</span><span class="p">);</span> <span class="n">err</span> <span class="o">==</span> <span class="no">nil</span> <span class="p">{</span>
+				<span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"New page cached: %s for %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">RequestURI</span><span class="p">,</span> <span class="n">duration</span><span class="p">)</span>
+				<span class="n">storage</span><span class="o">.</span><span class="n">Set</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">RequestURI</span><span class="p">,</span> <span class="n">content</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+			<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+				<span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"Page not cached. err: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">err</span><span class="p">)</span>
+			<span class="p">}</span>
 
-			</span><span class="n">w</span><span class="o">.</span><span class="n">Write</span><span class="p">(</span><span class="n">content</span><span class="p">)</span><span class="x">
-		</span><span class="p">}</span><span class="x">
+			<span class="n">w</span><span class="o">.</span><span class="n">Write</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+		<span class="p">}</span>
 
-	</span><span class="p">})</span><span class="x">
-</span><span class="p">}</span><span class="x">
-</span></code></pre></div></div>
+	<span class="p">})</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
-<p>Para usá-lo é necessário encapsular a chamada ao HTTP handler dentro da chamada à funcão <code class="highlighter-rouge">cached</code>. Graças ao pacote <code class="highlighter-rouge">time</code> do Go, podemos usar uma string fácil de ler para representar a duração total do cache. Por exemplo, <code class="highlighter-rouge">10s</code> é muito mais fácil de entender do que <code class="highlighter-rouge">10 * 1000</code>. No exemplo a seguir, apenas o HTTP handler index é que está sendo cacheado.</p>
+<p>Para usá-lo é necessário encapsular a chamada ao HTTP handler dentro da chamada à funcão <code class="language-plaintext highlighter-rouge">cached</code>. Graças ao pacote <code class="language-plaintext highlighter-rouge">time</code> do Go, podemos usar uma string fácil de ler para representar a duração total do cache. Por exemplo, <code class="language-plaintext highlighter-rouge">10s</code> é muito mais fácil de entender do que <code class="language-plaintext highlighter-rouge">10 * 1000</code>. No exemplo a seguir, apenas o HTTP handler index é que está sendo cacheado.</p>
 
-<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">// tanto index qaunto about são: func (w http.ResponseWriter, r *http.Request) { ... }</span><span class="x">
-</span><span class="n">http</span><span class="o">.</span><span class="n">Handle</span><span class="p">(</span><span class="s">"/"</span><span class="p">,</span><span class="x"> </span><span class="n">cached</span><span class="p">(</span><span class="s">"10s"</span><span class="p">,</span><span class="x"> </span><span class="n">index</span><span class="p">))</span><span class="x"> 
-</span><span class="n">http</span><span class="o">.</span><span class="n">HandleFunc</span><span class="p">(</span><span class="s">"/about"</span><span class="p">,</span><span class="x"> </span><span class="n">about</span><span class="p">)</span><span class="x">
-</span><span class="n">http</span><span class="o">.</span><span class="n">ListenAndServe</span><span class="p">(</span><span class="o">...</span><span class="p">)</span><span class="x">
-</span></code></pre></div></div>
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">// tanto index qaunto about são: func (w http.ResponseWriter, r *http.Request) { ... }</span>
+<span class="n">http</span><span class="o">.</span><span class="n">Handle</span><span class="p">(</span><span class="s">"/"</span><span class="p">,</span> <span class="n">cached</span><span class="p">(</span><span class="s">"10s"</span><span class="p">,</span> <span class="n">index</span><span class="p">))</span> 
+<span class="n">http</span><span class="o">.</span><span class="n">HandleFunc</span><span class="p">(</span><span class="s">"/about"</span><span class="p">,</span> <span class="n">about</span><span class="p">)</span>
+<span class="n">http</span><span class="o">.</span><span class="n">ListenAndServe</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+</code></pre></div></div>
 
 <p>Veja se seguintes images de duas requisições subsequentes ao mesmo endereço.</p>
 

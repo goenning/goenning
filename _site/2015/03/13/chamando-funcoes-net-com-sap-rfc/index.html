@@ -13,9 +13,9 @@
     <link rel="alternate" type="application/rss+xml" title="@goenning - loop at { run; code; blog; swim; eat; cycle; } until tired;" href="/feed.xml" />
     
 
-    <!-- Begin Jekyll SEO tag v2.5.0 -->
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>Chamando funções .NET com SAP RFC | @goenning</title>
-<meta name="generator" content="Jekyll v3.8.5" />
+<meta name="generator" content="Jekyll v4.2.0" />
 <meta property="og:title" content="Chamando funções .NET com SAP RFC" />
 <meta name="author" content="@goenning" />
 <meta property="og:locale" content="pt" />
@@ -26,8 +26,10 @@
 <meta property="og:site_name" content="@goenning" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2015-03-13T00:00:00-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Chamando funções .NET com SAP RFC" />
 <script type="application/ld+json">
-{"headline":"Chamando funções .NET com SAP RFC","dateModified":"2015-03-13T00:00:00-05:00","datePublished":"2015-03-13T00:00:00-05:00","url":"https://goenning.net/2015/03/13/chamando-funcoes-net-com-sap-rfc/","author":{"@type":"Person","name":"@goenning"},"description":"No post Conectando o mundo externo ao SAP com o uso de RFC falamos sobre como fazer aplicações Java e .NET acessarem funções do SAP através do protocolo RFC.","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://goenning.net/2015/03/13/chamando-funcoes-net-com-sap-rfc/"},"@context":"http://schema.org"}</script>
+{"author":{"@type":"Person","name":"@goenning"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://goenning.net/2015/03/13/chamando-funcoes-net-com-sap-rfc/"},"@type":"BlogPosting","description":"No post Conectando o mundo externo ao SAP com o uso de RFC falamos sobre como fazer aplicações Java e .NET acessarem funções do SAP através do protocolo RFC.","headline":"Chamando funções .NET com SAP RFC","dateModified":"2015-03-13T00:00:00-05:00","url":"https://goenning.net/2015/03/13/chamando-funcoes-net-com-sap-rfc/","datePublished":"2015-03-13T00:00:00-05:00","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   </head>
@@ -149,7 +151,7 @@
 
 
   
-    • 9 minutos para ler
+    • 10 minutos para ler
   
 
     • 
@@ -328,13 +330,13 @@
 
 <p>secinfo.DAT</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#VERSION=2
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#VERSION=2
 P TP=DOTNET_SERVER
 </code></pre></div></div>
 
 <p>reginfo.DAT</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#VERSION=2
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#VERSION=2
 P HOST=NOTE-OENNING USER=BCUSER TP=DOTNET_SERVER
 </code></pre></div></div>
 
@@ -352,7 +354,7 @@ P HOST=NOTE-OENNING USER=BCUSER TP=DOTNET_SERVER
 
 <p>Vamos criar uma tela onde o usuário digita o nome do login do GitHub que ele gostaria de ver os repositórios. Usamos nosso servidor .NET para fazer a consulta e então exibimos os repositórios na tela. O código fica assim:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>REPORT zrfc_list_github_repo.
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>REPORT zrfc_list_github_repo.
 
 PARAMETERS: p_user TYPE syuname OBLIGATORY.
 

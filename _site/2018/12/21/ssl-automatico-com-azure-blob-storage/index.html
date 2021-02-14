@@ -13,9 +13,9 @@
     <link rel="alternate" type="application/rss+xml" title="@goenning - loop at { run; code; blog; swim; eat; cycle; } until tired;" href="/feed.xml" />
     
 
-    <!-- Begin Jekyll SEO tag v2.5.0 -->
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>Usando Azure Blob Storage como armazenamento de certificados com Go acme/autocert | @goenning</title>
-<meta name="generator" content="Jekyll v3.8.5" />
+<meta name="generator" content="Jekyll v4.2.0" />
 <meta property="og:title" content="Usando Azure Blob Storage como armazenamento de certificados com Go acme/autocert" />
 <meta name="author" content="@goenning" />
 <meta property="og:locale" content="pt" />
@@ -26,8 +26,10 @@
 <meta property="og:site_name" content="@goenning" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2018-12-21T00:00:00-06:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Usando Azure Blob Storage como armazenamento de certificados com Go acme/autocert" />
 <script type="application/ld+json">
-{"headline":"Usando Azure Blob Storage como armazenamento de certificados com Go acme/autocert","dateModified":"2018-12-21T00:00:00-06:00","datePublished":"2018-12-21T00:00:00-06:00","url":"https://goenning.net/2018/12/21/ssl-automatico-com-azure-blob-storage/","author":{"@type":"Person","name":"@goenning"},"description":"Por padrão, acme/autocert armazena os certificados em diretório local. Sendo assim, requisições subsequentes irão utilizar o mesmo certificado ao invés de obter um novo. Mas e se sua aplicação estiver executando em vários servidores? Como você garante que todos os servidores estão utilizando o mesmo certificado? Descubra aqui como podemos utilizar o Azure Blob Storage para resolver este problema.","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://goenning.net/2018/12/21/ssl-automatico-com-azure-blob-storage/"},"@context":"http://schema.org"}</script>
+{"author":{"@type":"Person","name":"@goenning"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://goenning.net/2018/12/21/ssl-automatico-com-azure-blob-storage/"},"@type":"BlogPosting","description":"Por padrão, acme/autocert armazena os certificados em diretório local. Sendo assim, requisições subsequentes irão utilizar o mesmo certificado ao invés de obter um novo. Mas e se sua aplicação estiver executando em vários servidores? Como você garante que todos os servidores estão utilizando o mesmo certificado? Descubra aqui como podemos utilizar o Azure Blob Storage para resolver este problema.","headline":"Usando Azure Blob Storage como armazenamento de certificados com Go acme/autocert","dateModified":"2018-12-21T00:00:00-06:00","url":"https://goenning.net/2018/12/21/ssl-automatico-com-azure-blob-storage/","datePublished":"2018-12-21T00:00:00-06:00","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   </head>
@@ -162,7 +164,7 @@
   </small>
 
   <div class="entry">
-    <p>Se você não conhece o pacote <code class="highlighter-rouge">acme/autocert</code>, recomendo começar pelo artigo <a href="https://goenning.net/2017/11/08/certificados-gratuitos-automaticos-com-go/">Certificados SSL/TLS Gratuitos e Automatizados com Go</a> para entender como utilizar este pacote para obter certificados SSL/TLS de graça e sem tarefas manuais.</p>
+    <p>Se você não conhece o pacote <code class="language-plaintext highlighter-rouge">acme/autocert</code>, recomendo começar pelo artigo <a href="https://goenning.net/2017/11/08/certificados-gratuitos-automaticos-com-go/">Certificados SSL/TLS Gratuitos e Automatizados com Go</a> para entender como utilizar este pacote para obter certificados SSL/TLS de graça e sem tarefas manuais.</p>
 
 <p>Por padrão, acme/autocert armazena os certificados em diretório local. Sendo assim, requisições subsequentes irão utilizar o mesmo certificado ao invés de obter um novo.</p>
 
@@ -180,24 +182,24 @@
 
 <p>E isto é tudo o que você precisa colocar no seu código:</p>
 
-<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">containerName</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="s">"autocertcache"</span><span class="x">
-</span><span class="n">cache</span><span class="p">,</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">azcertcache</span><span class="o">.</span><span class="n">New</span><span class="p">(</span><span class="s">"&lt;account name&gt;"</span><span class="p">,</span><span class="x"> </span><span class="s">"&lt;account key&gt;"</span><span class="p">,</span><span class="x"> </span><span class="n">containerName</span><span class="p">)</span><span class="x">
-</span><span class="k">if</span><span class="x"> </span><span class="n">err</span><span class="x"> </span><span class="o">!=</span><span class="x"> </span><span class="no">nil</span><span class="x"> </span><span class="p">{</span><span class="x">
-  </span><span class="c">// Handle error</span><span class="x">
-</span><span class="p">}</span><span class="x">
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">containerName</span> <span class="o">:=</span> <span class="s">"autocertcache"</span>
+<span class="n">cache</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">azcertcache</span><span class="o">.</span><span class="n">New</span><span class="p">(</span><span class="s">"&lt;account name&gt;"</span><span class="p">,</span> <span class="s">"&lt;account key&gt;"</span><span class="p">,</span> <span class="n">containerName</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+  <span class="c">// Handle error</span>
+<span class="p">}</span>
 
-</span><span class="n">m</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">autocert</span><span class="o">.</span><span class="n">Manager</span><span class="p">{</span><span class="x">
-  </span><span class="n">Prompt</span><span class="o">:</span><span class="x">     </span><span class="n">autocert</span><span class="o">.</span><span class="n">AcceptTOS</span><span class="p">,</span><span class="x">
-  </span><span class="n">Cache</span><span class="o">:</span><span class="x">      </span><span class="n">cache</span><span class="p">,</span><span class="x"> </span><span class="c">// &lt;-- this used to be autocert.DirCache("&lt;folder name&gt;"),</span><span class="x">
-</span><span class="p">}</span><span class="x">
+<span class="n">m</span> <span class="o">:=</span> <span class="n">autocert</span><span class="o">.</span><span class="n">Manager</span><span class="p">{</span>
+  <span class="n">Prompt</span><span class="o">:</span>     <span class="n">autocert</span><span class="o">.</span><span class="n">AcceptTOS</span><span class="p">,</span>
+  <span class="n">Cache</span><span class="o">:</span>      <span class="n">cache</span><span class="p">,</span> <span class="c">// &lt;-- this used to be autocert.DirCache("&lt;folder name&gt;"),</span>
+<span class="p">}</span>
 
-</span><span class="n">s</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Server</span><span class="p">{</span><span class="x">
-  </span><span class="n">Addr</span><span class="o">:</span><span class="x">      </span><span class="s">":https"</span><span class="p">,</span><span class="x">
-  </span><span class="n">TLSConfig</span><span class="o">:</span><span class="x"> </span><span class="o">&amp;</span><span class="n">tls</span><span class="o">.</span><span class="n">Config</span><span class="p">{</span><span class="n">GetCertificate</span><span class="o">:</span><span class="x"> </span><span class="n">m</span><span class="o">.</span><span class="n">GetCertificate</span><span class="p">},</span><span class="x">
-</span><span class="p">}</span><span class="x">
+<span class="n">s</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Server</span><span class="p">{</span>
+  <span class="n">Addr</span><span class="o">:</span>      <span class="s">":https"</span><span class="p">,</span>
+  <span class="n">TLSConfig</span><span class="o">:</span> <span class="o">&amp;</span><span class="n">tls</span><span class="o">.</span><span class="n">Config</span><span class="p">{</span><span class="n">GetCertificate</span><span class="o">:</span> <span class="n">m</span><span class="o">.</span><span class="n">GetCertificate</span><span class="p">},</span>
+<span class="p">}</span>
 
-</span><span class="n">s</span><span class="o">.</span><span class="n">ListenAndServeTLS</span><span class="p">(</span><span class="s">""</span><span class="p">,</span><span class="x"> </span><span class="s">""</span><span class="p">)</span><span class="x">
-</span></code></pre></div></div>
+<span class="n">s</span><span class="o">.</span><span class="n">ListenAndServeTLS</span><span class="p">(</span><span class="s">""</span><span class="p">,</span> <span class="s">""</span><span class="p">)</span>
+</code></pre></div></div>
 
 <p>Ta-da! 🎉</p>
 
@@ -222,7 +224,7 @@
 <ol>
   <li><a href="https://github.com/goenning/sqlcertcache">https://github.com/goenning/sqlcertcache</a> para armazenar os certificados em um banco de dados SQL</li>
   <li><a href="https://github.com/danilobuerger/autocert-s3-cache">https://github.com/danilobuerger/autocert-s3-cache</a> para armazenar os certificados em algum serviço compatível com S3: AWS S3, DigitalOcean Spaces, Minio</li>
-  <li><a href="https://en.wikipedia.org/wiki/Network_File_System">NFS</a> e continue a usar <code class="highlighter-rouge">autocert.DirCache</code>.</li>
+  <li><a href="https://en.wikipedia.org/wiki/Network_File_System">NFS</a> e continue a usar <code class="language-plaintext highlighter-rouge">autocert.DirCache</code>.</li>
 </ol>
 
 <p>Um abraço!</p>

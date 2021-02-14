@@ -13,9 +13,9 @@
     <link rel="alternate" type="application/rss+xml" title="@goenning - loop at { run; code; blog; swim; eat; cycle; } until tired;" href="/feed.xml" />
     
 
-    <!-- Begin Jekyll SEO tag v2.5.0 -->
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>Using Azure Container Instances to measure performance of a website from multiple locations | @goenning</title>
-<meta name="generator" content="Jekyll v3.8.5" />
+<meta name="generator" content="Jekyll v4.2.0" />
 <meta property="og:title" content="Using Azure Container Instances to measure performance of a website from multiple locations" />
 <meta name="author" content="@goenning" />
 <meta property="og:locale" content="en" />
@@ -26,8 +26,10 @@
 <meta property="og:site_name" content="@goenning" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2019-02-10T00:00:00-06:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Using Azure Container Instances to measure performance of a website from multiple locations" />
 <script type="application/ld+json">
-{"headline":"Using Azure Container Instances to measure performance of a website from multiple locations","dateModified":"2019-02-10T00:00:00-06:00","datePublished":"2019-02-10T00:00:00-06:00","url":"https://goenning.net/2019/02/10/measuring-performance-website-multiple-locations-budget/","author":{"@type":"Person","name":"@goenning"},"description":"Measuring the performance of a website from multiple locations around the world is crucial with the current global scale of the internet. In most cases, your visitors are not only based in your home country but from all other countries too. From Canada to Australia, from Chile to Russia, your website is being visited by more people than you think. There are a number of paid services that allow you to constantly monitor your website performance from multiple locations around the world. But maybe you’re a geek and you want to do it yourself?","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://goenning.net/2019/02/10/measuring-performance-website-multiple-locations-budget/"},"@context":"http://schema.org"}</script>
+{"author":{"@type":"Person","name":"@goenning"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://goenning.net/2019/02/10/measuring-performance-website-multiple-locations-budget/"},"@type":"BlogPosting","description":"Measuring the performance of a website from multiple locations around the world is crucial with the current global scale of the internet. In most cases, your visitors are not only based in your home country but from all other countries too. From Canada to Australia, from Chile to Russia, your website is being visited by more people than you think. There are a number of paid services that allow you to constantly monitor your website performance from multiple locations around the world. But maybe you’re a geek and you want to do it yourself?","headline":"Using Azure Container Instances to measure performance of a website from multiple locations","dateModified":"2019-02-10T00:00:00-06:00","url":"https://goenning.net/2019/02/10/measuring-performance-website-multiple-locations-budget/","datePublished":"2019-02-10T00:00:00-06:00","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   </head>
@@ -188,78 +190,78 @@
 
 <p>You should get a response similar to this:</p>
 
-<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w"> </span><span class="s2">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-02-10T16:32:25.655Z"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"start_ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1549816345655</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">430</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iMac.local"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"request_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.org"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"metrics"</span><span class="p">:</span><span class="w">
-   </span><span class="p">{</span><span class="w"> </span><span class="s2">"Timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mf">300473.456095</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"Documents"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"Frames"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"JSEventListeners"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"Nodes"</span><span class="p">:</span><span class="w"> </span><span class="mi">39</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"LayoutCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"RecalcStyleCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"LayoutDuration"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.053402</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"RecalcStyleDuration"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.000584</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"ScriptDuration"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.000015</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"TaskDuration"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.068091</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"JSHeapUsedSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">2108152</span><span class="p">,</span><span class="w">
-     </span><span class="s2">"JSHeapTotalSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">3936256</span><span class="w"> </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"entries"</span><span class="p">:</span><span class="w">
-   </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.org/"</span><span class="p">,</span><span class="w">
-       </span><span class="s2">"entryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"navigation"</span><span class="p">,</span><span class="w">
-       </span><span class="s2">"startTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-       </span><span class="s2">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mf">427.6149999932386</span><span class="p">,</span><span class="w">
-       </span><span class="s2">"initiatorType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"navigation"</span><span class="p">,</span><span class="w">
-       </span><span class="s2">"nextHopProtocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"h2"</span><span class="p">,</span><span class="w">
-       </span><span class="s2">"workerStart"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-       </span><span class="s2">"redirectStart"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-       </span><span class="s2">"redirectEnd"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-       </span><span class="s2">"fetchStart"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.2899999963119626</span><span class="p">,</span><span class="w">
-       </span><span class="s2">"domainLookupStart"</span><span class="p">:</span><span class="w"> </span><span class="mf">7.634999987203628</span><span class="p">,</span><span class="w">
-       </span><span class="s2">"domainLookupEnd"</span><span class="p">:</span><span class="w"> </span><span class="mf">8.984999964013696</span><span class="p">,</span><span class="w">
-       </span><span class="s2">"connectStart"</span><span class="p">:</span><span class="w"> </span><span class="mf">8.984999964013696</span><span class="p">,</span><span class="w">
-       </span><span class="s2">"connectEnd"</span><span class="p">:</span><span class="w"> </span><span class="mf">313.34999995306134</span><span class="p">,</span><span class="w">
-       </span><span class="s2">"secureConnectionStart"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-       </span><span class="s2">"requestStart"</span><span class="p">:</span><span class="w"> </span><span class="mf">313.6149999918416</span><span class="p">,</span><span class="w">
-       </span><span class="s2">"responseStart"</span><span class="p">:</span><span class="w"> </span><span class="mf">414.7049999446608</span><span class="p">,</span><span class="w">
-       </span><span class="s2">"responseEnd"</span><span class="p">:</span><span class="w"> </span><span class="mf">415.8099999767728</span><span class="p">,</span><span class="w">
-       </span><span class="s2">"transferSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">800</span><span class="p">,</span><span class="w">
-       </span><span class="s2">"encodedBodySize"</span><span class="p">:</span><span class="w"> </span><span class="mi">606</span><span class="p">,</span><span class="w">
-       </span><span class="s2">"decodedBodySize"</span><span class="p">:</span><span class="w"> </span><span class="mi">1270</span><span class="p">,</span><span class="w">
-       </span><span class="s2">"serverTiming"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-       </span><span class="s2">"unloadEventStart"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-       </span><span class="s2">"unloadEventEnd"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-       </span><span class="s2">"domInteractive"</span><span class="p">:</span><span class="w"> </span><span class="mf">426.6899999929592</span><span class="p">,</span><span class="w">
-       </span><span class="s2">"domContentLoadedEventStart"</span><span class="p">:</span><span class="w"> </span><span class="mf">426.7049999907613</span><span class="p">,</span><span class="w">
-       </span><span class="s2">"domContentLoadedEventEnd"</span><span class="p">:</span><span class="w"> </span><span class="mf">426.7049999907613</span><span class="p">,</span><span class="w">
-       </span><span class="s2">"domComplete"</span><span class="p">:</span><span class="w"> </span><span class="mf">427.6049999753013</span><span class="p">,</span><span class="w">
-       </span><span class="s2">"loadEventStart"</span><span class="p">:</span><span class="w"> </span><span class="mf">427.6149999932386</span><span class="p">,</span><span class="w">
-       </span><span class="s2">"loadEventEnd"</span><span class="p">:</span><span class="w"> </span><span class="mf">427.6149999932386</span><span class="p">,</span><span class="w">
-       </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"navigate"</span><span class="p">,</span><span class="w">
-       </span><span class="s2">"redirectCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">},</span><span class="w">
-     </span><span class="p">{</span><span class="w"> </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"first-paint"</span><span class="p">,</span><span class="w">
-       </span><span class="s2">"entryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"paint"</span><span class="p">,</span><span class="w">
-       </span><span class="s2">"startTime"</span><span class="p">:</span><span class="w"> </span><span class="mf">491.65999999968335</span><span class="p">,</span><span class="w">
-       </span><span class="s2">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">},</span><span class="w">
-     </span><span class="p">{</span><span class="w"> </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"first-contentful-paint"</span><span class="p">,</span><span class="w">
-       </span><span class="s2">"entryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"paint"</span><span class="p">,</span><span class="w">
-       </span><span class="s2">"startTime"</span><span class="p">:</span><span class="w"> </span><span class="mf">491.68499995721504</span><span class="p">,</span><span class="w">
-       </span><span class="s2">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="p">}</span><span class="w">
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w"> </span><span class="nl">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-02-10T16:32:25.655Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"start_ts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1549816345655</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">430</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"origin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iMac.local"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"request_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.org"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"metrics"</span><span class="p">:</span><span class="w">
+   </span><span class="p">{</span><span class="w"> </span><span class="nl">"Timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mf">300473.456095</span><span class="p">,</span><span class="w">
+     </span><span class="nl">"Documents"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+     </span><span class="nl">"Frames"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+     </span><span class="nl">"JSEventListeners"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+     </span><span class="nl">"Nodes"</span><span class="p">:</span><span class="w"> </span><span class="mi">39</span><span class="p">,</span><span class="w">
+     </span><span class="nl">"LayoutCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+     </span><span class="nl">"RecalcStyleCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+     </span><span class="nl">"LayoutDuration"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.053402</span><span class="p">,</span><span class="w">
+     </span><span class="nl">"RecalcStyleDuration"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.000584</span><span class="p">,</span><span class="w">
+     </span><span class="nl">"ScriptDuration"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.000015</span><span class="p">,</span><span class="w">
+     </span><span class="nl">"TaskDuration"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.068091</span><span class="p">,</span><span class="w">
+     </span><span class="nl">"JSHeapUsedSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">2108152</span><span class="p">,</span><span class="w">
+     </span><span class="nl">"JSHeapTotalSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">3936256</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"entries"</span><span class="p">:</span><span class="w">
+   </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.org/"</span><span class="p">,</span><span class="w">
+       </span><span class="nl">"entryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"navigation"</span><span class="p">,</span><span class="w">
+       </span><span class="nl">"startTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+       </span><span class="nl">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mf">427.6149999932386</span><span class="p">,</span><span class="w">
+       </span><span class="nl">"initiatorType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"navigation"</span><span class="p">,</span><span class="w">
+       </span><span class="nl">"nextHopProtocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"h2"</span><span class="p">,</span><span class="w">
+       </span><span class="nl">"workerStart"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+       </span><span class="nl">"redirectStart"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+       </span><span class="nl">"redirectEnd"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+       </span><span class="nl">"fetchStart"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.2899999963119626</span><span class="p">,</span><span class="w">
+       </span><span class="nl">"domainLookupStart"</span><span class="p">:</span><span class="w"> </span><span class="mf">7.634999987203628</span><span class="p">,</span><span class="w">
+       </span><span class="nl">"domainLookupEnd"</span><span class="p">:</span><span class="w"> </span><span class="mf">8.984999964013696</span><span class="p">,</span><span class="w">
+       </span><span class="nl">"connectStart"</span><span class="p">:</span><span class="w"> </span><span class="mf">8.984999964013696</span><span class="p">,</span><span class="w">
+       </span><span class="nl">"connectEnd"</span><span class="p">:</span><span class="w"> </span><span class="mf">313.34999995306134</span><span class="p">,</span><span class="w">
+       </span><span class="nl">"secureConnectionStart"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+       </span><span class="nl">"requestStart"</span><span class="p">:</span><span class="w"> </span><span class="mf">313.6149999918416</span><span class="p">,</span><span class="w">
+       </span><span class="nl">"responseStart"</span><span class="p">:</span><span class="w"> </span><span class="mf">414.7049999446608</span><span class="p">,</span><span class="w">
+       </span><span class="nl">"responseEnd"</span><span class="p">:</span><span class="w"> </span><span class="mf">415.8099999767728</span><span class="p">,</span><span class="w">
+       </span><span class="nl">"transferSize"</span><span class="p">:</span><span class="w"> </span><span class="mi">800</span><span class="p">,</span><span class="w">
+       </span><span class="nl">"encodedBodySize"</span><span class="p">:</span><span class="w"> </span><span class="mi">606</span><span class="p">,</span><span class="w">
+       </span><span class="nl">"decodedBodySize"</span><span class="p">:</span><span class="w"> </span><span class="mi">1270</span><span class="p">,</span><span class="w">
+       </span><span class="nl">"serverTiming"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+       </span><span class="nl">"unloadEventStart"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+       </span><span class="nl">"unloadEventEnd"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+       </span><span class="nl">"domInteractive"</span><span class="p">:</span><span class="w"> </span><span class="mf">426.6899999929592</span><span class="p">,</span><span class="w">
+       </span><span class="nl">"domContentLoadedEventStart"</span><span class="p">:</span><span class="w"> </span><span class="mf">426.7049999907613</span><span class="p">,</span><span class="w">
+       </span><span class="nl">"domContentLoadedEventEnd"</span><span class="p">:</span><span class="w"> </span><span class="mf">426.7049999907613</span><span class="p">,</span><span class="w">
+       </span><span class="nl">"domComplete"</span><span class="p">:</span><span class="w"> </span><span class="mf">427.6049999753013</span><span class="p">,</span><span class="w">
+       </span><span class="nl">"loadEventStart"</span><span class="p">:</span><span class="w"> </span><span class="mf">427.6149999932386</span><span class="p">,</span><span class="w">
+       </span><span class="nl">"loadEventEnd"</span><span class="p">:</span><span class="w"> </span><span class="mf">427.6149999932386</span><span class="p">,</span><span class="w">
+       </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"navigate"</span><span class="p">,</span><span class="w">
+       </span><span class="nl">"redirectCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">},</span><span class="w">
+     </span><span class="p">{</span><span class="w"> </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"first-paint"</span><span class="p">,</span><span class="w">
+       </span><span class="nl">"entryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"paint"</span><span class="p">,</span><span class="w">
+       </span><span class="nl">"startTime"</span><span class="p">:</span><span class="w"> </span><span class="mf">491.65999999968335</span><span class="p">,</span><span class="w">
+       </span><span class="nl">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">},</span><span class="w">
+     </span><span class="p">{</span><span class="w"> </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"first-contentful-paint"</span><span class="p">,</span><span class="w">
+       </span><span class="nl">"entryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"paint"</span><span class="p">,</span><span class="w">
+       </span><span class="nl">"startTime"</span><span class="p">:</span><span class="w"> </span><span class="mf">491.68499995721504</span><span class="p">,</span><span class="w">
+       </span><span class="nl">"duration"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w"> </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 
-<p>This is a <code class="highlighter-rouge">Timing</code> object, it contains some information collected from the Headless Chrome that executed inside the container. In the example above, it took <strong>430ms</strong> to load <strong>https://example.org</strong>. If this page had any CSS/JavaScript/Image files, it’d also download it and the duration would have been higher.</p>
+<p>This is a <code class="language-plaintext highlighter-rouge">Timing</code> object, it contains some information collected from the Headless Chrome that executed inside the container. In the example above, it took <strong>430ms</strong> to load <strong>https://example.org</strong>. If this page had any CSS/JavaScript/Image files, it’d also download it and the duration would have been higher.</p>
 
 <p>You can also specify some custom arguments, which allows you to collect metrics from any page.</p>
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>docker run <span class="nt">-e</span> <span class="nv">REQUEST_URL</span><span class="o">=</span>https://github.com/docker goenning/webpage-timing
 </code></pre></div></div>
 
-<p>You’ll also notice that the <code class="highlighter-rouge">entries</code> array has many more items now, which includes all the CSS/JavaScript/Image files the browser had to download.</p>
+<p>You’ll also notice that the <code class="language-plaintext highlighter-rouge">entries</code> array has many more items now, which includes all the CSS/JavaScript/Image files the browser had to download.</p>
 
-<p>Another useful parameter is <code class="highlighter-rouge">MONGO_URL</code>, which allows you to store the <code class="highlighter-rouge">Timing</code> object into a MongoDB collection instead of printing it to stdout. It is useful when you want to keep a history of execution over time and perform further analysis.</p>
+<p>Another useful parameter is <code class="language-plaintext highlighter-rouge">MONGO_URL</code>, which allows you to store the <code class="language-plaintext highlighter-rouge">Timing</code> object into a MongoDB collection instead of printing it to stdout. It is useful when you want to keep a history of execution over time and perform further analysis.</p>
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Replace the connection string below with your own</span>
 <span class="nv">$ </span>docker run <span class="nt">-e</span> <span class="nv">MONGO_URL</span><span class="o">=</span>mongodb://user:pass@your-server:port/db <span class="nt">-e</span> <span class="nv">REQUEST_URL</span><span class="o">=</span>https://github.com/docker goenning/webpage-timing
@@ -273,9 +275,9 @@
 
 <p>But there’s a better way 😀</p>
 
-<p>Azure has a service called <a href="https://azure.microsoft.com/en-us/services/container-instances/">Azure Container Instances</a>. It allows you to run a Docker container on the cloud without having to worry about the infrastructure behind it. The best of all? You only pay per execution time. If you start a container that runs for 5 seconds, you’ll pay $0.000080. On this post, I’ll show you how to perform this operation on Azure, but If prefer AWS, search for <code class="highlighter-rouge">AWS Fargate</code>, it’s a similar service, so you apply the same idea presented here.</p>
+<p>Azure has a service called <a href="https://azure.microsoft.com/en-us/services/container-instances/">Azure Container Instances</a>. It allows you to run a Docker container on the cloud without having to worry about the infrastructure behind it. The best of all? You only pay per execution time. If you start a container that runs for 5 seconds, you’ll pay $0.000080. On this post, I’ll show you how to perform this operation on Azure, but If prefer AWS, search for <code class="language-plaintext highlighter-rouge">AWS Fargate</code>, it’s a similar service, so you apply the same idea presented here.</p>
 
-<p>What we’re going to do is create dozens of Azure Container Instance on each of its 17 regions and configure it to execute <code class="highlighter-rouge">goenning/webpage-timing</code> with our custom parameters. We’ll also need to store the data from all locations to query it later. In this example, I’ll be using <a href="https://www.mongodb.com/cloud/atlas">MongoDB Atlas</a> because it has a free tier and can also be hosted on Azure.</p>
+<p>What we’re going to do is create dozens of Azure Container Instance on each of its 17 regions and configure it to execute <code class="language-plaintext highlighter-rouge">goenning/webpage-timing</code> with our custom parameters. We’ll also need to store the data from all locations to query it later. In this example, I’ll be using <a href="https://www.mongodb.com/cloud/atlas">MongoDB Atlas</a> because it has a free tier and can also be hosted on Azure.</p>
 
 <p>Assuming that you have an Azure Account and the <a href="https://docs.microsoft.com/en-us/cli/azure/install-azure-cli">Azure CLI</a> is installed, run the following commands.</p>
 
@@ -283,7 +285,7 @@
 <span class="nv">$ </span>az account <span class="nb">set</span> <span class="nt">--subscription</span> <span class="s2">"&lt;YOUR_SUBSCRIPTION NAME&gt;"</span> <span class="c"># you can skip this if your account has only one subscription</span>
 </code></pre></div></div>
 
-<p>Create a file <code class="highlighter-rouge">template.yaml</code> with this content:</p>
+<p>Create a file <code class="language-plaintext highlighter-rouge">template.yaml</code> with this content:</p>
 
 <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">apiVersion</span><span class="pi">:</span> <span class="s">2018-06-01</span>
 <span class="na">type</span><span class="pi">:</span> <span class="s">Microsoft.ContainerInstance/containerGroups</span>
@@ -303,8 +305,8 @@
           <span class="na">secureValue</span><span class="pi">:</span> <span class="s1">'</span><span class="s">$mongo_url$'</span>
       <span class="na">resources</span><span class="pi">:</span>
         <span class="na">requests</span><span class="pi">:</span>
-          <span class="na">cpu</span><span class="pi">:</span> <span class="s">0.4</span>
-          <span class="na">memoryInGb</span><span class="pi">:</span> <span class="s">0.7</span>
+          <span class="na">cpu</span><span class="pi">:</span> <span class="m">0.4</span>
+          <span class="na">memoryInGb</span><span class="pi">:</span> <span class="m">0.7</span>
   <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">$name$-02</span>
     <span class="na">properties</span><span class="pi">:</span>
       <span class="na">image</span><span class="pi">:</span> <span class="s">goenning/webpage-timing</span>
@@ -317,8 +319,8 @@
           <span class="na">secureValue</span><span class="pi">:</span> <span class="s1">'</span><span class="s">$mongo_url$'</span>
       <span class="na">resources</span><span class="pi">:</span>
         <span class="na">requests</span><span class="pi">:</span>
-          <span class="na">cpu</span><span class="pi">:</span> <span class="s">0.4</span>
-          <span class="na">memoryInGb</span><span class="pi">:</span> <span class="s">0.7</span>
+          <span class="na">cpu</span><span class="pi">:</span> <span class="m">0.4</span>
+          <span class="na">memoryInGb</span><span class="pi">:</span> <span class="m">0.7</span>
   <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">$name$-03</span>
     <span class="na">properties</span><span class="pi">:</span>
       <span class="na">image</span><span class="pi">:</span> <span class="s">goenning/webpage-timing</span>
@@ -331,8 +333,8 @@
           <span class="na">secureValue</span><span class="pi">:</span> <span class="s1">'</span><span class="s">$mongo_url$'</span>
       <span class="na">resources</span><span class="pi">:</span>
         <span class="na">requests</span><span class="pi">:</span>
-          <span class="na">cpu</span><span class="pi">:</span> <span class="s">0.4</span>
-          <span class="na">memoryInGb</span><span class="pi">:</span> <span class="s">0.7</span>
+          <span class="na">cpu</span><span class="pi">:</span> <span class="m">0.4</span>
+          <span class="na">memoryInGb</span><span class="pi">:</span> <span class="m">0.7</span>
   <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">$name$-04</span>
     <span class="na">properties</span><span class="pi">:</span>
       <span class="na">image</span><span class="pi">:</span> <span class="s">goenning/webpage-timing</span>
@@ -345,8 +347,8 @@
           <span class="na">secureValue</span><span class="pi">:</span> <span class="s1">'</span><span class="s">$mongo_url$'</span>
       <span class="na">resources</span><span class="pi">:</span>
         <span class="na">requests</span><span class="pi">:</span>
-          <span class="na">cpu</span><span class="pi">:</span> <span class="s">0.4</span>
-          <span class="na">memoryInGb</span><span class="pi">:</span> <span class="s">0.7</span>
+          <span class="na">cpu</span><span class="pi">:</span> <span class="m">0.4</span>
+          <span class="na">memoryInGb</span><span class="pi">:</span> <span class="m">0.7</span>
   <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">$name$-05</span>
     <span class="na">properties</span><span class="pi">:</span>
       <span class="na">image</span><span class="pi">:</span> <span class="s">goenning/webpage-timing</span>
@@ -359,15 +361,15 @@
           <span class="na">secureValue</span><span class="pi">:</span> <span class="s1">'</span><span class="s">$mongo_url$'</span>
       <span class="na">resources</span><span class="pi">:</span>
         <span class="na">requests</span><span class="pi">:</span>
-          <span class="na">cpu</span><span class="pi">:</span> <span class="s">0.4</span>
-          <span class="na">memoryInGb</span><span class="pi">:</span> <span class="s">0.7</span>
+          <span class="na">cpu</span><span class="pi">:</span> <span class="m">0.4</span>
+          <span class="na">memoryInGb</span><span class="pi">:</span> <span class="m">0.7</span>
   <span class="na">osType</span><span class="pi">:</span> <span class="s">Linux</span>
   <span class="na">restartPolicy</span><span class="pi">:</span> <span class="s">OnFailure</span>
 </code></pre></div></div>
 
 <p>This template will be loaded into Azure Container Service and it’ll create 5 containers using the same image and parameters. It’s also been configured to use up to 0.4 of the CPU and only 700MB of Memory.</p>
 
-<p>Create another file <code class="highlighter-rouge">aci.sh</code> with the following content:</p>
+<p>Create another file <code class="language-plaintext highlighter-rouge">aci.sh</code> with the following content:</p>
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># The name of the resource group to be used on Azure</span>
 <span class="nv">resource_group</span><span class="o">=</span><span class="s2">"webtiming-rg"</span>
@@ -399,7 +401,7 @@ if</span> <span class="o">[</span> <span class="nv">$1</span> <span class="o">==
     <span class="nb">sed</span> <span class="s1">'s|\$mongo_url\$|'</span><span class="nv">$mongo_url</span><span class="s1">'|'</span> | 
     <span class="nb">sed</span> <span class="s1">'s|\$location\$|'</span><span class="nv">$loc</span><span class="s1">'|'</span> <span class="o">&gt;</span> <span class="s2">"./out/</span><span class="nv">$loc</span><span class="s2">-wt.yaml"</span>
 
-    <span class="nv">status</span><span class="o">=</span><span class="k">$(</span>az container show <span class="nt">-n</span> <span class="nv">$loc</span><span class="nt">-wt</span> <span class="nt">--resource-group</span> <span class="nv">$resource_group</span> <span class="nt">--query</span> containers[0].instanceView.currentState.state 2&gt;/dev/null<span class="k">)</span>
+    <span class="nv">status</span><span class="o">=</span><span class="si">$(</span>az container show <span class="nt">-n</span> <span class="nv">$loc</span><span class="nt">-wt</span> <span class="nt">--resource-group</span> <span class="nv">$resource_group</span> <span class="nt">--query</span> containers[0].instanceView.currentState.state 2&gt;/dev/null<span class="si">)</span>
     <span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> <span class="nt">-eq</span> 0 <span class="o">]</span>
     <span class="k">then
       </span>az container start <span class="nt">-g</span> <span class="nv">$resource_group</span> <span class="nt">--name</span> <span class="s2">"</span><span class="nv">$loc</span><span class="s2">-wt"</span> &amp;
@@ -427,7 +429,7 @@ if</span> <span class="o">[</span> <span class="nv">$1</span> <span class="o">==
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>./aci.sh run
 </code></pre></div></div>
 
-<p>This is the most important part of the script. It’ll basically loop through each configured location and create a YAML file based on <code class="highlighter-rouge">template.yaml</code>.</p>
+<p>This is the most important part of the script. It’ll basically loop through each configured location and create a YAML file based on <code class="language-plaintext highlighter-rouge">template.yaml</code>.</p>
 
 <p>By the end of the execution, you should have something similar to this on your Azure Portal.</p>
 
@@ -435,9 +437,9 @@ if</span> <span class="o">[</span> <span class="nv">$1</span> <span class="o">==
 
 <p>Notice that there are 17 container groups (1 per region) with 5 containers on each. Some of them have already finished processing, while others are still in progress. This process can take a few extra seconds as Azure needs to pull the images from Docker Hub Registry first.</p>
 
-<p>A few seconds later all groups should be on “Succeeded” state. By the end of this process, these instances will remain on Azure until you remove it. You can do so by executing <code class="highlighter-rouge">./aci.sh clean</code>, which removes the Resource Group and all of its container instances.</p>
+<p>A few seconds later all groups should be on “Succeeded” state. By the end of this process, these instances will remain on Azure until you remove it. You can do so by executing <code class="language-plaintext highlighter-rouge">./aci.sh clean</code>, which removes the Resource Group and all of its container instances.</p>
 
-<p>But if you plan to periodically execute this, you can keep the resources on Azure and simply execute <code class="highlighter-rouge">./aci.sh run</code> again. The script is smart enough to restart the container if it already exists on Azure. You can repeat this process as many times as you want.</p>
+<p>But if you plan to periodically execute this, you can keep the resources on Azure and simply execute <code class="language-plaintext highlighter-rouge">./aci.sh run</code> again. The script is smart enough to restart the container if it already exists on Azure. You can repeat this process as many times as you want.</p>
 
 <h2 id="the-results">The results</h2>
 
@@ -447,9 +449,9 @@ if</span> <span class="o">[</span> <span class="nv">$1</span> <span class="o">==
 
 <p><img src="/public/images/2019/02/mongodb-charts.png" alt="" /></p>
 
-<p>As we can see, we have collected 595 timings and the global average is 4165ms. The chart shows that loading <code class="highlighter-rouge">https://github.com/docker</code> on Asia is 2 seconds slower when compared to US.</p>
+<p>As we can see, we have collected 595 timings and the global average is 4165ms. The chart shows that loading <code class="language-plaintext highlighter-rouge">https://github.com/docker</code> on Asia is 2 seconds slower when compared to US.</p>
 
-<p>You could go one step further and actually analyze the <code class="highlighter-rouge">entries</code> array to find out which HTTP resources took longer to load.</p>
+<p>You could go one step further and actually analyze the <code class="language-plaintext highlighter-rouge">entries</code> array to find out which HTTP resources took longer to load.</p>
 
 <h2 id="where-to-go-from-here">Where to go from here?</h2>
 

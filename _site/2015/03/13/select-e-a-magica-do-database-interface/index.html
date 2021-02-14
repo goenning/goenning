@@ -13,9 +13,9 @@
     <link rel="alternate" type="application/rss+xml" title="@goenning - loop at { run; code; blog; swim; eat; cycle; } until tired;" href="/feed.xml" />
     
 
-    <!-- Begin Jekyll SEO tag v2.5.0 -->
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>SELECT * e a mágica do Database Interface | @goenning</title>
-<meta name="generator" content="Jekyll v3.8.5" />
+<meta name="generator" content="Jekyll v4.2.0" />
 <meta property="og:title" content="SELECT * e a mágica do Database Interface" />
 <meta name="author" content="@goenning" />
 <meta property="og:locale" content="pt" />
@@ -26,8 +26,10 @@
 <meta property="og:site_name" content="@goenning" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2015-03-13T00:00:00-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="SELECT * e a mágica do Database Interface" />
 <script type="application/ld+json">
-{"headline":"SELECT * e a mágica do Database Interface","dateModified":"2015-03-13T00:00:00-05:00","datePublished":"2015-03-13T00:00:00-05:00","url":"https://goenning.net/2015/03/13/select-e-a-magica-do-database-interface/","author":{"@type":"Person","name":"@goenning"},"description":"Falamos no artigo sobre OpenSQL que o Database Interface atua no meio de campo entre a aplicação e o banco de dados, lembram? Ele é responsável por algumas tarefas como a tradução de OpenSQL em NativeSQL, manutenção dos dados no buffer, entre outras.","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://goenning.net/2015/03/13/select-e-a-magica-do-database-interface/"},"@context":"http://schema.org"}</script>
+{"author":{"@type":"Person","name":"@goenning"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://goenning.net/2015/03/13/select-e-a-magica-do-database-interface/"},"@type":"BlogPosting","description":"Falamos no artigo sobre OpenSQL que o Database Interface atua no meio de campo entre a aplicação e o banco de dados, lembram? Ele é responsável por algumas tarefas como a tradução de OpenSQL em NativeSQL, manutenção dos dados no buffer, entre outras.","headline":"SELECT * e a mágica do Database Interface","dateModified":"2015-03-13T00:00:00-05:00","url":"https://goenning.net/2015/03/13/select-e-a-magica-do-database-interface/","datePublished":"2015-03-13T00:00:00-05:00","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   </head>
@@ -168,7 +170,7 @@
 
 <p>Vamos montar três exemplos, um usando <strong>SELECT fieldlist</strong> e outros dois usando <em>*SELECT **</em>, onde um deles preenche uma tabela com menos campos.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TYPES: BEGIN OF ty_field,
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TYPES: BEGIN OF ty_field,
         tabname TYPE dd03l-tabname,
         fieldname TYPE dd03l-fieldname,
        END OF ty_field.

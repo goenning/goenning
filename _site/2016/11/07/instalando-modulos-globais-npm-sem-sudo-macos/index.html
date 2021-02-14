@@ -13,9 +13,9 @@
     <link rel="alternate" type="application/rss+xml" title="@goenning - loop at { run; code; blog; swim; eat; cycle; } until tired;" href="/feed.xml" />
     
 
-    <!-- Begin Jekyll SEO tag v2.5.0 -->
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>Instalando modulos globais do NPM sem sudo no macOS / Linux | @goenning</title>
-<meta name="generator" content="Jekyll v3.8.5" />
+<meta name="generator" content="Jekyll v4.2.0" />
 <meta property="og:title" content="Instalando modulos globais do NPM sem sudo no macOS / Linux" />
 <meta name="author" content="@goenning" />
 <meta property="og:locale" content="pt" />
@@ -26,8 +26,10 @@
 <meta property="og:site_name" content="@goenning" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2016-11-07T00:00:00-06:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Instalando modulos globais do NPM sem sudo no macOS / Linux" />
 <script type="application/ld+json">
-{"headline":"Instalando modulos globais do NPM sem sudo no macOS / Linux","dateModified":"2016-11-07T00:00:00-06:00","datePublished":"2016-11-07T00:00:00-06:00","url":"https://goenning.net/2016/11/07/instalando-modulos-globais-npm-sem-sudo-macos/","author":{"@type":"Person","name":"@goenning"},"description":"Quando instalamos um módulo global do NPM os arquivos são colocados dentro da pasta /usr/local. O problema é que esta pasta possui acesso de escrito restrita em ambiente Unix, fazendo com que tenhamos que usar sudo toda vez que precisamos instalar um novo módulo global.","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://goenning.net/2016/11/07/instalando-modulos-globais-npm-sem-sudo-macos/"},"@context":"http://schema.org"}</script>
+{"author":{"@type":"Person","name":"@goenning"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://goenning.net/2016/11/07/instalando-modulos-globais-npm-sem-sudo-macos/"},"@type":"BlogPosting","description":"Quando instalamos um módulo global do NPM os arquivos são colocados dentro da pasta /usr/local. O problema é que esta pasta possui acesso de escrito restrita em ambiente Unix, fazendo com que tenhamos que usar sudo toda vez que precisamos instalar um novo módulo global.","headline":"Instalando modulos globais do NPM sem sudo no macOS / Linux","dateModified":"2016-11-07T00:00:00-06:00","url":"https://goenning.net/2016/11/07/instalando-modulos-globais-npm-sem-sudo-macos/","datePublished":"2016-11-07T00:00:00-06:00","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   </head>
@@ -158,19 +160,19 @@
   </small>
 
   <div class="entry">
-    <p>Quando instalamos um módulo global do NPM os arquivos são colocados dentro da pasta <code class="highlighter-rouge">/usr/local</code>.
-O problema é que esta pasta possui acesso de escrito restrita em ambiente Unix, fazendo com que tenhamos que usar <code class="highlighter-rouge">sudo</code> toda vez que precisamos instalar um novo módulo global.</p>
+    <p>Quando instalamos um módulo global do NPM os arquivos são colocados dentro da pasta <code class="language-plaintext highlighter-rouge">/usr/local</code>.
+O problema é que esta pasta possui acesso de escrito restrita em ambiente Unix, fazendo com que tenhamos que usar <code class="language-plaintext highlighter-rouge">sudo</code> toda vez que precisamos instalar um novo módulo global.</p>
 
 <p>Depois de muito tempo resolvi mudar minha estratégia e passei a instalar os módulos globais em outro local. 
-Desta forma não preciso mais usar <code class="highlighter-rouge">sudo</code> e consigo ter mais controle sobre a organização dos meus diretórios, afinal o NPM estava enchendo meu <code class="highlighter-rouge">/usr/local/bin/</code> de executáveis.</p>
+Desta forma não preciso mais usar <code class="language-plaintext highlighter-rouge">sudo</code> e consigo ter mais controle sobre a organização dos meus diretórios, afinal o NPM estava enchendo meu <code class="language-plaintext highlighter-rouge">/usr/local/bin/</code> de executáveis.</p>
 
 <p>Siga abaixo as instruções para fazer o mesmo em sem ambiente.</p>
 
 <h3 id="1-limpeza-opcional">1. Limpeza (opcional)</h3>
 
-<p>Você pode começar limpando todos os módulos globais já instalados, afinal, você vai passar a utilizar uma nova pasta e é sempre bom não deixar sugeira. O comando <code class="highlighter-rouge">npm ls -g --depth=0</code> pode ser usado para verificar todos os pacotes globais instalados.</p>
+<p>Você pode começar limpando todos os módulos globais já instalados, afinal, você vai passar a utilizar uma nova pasta e é sempre bom não deixar sugeira. O comando <code class="language-plaintext highlighter-rouge">npm ls -g --depth=0</code> pode ser usado para verificar todos os pacotes globais instalados.</p>
 
-<p>Você pode remover um por um, usando <code class="highlighter-rouge">sudo npm -g rm &lt;nome&gt;</code> ou então algo mais agressivo seria usar o seguinte conjunto de instruções.</p>
+<p>Você pode remover um por um, usando <code class="language-plaintext highlighter-rouge">sudo npm -g rm &lt;nome&gt;</code> ou então algo mais agressivo seria usar o seguinte conjunto de instruções.</p>
 
 <blockquote>
   <table>
@@ -184,11 +186,11 @@ Desta forma não preciso mais usar <code class="highlighter-rouge">sudo</code> e
   </table>
 </blockquote>
 
-<p>A explicação está contida <a href="http://stackoverflow.com/questions/9283472/command-to-remove-all-npm-modules-globally">neste post</a>, mas basicamente ele percorrerá todos módulos globais e executar o <code class="highlighter-rouge">npm rm</code> para cada um.</p>
+<p>A explicação está contida <a href="http://stackoverflow.com/questions/9283472/command-to-remove-all-npm-modules-globally">neste post</a>, mas basicamente ele percorrerá todos módulos globais e executar o <code class="language-plaintext highlighter-rouge">npm rm</code> para cada um.</p>
 
 <h3 id="2-pasta-padrão">2. Pasta padrão</h3>
 
-<p>Utilize o comando <code class="highlighter-rouge">npm config get prefix</code> para verificar que pasta o NPM está configurado para gravar novos módulos globais. Se nenhuma alteração foi realizada ainda, este comando deve imprimir <code class="highlighter-rouge">/usr/local</code>.</p>
+<p>Utilize o comando <code class="language-plaintext highlighter-rouge">npm config get prefix</code> para verificar que pasta o NPM está configurado para gravar novos módulos globais. Se nenhuma alteração foi realizada ainda, este comando deve imprimir <code class="language-plaintext highlighter-rouge">/usr/local</code>.</p>
 
 <p>Optei por colocar todos os módulos globais dentro do Home do meu usuário, para isto criei uma pasta exclusiva para este objetivo.</p>
 
@@ -198,21 +200,21 @@ Desta forma não preciso mais usar <code class="highlighter-rouge">sudo</code> e
 
 <h3 id="3-configurando-a-pasta-no-npm">3. Configurando a pasta no NPM</h3>
 
-<p>A maneira mais fácil de mudarmos esta pasta no NPM é utilizando a variável de ambiente <code class="highlighter-rouge">NPM_CONFIG_PREFIX</code>.</p>
+<p>A maneira mais fácil de mudarmos esta pasta no NPM é utilizando a variável de ambiente <code class="language-plaintext highlighter-rouge">NPM_CONFIG_PREFIX</code>.</p>
 
-<p>Para isto basta editar o arquivo <code class="highlighter-rouge">~/.bash_profile</code> e adicionar as seguintes linhas:</p>
+<p>Para isto basta editar o arquivo <code class="language-plaintext highlighter-rouge">~/.bash_profile</code> e adicionar as seguintes linhas:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">NPM_CONFIG_PREFIX</span><span class="o">=</span>~/.npm-global
 <span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span>~/.npm-global/bin:<span class="nv">$PATH</span> 
 </code></pre></div></div>
 
-<p>Salve o arquivo e reinicie seu terminal (ou recarregue-o com <code class="highlighter-rouge">source ~/.bash_profile</code>).</p>
+<p>Salve o arquivo e reinicie seu terminal (ou recarregue-o com <code class="language-plaintext highlighter-rouge">source ~/.bash_profile</code>).</p>
 
-<p>Se tudo ocorrer bem, o comando <code class="highlighter-rouge">npm config get prefix</code> agora imprimirá <code class="highlighter-rouge">/Users/oenning/.npm-global</code>.</p>
+<p>Se tudo ocorrer bem, o comando <code class="language-plaintext highlighter-rouge">npm config get prefix</code> agora imprimirá <code class="language-plaintext highlighter-rouge">/Users/oenning/.npm-global</code>.</p>
 
 <h3 id="4-instalando-pacotes-sem-sudo">4. Instalando pacotes sem sudo</h3>
 
-<p>Tudo pronto, agora basta instalar os pacotes sem o uso de <code class="highlighter-rouge">sudo</code>. Veja só.</p>
+<p>Tudo pronto, agora basta instalar os pacotes sem o uso de <code class="language-plaintext highlighter-rouge">sudo</code>. Veja só.</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>oenning@MacBook-Pro ~ <span class="nv">$ </span>npm i typescript <span class="nt">-g</span>
 /Users/oenning/.npm-global/bin/tsc -&gt; /Users/oenning/.npm-global/lib/node_modules/typescript/bin/tsc

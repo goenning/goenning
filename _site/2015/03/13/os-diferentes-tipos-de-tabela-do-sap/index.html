@@ -13,9 +13,9 @@
     <link rel="alternate" type="application/rss+xml" title="@goenning - loop at { run; code; blog; swim; eat; cycle; } until tired;" href="/feed.xml" />
     
 
-    <!-- Begin Jekyll SEO tag v2.5.0 -->
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>Os diferentes tipos de tabela do SAP | @goenning</title>
-<meta name="generator" content="Jekyll v3.8.5" />
+<meta name="generator" content="Jekyll v4.2.0" />
 <meta property="og:title" content="Os diferentes tipos de tabela do SAP" />
 <meta name="author" content="@goenning" />
 <meta property="og:locale" content="pt" />
@@ -26,8 +26,10 @@
 <meta property="og:site_name" content="@goenning" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2015-03-13T00:00:00-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Os diferentes tipos de tabela do SAP" />
 <script type="application/ld+json">
-{"headline":"Os diferentes tipos de tabela do SAP","dateModified":"2015-03-13T00:00:00-05:00","datePublished":"2015-03-13T00:00:00-05:00","url":"https://goenning.net/2015/03/13/os-diferentes-tipos-de-tabela-do-sap/","author":{"@type":"Person","name":"@goenning"},"description":"No SAP existem pelo menos quatro tipos diferentes de tabela, cada qual com suas características, vantagens, restrições e modo de uso. Neste post vamos estudar um pouco sobre ada uma delas. Primeiro vamos conhecer quais são. Temos a Internal Table, Transparent Table, Pooled Table e a Cluster Table.","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://goenning.net/2015/03/13/os-diferentes-tipos-de-tabela-do-sap/"},"@context":"http://schema.org"}</script>
+{"author":{"@type":"Person","name":"@goenning"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://goenning.net/2015/03/13/os-diferentes-tipos-de-tabela-do-sap/"},"@type":"BlogPosting","description":"No SAP existem pelo menos quatro tipos diferentes de tabela, cada qual com suas características, vantagens, restrições e modo de uso. Neste post vamos estudar um pouco sobre ada uma delas. Primeiro vamos conhecer quais são. Temos a Internal Table, Transparent Table, Pooled Table e a Cluster Table.","headline":"Os diferentes tipos de tabela do SAP","dateModified":"2015-03-13T00:00:00-05:00","url":"https://goenning.net/2015/03/13/os-diferentes-tipos-de-tabela-do-sap/","datePublished":"2015-03-13T00:00:00-05:00","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   </head>
@@ -170,7 +172,7 @@
 
 <p>Neste tipo de tabela os registros são armazenados na ordem que foram inseridos na tabela. É usado quando não nos importamos com a ordem dos registros e quando podemos usar o índice do registro na tabela para ler e manipular seus dados. Como isto não é muito comum, usa-se bastante a combinação dos comandos SORT e BINARY SEARCH. Desta forma o desempenho será semelhante ao de uma Sorted Table, pois caso contrário o ABAP terá que fazer um table scan para encontrar os registros.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>* Exemplo usando INDEX
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>* Exemplo usando INDEX
 DATA: it_clientes TYPE STANDARD TABLE OF ty_cliente.
 READ TABLE it_clientes INDEX 1 ASSIGNING &lt;fs_cliente&gt;.
 DELETE it_clientes INDEX 5.
@@ -185,7 +187,7 @@ READ TABLE it_clientes WITH KEY codigo = 16 ASSIGNING &lt;fs_cliente&gt; BINARY 
 
 <p>Quando criamos uma Sorted Table precisamos necessariamente informar uma chave, pois é através dela que o ABAP fará a ordenação dos registros inseridos na tabela. A diferença desta é que a chave pode ser única ou não-única, enquanto a Standard Table aceita somente chaves não-única. Vejamos abaixo como fica o uso. Notem que neste caso não é mais necessário ordenar manualmente pois a tabela já está sempre ordenada. Também não é necessário usar BINARY SEARCH, pois este já é usado implicitamente.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>DATA: it_clientes TYPE SORTED TABLE OF ty_cliente WITH UNIQUE KEY codigo.
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>DATA: it_clientes TYPE SORTED TABLE OF ty_cliente WITH UNIQUE KEY codigo.
 READ TABLE it_clientes WITH KEY codigo = 16 ASSIGNING &lt;fs_cliente&gt;.
 </code></pre></div></div>
 
@@ -193,7 +195,7 @@ READ TABLE it_clientes WITH KEY codigo = 16 ASSIGNING &lt;fs_cliente&gt;.
 
 <p>Já neste tipo de tabela é obrigatório termos uma chave única, pois é através dela que será aplicada uma função hash para que o ABAP possa ir diretamente no registro sem ter que ficar fazendo buscas como no caso dos outros dois tipos de tabelas. Em termos de performance é o mesmo que usarmos INDEX da Standard Table. A diferença é que é muito mais fácil e natural trabalhar com chaves de tabela do que índices de registro, não é mesmo?</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>DATA: it_clientes TYPE HASHED TABLE OF ty_cliente WITH UNIQUE KEY codigo.
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>DATA: it_clientes TYPE HASHED TABLE OF ty_cliente WITH UNIQUE KEY codigo.
 READ TABLE it_clientes WITH KEY codigo = 16 ASSIGNING &lt;fs_cliente&gt;
 </code></pre></div></div>
 
@@ -285,7 +287,7 @@ READ TABLE it_clientes WITH KEY codigo = 16 ASSIGNING &lt;fs_cliente&gt;
 
 <p>Fiz o seguinte programa de exemplo.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>data: wa_func type zfunc_c,
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>data: wa_func type zfunc_c,
       gt_veic type table of zfunc_v.
 
 field-symbols: &lt;fs_veic&gt; type zfunc_v.

@@ -13,9 +13,9 @@
     <link rel="alternate" type="application/rss+xml" title="@goenning - loop at { run; code; blog; swim; eat; cycle; } until tired;" href="/feed.xml" />
     
 
-    <!-- Begin Jekyll SEO tag v2.5.0 -->
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>Certificados SSL/TLS Gratuitos e Automatizados com Go | @goenning</title>
-<meta name="generator" content="Jekyll v3.8.5" />
+<meta name="generator" content="Jekyll v4.2.0" />
 <meta property="og:title" content="Certificados SSL/TLS Gratuitos e Automatizados com Go" />
 <meta name="author" content="@goenning" />
 <meta property="og:locale" content="pt" />
@@ -26,8 +26,10 @@
 <meta property="og:site_name" content="@goenning" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2017-11-08T00:00:00-06:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Certificados SSL/TLS Gratuitos e Automatizados com Go" />
 <script type="application/ld+json">
-{"headline":"Certificados SSL/TLS Gratuitos e Automatizados com Go","dateModified":"2017-11-08T00:00:00-06:00","datePublished":"2017-11-08T00:00:00-06:00","url":"https://goenning.net/2017/11/08/certificados-gratuitos-automaticos-com-go/","author":{"@type":"Person","name":"@goenning"},"description":"HTTPS se tornou obrigatório hoje em dia. Não só por questões de segurança, mas também pelo fato de que o Google da prioridade aos sites que estão acessíveis através de um protocolo seguro. Estamos em 2017 e já passou o tempo de que custo era uma desculpa aceitável para não ter HTTPS em nosso websites. Aprenda aqui como gerar certificados SSL/TLS de forma automática e sem gastar um centavo.","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://goenning.net/2017/11/08/certificados-gratuitos-automaticos-com-go/"},"@context":"http://schema.org"}</script>
+{"author":{"@type":"Person","name":"@goenning"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://goenning.net/2017/11/08/certificados-gratuitos-automaticos-com-go/"},"@type":"BlogPosting","description":"HTTPS se tornou obrigatório hoje em dia. Não só por questões de segurança, mas também pelo fato de que o Google da prioridade aos sites que estão acessíveis através de um protocolo seguro. Estamos em 2017 e já passou o tempo de que custo era uma desculpa aceitável para não ter HTTPS em nosso websites. Aprenda aqui como gerar certificados SSL/TLS de forma automática e sem gastar um centavo.","headline":"Certificados SSL/TLS Gratuitos e Automatizados com Go","dateModified":"2017-11-08T00:00:00-06:00","url":"https://goenning.net/2017/11/08/certificados-gratuitos-automaticos-com-go/","datePublished":"2017-11-08T00:00:00-06:00","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   </head>
@@ -149,7 +151,7 @@
 
 
   
-    • 7 minutos para ler
+    • 6 minutos para ler
   
 
     • 
@@ -175,7 +177,7 @@
 <ul>
   <li>O compilador do Go;</li>
   <li>Um servidor que esteja disponível na internet; <em>Caso você não tenha nenhum, eu recomendo uma Máquina Virtual da <a href="https://www.digitalocean.com/">Digital Ocean</a>. Use por 24 horas e pague apenas $0.15.</em></li>
-  <li>Um domínio e acesso às configurações de DNS. Você não precisa disto se seu provedor disponibiliza um nomé público para você, por exemplo <code class="highlighter-rouge">meuservidor0001.meucloud.net</code>.</li>
+  <li>Um domínio e acesso às configurações de DNS. Você não precisa disto se seu provedor disponibiliza um nomé público para você, por exemplo <code class="language-plaintext highlighter-rouge">meuservidor0001.meucloud.net</code>.</li>
 </ul>
 
 <h2 id="lets-encrypt-e-o-protocolo-acme">Let’s Encrypt e o protocolo ACME</h2>
@@ -186,58 +188,58 @@
 
 <p>Você consegue obter este pacote utilizando o comando a seguir.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>go get golang.org/x/crypto/acme/autocert
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>go get golang.org/x/crypto/acme/autocert
 </code></pre></div></div>
 
 <p><em>Aqueles que procuram maiores informações sobre o protocolo ACME e outros pacotes alternativos, eu recomendo esta palestra (Inglês) <a href="https://www.youtube.com/watch?v=KdX51QJWQTA">dotGo 2016 - Matthew Holt - Go with ACME</a></em></p>
 
 <h2 id="o-código-mágico-explicado-passo-à-passo">O código <del>mágico</del> explicado passo à passo</h2>
 
-<div class="language-golang highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">package</span><span class="x"> </span><span class="n">main</span><span class="x">
+<div class="language-golang highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">package</span> <span class="n">main</span>
 
-</span><span class="k">import</span><span class="x"> </span><span class="p">(</span><span class="x">
-	</span><span class="s">"crypto/tls"</span><span class="x">
-	</span><span class="s">"fmt"</span><span class="x">
-	</span><span class="s">"net/http"</span><span class="x">
+<span class="k">import</span> <span class="p">(</span>
+	<span class="s">"crypto/tls"</span>
+	<span class="s">"fmt"</span>
+	<span class="s">"net/http"</span>
 
-	</span><span class="s">"golang.org/x/crypto/acme/autocert"</span><span class="x">
-</span><span class="p">)</span><span class="x">
+	<span class="s">"golang.org/x/crypto/acme/autocert"</span>
+<span class="p">)</span>
 
-</span><span class="k">func</span><span class="x"> </span><span class="n">main</span><span class="p">()</span><span class="x"> </span><span class="p">{</span><span class="x">
-	</span><span class="n">mux</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">NewServeMux</span><span class="p">()</span><span class="x">
-	</span><span class="n">mux</span><span class="o">.</span><span class="n">HandleFunc</span><span class="p">(</span><span class="s">"/"</span><span class="p">,</span><span class="x"> </span><span class="k">func</span><span class="p">(</span><span class="n">w</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">ResponseWriter</span><span class="p">,</span><span class="x"> </span><span class="n">r</span><span class="x"> </span><span class="o">*</span><span class="n">http</span><span class="o">.</span><span class="n">Request</span><span class="p">)</span><span class="x"> </span><span class="p">{</span><span class="x">
-		</span><span class="n">fmt</span><span class="o">.</span><span class="n">Fprintf</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="x"> </span><span class="s">"Hello Secure World"</span><span class="p">)</span><span class="x">
-	</span><span class="p">})</span><span class="x">
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="n">mux</span> <span class="o">:=</span> <span class="n">http</span><span class="o">.</span><span class="n">NewServeMux</span><span class="p">()</span>
+	<span class="n">mux</span><span class="o">.</span><span class="n">HandleFunc</span><span class="p">(</span><span class="s">"/"</span><span class="p">,</span> <span class="k">func</span><span class="p">(</span><span class="n">w</span> <span class="n">http</span><span class="o">.</span><span class="n">ResponseWriter</span><span class="p">,</span> <span class="n">r</span> <span class="o">*</span><span class="n">http</span><span class="o">.</span><span class="n">Request</span><span class="p">)</span> <span class="p">{</span>
+		<span class="n">fmt</span><span class="o">.</span><span class="n">Fprintf</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="s">"Hello Secure World"</span><span class="p">)</span>
+	<span class="p">})</span>
 
-	</span><span class="n">certManager</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">autocert</span><span class="o">.</span><span class="n">Manager</span><span class="p">{</span><span class="x">
-		</span><span class="n">Prompt</span><span class="o">:</span><span class="x"> </span><span class="n">autocert</span><span class="o">.</span><span class="n">AcceptTOS</span><span class="p">,</span><span class="x">
-		</span><span class="n">Cache</span><span class="o">:</span><span class="x">  </span><span class="n">autocert</span><span class="o">.</span><span class="n">DirCache</span><span class="p">(</span><span class="s">"certs"</span><span class="p">),</span><span class="x">
-	</span><span class="p">}</span><span class="x">
+	<span class="n">certManager</span> <span class="o">:=</span> <span class="n">autocert</span><span class="o">.</span><span class="n">Manager</span><span class="p">{</span>
+		<span class="n">Prompt</span><span class="o">:</span> <span class="n">autocert</span><span class="o">.</span><span class="n">AcceptTOS</span><span class="p">,</span>
+		<span class="n">Cache</span><span class="o">:</span>  <span class="n">autocert</span><span class="o">.</span><span class="n">DirCache</span><span class="p">(</span><span class="s">"certs"</span><span class="p">),</span>
+	<span class="p">}</span>
 
-	</span><span class="n">server</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Server</span><span class="p">{</span><span class="x">
-		</span><span class="n">Addr</span><span class="o">:</span><span class="x">    </span><span class="s">":443"</span><span class="p">,</span><span class="x">
-		</span><span class="n">Handler</span><span class="o">:</span><span class="x"> </span><span class="n">mux</span><span class="p">,</span><span class="x">
-		</span><span class="n">TLSConfig</span><span class="o">:</span><span class="x"> </span><span class="o">&amp;</span><span class="n">tls</span><span class="o">.</span><span class="n">Config</span><span class="p">{</span><span class="x">
-			</span><span class="n">GetCertificate</span><span class="o">:</span><span class="x"> </span><span class="n">certManager</span><span class="o">.</span><span class="n">GetCertificate</span><span class="p">,</span><span class="x">
-		</span><span class="p">},</span><span class="x">
-	</span><span class="p">}</span><span class="x">
+	<span class="n">server</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="n">http</span><span class="o">.</span><span class="n">Server</span><span class="p">{</span>
+		<span class="n">Addr</span><span class="o">:</span>    <span class="s">":443"</span><span class="p">,</span>
+		<span class="n">Handler</span><span class="o">:</span> <span class="n">mux</span><span class="p">,</span>
+		<span class="n">TLSConfig</span><span class="o">:</span> <span class="o">&amp;</span><span class="n">tls</span><span class="o">.</span><span class="n">Config</span><span class="p">{</span>
+			<span class="n">GetCertificate</span><span class="o">:</span> <span class="n">certManager</span><span class="o">.</span><span class="n">GetCertificate</span><span class="p">,</span>
+		<span class="p">},</span>
+	<span class="p">}</span>
 
-	</span><span class="k">go</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">ListenAndServe</span><span class="p">(</span><span class="s">":80"</span><span class="p">,</span><span class="x"> </span><span class="n">certManager</span><span class="o">.</span><span class="n">HTTPHandler</span><span class="p">(</span><span class="no">nil</span><span class="p">))</span><span class="x">
-	</span><span class="n">server</span><span class="o">.</span><span class="n">ListenAndServeTLS</span><span class="p">(</span><span class="s">""</span><span class="p">,</span><span class="x"> </span><span class="s">""</span><span class="p">)</span><span class="x">
-</span><span class="p">}</span><span class="x">
-</span></code></pre></div></div>
+	<span class="k">go</span> <span class="n">http</span><span class="o">.</span><span class="n">ListenAndServe</span><span class="p">(</span><span class="s">":80"</span><span class="p">,</span> <span class="n">certManager</span><span class="o">.</span><span class="n">HTTPHandler</span><span class="p">(</span><span class="no">nil</span><span class="p">))</span>
+	<span class="n">server</span><span class="o">.</span><span class="n">ListenAndServeTLS</span><span class="p">(</span><span class="s">""</span><span class="p">,</span> <span class="s">""</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
 
-<p>Começamos a função <code class="highlighter-rouge">main</code> criando um <code class="highlighter-rouge">mux</code> com uma simples mensagem de Hello World no caminho <code class="highlighter-rouge">/</code>. Neste exemplo estamos usando o Mux padrão do Go, mas poderia ser qualquer outro oferecido por pacotes externos.</p>
+<p>Começamos a função <code class="language-plaintext highlighter-rouge">main</code> criando um <code class="language-plaintext highlighter-rouge">mux</code> com uma simples mensagem de Hello World no caminho <code class="language-plaintext highlighter-rouge">/</code>. Neste exemplo estamos usando o Mux padrão do Go, mas poderia ser qualquer outro oferecido por pacotes externos.</p>
 
-<p>No próximo passo criamos uma instância do <code class="highlighter-rouge">autocert.Manager</code>. Esta estrutura é responsável pela comunicação com o Let’s Encrypt para obter o certificado SSL/TLS. O campo <code class="highlighter-rouge">Cache</code> é uma interface que define como e onde o Manager deve armazenar os certificados. Neste exemplo estamos usando <code class="highlighter-rouge">autocert.DirCache</code> que armazena os certificados em um diretório local. Esta é a forma mais fácil de começar, mas pode não ser a melhor alternativa quando o site é hospedado em múltiplos servidores, afinal cada servidor terá seu próprio cache.</p>
+<p>No próximo passo criamos uma instância do <code class="language-plaintext highlighter-rouge">autocert.Manager</code>. Esta estrutura é responsável pela comunicação com o Let’s Encrypt para obter o certificado SSL/TLS. O campo <code class="language-plaintext highlighter-rouge">Cache</code> é uma interface que define como e onde o Manager deve armazenar os certificados. Neste exemplo estamos usando <code class="language-plaintext highlighter-rouge">autocert.DirCache</code> que armazena os certificados em um diretório local. Esta é a forma mais fácil de começar, mas pode não ser a melhor alternativa quando o site é hospedado em múltiplos servidores, afinal cada servidor terá seu próprio cache.</p>
 
-<p>O último passo é criar um <code class="highlighter-rouge">http.Server</code> que escuta a porta <code class="highlighter-rouge">443</code> e usa nosso <code class="highlighter-rouge">mux</code>. Criamos então o objeto <code class="highlighter-rouge">tls.Config</code> e atribuímos ao Server. Agora é que a <strong>mágica</strong> acontece. <code class="highlighter-rouge">GetCertificate</code> é a função que o servidor usa para carregar o certificado quando uma nova requisição HTTPS chega ao servidor. Este método nos da a oportunidade de escolher qual certificado usar ao invés de retornar sempre o mesmo. O que fazemos agora é delegar esta responsabilidade ao <code class="highlighter-rouge">certManager.GetCertificate</code> na qual primeiro procurará o certificado no cache, caso não seja encontrado, um novo certificado é emitido no Let’s Encrypt através do protocolo ACME.</p>
+<p>O último passo é criar um <code class="language-plaintext highlighter-rouge">http.Server</code> que escuta a porta <code class="language-plaintext highlighter-rouge">443</code> e usa nosso <code class="language-plaintext highlighter-rouge">mux</code>. Criamos então o objeto <code class="language-plaintext highlighter-rouge">tls.Config</code> e atribuímos ao Server. Agora é que a <strong>mágica</strong> acontece. <code class="language-plaintext highlighter-rouge">GetCertificate</code> é a função que o servidor usa para carregar o certificado quando uma nova requisição HTTPS chega ao servidor. Este método nos da a oportunidade de escolher qual certificado usar ao invés de retornar sempre o mesmo. O que fazemos agora é delegar esta responsabilidade ao <code class="language-plaintext highlighter-rouge">certManager.GetCertificate</code> na qual primeiro procurará o certificado no cache, caso não seja encontrado, um novo certificado é emitido no Let’s Encrypt através do protocolo ACME.</p>
 
-<p>No começo de 2018, <a href="https://community.letsencrypt.org/t/2018-01-11-update-regarding-acme-tls-sni-and-shared-hosting-infrastructure/50188">Let’s Encrypt desabilitou o desafio de TLS-SNI</a>. A recomendação agora é usar o <a href="https://tools.ietf.org/html/draft-ietf-acme-acme-07#section-8.3">desafio HTTP</a>, e é por isto que usamos o <code class="highlighter-rouge">certManager.HTTPHandler(nil)</code>.</p>
+<p>No começo de 2018, <a href="https://community.letsencrypt.org/t/2018-01-11-update-regarding-acme-tls-sni-and-shared-hosting-infrastructure/50188">Let’s Encrypt desabilitou o desafio de TLS-SNI</a>. A recomendação agora é usar o <a href="https://tools.ietf.org/html/draft-ietf-acme-acme-07#section-8.3">desafio HTTP</a>, e é por isto que usamos o <code class="language-plaintext highlighter-rouge">certManager.HTTPHandler(nil)</code>.</p>
 
-<p>Depois disto, basta iniciar nosso servidor com <code class="highlighter-rouge">server.ListenAndServeTLS("", "")</code>. Se você já usou HTTPS em Go antes, talvez se lembre de que estes dois parâmetros são o Certificado e a Chave Privada, mas quando estamos usando <code class="highlighter-rouge">autocert</code> isto não é necessário.</p>
+<p>Depois disto, basta iniciar nosso servidor com <code class="language-plaintext highlighter-rouge">server.ListenAndServeTLS("", "")</code>. Se você já usou HTTPS em Go antes, talvez se lembre de que estes dois parâmetros são o Certificado e a Chave Privada, mas quando estamos usando <code class="language-plaintext highlighter-rouge">autocert</code> isto não é necessário.</p>
 
-<p>Vale a pena comentar que o <code class="highlighter-rouge">certManager.HTTPHandler(nil)</code> redireciona todo o tráfego HTTP para HTTPS automaticamente, mas isto pode ser customizado ao substituir o parâmetro nil por um HTTP Handler.</p>
+<p>Vale a pena comentar que o <code class="language-plaintext highlighter-rouge">certManager.HTTPHandler(nil)</code> redireciona todo o tráfego HTTP para HTTPS automaticamente, mas isto pode ser customizado ao substituir o parâmetro nil por um HTTP Handler.</p>
 
 <h2 id="está-na-hora-de-testarmos">Está na hora de testarmos!</h2>
 
@@ -245,7 +247,7 @@
 
 <ol>
   <li>Crie um novo registro de DNS A apontando para o IP público de sua máquina virtual.</li>
-  <li>Compile seu código Go com <code class="highlighter-rouge">CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o autossl</code>. Ajuste os parâmetros caso seu servidor não seja linux/amd64.</li>
+  <li>Compile seu código Go com <code class="language-plaintext highlighter-rouge">CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o autossl</code>. Ajuste os parâmetros caso seu servidor não seja linux/amd64.</li>
   <li>Copie o binário autossl para seu servidor.</li>
   <li>Conecte-se ao servidor via SSH e execute o binário para iniciar o servidor.</li>
   <li>Abra o navegador com o endereço de seu domínio configurado na etapa 1.</li>
@@ -255,7 +257,7 @@
 
 <p>Ta-Da! 🎉</p>
 
-<p>Você deverá ver a mensagem <code class="highlighter-rouge">Hello Secure World</code> e o símbolo verde de HTTPS.</p>
+<p>Você deverá ver a mensagem <code class="language-plaintext highlighter-rouge">Hello Secure World</code> e o símbolo verde de HTTPS.</p>
 
 <p>Talvez demore alguns segundos para carregar pela primeira vez, isto acontece devido à uma série de troca de mensagens com o Let’s Encrypt para geração do certificado. Porém as request subsequentes serão muito rápidas, afinal o certificado já está armazenado no cache.</p>
 

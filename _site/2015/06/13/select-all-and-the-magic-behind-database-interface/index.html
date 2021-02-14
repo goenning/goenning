@@ -13,9 +13,9 @@
     <link rel="alternate" type="application/rss+xml" title="@goenning - loop at { run; code; blog; swim; eat; cycle; } until tired;" href="/feed.xml" />
     
 
-    <!-- Begin Jekyll SEO tag v2.5.0 -->
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>SELECT * and the magic behind database interface | @goenning</title>
-<meta name="generator" content="Jekyll v3.8.5" />
+<meta name="generator" content="Jekyll v4.2.0" />
 <meta property="og:title" content="SELECT * and the magic behind database interface" />
 <meta name="author" content="@goenning" />
 <meta property="og:locale" content="en" />
@@ -26,8 +26,10 @@
 <meta property="og:site_name" content="@goenning" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2015-06-13T00:00:00-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="SELECT * and the magic behind database interface" />
 <script type="application/ld+json">
-{"headline":"SELECT * and the magic behind database interface","dateModified":"2015-06-13T00:00:00-05:00","datePublished":"2015-06-13T00:00:00-05:00","url":"https://goenning.net/2015/06/13/select-all-and-the-magic-behind-database-interface/","author":{"@type":"Person","name":"@goenning"},"description":"The Database Interface is the middleware between the application and the database. It’s his responsibility of translating OpenSQL to NativeSQL, keeping the data in buffer up-to-date, among other database related things.","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://goenning.net/2015/06/13/select-all-and-the-magic-behind-database-interface/"},"@context":"http://schema.org"}</script>
+{"author":{"@type":"Person","name":"@goenning"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://goenning.net/2015/06/13/select-all-and-the-magic-behind-database-interface/"},"@type":"BlogPosting","description":"The Database Interface is the middleware between the application and the database. It’s his responsibility of translating OpenSQL to NativeSQL, keeping the data in buffer up-to-date, among other database related things.","headline":"SELECT * and the magic behind database interface","dateModified":"2015-06-13T00:00:00-05:00","url":"https://goenning.net/2015/06/13/select-all-and-the-magic-behind-database-interface/","datePublished":"2015-06-13T00:00:00-05:00","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   </head>
@@ -155,17 +157,17 @@
   </small>
 
   <div class="entry">
-    <p>The <code class="highlighter-rouge">Database Interface</code> is the middleware between the application and the database. It’s his responsibility of translating OpenSQL to NativeSQL, keeping the data in buffer up-to-date, among other database related things.</p>
+    <p>The <code class="language-plaintext highlighter-rouge">Database Interface</code> is the middleware between the application and the database. It’s his responsibility of translating OpenSQL to NativeSQL, keeping the data in buffer up-to-date, among other database related things.</p>
 
 <p>Recently I found out something additional that it does and it’s healthy to the database and the system overall.</p>
 
-<p>It’s very common to see arguments against the use of <code class="highlighter-rouge">SELECT *</code> in any language because it may degrade the performance by querying and transporting unnecessary data between various layers.</p>
+<p>It’s very common to see arguments against the use of <code class="language-plaintext highlighter-rouge">SELECT *</code> in any language because it may degrade the performance by querying and transporting unnecessary data between various layers.</p>
 
 <p>Fortunately SAP system have this magical database interface component that does some really cool optimizations. One of them is the selection of only the fields you really need.</p>
 
-<p>Here are three examples. The first one using <code class="highlighter-rouge">SELECT fieldlist</code>. The other two are using <code class="highlighter-rouge">SELECT *</code>, but one of them targets a table with less fields.</p>
+<p>Here are three examples. The first one using <code class="language-plaintext highlighter-rouge">SELECT fieldlist</code>. The other two are using <code class="language-plaintext highlighter-rouge">SELECT *</code>, but one of them targets a table with less fields.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TYPES: BEGIN OF ty_field,
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>TYPES: BEGIN OF ty_field,
         tabname TYPE dd03l-tabname,
         fieldname TYPE dd03l-fieldname,
        END OF ty_field.
@@ -190,15 +192,15 @@ SELECT *
   WHERE tabname = 'PARTNER_RECORD'.
 </code></pre></div></div>
 
-<p>The first example is probably the most accepted method, where each field is set both in the query and in the target table variable. I tend to believe it makes the code easier to read and much more optimized for database reading. When executing <code class="highlighter-rouge">SQL Trace (ST05)</code> on this program it it possible to note that the execution time of the first two queries are exactly the same, except for the third query which is a bit more expensive.</p>
+<p>The first example is probably the most accepted method, where each field is set both in the query and in the target table variable. I tend to believe it makes the code easier to read and much more optimized for database reading. When executing <code class="language-plaintext highlighter-rouge">SQL Trace (ST05)</code> on this program it it possible to note that the execution time of the first two queries are exactly the same, except for the third query which is a bit more expensive.</p>
 
 <p><img src="/public/images/st05-select-all.png" alt="" /></p>
 
-<p>That, my friends, it’s <code class="highlighter-rouge">Database Interface</code> in action.</p>
+<p>That, my friends, it’s <code class="language-plaintext highlighter-rouge">Database Interface</code> in action.</p>
 
-<p>The real query that was sent to the database for the first two queries are exactly the same. This means that the system identified the <code class="highlighter-rouge">INTO CORRESPONDING FIELDS</code> instruction and that the target table contains only a few fields, so it replaced the all query for a specific query containing only the fields that are really used.</p>
+<p>The real query that was sent to the database for the first two queries are exactly the same. This means that the system identified the <code class="language-plaintext highlighter-rouge">INTO CORRESPONDING FIELDS</code> instruction and that the target table contains only a few fields, so it replaced the all query for a specific query containing only the fields that are really used.</p>
 
-<p>Happy <code class="highlighter-rouge">SELECT *</code> coding. But remember kids, with great powers comes great responsibility. Use it wisely.</p>
+<p>Happy <code class="language-plaintext highlighter-rouge">SELECT *</code> coding. But remember kids, with great powers comes great responsibility. Use it wisely.</p>
 
 <p>Cheers!</p>
 

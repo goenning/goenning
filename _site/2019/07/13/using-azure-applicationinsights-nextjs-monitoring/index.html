@@ -13,9 +13,9 @@
     <link rel="alternate" type="application/rss+xml" title="@goenning - loop at { run; code; blog; swim; eat; cycle; } until tired;" href="/feed.xml" />
     
 
-    <!-- Begin Jekyll SEO tag v2.5.0 -->
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>Using Azure Application Insights to monitor usage of a Next.js application | @goenning</title>
-<meta name="generator" content="Jekyll v3.8.5" />
+<meta name="generator" content="Jekyll v4.2.0" />
 <meta property="og:title" content="Using Azure Application Insights to monitor usage of a Next.js application" />
 <meta name="author" content="@goenning" />
 <meta property="og:locale" content="en" />
@@ -26,8 +26,10 @@
 <meta property="og:site_name" content="@goenning" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2019-07-13T00:00:00-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Using Azure Application Insights to monitor usage of a Next.js application" />
 <script type="application/ld+json">
-{"headline":"Using Azure Application Insights to monitor usage of a Next.js application","dateModified":"2019-07-13T00:00:00-05:00","datePublished":"2019-07-13T00:00:00-05:00","url":"https://goenning.net/2019/07/13/using-azure-applicationinsights-nextjs-monitoring/","author":{"@type":"Person","name":"@goenning"},"description":"TO BE DEFINED","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://goenning.net/2019/07/13/using-azure-applicationinsights-nextjs-monitoring/"},"@context":"http://schema.org"}</script>
+{"author":{"@type":"Person","name":"@goenning"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://goenning.net/2019/07/13/using-azure-applicationinsights-nextjs-monitoring/"},"@type":"BlogPosting","description":"TO BE DEFINED","headline":"Using Azure Application Insights to monitor usage of a Next.js application","dateModified":"2019-07-13T00:00:00-05:00","url":"https://goenning.net/2019/07/13/using-azure-applicationinsights-nextjs-monitoring/","datePublished":"2019-07-13T00:00:00-05:00","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   </head>
@@ -161,19 +163,19 @@
 
 <h1 id="using-ai-on-a-nextjs-application">Using AI on a Next.js application</h1>
 
-<p>On a Next.js application there’s the concept of <code class="highlighter-rouge">pages</code>, but behind the scenes these are basically React Components. These components are rendered on the server during initial load, but on subsequent page views, the render process happens on the client side. Because of this, Next.js applications requires some extra code for AI to work.</p>
+<p>On a Next.js application there’s the concept of <code class="language-plaintext highlighter-rouge">pages</code>, but behind the scenes these are basically React Components. These components are rendered on the server during initial load, but on subsequent page views, the render process happens on the client side. Because of this, Next.js applications requires some extra code for AI to work.</p>
 
-<p><code class="highlighter-rouge">next-applicationinsights</code> is a NPM package that exposes a <a href="https://reactjs.org/docs/higher-order-components.html">Higher-Order Components</a> that decorates the whole Next.js application with AI tracking.</p>
+<p><code class="language-plaintext highlighter-rouge">next-applicationinsights</code> is a NPM package that exposes a <a href="https://reactjs.org/docs/higher-order-components.html">Higher-Order Components</a> that decorates the whole Next.js application with AI tracking.</p>
 
 <p>To install it, run the following command:</p>
 
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install </span>next-applicationinsights
 </code></pre></div></div>
 
-<p>If you don’t have a custom App component yet, you’ll need to create one. The custom App is always named  <code class="highlighter-rouge">pages/_app.js</code>. The custom App must then be wrapped on a call to <code class="highlighter-rouge">withApplicationInsights</code>, so the code looks like this:</p>
+<p>If you don’t have a custom App component yet, you’ll need to create one. The custom App is always named  <code class="language-plaintext highlighter-rouge">pages/_app.js</code>. The custom App must then be wrapped on a call to <code class="language-plaintext highlighter-rouge">withApplicationInsights</code>, so the code looks like this:</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">App</span><span class="p">,</span> <span class="p">{</span> <span class="nx">Container</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'next/app'</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">withApplicationInsights</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'next-applicationinsights'</span><span class="p">;</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">App</span><span class="p">,</span> <span class="p">{</span> <span class="nx">Container</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">next/app</span><span class="dl">'</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">withApplicationInsights</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">next-applicationinsights</span><span class="dl">'</span><span class="p">;</span>
  
 <span class="kd">class</span> <span class="nx">MyApp</span> <span class="kd">extends</span> <span class="nx">App</span> <span class="p">{</span>
   <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
@@ -188,16 +190,16 @@
 <span class="p">}</span>
  
 <span class="k">export</span> <span class="k">default</span> <span class="nx">withApplicationInsights</span><span class="p">({</span> 
-  <span class="na">instrumentationKey</span><span class="p">:</span> <span class="s1">'YOUR_KEY_GOES_HERE'</span><span class="p">,</span>
+  <span class="na">instrumentationKey</span><span class="p">:</span> <span class="dl">'</span><span class="s1">YOUR_KEY_GOES_HERE</span><span class="dl">'</span><span class="p">,</span>
   <span class="na">isEnabled</span><span class="p">:</span> <span class="kc">true</span>
 <span class="p">})(</span><span class="nx">MyApp</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p>You must then insert your own <code class="highlighter-rouge">instrumentationKey</code> that can be found on the Azure Portal under the AI instance properties.</p>
+<p>You must then insert your own <code class="language-plaintext highlighter-rouge">instrumentationKey</code> that can be found on the Azure Portal under the AI instance properties.</p>
 
-<p><strong>Hint:</strong> To disable AI tracking during development, use this configuration <code class="highlighter-rouge">isEnabled: process.env.NODE_ENV === 'production'</code>. This will basically enable AI <strong>only</strong> on Production builds.</p>
+<p><strong>Hint:</strong> To disable AI tracking during development, use this configuration <code class="language-plaintext highlighter-rouge">isEnabled: process.env.NODE_ENV === 'production'</code>. This will basically enable AI <strong>only</strong> on Production builds.</p>
 
-<p>This package uses <a href="https://www.npmjs.com/package/@microsoft/applicationinsights-web">@microsoft/applicationinsights-web</a>, so all the configuration options from this package are supported by <code class="highlighter-rouge">withApplicationInsights</code>.</p>
+<p>This package uses <a href="https://www.npmjs.com/package/@microsoft/applicationinsights-web">@microsoft/applicationinsights-web</a>, so all the configuration options from this package are supported by <code class="language-plaintext highlighter-rouge">withApplicationInsights</code>.</p>
 
 <h1 id="the-result">The result</h1>
 

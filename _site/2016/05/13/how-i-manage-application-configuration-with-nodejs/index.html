@@ -13,9 +13,9 @@
     <link rel="alternate" type="application/rss+xml" title="@goenning - loop at { run; code; blog; swim; eat; cycle; } until tired;" href="/feed.xml" />
     
 
-    <!-- Begin Jekyll SEO tag v2.5.0 -->
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>How I manage application configuration with Node.js | @goenning</title>
-<meta name="generator" content="Jekyll v3.8.5" />
+<meta name="generator" content="Jekyll v4.2.0" />
 <meta property="og:title" content="How I manage application configuration with Node.js" />
 <meta name="author" content="@goenning" />
 <meta property="og:locale" content="en" />
@@ -26,8 +26,10 @@
 <meta property="og:site_name" content="@goenning" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2016-05-13T00:00:00-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="How I manage application configuration with Node.js" />
 <script type="application/ld+json">
-{"headline":"How I manage application configuration with Node.js","dateModified":"2016-05-13T00:00:00-05:00","datePublished":"2016-05-13T00:00:00-05:00","url":"https://goenning.net/2016/05/13/how-i-manage-application-configuration-with-nodejs/","author":{"@type":"Person","name":"@goenning"},"description":"Every application needs configuration settings and most programming languages/frameworks ecosystem has some kind of default support and convention for it.","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://goenning.net/2016/05/13/how-i-manage-application-configuration-with-nodejs/"},"@context":"http://schema.org"}</script>
+{"author":{"@type":"Person","name":"@goenning"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://goenning.net/2016/05/13/how-i-manage-application-configuration-with-nodejs/"},"@type":"BlogPosting","description":"Every application needs configuration settings and most programming languages/frameworks ecosystem has some kind of default support and convention for it.","headline":"How I manage application configuration with Node.js","dateModified":"2016-05-13T00:00:00-05:00","url":"https://goenning.net/2016/05/13/how-i-manage-application-configuration-with-nodejs/","datePublished":"2016-05-13T00:00:00-05:00","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   </head>
@@ -146,7 +148,7 @@
 
 
   
-    • 4 minutes read
+    • 5 minutes read
   
 
     • 
@@ -158,9 +160,9 @@
     <p>Every application needs configuration settings and most programming languages/frameworks ecosystem has some kind of default support and convention for it.</p>
 
 <ul>
-  <li>Most Java applications rely on <code class="highlighter-rouge">.properties</code> files;</li>
-  <li>.Net has it’s standard <code class="highlighter-rouge">app.config</code> and <code class="highlighter-rouge">web.config</code> files;</li>
-  <li>Ruby on Rails load settings from <code class="highlighter-rouge">config/application.rb</code>, <code class="highlighter-rouge">Initializers</code> and <code class="highlighter-rouge">After-initializers</code>;</li>
+  <li>Most Java applications rely on <code class="language-plaintext highlighter-rouge">.properties</code> files;</li>
+  <li>.Net has it’s standard <code class="language-plaintext highlighter-rouge">app.config</code> and <code class="language-plaintext highlighter-rouge">web.config</code> files;</li>
+  <li>Ruby on Rails load settings from <code class="language-plaintext highlighter-rouge">config/application.rb</code>, <code class="language-plaintext highlighter-rouge">Initializers</code> and <code class="language-plaintext highlighter-rouge">After-initializers</code>;</li>
 </ul>
 
 <p>Node.js does not have a standard way of managing these settings, but there are a lot of options available.</p>
@@ -175,7 +177,7 @@
 
 <p><img src="/public/images/config-folder-nodejs.png" alt="" /></p>
 
-<p><code class="highlighter-rouge">default.js</code> is a file in which <strong>all</strong> configuration settings are exported as a JSON object. Each key may have a hard-coded value or a reference to an environment variable.</p>
+<p><code class="language-plaintext highlighter-rouge">default.js</code> is a file in which <strong>all</strong> configuration settings are exported as a JSON object. Each key may have a hard-coded value or a reference to an environment variable.</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">cookie</span><span class="p">:</span> <span class="p">{</span>
@@ -185,45 +187,45 @@
     <span class="na">secure</span><span class="p">:</span> <span class="kc">true</span>
   <span class="p">},</span>
   <span class="na">db</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">provider</span><span class="p">:</span> <span class="s2">"pg"</span><span class="p">,</span>
+    <span class="na">provider</span><span class="p">:</span> <span class="dl">"</span><span class="s2">pg</span><span class="dl">"</span><span class="p">,</span>
     <span class="na">connection</span><span class="p">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">DATABASE_URL</span>
   <span class="p">},</span>
   <span class="na">redis</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">url</span><span class="p">:</span> <span class="s2">"redis://some-redis-server:6379"</span>
+    <span class="na">url</span><span class="p">:</span> <span class="dl">"</span><span class="s2">redis://some-redis-server:6379</span><span class="dl">"</span>
   <span class="p">}</span>
-  <span class="nl">log</span><span class="p">:</span> <span class="s2">"debug"</span>
+  <span class="nl">log</span><span class="p">:</span> <span class="dl">"</span><span class="s2">debug</span><span class="dl">"</span>
 <span class="p">};</span>
 </code></pre></div></div>
 
-<p>For each environment there is a JavaScript file that also exports a JSON object, but it’s not as complete as the file above, it only contains those settings that are specific to the environment. The most common environments are <code class="highlighter-rouge">development</code>, <code class="highlighter-rouge">test</code>, <code class="highlighter-rouge">staging</code> and <code class="highlighter-rouge">production</code>.</p>
+<p>For each environment there is a JavaScript file that also exports a JSON object, but it’s not as complete as the file above, it only contains those settings that are specific to the environment. The most common environments are <code class="language-plaintext highlighter-rouge">development</code>, <code class="language-plaintext highlighter-rouge">test</code>, <code class="language-plaintext highlighter-rouge">staging</code> and <code class="language-plaintext highlighter-rouge">production</code>.</p>
 
-<p><code class="highlighter-rouge">&lt;environment&gt;.js</code> can be used to override any settings. In the following example, for the <code class="highlighter-rouge">production</code> environment we don’t want to log debug messages, so we can actually override it to log only the important messages.</p>
+<p><code class="language-plaintext highlighter-rouge">&lt;environment&gt;.js</code> can be used to override any settings. In the following example, for the <code class="language-plaintext highlighter-rouge">production</code> environment we don’t want to log debug messages, so we can actually override it to log only the important messages.</p>
 
 <p>Redis URL is also set to use environment value, while the default value is a hard-coded string.</p>
 
-<p><code class="highlighter-rouge">production.js</code></p>
+<p><code class="language-plaintext highlighter-rouge">production.js</code></p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">log</span><span class="p">:</span> <span class="s2">"error"</span><span class="p">,</span>
+  <span class="na">log</span><span class="p">:</span> <span class="dl">"</span><span class="s2">error</span><span class="dl">"</span><span class="p">,</span>
   <span class="na">redis</span><span class="p">:</span> <span class="p">{</span>
     <span class="na">url</span><span class="p">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">REDIS_URL</span>
   <span class="p">}</span>
 <span class="p">};</span>
 </code></pre></div></div>
 
-<p>All these files are stored in a folder named <code class="highlighter-rouge">config</code> with an <code class="highlighter-rouge">index.js</code> file that exports a merged JSON object of both <code class="highlighter-rouge">default.js</code> and <code class="highlighter-rouge">&lt;current_environment&gt;.js</code>. If <code class="highlighter-rouge">NODE_ENV</code> environment variable is undefined, <code class="highlighter-rouge">development</code> is assumed as default environment.</p>
+<p>All these files are stored in a folder named <code class="language-plaintext highlighter-rouge">config</code> with an <code class="language-plaintext highlighter-rouge">index.js</code> file that exports a merged JSON object of both <code class="language-plaintext highlighter-rouge">default.js</code> and <code class="language-plaintext highlighter-rouge">&lt;current_environment&gt;.js</code>. If <code class="language-plaintext highlighter-rouge">NODE_ENV</code> environment variable is undefined, <code class="language-plaintext highlighter-rouge">development</code> is assumed as default environment.</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">_</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"lodash"</span><span class="p">);</span>
-<span class="kd">var</span> <span class="nx">defaults</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"./default.js"</span><span class="p">);</span>
-<span class="kd">var</span> <span class="nx">config</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"./"</span> <span class="o">+</span> <span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span> <span class="o">||</span> <span class="s2">"development"</span><span class="p">)</span> <span class="o">+</span> <span class="s2">".js"</span><span class="p">);</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">_</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">lodash</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">defaults</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">./default.js</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">config</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">./</span><span class="dl">"</span> <span class="o">+</span> <span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span> <span class="o">||</span> <span class="dl">"</span><span class="s2">development</span><span class="dl">"</span><span class="p">)</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">.js</span><span class="dl">"</span><span class="p">);</span>
 <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">_</span><span class="p">.</span><span class="nx">merge</span><span class="p">({},</span> <span class="nx">defaults</span><span class="p">,</span> <span class="nx">config</span><span class="p">);</span>
 </code></pre></div></div>
 
-<p>When there is a need to read any configuration settings, it’s as easy as <code class="highlighter-rouge">require('path/to/config')</code>. There is no need to actually load the environment file directly, let the <code class="highlighter-rouge">index.js</code> do that dirty job.</p>
+<p>When there is a need to read any configuration settings, it’s as easy as <code class="language-plaintext highlighter-rouge">require('path/to/config')</code>. There is no need to actually load the environment file directly, let the <code class="language-plaintext highlighter-rouge">index.js</code> do that dirty job.</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">config</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./config'</span><span class="p">);</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">config</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">./config</span><span class="dl">'</span><span class="p">);</span>
 <span class="p">...</span>
-<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">require</span><span class="p">(</span><span class="s1">'cookie-parser'</span><span class="p">)(</span><span class="nx">config</span><span class="p">.</span><span class="nx">cookie</span><span class="p">.</span><span class="nx">secret</span><span class="p">));</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">cookie-parser</span><span class="dl">'</span><span class="p">)(</span><span class="nx">config</span><span class="p">.</span><span class="nx">cookie</span><span class="p">.</span><span class="nx">secret</span><span class="p">));</span>
 <span class="p">...</span>
 <span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">session</span><span class="p">({</span>
   <span class="na">saveUninitialized</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
@@ -237,15 +239,15 @@
 <span class="p">...</span>
 </code></pre></div></div>
 
-<p>By doing this, I have a clean and flexible solution. I can rely on server’s environment variables to store sensitive data and it it’s also possible to set hard-coded values for each environment directly in each of the environment files, as well as a default value in <code class="highlighter-rouge">default.js</code>.</p>
+<p>By doing this, I have a clean and flexible solution. I can rely on server’s environment variables to store sensitive data and it it’s also possible to set hard-coded values for each environment directly in each of the environment files, as well as a default value in <code class="language-plaintext highlighter-rouge">default.js</code>.</p>
 
-<p>Environment values are usually <strong>ONLY</strong> set on staging and production servers. I don’t like to mess with my OS environment values, so I opted to use <a href="https://www.npmjs.com/package/dotenv">dotenv</a>, which is a super tiny package that looks for a <code class="highlighter-rouge">.env</code> file inside your project root directory. If it’s found, it sets current process environment according to file contents. If it’s not found (in production, for example), it does nothing. So there is no harm in using it.</p>
+<p>Environment values are usually <strong>ONLY</strong> set on staging and production servers. I don’t like to mess with my OS environment values, so I opted to use <a href="https://www.npmjs.com/package/dotenv">dotenv</a>, which is a super tiny package that looks for a <code class="language-plaintext highlighter-rouge">.env</code> file inside your project root directory. If it’s found, it sets current process environment according to file contents. If it’s not found (in production, for example), it does nothing. So there is no harm in using it.</p>
 
-<p>It’s typical that <code class="highlighter-rouge">.env</code> should be only used for development and testing purpose, that means it should be add to <code class="highlighter-rouge">.gitignore</code>, as it’s content can vary by developer. If you ever commit and send it to production, it’s very likely that you’ll run into trouble, because it’ll override all serves environment values.</p>
+<p>It’s typical that <code class="language-plaintext highlighter-rouge">.env</code> should be only used for development and testing purpose, that means it should be add to <code class="language-plaintext highlighter-rouge">.gitignore</code>, as it’s content can vary by developer. If you ever commit and send it to production, it’s very likely that you’ll run into trouble, because it’ll override all serves environment values.</p>
 
-<p><strong>Note:</strong> When using <code class="highlighter-rouge">.env</code> file, don’t ever forget to require it as soon as your application starts.</p>
+<p><strong>Note:</strong> When using <code class="language-plaintext highlighter-rouge">.env</code> file, don’t ever forget to require it as soon as your application starts.</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">require</span><span class="p">(</span><span class="s1">'dotenv'</span><span class="p">).</span><span class="nx">config</span><span class="p">({</span> <span class="na">silent</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">dotenv</span><span class="dl">'</span><span class="p">).</span><span class="nx">config</span><span class="p">({</span> <span class="na">silent</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
 </code></pre></div></div>
 
 <h2 id="what-you-think-about-it">What you think about it?</h2>

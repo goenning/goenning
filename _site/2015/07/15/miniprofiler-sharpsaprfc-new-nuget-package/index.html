@@ -13,9 +13,9 @@
     <link rel="alternate" type="application/rss+xml" title="@goenning - loop at { run; code; blog; swim; eat; cycle; } until tired;" href="/feed.xml" />
     
 
-    <!-- Begin Jekyll SEO tag v2.5.0 -->
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>MiniProfiler for SharpSapRfc: A new NuGet Package | @goenning</title>
-<meta name="generator" content="Jekyll v3.8.5" />
+<meta name="generator" content="Jekyll v4.2.0" />
 <meta property="og:title" content="MiniProfiler for SharpSapRfc: A new NuGet Package" />
 <meta name="author" content="@goenning" />
 <meta property="og:locale" content="en" />
@@ -26,8 +26,10 @@
 <meta property="og:site_name" content="@goenning" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2015-07-15T00:00:00-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="MiniProfiler for SharpSapRfc: A new NuGet Package" />
 <script type="application/ld+json">
-{"headline":"MiniProfiler for SharpSapRfc: A new NuGet Package","dateModified":"2015-07-15T00:00:00-05:00","datePublished":"2015-07-15T00:00:00-05:00","url":"https://goenning.net/2015/07/15/miniprofiler-sharpsaprfc-new-nuget-package/","author":{"@type":"Person","name":"@goenning"},"description":"It has been a long time since I first heard about MiniProfiler, but I never had the opportunity to use and study it. Recently — because of some tunning tasks I had to do — I started to use it and I enjoyed so much that I’ve decide to share my experience here.","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://goenning.net/2015/07/15/miniprofiler-sharpsaprfc-new-nuget-package/"},"@context":"http://schema.org"}</script>
+{"author":{"@type":"Person","name":"@goenning"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://goenning.net/2015/07/15/miniprofiler-sharpsaprfc-new-nuget-package/"},"@type":"BlogPosting","description":"It has been a long time since I first heard about MiniProfiler, but I never had the opportunity to use and study it. Recently — because of some tunning tasks I had to do — I started to use it and I enjoyed so much that I’ve decide to share my experience here.","headline":"MiniProfiler for SharpSapRfc: A new NuGet Package","dateModified":"2015-07-15T00:00:00-05:00","url":"https://goenning.net/2015/07/15/miniprofiler-sharpsaprfc-new-nuget-package/","datePublished":"2015-07-15T00:00:00-05:00","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   </head>
@@ -173,7 +175,7 @@
 
 <p>It is necessary to add a call to MiniProfiler on each peace of code that you may want to record the execution time. There are a few packages in NuGet that automatically register some profiling steps without having to code so much.</p>
 
-<p>One of these package is <code class="highlighter-rouge">MiniProfiler.MVC4</code> that records the execution time for all controllers calls and views rendering. Amazing, isn’t it?</p>
+<p>One of these package is <code class="language-plaintext highlighter-rouge">MiniProfiler.MVC4</code> that records the execution time for all controllers calls and views rendering. Amazing, isn’t it?</p>
 
 <p>Web applications normally does heavy use of external resources like SQL Databases, NoSQL Databases, WebServices and such. Bad usage of these resources are usually guilty for major application slowness and it is really hard to troubleshoot and track down things like this by the eye. There are also MiniProfiler packages for most of these resources like SQL (any database provider), Entity Framework, MongoDB, Raven and, more recently, …</p>
 
@@ -181,7 +183,7 @@
 
 <p>Remote calls to SAP functions may be slow as well, especially when dealing with standard functions (known as BAPI). Using a profiler helps troubleshooting a slow HTTP request that makes many SAP calls.</p>
 
-<p>For this matter I’ve created the a plug-in named <code class="highlighter-rouge">MiniProfiler.SharpSapRfc</code>. With this package it is possible to record all Remote Functions Call made with <a href="https://github.com/goenning/SharpSapRfc">SharpSapRfc</a>. The source code is available at <a href="https://github.com/goenning/MiniProfiler.SharpSapRfc">goenning/MiniProfiler.SharpSapRfc</a> and current binary is published at <a href="https://www.nuget.org/packages/MiniProfiler.SharpSapRfc/">NuGet</a>.</p>
+<p>For this matter I’ve created the a plug-in named <code class="language-plaintext highlighter-rouge">MiniProfiler.SharpSapRfc</code>. With this package it is possible to record all Remote Functions Call made with <a href="https://github.com/goenning/SharpSapRfc">SharpSapRfc</a>. The source code is available at <a href="https://github.com/goenning/MiniProfiler.SharpSapRfc">goenning/MiniProfiler.SharpSapRfc</a> and current binary is published at <a href="https://www.nuget.org/packages/MiniProfiler.SharpSapRfc/">NuGet</a>.</p>
 
 <p>Instructions for install and how to use are available at project’s repository.</p>
 

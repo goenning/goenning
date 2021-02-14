@@ -13,9 +13,9 @@
     <link rel="alternate" type="application/rss+xml" title="@goenning - loop at { run; code; blog; swim; eat; cycle; } until tired;" href="/feed.xml" />
     
 
-    <!-- Begin Jekyll SEO tag v2.5.0 -->
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>Connecting to SAP with SOAP RFC | @goenning</title>
-<meta name="generator" content="Jekyll v3.8.5" />
+<meta name="generator" content="Jekyll v4.2.0" />
 <meta property="og:title" content="Connecting to SAP with SOAP RFC" />
 <meta name="author" content="@goenning" />
 <meta property="og:locale" content="en" />
@@ -26,8 +26,10 @@
 <meta property="og:site_name" content="@goenning" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2014-08-20T00:00:00-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Connecting to SAP with SOAP RFC" />
 <script type="application/ld+json">
-{"headline":"Connecting to SAP with SOAP RFC","dateModified":"2014-08-20T00:00:00-05:00","datePublished":"2014-08-20T00:00:00-05:00","url":"https://goenning.net/2014/08/20/connecting-to-sap-with-soap-rfc/","author":{"@type":"Person","name":"@goenning"},"description":"In previous article entitled How to enable SAP ICF in a miniSAP installation you saw that SAP has a built-in HTTP module. This module contains multiples services, where each one has it’s own interface and can be enabled or disabled depending on your needs. Each service has a corresponding ABAP Class that process the HTTP Response based on the HTTP Request. It is possible to identify the class by double-clicking at the service.","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://goenning.net/2014/08/20/connecting-to-sap-with-soap-rfc/"},"@context":"http://schema.org"}</script>
+{"author":{"@type":"Person","name":"@goenning"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://goenning.net/2014/08/20/connecting-to-sap-with-soap-rfc/"},"@type":"BlogPosting","description":"In previous article entitled How to enable SAP ICF in a miniSAP installation you saw that SAP has a built-in HTTP module. This module contains multiples services, where each one has it’s own interface and can be enabled or disabled depending on your needs. Each service has a corresponding ABAP Class that process the HTTP Response based on the HTTP Request. It is possible to identify the class by double-clicking at the service.","headline":"Connecting to SAP with SOAP RFC","dateModified":"2014-08-20T00:00:00-05:00","url":"https://goenning.net/2014/08/20/connecting-to-sap-with-soap-rfc/","datePublished":"2014-08-20T00:00:00-05:00","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   </head>
@@ -162,26 +164,26 @@
 <p><img src="/public/images/class-handler-ping.png" alt="" /></p>
 
 <blockquote>
-  <p>CL_HTTP_EXT_PING is the class for <code class="highlighter-rouge">PING</code> service</p>
+  <p>CL_HTTP_EXT_PING is the class for <code class="language-plaintext highlighter-rouge">PING</code> service</p>
 </blockquote>
 
-<p>It is also possible to publish your own HTTP Service by creating an ABAP Class that implements <code class="highlighter-rouge">IF_HTTP_EXTENSION</code> interface and register it by using <code class="highlighter-rouge">SICF</code> transaction. But this is not the subject of this post. What your are going to see here is how to use two very useful services: <code class="highlighter-rouge">sap/bc/soap/rfc</code> and <code class="highlighter-rouge">sap/bc/soap/wsdl</code>.</p>
+<p>It is also possible to publish your own HTTP Service by creating an ABAP Class that implements <code class="language-plaintext highlighter-rouge">IF_HTTP_EXTENSION</code> interface and register it by using <code class="language-plaintext highlighter-rouge">SICF</code> transaction. But this is not the subject of this post. What your are going to see here is how to use two very useful services: <code class="language-plaintext highlighter-rouge">sap/bc/soap/rfc</code> and <code class="language-plaintext highlighter-rouge">sap/bc/soap/wsdl</code>.</p>
 
 <p>When used together, these services enables you to call remote-enabled function in SAP thought HTTP protocol.</p>
 
 <h3 id="soap-wsdl-sapbcsoapwsdl">SOAP WSDL: sap/bc/soap/wsdl</h3>
 
-<p>This service returns the WSDL (Web Services Description Language) of a Remote-Enabled Function. This document contains all necessary information to call the function thought HTTP protocol. Many languages and programming platforms ships with helpers programs that generate code based on the WSDL file (this is commonly known as <code class="highlighter-rouge">Proxy</code>). One of the elements of the service description is called <code class="highlighter-rouge">endpoint</code>, and this is the address of the HTTP in which we need to use when calling the function.</p>
+<p>This service returns the WSDL (Web Services Description Language) of a Remote-Enabled Function. This document contains all necessary information to call the function thought HTTP protocol. Many languages and programming platforms ships with helpers programs that generate code based on the WSDL file (this is commonly known as <code class="language-plaintext highlighter-rouge">Proxy</code>). One of the elements of the service description is called <code class="language-plaintext highlighter-rouge">endpoint</code>, and this is the address of the HTTP in which we need to use when calling the function.</p>
 
 <h3 id="soap-rfc-sapbcsoaprfc">SOAP RFC: sap/bc/soap/rfc</h3>
 
-<p>This is the default endpoint for <code class="highlighter-rouge">bc/soap/wsdl</code>. This is the service that really executes the function based on the HTTP Request’s body. The expected return content of this service is a XML content with the structures defined on WSDL and values returned from the function executed inside SAP.</p>
+<p>This is the default endpoint for <code class="language-plaintext highlighter-rouge">bc/soap/wsdl</code>. This is the service that really executes the function based on the HTTP Request’s body. The expected return content of this service is a XML content with the structures defined on WSDL and values returned from the function executed inside SAP.</p>
 
 <h2 id="a-pratical-example">A pratical example</h2>
 
-<p>Suppose you have the following function named <code class="highlighter-rouge">Z_SSRT_SUM</code>.</p>
+<p>Suppose you have the following function named <code class="language-plaintext highlighter-rouge">Z_SSRT_SUM</code>.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>FUNCTION z_ssrt_sum.
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>FUNCTION z_ssrt_sum.
 *"----------------------------------------------------------------------
 *"*"Local Interface:
 *"  IMPORTING
@@ -196,7 +198,7 @@
 ENDFUNCTION.
 </code></pre></div></div>
 
-<p>When you type <code class="highlighter-rouge">http://&lt;server-name&gt;:8000/sap/bc/soap/wsdl?sap-client=001&amp;services=Z_SSRT_SUM</code> in the browser, your credentials will be prompted and the response text will be the following XML.</p>
+<p>When you type <code class="language-plaintext highlighter-rouge">http://&lt;server-name&gt;:8000/sap/bc/soap/wsdl?sap-client=001&amp;services=Z_SSRT_SUM</code> in the browser, your credentials will be prompted and the response text will be the following XML.</p>
 
 <pre><code class="language-XML">&lt;definitions targetNamespace="urn:sap-com:document:sap:rfc:functions" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:s0="urn:sap-com:document:sap:rfc:functions" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"&gt;
    &lt;types&gt;
@@ -251,11 +253,11 @@ ENDFUNCTION.
 &lt;/definitions&gt;
 </code></pre>
 
-<p>See how <code class="highlighter-rouge">Z_SSRT_SUM</code> and <code class="highlighter-rouge">Z_SSRT_SUM.Response</code> elements are defined as the input and output of the <code class="highlighter-rouge">Z_SSRT_SUM</code> operation. Do the same for some other complex functions you may have in your system and note how easy it is to understand the standard of WSDL content generation.</p>
+<p>See how <code class="language-plaintext highlighter-rouge">Z_SSRT_SUM</code> and <code class="language-plaintext highlighter-rouge">Z_SSRT_SUM.Response</code> elements are defined as the input and output of the <code class="language-plaintext highlighter-rouge">Z_SSRT_SUM</code> operation. Do the same for some other complex functions you may have in your system and note how easy it is to understand the standard of WSDL content generation.</p>
 
 <h2 id="testing-the-service-with-soapui">Testing the Service with soapUI</h2>
 
-<p><code class="highlighter-rouge">soapUI</code> is a well known tool used to test WebServices without any need of programming. When you import the WSDL file, it’ll automatically generate the follow HTTP Request body.</p>
+<p><code class="language-plaintext highlighter-rouge">soapUI</code> is a well known tool used to test WebServices without any need of programming. When you import the WSDL file, it’ll automatically generate the follow HTTP Request body.</p>
 
 <pre><code class="language-XML">&lt;soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:sap-com:document:sap:rfc:functions"&gt;
    &lt;soapenv:Header/&gt;
@@ -280,14 +282,14 @@ ENDFUNCTION.
 </code></pre>
 
 <blockquote>
-  <p>If it does not work for you, remember to set the <code class="highlighter-rouge">username</code> and <code class="highlighter-rouge">password</code> on the left sidebar at properties group named <code class="highlighter-rouge">Request Properties</code>.</p>
+  <p>If it does not work for you, remember to set the <code class="language-plaintext highlighter-rouge">username</code> and <code class="language-plaintext highlighter-rouge">password</code> on the left sidebar at properties group named <code class="language-plaintext highlighter-rouge">Request Properties</code>.</p>
 </blockquote>
 
 <h2 id="sharpsaprfcsoap">SharpSapRfc.Soap</h2>
 
-<p>I took advantage of to change the SharpSapRfc project and splitted it into two packages named <code class="highlighter-rouge">SharpSapRfc.Soap</code> and <code class="highlighter-rouge">SharpSapRfc.Plain.x86/x64</code>.</p>
+<p>I took advantage of to change the SharpSapRfc project and splitted it into two packages named <code class="language-plaintext highlighter-rouge">SharpSapRfc.Soap</code> and <code class="language-plaintext highlighter-rouge">SharpSapRfc.Plain.x86/x64</code>.</p>
 
-<p>Both projects have the same usage API, that means it is possible to swap between <code class="highlighter-rouge">Plain Old RFC</code> and <code class="highlighter-rouge">SOAP RFC</code> without any breaking change. The major difference is when the connection class is instantiated, where each connector has it’s own configuration properties.</p>
+<p>Both projects have the same usage API, that means it is possible to swap between <code class="language-plaintext highlighter-rouge">Plain Old RFC</code> and <code class="language-plaintext highlighter-rouge">SOAP RFC</code> without any breaking change. The major difference is when the connection class is instantiated, where each connector has it’s own configuration properties.</p>
 
 <p>I’ve found that the project has become well organized with two distinct implementations over the same interface. This is an example of how Oriented Object Programming can bring great benefits when used correctly.</p>
 

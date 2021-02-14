@@ -13,9 +13,9 @@
     <link rel="alternate" type="application/rss+xml" title="@goenning - loop at { run; code; blog; swim; eat; cycle; } until tired;" href="/feed.xml" />
     
 
-    <!-- Begin Jekyll SEO tag v2.5.0 -->
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>How to set up a Cookieless Google Analytics website | @goenning</title>
-<meta name="generator" content="Jekyll v3.8.5" />
+<meta name="generator" content="Jekyll v4.2.0" />
 <meta property="og:title" content="How to set up a Cookieless Google Analytics website" />
 <meta name="author" content="@goenning" />
 <meta property="og:locale" content="en" />
@@ -26,8 +26,10 @@
 <meta property="og:site_name" content="@goenning" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2021-02-01T00:00:00-06:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="How to set up a Cookieless Google Analytics website" />
 <script type="application/ld+json">
-{"headline":"How to set up a Cookieless Google Analytics website","dateModified":"2021-02-01T00:00:00-06:00","datePublished":"2021-02-01T00:00:00-06:00","url":"https://goenning.net/2021/02/01/cookieless-google-analytics/","author":{"@type":"Person","name":"@goenning"},"description":"There is a lot more awareness on privacy these days and quite a few solutions that are cookieless. Google Analytics is notorious for using Cookies, but did you know that you can actually configure it to be Cookieless as well? This post has everything you need to get started.","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://goenning.net/2021/02/01/cookieless-google-analytics/"},"@context":"http://schema.org"}</script>
+{"author":{"@type":"Person","name":"@goenning"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://goenning.net/2021/02/01/cookieless-google-analytics/"},"@type":"BlogPosting","description":"There is a lot more awareness on privacy these days and quite a few solutions that are cookieless. Google Analytics is notorious for using Cookies, but did you know that you can actually configure it to be Cookieless as well? This post has everything you need to get started.","headline":"How to set up a Cookieless Google Analytics website","dateModified":"2021-02-01T00:00:00-06:00","url":"https://goenning.net/2021/02/01/cookieless-google-analytics/","datePublished":"2021-02-01T00:00:00-06:00","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   </head>
@@ -175,9 +177,9 @@
 
 <h2 id="first-step-no-more-cookies">First step: No more cookies</h2>
 
-<p>We need to tell GA to not store anything client side. We can do so via some custom params on the <code class="highlighter-rouge">gtag</code> function.</p>
+<p>We need to tell GA to not store anything client side. We can do so via some custom params on the <code class="language-plaintext highlighter-rouge">gtag</code> function.</p>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">gtag</span><span class="p">(</span><span class="s1">'config'</span><span class="p">,</span> <span class="nx">TRACKING_ID</span><span class="p">,</span> <span class="p">{</span> <span class="na">client_storage</span><span class="p">:</span> <span class="s1">'none'</span><span class="p">,</span> <span class="na">anonymize_ip</span><span class="p">:</span> <span class="kc">true</span> <span class="p">})</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">gtag</span><span class="p">(</span><span class="dl">'</span><span class="s1">config</span><span class="dl">'</span><span class="p">,</span> <span class="nx">TRACKING_ID</span><span class="p">,</span> <span class="p">{</span> <span class="na">client_storage</span><span class="p">:</span> <span class="dl">'</span><span class="s1">none</span><span class="dl">'</span><span class="p">,</span> <span class="na">anonymize_ip</span><span class="p">:</span> <span class="kc">true</span> <span class="p">})</span>
 </code></pre></div></div>
 
 <p>That’s it! We’re done. No more cookies.</p>
@@ -186,7 +188,7 @@
 
 <p>The code above is enough to remove cookies, but it doesn’t solve the unique user tracking problem. As mentioned before, every visitor will be counted as a new user.</p>
 
-<p>The same <code class="highlighter-rouge">gtag</code> function above supports an additional property called <code class="highlighter-rouge">client_id</code>. Instead of letting GA generate a client id and storing on a cookie, we can generate one ourselves and send them.</p>
+<p>The same <code class="language-plaintext highlighter-rouge">gtag</code> function above supports an additional property called <code class="language-plaintext highlighter-rouge">client_id</code>. Instead of letting GA generate a client id and storing on a cookie, we can generate one ourselves and send them.</p>
 
 <p>But after generating an ID, where do we store it? Most visitors onpublic websites are not authenticated, so it’s not possible to have a unique id per user.</p>
 
@@ -194,7 +196,7 @@
 
 <p>A week is probably enough to get meaningful unique user visits like return users, but depending on your needs, it’s possible to use other values, like the Month or Day.</p>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">crypto</span> <span class="k">from</span> <span class="s1">'crypto'</span><span class="p">;</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">crypto</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">crypto</span><span class="dl">'</span><span class="p">;</span>
 
 <span class="kd">const</span> <span class="nx">currentWeekNumber</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="kd">const</span> <span class="nx">today</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">();</span>
@@ -204,36 +206,36 @@
 <span class="p">}</span>
 
 <span class="kd">const</span> <span class="nx">md5</span> <span class="o">=</span> <span class="p">(</span><span class="nx">input</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="nx">crypto</span><span class="p">.</span><span class="nx">createHash</span><span class="p">(</span><span class="s1">'md5'</span><span class="p">).</span><span class="nx">update</span><span class="p">(</span><span class="nx">input</span><span class="p">).</span><span class="nx">digest</span><span class="p">(</span><span class="s2">"hex"</span><span class="p">);</span>
+  <span class="k">return</span> <span class="nx">crypto</span><span class="p">.</span><span class="nx">createHash</span><span class="p">(</span><span class="dl">'</span><span class="s1">md5</span><span class="dl">'</span><span class="p">).</span><span class="nx">update</span><span class="p">(</span><span class="nx">input</span><span class="p">).</span><span class="nx">digest</span><span class="p">(</span><span class="dl">"</span><span class="s2">hex</span><span class="dl">"</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="k">export</span> <span class="k">default</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="kd">const</span> <span class="nx">clientIP</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">socket</span><span class="p">.</span><span class="nx">remoteAddress</span>
   <span class="kd">const</span> <span class="nx">week</span> <span class="o">=</span> <span class="nx">currentWeekNumber</span><span class="p">()</span>
-  <span class="kd">const</span> <span class="nx">userAgent</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">headers</span><span class="p">[</span><span class="s1">'user-agent'</span><span class="p">]</span>
-  <span class="kd">const</span> <span class="nx">acceptLanguage</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">headers</span><span class="p">[</span><span class="s1">'accept-language'</span><span class="p">]</span>
+  <span class="kd">const</span> <span class="nx">userAgent</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">headers</span><span class="p">[</span><span class="dl">'</span><span class="s1">user-agent</span><span class="dl">'</span><span class="p">]</span>
+  <span class="kd">const</span> <span class="nx">acceptLanguage</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">headers</span><span class="p">[</span><span class="dl">'</span><span class="s1">accept-language</span><span class="dl">'</span><span class="p">]</span>
   <span class="kd">const</span> <span class="nx">host</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">headers</span><span class="p">.</span><span class="nx">host</span>
   <span class="kd">const</span> <span class="nx">clientIDSource</span> <span class="o">=</span> <span class="s2">`</span><span class="p">${</span><span class="nx">clientIP</span><span class="p">}</span><span class="s2">|</span><span class="p">${</span><span class="nx">host</span><span class="p">}</span><span class="s2">|</span><span class="p">${</span><span class="nx">userAgent</span><span class="p">}</span><span class="s2">|</span><span class="p">${</span><span class="nx">acceptLanguage</span><span class="p">}</span><span class="s2">|</span><span class="p">${</span><span class="nx">week</span><span class="p">}</span><span class="s2">`</span>
 
   <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
-  <span class="nx">res</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s1">'Content-Type'</span><span class="p">,</span> <span class="s1">'text/javascript'</span><span class="p">)</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">text/javascript</span><span class="dl">'</span><span class="p">)</span>
   <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s2">`user_id='</span><span class="p">${</span><span class="nx">md5</span><span class="p">(</span><span class="nx">clientIDSource</span><span class="p">)}</span><span class="s2">'`</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
-<p>The function above generates a unique ID based on some information available to the server and write it to a global variable named <code class="highlighter-rouge">user_id</code>. It’s important to note that the function above MUST execute on a server, because JavaScript on the browser does not have access to its network IP address. Although the example above is running on Node.js, the same can be achieved in any language and framework.</p>
+<p>The function above generates a unique ID based on some information available to the server and write it to a global variable named <code class="language-plaintext highlighter-rouge">user_id</code>. It’s important to note that the function above MUST execute on a server, because JavaScript on the browser does not have access to its network IP address. Although the example above is running on Node.js, the same can be achieved in any language and framework.</p>
 
 <h2 id="last-step-connecting-the-dots">Last step: Connecting the dots</h2>
 
-<p>Something quite easy to do (which doesn’t mess up with <code class="highlighter-rouge">Content-Security-Policy</code>) is to add a script tag right before GA tag:</p>
+<p>Something quite easy to do (which doesn’t mess up with <code class="language-plaintext highlighter-rouge">Content-Security-Policy</code>) is to add a script tag right before GA tag:</p>
 
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"/api/user"</span><span class="nt">&gt;&lt;/script&gt;</span>
 <span class="nt">&lt;script </span><span class="na">async</span> <span class="na">src=</span><span class="s">"https://www.googletagmanager.com/gtag/js?id=YOUR_TRACKING_ID"</span><span class="nt">&gt;&lt;/script&gt;</span>
 </code></pre></div></div>
 
-<p>The code above assumes that a <code class="highlighter-rouge">GET /api/user</code> maps to that Node.js function above. The <code class="highlighter-rouge">user_id</code> variable can then be accessed later when calling <code class="highlighter-rouge">gtag</code>.</p>
+<p>The code above assumes that a <code class="language-plaintext highlighter-rouge">GET /api/user</code> maps to that Node.js function above. The <code class="language-plaintext highlighter-rouge">user_id</code> variable can then be accessed later when calling <code class="language-plaintext highlighter-rouge">gtag</code>.</p>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">gtag</span><span class="p">(</span><span class="s1">'config'</span><span class="p">,</span> <span class="nx">YOUR_TRACKING_ID</span><span class="p">,</span> <span class="p">{</span> <span class="na">client_storage</span><span class="p">:</span> <span class="s1">'none'</span><span class="p">,</span> <span class="na">anonymize_ip</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="na">client_id</span><span class="p">:</span> <span class="nb">window</span><span class="p">.</span><span class="nx">user_id</span> <span class="p">})</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">gtag</span><span class="p">(</span><span class="dl">'</span><span class="s1">config</span><span class="dl">'</span><span class="p">,</span> <span class="nx">YOUR_TRACKING_ID</span><span class="p">,</span> <span class="p">{</span> <span class="na">client_storage</span><span class="p">:</span> <span class="dl">'</span><span class="s1">none</span><span class="dl">'</span><span class="p">,</span> <span class="na">anonymize_ip</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="na">client_id</span><span class="p">:</span> <span class="nb">window</span><span class="p">.</span><span class="nx">user_id</span> <span class="p">})</span>
 </code></pre></div></div>
 
 <h2 id="live-example">Live Example</h2>

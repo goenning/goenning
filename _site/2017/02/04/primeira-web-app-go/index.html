@@ -13,9 +13,9 @@
     <link rel="alternate" type="application/rss+xml" title="@goenning - loop at { run; code; blog; swim; eat; cycle; } until tired;" href="/feed.xml" />
     
 
-    <!-- Begin Jekyll SEO tag v2.5.0 -->
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>Sua primeira aplicação web usando Go | @goenning</title>
-<meta name="generator" content="Jekyll v3.8.5" />
+<meta name="generator" content="Jekyll v4.2.0" />
 <meta property="og:title" content="Sua primeira aplicação web usando Go" />
 <meta name="author" content="@goenning" />
 <meta property="og:locale" content="pt" />
@@ -26,8 +26,10 @@
 <meta property="og:site_name" content="@goenning" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2017-02-04T00:00:00-06:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Sua primeira aplicação web usando Go" />
 <script type="application/ld+json">
-{"headline":"Sua primeira aplicação web usando Go","dateModified":"2017-02-04T00:00:00-06:00","datePublished":"2017-02-04T00:00:00-06:00","url":"https://goenning.net/2017/02/04/primeira-web-app-go/","author":{"@type":"Person","name":"@goenning"},"description":"Estou começando hoje uma nova série no blog de como construir sua primeira aplicação web usando Go. Farei isto seguindo um modelo de “baby steps”, então você pode esperar por uma série longa cobrindo tudo que você precisa (ou deveria) fazer/usar para construir uma aplicação web, como Go tools, GOPATH, testes automatizados, vendoring, banco de dados e, é claro, com hospedagem na nuvem.","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://goenning.net/2017/02/04/primeira-web-app-go/"},"@context":"http://schema.org"}</script>
+{"author":{"@type":"Person","name":"@goenning"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://goenning.net/2017/02/04/primeira-web-app-go/"},"@type":"BlogPosting","description":"Estou começando hoje uma nova série no blog de como construir sua primeira aplicação web usando Go. Farei isto seguindo um modelo de “baby steps”, então você pode esperar por uma série longa cobrindo tudo que você precisa (ou deveria) fazer/usar para construir uma aplicação web, como Go tools, GOPATH, testes automatizados, vendoring, banco de dados e, é claro, com hospedagem na nuvem.","headline":"Sua primeira aplicação web usando Go","dateModified":"2017-02-04T00:00:00-06:00","url":"https://goenning.net/2017/02/04/primeira-web-app-go/","datePublished":"2017-02-04T00:00:00-06:00","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   </head>
@@ -184,48 +186,48 @@
 
 <p>O primeiro passo é configurar nossa estrutura do projeto.</p>
 
-<p>Na minha máquina estou usando o o caminho <code class="highlighter-rouge">$GOPATH/src/github.com/goenning/gostore</code> como raiz do meu projeto. Fique a vontade para usar o que você quiser, desde que esteja dentro de <code class="highlighter-rouge">$GOPATH/src/</code>.</p>
+<p>Na minha máquina estou usando o o caminho <code class="language-plaintext highlighter-rouge">$GOPATH/src/github.com/goenning/gostore</code> como raiz do meu projeto. Fique a vontade para usar o que você quiser, desde que esteja dentro de <code class="language-plaintext highlighter-rouge">$GOPATH/src/</code>.</p>
 
-<p>Feito isto, crie um arquivo <code class="highlighter-rouge">main.go</code> e cole o seguinte código. Isto é tudo que você precisa para criar uma aplicação web bem simples em Go.</p>
+<p>Feito isto, crie um arquivo <code class="language-plaintext highlighter-rouge">main.go</code> e cole o seguinte código. Isto é tudo que você precisa para criar uma aplicação web bem simples em Go.</p>
 
-<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">package</span><span class="x"> </span><span class="n">main</span><span class="x">
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">package</span> <span class="n">main</span>
 
-</span><span class="k">import</span><span class="x"> </span><span class="p">(</span><span class="x">
-	</span><span class="s">"fmt"</span><span class="x">
-	</span><span class="s">"html/template"</span><span class="x">
-	</span><span class="s">"net/http"</span><span class="x">
-</span><span class="p">)</span><span class="x">
+<span class="k">import</span> <span class="p">(</span>
+	<span class="s">"fmt"</span>
+	<span class="s">"html/template"</span>
+	<span class="s">"net/http"</span>
+<span class="p">)</span>
 
-</span><span class="k">func</span><span class="x"> </span><span class="n">index</span><span class="p">(</span><span class="n">w</span><span class="x"> </span><span class="n">http</span><span class="o">.</span><span class="n">ResponseWriter</span><span class="p">,</span><span class="x"> </span><span class="n">r</span><span class="x"> </span><span class="o">*</span><span class="n">http</span><span class="o">.</span><span class="n">Request</span><span class="p">)</span><span class="x"> </span><span class="p">{</span><span class="x">
-	</span><span class="n">tpl</span><span class="p">,</span><span class="x"> </span><span class="n">_</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="n">template</span><span class="o">.</span><span class="n">ParseFiles</span><span class="p">(</span><span class="s">"index.html"</span><span class="p">)</span><span class="x">
-	</span><span class="n">data</span><span class="x"> </span><span class="o">:=</span><span class="x"> </span><span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span><span class="x">
-		</span><span class="s">"Title"</span><span class="o">:</span><span class="x"> </span><span class="s">"Go Store :)"</span><span class="p">,</span><span class="x">
-	</span><span class="p">}</span><span class="x">
-	</span><span class="n">w</span><span class="o">.</span><span class="n">WriteHeader</span><span class="p">(</span><span class="n">http</span><span class="o">.</span><span class="n">StatusOK</span><span class="p">)</span><span class="x">
-	</span><span class="n">tpl</span><span class="o">.</span><span class="n">Execute</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="x"> </span><span class="n">data</span><span class="p">)</span><span class="x">
-</span><span class="p">}</span><span class="x">
+<span class="k">func</span> <span class="n">index</span><span class="p">(</span><span class="n">w</span> <span class="n">http</span><span class="o">.</span><span class="n">ResponseWriter</span><span class="p">,</span> <span class="n">r</span> <span class="o">*</span><span class="n">http</span><span class="o">.</span><span class="n">Request</span><span class="p">)</span> <span class="p">{</span>
+	<span class="n">tpl</span><span class="p">,</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">template</span><span class="o">.</span><span class="n">ParseFiles</span><span class="p">(</span><span class="s">"index.html"</span><span class="p">)</span>
+	<span class="n">data</span> <span class="o">:=</span> <span class="k">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span>
+		<span class="s">"Title"</span><span class="o">:</span> <span class="s">"Go Store :)"</span><span class="p">,</span>
+	<span class="p">}</span>
+	<span class="n">w</span><span class="o">.</span><span class="n">WriteHeader</span><span class="p">(</span><span class="n">http</span><span class="o">.</span><span class="n">StatusOK</span><span class="p">)</span>
+	<span class="n">tpl</span><span class="o">.</span><span class="n">Execute</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+<span class="p">}</span>
 
-</span><span class="k">func</span><span class="x"> </span><span class="n">main</span><span class="p">()</span><span class="x"> </span><span class="p">{</span><span class="x">
-	</span><span class="n">http</span><span class="o">.</span><span class="n">HandleFunc</span><span class="p">(</span><span class="s">"/"</span><span class="p">,</span><span class="x"> </span><span class="n">index</span><span class="p">)</span><span class="x">
-	</span><span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"Server is up and listening on port 8080."</span><span class="p">)</span><span class="x">
-	</span><span class="n">http</span><span class="o">.</span><span class="n">ListenAndServe</span><span class="p">(</span><span class="s">":8080"</span><span class="p">,</span><span class="x"> </span><span class="no">nil</span><span class="p">)</span><span class="x">
-</span><span class="p">}</span><span class="x">
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="n">http</span><span class="o">.</span><span class="n">HandleFunc</span><span class="p">(</span><span class="s">"/"</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span>
+	<span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"Server is up and listening on port 8080."</span><span class="p">)</span>
+	<span class="n">http</span><span class="o">.</span><span class="n">ListenAndServe</span><span class="p">(</span><span class="s">":8080"</span><span class="p">,</span> <span class="no">nil</span><span class="p">)</span>
+<span class="p">}</span>
 
-</span></code></pre></div></div>
+</code></pre></div></div>
 
 <p>‘main‘ é o ponto de entrada de nosso programa, então este será a primeira função a ser chamada quando nosso programa for executado.</p>
 
-<p><code class="highlighter-rouge">http</code> é um pacote da biblioteca padrão do Go usada para criar servidores e clientes HTTP. Neste exemplo estamos criando um servidor HTTP quando chamamos a função <code class="highlighter-rouge">ListenAndServe</code> passando uma porta a ser escutada.</p>
+<p><code class="language-plaintext highlighter-rouge">http</code> é um pacote da biblioteca padrão do Go usada para criar servidores e clientes HTTP. Neste exemplo estamos criando um servidor HTTP quando chamamos a função <code class="language-plaintext highlighter-rouge">ListenAndServe</code> passando uma porta a ser escutada.</p>
 
 <p>Mas antes de criarmos o servidor, precisamos configurar todos as rotas que gostariamos de que nossa aplicação seja capaz de processar.</p>
 
-<p>Para fazer isto chamamos a função <code class="highlighter-rouge">http.HandleFunc</code> passando dois argumentos. O primeiro argumento é o caminho da URL, já o segundo é a função que será chamada para processar a requisição. Esta função é comumente chamada de <code class="highlighter-rouge">HTTP Handler</code>.</p>
+<p>Para fazer isto chamamos a função <code class="language-plaintext highlighter-rouge">http.HandleFunc</code> passando dois argumentos. O primeiro argumento é o caminho da URL, já o segundo é a função que será chamada para processar a requisição. Esta função é comumente chamada de <code class="language-plaintext highlighter-rouge">HTTP Handler</code>.</p>
 
-<p>Nosso <code class="highlighter-rouge">HTTP handler</code> é muito simples. Primeiro carregamos o template chamado <code class="highlighter-rouge">index.html</code>. Em seguida fazemos a renderização deste template e uma estrutura de dados qualquer e escrevemos o resultado em nossa variável w, que é um ResponseWriter. Além disto também atribuimos o status code 200. Ambos o conteúdo e o status code serão então enviados de volta para o cliente, fazendo com que o browser mostre o conteúdo HTML de nosso template.</p>
+<p>Nosso <code class="language-plaintext highlighter-rouge">HTTP handler</code> é muito simples. Primeiro carregamos o template chamado <code class="language-plaintext highlighter-rouge">index.html</code>. Em seguida fazemos a renderização deste template e uma estrutura de dados qualquer e escrevemos o resultado em nossa variável w, que é um ResponseWriter. Além disto também atribuimos o status code 200. Ambos o conteúdo e o status code serão então enviados de volta para o cliente, fazendo com que o browser mostre o conteúdo HTML de nosso template.</p>
 
-<p>Por questões de simplicidade, ignorei completamente qualquer erro que possa ocorrer em <code class="highlighter-rouge">ParseFiles</code> and <code class="highlighter-rouge">Execute</code>. Isto não é uma boa prática, pois devemos sempre tratar os errors corretamente. Deixei isto para mais tarde quando faremos algumas refatorações neste código.</p>
+<p>Por questões de simplicidade, ignorei completamente qualquer erro que possa ocorrer em <code class="language-plaintext highlighter-rouge">ParseFiles</code> and <code class="language-plaintext highlighter-rouge">Execute</code>. Isto não é uma boa prática, pois devemos sempre tratar os errors corretamente. Deixei isto para mais tarde quando faremos algumas refatorações neste código.</p>
 
-<p>Abaixo está o conteúdo de nosso template <code class="highlighter-rouge">index.html</code>.</p>
+<p>Abaixo está o conteúdo de nosso template <code class="language-plaintext highlighter-rouge">index.html</code>.</p>
 
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;!doctype html&gt;</span>
 <span class="nt">&lt;html&gt;</span>
@@ -240,15 +242,15 @@
 <span class="nt">&lt;/html&gt;</span>
 </code></pre></div></div>
 
-<p>Veja que temos duas variáveis dentro de chaves duplas. Estas variáveis são substituidas pelo conteúdo da structura que você passa no segundo parâmetro da função <code class="highlighter-rouge">tpl.Execute</code>.</p>
+<p>Veja que temos duas variáveis dentro de chaves duplas. Estas variáveis são substituidas pelo conteúdo da structura que você passa no segundo parâmetro da função <code class="language-plaintext highlighter-rouge">tpl.Execute</code>.</p>
 
-<p>Você pode testar esta aplicação executando <code class="highlighter-rouge">go run main.go</code> em seu terminal favorito e navegando até o endereço <code class="highlighter-rouge">http://localhost:8080/</code> em qualquer navegador.</p>
+<p>Você pode testar esta aplicação executando <code class="language-plaintext highlighter-rouge">go run main.go</code> em seu terminal favorito e navegando até o endereço <code class="language-plaintext highlighter-rouge">http://localhost:8080/</code> em qualquer navegador.</p>
 
 <p>Se tudo ocorreu bem você deverá ver uma mensagem de boas vindas impressa na tela.</p>
 
 <p>Sim, isto é tudo que você precisa. Nada de Apache, Tomcat ou ISS. Por estarmos utilizando o próprio servidor HTTP do Go não é necessário nenhum outro container web.</p>
 
-<p>A parte interessante é que, mesmo tendo configurado nosso servidor para processar apenas a rota <code class="highlighter-rouge">/</code>, você pode navegar para <strong>qualquer</strong> página neste endereço e o retorno será sempre este mesma mensagem.</p>
+<p>A parte interessante é que, mesmo tendo configurado nosso servidor para processar apenas a rota <code class="language-plaintext highlighter-rouge">/</code>, você pode navegar para <strong>qualquer</strong> página neste endereço e o retorno será sempre este mesma mensagem.</p>
 
 <p>Isto pode parecer estranho para alguns, mas é assim que o router padrão do Go funciona. Você consegue mais informações sobre isto na <a href="https://golang.org/src/net/http/server.go?s=57308:57433#L1890">documentação oficial</a> deste pacote.</p>
 
@@ -257,7 +259,7 @@
 <h3 id="vamos-recapituar-o-que-aprendemos-até-agora">Vamos recapituar o que aprendemos até agora:</h3>
 
 <ol>
-  <li><code class="highlighter-rouge">http</code> faz parte da biblioteca padrão do Go e pode ser usada para criar servidores e clientes HTTP.</li>
+  <li><code class="language-plaintext highlighter-rouge">http</code> faz parte da biblioteca padrão do Go e pode ser usada para criar servidores e clientes HTTP.</li>
   <li>Não precisamos de nenhum container web para hospedar nossa aplicação escrita em Go.</li>
   <li>O router padrão do Go é fácil de usar, mas possui alguns efeitos colaterais.</li>
 </ol>

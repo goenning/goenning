@@ -13,9 +13,9 @@
     <link rel="alternate" type="application/rss+xml" title="@goenning - loop at { run; code; blog; swim; eat; cycle; } until tired;" href="/feed.xml" />
     
 
-    <!-- Begin Jekyll SEO tag v2.5.0 -->
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>Conectando o mundo externo ao SAP com o uso de RFC | @goenning</title>
-<meta name="generator" content="Jekyll v3.8.5" />
+<meta name="generator" content="Jekyll v4.2.0" />
 <meta property="og:title" content="Conectando o mundo externo ao SAP com o uso de RFC" />
 <meta name="author" content="@goenning" />
 <meta property="og:locale" content="pt" />
@@ -26,8 +26,10 @@
 <meta property="og:site_name" content="@goenning" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2015-03-13T00:00:00-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Conectando o mundo externo ao SAP com o uso de RFC" />
 <script type="application/ld+json">
-{"headline":"Conectando o mundo externo ao SAP com o uso de RFC","dateModified":"2015-03-13T00:00:00-05:00","datePublished":"2015-03-13T00:00:00-05:00","url":"https://goenning.net/2015/03/13/conectando-o-mundo-externo-ao-sap-com-o-uso-de-rfc/","author":{"@type":"Person","name":"@goenning"},"description":"RFC é a interface padrão de comunicação entre sistemas SAP. É através deste protocolo que as informações são trocadas entre diferentes ambientes. Para que isto funcione é necessário configurar na transação SM59 o que são chamados de RFC Destination. Quando criamos uma RFC Destination é necessário informar as configurações técnicas, logon e também um nome. É este nome que é usado quando precisamos chamar uma função no sistema de destino.","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://goenning.net/2015/03/13/conectando-o-mundo-externo-ao-sap-com-o-uso-de-rfc/"},"@context":"http://schema.org"}</script>
+{"author":{"@type":"Person","name":"@goenning"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://goenning.net/2015/03/13/conectando-o-mundo-externo-ao-sap-com-o-uso-de-rfc/"},"@type":"BlogPosting","description":"RFC é a interface padrão de comunicação entre sistemas SAP. É através deste protocolo que as informações são trocadas entre diferentes ambientes. Para que isto funcione é necessário configurar na transação SM59 o que são chamados de RFC Destination. Quando criamos uma RFC Destination é necessário informar as configurações técnicas, logon e também um nome. É este nome que é usado quando precisamos chamar uma função no sistema de destino.","headline":"Conectando o mundo externo ao SAP com o uso de RFC","dateModified":"2015-03-13T00:00:00-05:00","url":"https://goenning.net/2015/03/13/conectando-o-mundo-externo-ao-sap-com-o-uso-de-rfc/","datePublished":"2015-03-13T00:00:00-05:00","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   </head>
@@ -160,7 +162,7 @@
   <div class="entry">
     <p>RFC é a interface padrão de comunicação entre sistemas SAP. É através deste protocolo que as informações são trocadas entre diferentes ambientes. Para que isto funcione é necessário configurar na transação SM59 o que são chamados de <strong>RFC Destination</strong>. Quando criamos uma RFC Destination é necessário informar as configurações técnicas, logon e também um nome. É este nome que é usado quando precisamos chamar uma função no sistema de destino.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>REPORT zrfc_dest.
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>REPORT zrfc_dest.
 
 DATA: v_name(40) TYPE c.
 
@@ -188,7 +190,7 @@ CALL FUNCTION 'Z_BUSCADADOS'
 
 <p>A função ficou assim.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>FUNCTION z_get_scar.
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>FUNCTION z_get_scar.
 *"----------------------------------------------------------------------
 *"*"Interface local:
 *"  IMPORTING
@@ -272,7 +274,7 @@ ENDFUNCTION.
 
 <p>Até mesmo a sintaxe é muito parecida. Veja só como ficou o arquivo de configuração e o programa main.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jco.client.lang=en
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jco.client.lang=en
 jco.client.client=001
 jco.client.passwd=sapadmin2
 jco.client.user=bcuser
@@ -280,7 +282,7 @@ jco.client.sysnr=00
 jco.client.ashost=sap-vm
 </code></pre></div></div>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">br</span><span class="o">.</span><span class="na">com</span><span class="o">.</span><span class="na">teste</span><span class="o">;</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">br.com.teste</span><span class="o">;</span>
 
 <span class="kn">import</span> <span class="nn">com.sap.conn.jco.JCoDestination</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">com.sap.conn.jco.JCoDestinationManager</span><span class="o">;</span>
@@ -289,22 +291,22 @@ jco.client.ashost=sap-vm
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Program</span> <span class="o">{</span>
 	
-	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">JCoException</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">JCoException</span> <span class="o">{</span>
 
-        <span class="n">JCoDestination</span> <span class="n">destination</span> <span class="o">=</span> <span class="n">JCoDestinationManager</span><span class="o">.</span><span class="na">getDestination</span><span class="o">(</span><span class="s">"ABAP_AS"</span><span class="o">);</span>
-        <span class="n">JCoFunction</span> <span class="n">function</span> <span class="o">=</span> <span class="n">destination</span><span class="o">.</span><span class="na">getRepository</span><span class="o">().</span><span class="na">getFunction</span><span class="o">(</span><span class="s">"Z_GET_SCAR"</span><span class="o">);</span>
+        <span class="nc">JCoDestination</span> <span class="n">destination</span> <span class="o">=</span> <span class="nc">JCoDestinationManager</span><span class="o">.</span><span class="na">getDestination</span><span class="o">(</span><span class="s">"ABAP_AS"</span><span class="o">);</span>
+        <span class="nc">JCoFunction</span> <span class="n">function</span> <span class="o">=</span> <span class="n">destination</span><span class="o">.</span><span class="na">getRepository</span><span class="o">().</span><span class="na">getFunction</span><span class="o">(</span><span class="s">"Z_GET_SCAR"</span><span class="o">);</span>
 		
         <span class="n">function</span><span class="o">.</span><span class="na">getImportParameterList</span><span class="o">().</span><span class="na">setValue</span><span class="o">(</span><span class="s">"I_CARRID"</span><span class="o">,</span> <span class="s">"ZZZ"</span><span class="o">);</span>
         <span class="k">try</span> <span class="o">{</span>
             <span class="n">function</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">destination</span><span class="o">);</span>
-            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">function</span><span class="o">.</span><span class="na">getExportParameterList</span><span class="o">().</span><span class="na">getString</span><span class="o">(</span><span class="s">"E_CARRNAME"</span><span class="o">));</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">function</span><span class="o">.</span><span class="na">getExportParameterList</span><span class="o">().</span><span class="na">getString</span><span class="o">(</span><span class="s">"E_CARRNAME"</span><span class="o">));</span>
         <span class="o">}</span>
-        <span class="k">catch</span> <span class="o">(</span><span class="n">JCoException</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">catch</span> <span class="o">(</span><span class="nc">JCoException</span> <span class="n">ex</span><span class="o">)</span> <span class="o">{</span>
             <span class="k">if</span> <span class="o">(</span><span class="n">ex</span><span class="o">.</span><span class="na">getKey</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="s">"CARR_NOT_FOUND"</span><span class="o">))</span> <span class="o">{</span>
-                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Não foi encontrado uma Cia. Aérea com o código informado."</span><span class="o">);</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Não foi encontrado uma Cia. Aérea com o código informado."</span><span class="o">);</span>
             <span class="o">}</span>
         <span class="o">}</span>
-        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
     <span class="o">}</span>
 <span class="o">}</span>
 </code></pre></div></div>

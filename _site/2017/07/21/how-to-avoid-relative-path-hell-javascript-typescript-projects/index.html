@@ -13,9 +13,9 @@
     <link rel="alternate" type="application/rss+xml" title="@goenning - loop at { run; code; blog; swim; eat; cycle; } until tired;" href="/feed.xml" />
     
 
-    <!-- Begin Jekyll SEO tag v2.5.0 -->
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>How to avoid relative path hell in JavaScript / TypeScript projects | @goenning</title>
-<meta name="generator" content="Jekyll v3.8.5" />
+<meta name="generator" content="Jekyll v4.2.0" />
 <meta property="og:title" content="How to avoid relative path hell in JavaScript / TypeScript projects" />
 <meta name="author" content="@goenning" />
 <meta property="og:locale" content="en" />
@@ -26,8 +26,10 @@
 <meta property="og:site_name" content="@goenning" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2017-07-21T00:00:00-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="How to avoid relative path hell in JavaScript / TypeScript projects" />
 <script type="application/ld+json">
-{"headline":"How to avoid relative path hell in JavaScript / TypeScript projects","dateModified":"2017-07-21T00:00:00-05:00","datePublished":"2017-07-21T00:00:00-05:00","url":"https://goenning.net/2017/07/21/how-to-avoid-relative-path-hell-javascript-typescript-projects/","author":{"@type":"Person","name":"@goenning"},"description":"Relative path hell is a common pain point on large JavaScript/TypeScript projects. Learn how Webpack can help you avoid this problem.","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://goenning.net/2017/07/21/how-to-avoid-relative-path-hell-javascript-typescript-projects/"},"@context":"http://schema.org"}</script>
+{"author":{"@type":"Person","name":"@goenning"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://goenning.net/2017/07/21/how-to-avoid-relative-path-hell-javascript-typescript-projects/"},"@type":"BlogPosting","description":"Relative path hell is a common pain point on large JavaScript/TypeScript projects. Learn how Webpack can help you avoid this problem.","headline":"How to avoid relative path hell in JavaScript / TypeScript projects","dateModified":"2017-07-21T00:00:00-05:00","url":"https://goenning.net/2017/07/21/how-to-avoid-relative-path-hell-javascript-typescript-projects/","datePublished":"2017-07-21T00:00:00-05:00","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   </head>
@@ -164,13 +166,13 @@
 
 <p>Whenever a local module A depends on another local module B, it has to be imported using relative path, like these two examples.</p>
 
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">DefaultRenderer</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'../../../renderers'</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">PayPalClient</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'../../services/PayPal'</span>
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">DefaultRenderer</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../../../renderers</span><span class="dl">'</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">PayPalClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../../services/PayPal</span><span class="dl">'</span>
 </code></pre></div></div>
 
 <p>This approach brings some issues to the table whenever your codebase starts to grow. There’s a need to know where both the current and target module are in the folder structure. This is a big hurdle to refactoring and readability.</p>
 
-<p>Where is <code class="highlighter-rouge">../../../renderers</code> located? Can you easily find it? One or two folders above might be ok, but more than that you get a ticket to hell.</p>
+<p>Where is <code class="language-plaintext highlighter-rouge">../../../renderers</code> located? Can you easily find it? One or two folders above might be ok, but more than that you get a ticket to hell.</p>
 
 <p>On regards to refactoring, every time <strong>ANY module</strong> is moved up or down the tree, there’ll be a need to fix the relative path of both consumers and imported modules. Not a fun thing to do, right?</p>
 
@@ -180,20 +182,20 @@
 
 <p>Previous example can be rewritten to.</p>
 
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">DefaultRenderer</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'@app/renderers'</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">PayPalClient</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'@app/services/PayPal'</span>
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">DefaultRenderer</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@app/renderers</span><span class="dl">'</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">PayPalClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@app/services/PayPal</span><span class="dl">'</span>
 </code></pre></div></div>
 
-<p>Cool, isn’t it? You don’t need to care where your current module is, just where to find target module starting from root path. This can be easily achieved by adding a <code class="highlighter-rouge">resolve.alias</code> to your <code class="highlighter-rouge">webpack.config.js</code>.</p>
+<p>Cool, isn’t it? You don’t need to care where your current module is, just where to find target module starting from root path. This can be easily achieved by adding a <code class="language-plaintext highlighter-rouge">resolve.alias</code> to your <code class="language-plaintext highlighter-rouge">webpack.config.js</code>.</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">resolve</span><span class="p">:</span> <span class="p">{</span>
   <span class="nl">alias</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'@app'</span><span class="p">:</span> <span class="nx">path</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="s1">'src/'</span><span class="p">)</span>
+    <span class="dl">'</span><span class="s1">@app</span><span class="dl">'</span><span class="p">:</span> <span class="nx">path</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="dl">'</span><span class="s1">src/</span><span class="dl">'</span><span class="p">)</span>
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
-<p>In this example everything that starts with <code class="highlighter-rouge">@app</code> will be loaded from <code class="highlighter-rouge">src/</code>. I like to call it <code class="highlighter-rouge">@app</code> as it becomes easy to know whenever you’re importing something from your app rather than a NPM module.</p>
+<p>In this example everything that starts with <code class="language-plaintext highlighter-rouge">@app</code> will be loaded from <code class="language-plaintext highlighter-rouge">src/</code>. I like to call it <code class="language-plaintext highlighter-rouge">@app</code> as it becomes easy to know whenever you’re importing something from your app rather than a NPM module.</p>
 
 <p>The benefit in this case is that no matter where you move the file that imports these modules, there’s no need to change the path.</p>
 
@@ -209,10 +211,10 @@
 <p>There’s a particular compiler setting that can change module resolution inside TypeScript so that it’d find these modules the same way that Webpack does.</p>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"compilerOptions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"baseUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"./src"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"paths"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"@app/*"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="nl">"compilerOptions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"baseUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"./src"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"paths"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"@app/*"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                 </span><span class="s2">"*"</span><span class="w">
             </span><span class="p">]</span><span class="w">
         </span><span class="p">}</span><span class="w">
@@ -220,7 +222,7 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 
-<p>That’s all you’ll need. The compiler will now know where to find type definition of any module that starts with <code class="highlighter-rouge">@app</code>.</p>
+<p>That’s all you’ll need. The compiler will now know where to find type definition of any module that starts with <code class="language-plaintext highlighter-rouge">@app</code>.</p>
 
 <p><em>Please note that these settings are NOT mutually exclusive, if you’re using TypeScript you’ll need both Webpack AND TypeScript settings.</em></p>
 

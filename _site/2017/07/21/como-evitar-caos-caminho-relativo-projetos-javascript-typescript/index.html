@@ -13,9 +13,9 @@
     <link rel="alternate" type="application/rss+xml" title="@goenning - loop at { run; code; blog; swim; eat; cycle; } until tired;" href="/feed.xml" />
     
 
-    <!-- Begin Jekyll SEO tag v2.5.0 -->
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>Como evitar o caos de caminho relativo em projetos JavaScript / TypeScript | @goenning</title>
-<meta name="generator" content="Jekyll v3.8.5" />
+<meta name="generator" content="Jekyll v4.2.0" />
 <meta property="og:title" content="Como evitar o caos de caminho relativo em projetos JavaScript / TypeScript" />
 <meta name="author" content="@goenning" />
 <meta property="og:locale" content="pt" />
@@ -26,8 +26,10 @@
 <meta property="og:site_name" content="@goenning" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2017-07-21T00:00:00-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Como evitar o caos de caminho relativo em projetos JavaScript / TypeScript" />
 <script type="application/ld+json">
-{"headline":"Como evitar o caos de caminho relativo em projetos JavaScript / TypeScript","dateModified":"2017-07-21T00:00:00-05:00","datePublished":"2017-07-21T00:00:00-05:00","url":"https://goenning.net/2017/07/21/como-evitar-caos-caminho-relativo-projetos-javascript-typescript/","author":{"@type":"Person","name":"@goenning"},"description":"Caso na importação de módulos usando caminho relativo é algo bem comum em grandes projetos JavaScript/TypeScript. Aprenda aqui como usar Webpack para resolver este problema.","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://goenning.net/2017/07/21/como-evitar-caos-caminho-relativo-projetos-javascript-typescript/"},"@context":"http://schema.org"}</script>
+{"author":{"@type":"Person","name":"@goenning"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://goenning.net/2017/07/21/como-evitar-caos-caminho-relativo-projetos-javascript-typescript/"},"@type":"BlogPosting","description":"Caso na importação de módulos usando caminho relativo é algo bem comum em grandes projetos JavaScript/TypeScript. Aprenda aqui como usar Webpack para resolver este problema.","headline":"Como evitar o caos de caminho relativo em projetos JavaScript / TypeScript","dateModified":"2017-07-21T00:00:00-05:00","url":"https://goenning.net/2017/07/21/como-evitar-caos-caminho-relativo-projetos-javascript-typescript/","datePublished":"2017-07-21T00:00:00-05:00","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   </head>
@@ -167,13 +169,13 @@
 
 <p>Quando um módulo local importa outro módulo local, o caminho do módulo deve ser relativo, assim como estes dois exemplos.</p>
 
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">DefaultRenderer</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'../../../renderers'</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">PayPalClient</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'../../services/PayPal'</span>
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">DefaultRenderer</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../../../renderers</span><span class="dl">'</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">PayPalClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../../services/PayPal</span><span class="dl">'</span>
 </code></pre></div></div>
 
 <p>Isto pode ser um problema quando o tamanho do código aumenta, pois é necessário saber exatamente em que diretório estão os dois módulos, tornando a refatoração e a legibilidade muito mais complicada.</p>
 
-<p>Onde é que <code class="highlighter-rouge">../../../renderers</code> está localizada? Você consegue facilmente encontrá-lo? Um ou dois diretórios acima tudo bem, porém mais que isto fica compicado.</p>
+<p>Onde é que <code class="language-plaintext highlighter-rouge">../../../renderers</code> está localizada? Você consegue facilmente encontrá-lo? Um ou dois diretórios acima tudo bem, porém mais que isto fica compicado.</p>
 
 <p>Com relação à refatoração, quando qualquer <strong>módulo</strong> é movido para cima ou para baixo na árquivo de arquivos, é necessário alterar o caminho relativo dos consumidores e também dos módulos importantes. Nada legal, não é?</p>
 
@@ -183,20 +185,20 @@
 
 <p>O exempo anterior pode ser re-escrito assim:</p>
 
-<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">DefaultRenderer</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'@app/renderers'</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">PayPalClient</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'@app/services/PayPal'</span>
+<div class="language-typescript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">DefaultRenderer</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@app/renderers</span><span class="dl">'</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">PayPalClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@app/services/PayPal</span><span class="dl">'</span>
 </code></pre></div></div>
 
-<p>Melhor, não é? Não é preciso se importar em que diretório o módulo consumidor está, apenas onde o módulo a ser importado se encontra após o apelido. A alteração no webpack acontece no arquivo <code class="highlighter-rouge">webpack.config.js</code>, basta adicionar a propriedade <code class="highlighter-rouge">resolve.alias</code>.</p>
+<p>Melhor, não é? Não é preciso se importar em que diretório o módulo consumidor está, apenas onde o módulo a ser importado se encontra após o apelido. A alteração no webpack acontece no arquivo <code class="language-plaintext highlighter-rouge">webpack.config.js</code>, basta adicionar a propriedade <code class="language-plaintext highlighter-rouge">resolve.alias</code>.</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">resolve</span><span class="p">:</span> <span class="p">{</span>
   <span class="nl">alias</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s1">'@app'</span><span class="p">:</span> <span class="nx">path</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="s1">'src/'</span><span class="p">)</span>
+    <span class="dl">'</span><span class="s1">@app</span><span class="dl">'</span><span class="p">:</span> <span class="nx">path</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="dl">'</span><span class="s1">src/</span><span class="dl">'</span><span class="p">)</span>
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
-<p>Neste exemplo tudo o que começar com <code class="highlighter-rouge">@app</code> será carregado de <code class="highlighter-rouge">src/</code>. Eu gosto de chamar de <code class="highlighter-rouge">@app</code>, pois fica fácil de lembrar que você está importanto algo de seu próprio projeto e não de um pacote NPM.</p>
+<p>Neste exemplo tudo o que começar com <code class="language-plaintext highlighter-rouge">@app</code> será carregado de <code class="language-plaintext highlighter-rouge">src/</code>. Eu gosto de chamar de <code class="language-plaintext highlighter-rouge">@app</code>, pois fica fácil de lembrar que você está importanto algo de seu próprio projeto e não de um pacote NPM.</p>
 
 <p>O benefício é que neste caso não é relevante em que diretório onde o módulo consumidor está, apenas o módulo a ser importado.</p>
 
@@ -212,10 +214,10 @@
 <p>Existe uma configuração no compilador semelhantes ao do Wepback</p>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"compilerOptions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"baseUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"./src"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"paths"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"@app/*"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="nl">"compilerOptions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"baseUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"./src"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"paths"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"@app/*"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                 </span><span class="s2">"*"</span><span class="w">
             </span><span class="p">]</span><span class="w">
         </span><span class="p">}</span><span class="w">
@@ -223,7 +225,7 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 
-<p>E isto é tudo o que você precisa. O compilador agora sabe onde encontrar a definição de tipos de qualquer módulo que inicie com <code class="highlighter-rouge">@app</code>.</p>
+<p>E isto é tudo o que você precisa. O compilador agora sabe onde encontrar a definição de tipos de qualquer módulo que inicie com <code class="language-plaintext highlighter-rouge">@app</code>.</p>
 
 <p><em>Note que estas configurações NÃO são mutuamente exclusivas, se você utilizar TypeScript, ambas as configurações são necessárias.</em></p>
 

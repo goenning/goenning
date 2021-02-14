@@ -13,9 +13,9 @@
     <link rel="alternate" type="application/rss+xml" title="@goenning - loop at { run; code; blog; swim; eat; cycle; } until tired;" href="/feed.xml" />
     
 
-    <!-- Begin Jekyll SEO tag v2.5.0 -->
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>Adding SEO to Single Page Applications with Rendergun | @goenning</title>
-<meta name="generator" content="Jekyll v3.8.5" />
+<meta name="generator" content="Jekyll v4.2.0" />
 <meta property="og:title" content="Adding SEO to Single Page Applications with Rendergun" />
 <meta name="author" content="@goenning" />
 <meta property="og:locale" content="en" />
@@ -26,8 +26,10 @@
 <meta property="og:site_name" content="@goenning" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2019-11-05T00:00:00-06:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Adding SEO to Single Page Applications with Rendergun" />
 <script type="application/ld+json">
-{"headline":"Adding SEO to Single Page Applications with Rendergun","dateModified":"2019-11-05T00:00:00-06:00","datePublished":"2019-11-05T00:00:00-06:00","url":"https://goenning.net/2019/11/05/seo-on-spa-apps-with-rendergun/","author":{"@type":"Person","name":"@goenning"},"description":"SPA and SEO are two acronyms that don’t fit well together on the same sentence. Even though Google is able to crawl and index client-side rendered websites since 2015, there are a few reasons why this is not yet recommended. On this post I’ll take you though an alternative solution on how to make a SPA page SEO-ready using a technique called “Dynamic Rendering” and an open source project called Rendergun.","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://goenning.net/2019/11/05/seo-on-spa-apps-with-rendergun/"},"@context":"http://schema.org"}</script>
+{"author":{"@type":"Person","name":"@goenning"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://goenning.net/2019/11/05/seo-on-spa-apps-with-rendergun/"},"@type":"BlogPosting","description":"SPA and SEO are two acronyms that don’t fit well together on the same sentence. Even though Google is able to crawl and index client-side rendered websites since 2015, there are a few reasons why this is not yet recommended. On this post I’ll take you though an alternative solution on how to make a SPA page SEO-ready using a technique called “Dynamic Rendering” and an open source project called Rendergun.","headline":"Adding SEO to Single Page Applications with Rendergun","dateModified":"2019-11-05T00:00:00-06:00","url":"https://goenning.net/2019/11/05/seo-on-spa-apps-with-rendergun/","datePublished":"2019-11-05T00:00:00-06:00","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   </head>
@@ -224,21 +226,21 @@
 
 <p>We now have rendergun running locally on port 3000.</p>
 
-<p>Let’s use <a href="https://getfider.com">Fider</a> as an example of a client-side rendered website. When we open <code class="highlighter-rouge">https://feedback.fider.io</code> on a browser, it’ll download a few javascript files and render the page on the client using React.</p>
+<p>Let’s use <a href="https://getfider.com">Fider</a> as an example of a client-side rendered website. When we open <code class="language-plaintext highlighter-rouge">https://feedback.fider.io</code> on a browser, it’ll download a few javascript files and render the page on the client using React.</p>
 
-<p>But when we open <code class="highlighter-rouge">http://localhost:3000/render?url=https://feedback.fider.io</code> on a browser, rendergun will do the same operation using its headless chrome instance and return the rendered page as HTML. We can actually compare the response from both websites.</p>
+<p>But when we open <code class="language-plaintext highlighter-rouge">http://localhost:3000/render?url=https://feedback.fider.io</code> on a browser, rendergun will do the same operation using its headless chrome instance and return the rendered page as HTML. We can actually compare the response from both websites.</p>
 
-<p>The image below is the response from <code class="highlighter-rouge">https://feedback.fider.io</code>, note the body with empty divs and 4 JavaScript files.</p>
+<p>The image below is the response from <code class="language-plaintext highlighter-rouge">https://feedback.fider.io</code>, note the body with empty divs and 4 JavaScript files.</p>
 
 <p><img src="/public/images/2019/11/fider-client-side.png" alt="" /></p>
 
-<p>Compare it with this one from <code class="highlighter-rouge">http://localhost:3000/render?url=https://feedback.fider.io</code>, note the body with the whole HTML content and no JavaScript files.</p>
+<p>Compare it with this one from <code class="language-plaintext highlighter-rouge">http://localhost:3000/render?url=https://feedback.fider.io</code>, note the body with the whole HTML content and no JavaScript files.</p>
 
 <p><img src="/public/images/2019/11/fider-server-side.png" alt="" /></p>
 
 <p>When integrating rendergun into SPA, a thin server is required so that we can intercept crawler requests and handle it differently. The pseudocode would look something like the following.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>if isCrawlerRequest() 
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>if isCrawlerRequest() 
 {
     var response = httpClient.get('&lt;rendergunURL&gt;/render?url=' + request.url)
     return response.body;
@@ -247,7 +249,7 @@ var file = readFile('index.html')
 return file.content;
 </code></pre></div></div>
 
-<p>We would basically check if the request is coming from a crawler by looking at the <code class="highlighter-rouge">User-Agent</code> request header.</p>
+<p>We would basically check if the request is coming from a crawler by looking at the <code class="language-plaintext highlighter-rouge">User-Agent</code> request header.</p>
 
 <ul>
   <li>If that’s true, ask rendergun to render the current page and return the result, which is the server side rendered HTML;</li>

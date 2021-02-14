@@ -13,9 +13,9 @@
     <link rel="alternate" type="application/rss+xml" title="@goenning - loop at { run; code; blog; swim; eat; cycle; } until tired;" href="/feed.xml" />
     
 
-    <!-- Begin Jekyll SEO tag v2.5.0 -->
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>Open SQL vs Native SQL | @goenning</title>
-<meta name="generator" content="Jekyll v3.8.5" />
+<meta name="generator" content="Jekyll v4.2.0" />
 <meta property="og:title" content="Open SQL vs Native SQL" />
 <meta name="author" content="@goenning" />
 <meta property="og:locale" content="pt" />
@@ -26,8 +26,10 @@
 <meta property="og:site_name" content="@goenning" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2015-03-13T00:00:00-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Open SQL vs Native SQL" />
 <script type="application/ld+json">
-{"headline":"Open SQL vs Native SQL","dateModified":"2015-03-13T00:00:00-05:00","datePublished":"2015-03-13T00:00:00-05:00","url":"https://goenning.net/2015/03/13/open-sql-vs-native-sql/","author":{"@type":"Person","name":"@goenning"},"description":"O assunto que vamos explorar aqui são os comandos e os componentes envolvidos no acesso ao banco de dados na plataforma ABAP.","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://goenning.net/2015/03/13/open-sql-vs-native-sql/"},"@context":"http://schema.org"}</script>
+{"author":{"@type":"Person","name":"@goenning"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://goenning.net/2015/03/13/open-sql-vs-native-sql/"},"@type":"BlogPosting","description":"O assunto que vamos explorar aqui são os comandos e os componentes envolvidos no acesso ao banco de dados na plataforma ABAP.","headline":"Open SQL vs Native SQL","dateModified":"2015-03-13T00:00:00-05:00","url":"https://goenning.net/2015/03/13/open-sql-vs-native-sql/","datePublished":"2015-03-13T00:00:00-05:00","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   </head>
@@ -164,7 +166,7 @@
 
 <p>Veja um exemplo bem simples:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT sflight~connid 
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT sflight~connid 
        sflight~price
   FROM sflight
   INTO TABLE gt_flight
@@ -206,7 +208,7 @@
 
 <p>Veja abaixo um exemplo de uso do Native SQL:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>DATA: v_carrid TYPE scarr-carrid.
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>DATA: v_carrid TYPE scarr-carrid.
 
 EXEC SQL PERFORMING write_output.
   SELECT carrid

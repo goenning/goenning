@@ -13,9 +13,9 @@
     <link rel="alternate" type="application/rss+xml" title="@goenning - loop at { run; code; blog; swim; eat; cycle; } until tired;" href="/feed.xml" />
     
 
-    <!-- Begin Jekyll SEO tag v2.5.0 -->
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>How to enable SAP ICF in a miniSAP installation | @goenning</title>
-<meta name="generator" content="Jekyll v3.8.5" />
+<meta name="generator" content="Jekyll v4.2.0" />
 <meta property="og:title" content="How to enable SAP ICF in a miniSAP installation" />
 <meta name="author" content="@goenning" />
 <meta property="og:locale" content="en" />
@@ -26,8 +26,10 @@
 <meta property="og:site_name" content="@goenning" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2014-08-01T00:00:00-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="How to enable SAP ICF in a miniSAP installation" />
 <script type="application/ld+json">
-{"headline":"How to enable SAP ICF in a miniSAP installation","dateModified":"2014-08-01T00:00:00-05:00","datePublished":"2014-08-01T00:00:00-05:00","url":"https://goenning.net/2014/08/01/how-to-enable-sap-icf-in-minisap-installation/","author":{"@type":"Person","name":"@goenning"},"description":"If you ever try to access the ICF (Internet Communication Framework) Ping service in a newly installed miniSAP system, you’ll probably get a 404 error page. Don’t worry, the solution is quite simple.","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://goenning.net/2014/08/01/how-to-enable-sap-icf-in-minisap-installation/"},"@context":"http://schema.org"}</script>
+{"author":{"@type":"Person","name":"@goenning"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://goenning.net/2014/08/01/how-to-enable-sap-icf-in-minisap-installation/"},"@type":"BlogPosting","description":"If you ever try to access the ICF (Internet Communication Framework) Ping service in a newly installed miniSAP system, you’ll probably get a 404 error page. Don’t worry, the solution is quite simple.","headline":"How to enable SAP ICF in a miniSAP installation","dateModified":"2014-08-01T00:00:00-05:00","url":"https://goenning.net/2014/08/01/how-to-enable-sap-icf-in-minisap-installation/","datePublished":"2014-08-01T00:00:00-05:00","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   </head>
@@ -159,21 +161,21 @@
 
 <h2 id="ping-and-most-of-other-icf-services-are-disabled-by-default">Ping (and most of other ICF services) are disabled by default</h2>
 
-<p>Enter <code class="highlighter-rouge">SICF</code> transaction and navigate through the tree until you reach <code class="highlighter-rouge">default_host/sap/bc/ping</code> node. Note that the service is disabled. Right click it and choose <code class="highlighter-rouge">Activate Service</code>. Now you can test it using your favorite internet browser. The default
-address, which is <code class="highlighter-rouge">&lt;computer-name&gt;:8000/sap/bc/ping?sap-client=001</code>.</p>
+<p>Enter <code class="language-plaintext highlighter-rouge">SICF</code> transaction and navigate through the tree until you reach <code class="language-plaintext highlighter-rouge">default_host/sap/bc/ping</code> node. Note that the service is disabled. Right click it and choose <code class="language-plaintext highlighter-rouge">Activate Service</code>. Now you can test it using your favorite internet browser. The default
+address, which is <code class="language-plaintext highlighter-rouge">&lt;computer-name&gt;:8000/sap/bc/ping?sap-client=001</code>.</p>
 
 <p>Still didn’t work?</p>
 
-<p>You’ll need to find in which port your ICF is running. Right click the ping service and choose option <code class="highlighter-rouge">Test Service</code>. SAP will start your default browser and navigate to the ping service using the configured port. If you see port <code class="highlighter-rouge">0</code>, than you’ll need to change it.</p>
+<p>You’ll need to find in which port your ICF is running. Right click the ping service and choose option <code class="language-plaintext highlighter-rouge">Test Service</code>. SAP will start your default browser and navigate to the ping service using the configured port. If you see port <code class="language-plaintext highlighter-rouge">0</code>, than you’ll need to change it.</p>
 
-<p>Find the file <code class="highlighter-rouge">C:\usr\sap\NSP\SYS\profile\DEFAULT.PFL</code> in your FileSystem and add these two lines to the bottom.</p>
+<p>Find the file <code class="language-plaintext highlighter-rouge">C:\usr\sap\NSP\SYS\profile\DEFAULT.PFL</code> in your FileSystem and add these two lines to the bottom.</p>
 
 <blockquote>
   <p>icm/host_name_full = <nome-seu-servidor>
 icm/server_port_0 = PROT=HTTP,PORT=8000,TIMEOUT=3600,PROCTIMEOUT=3600</nome-seu-servidor></p>
 </blockquote>
 
-<p>After that, restart your miniSAP system and try using the <code class="highlighter-rouge">Ping</code> service again.</p>
+<p>After that, restart your miniSAP system and try using the <code class="language-plaintext highlighter-rouge">Ping</code> service again.</p>
 
 <p>If everything works as expected, your credentials will be prompted and the following message will be shown.</p>
 

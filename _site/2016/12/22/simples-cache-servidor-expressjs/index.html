@@ -13,9 +13,9 @@
     <link rel="alternate" type="application/rss+xml" title="@goenning - loop at { run; code; blog; swim; eat; cycle; } until tired;" href="/feed.xml" />
     
 
-    <!-- Begin Jekyll SEO tag v2.5.0 -->
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>Um simples cache no lado servidor para Express.js em Node.js | @goenning</title>
-<meta name="generator" content="Jekyll v3.8.5" />
+<meta name="generator" content="Jekyll v4.2.0" />
 <meta property="og:title" content="Um simples cache no lado servidor para Express.js em Node.js" />
 <meta name="author" content="@goenning" />
 <meta property="og:locale" content="pt" />
@@ -26,8 +26,10 @@
 <meta property="og:site_name" content="@goenning" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2016-12-22T00:00:00-06:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Um simples cache no lado servidor para Express.js em Node.js" />
 <script type="application/ld+json">
-{"headline":"Um simples cache no lado servidor para Express.js em Node.js","dateModified":"2016-12-22T00:00:00-06:00","datePublished":"2016-12-22T00:00:00-06:00","url":"https://goenning.net/2016/12/22/simples-cache-servidor-expressjs/","author":{"@type":"Person","name":"@goenning"},"description":"Express é provavelmente o framework web mais extensível que vi até agora. Sua arquitetura baseada em middlewares torna muito fácil a adição de novas funcionalidades de forma padronizada e com mínimo esforço.","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://goenning.net/2016/12/22/simples-cache-servidor-expressjs/"},"@context":"http://schema.org"}</script>
+{"author":{"@type":"Person","name":"@goenning"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://goenning.net/2016/12/22/simples-cache-servidor-expressjs/"},"@type":"BlogPosting","description":"Express é provavelmente o framework web mais extensível que vi até agora. Sua arquitetura baseada em middlewares torna muito fácil a adição de novas funcionalidades de forma padronizada e com mínimo esforço.","headline":"Um simples cache no lado servidor para Express.js em Node.js","dateModified":"2016-12-22T00:00:00-06:00","url":"https://goenning.net/2016/12/22/simples-cache-servidor-expressjs/","datePublished":"2016-12-22T00:00:00-06:00","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   </head>
@@ -170,7 +172,7 @@
 
 <h2 id="sobre-cache-no-lado-servidor">Sobre cache no lado servidor</h2>
 
-<p><code class="highlighter-rouge">Caching</code> é provavelmnete a técnica mais comum para aumento de desempenho am qualquer aplicação, seja ela desktop, mobile ou web. Quando lidamos com aplicações web é recomendável fazermos bom uso dos cabeçalhos de resposta HTTP para que o lado cliente (browsers) possam <em>cachear</em> corretamente o conteúdo que você está servindo. Mas quando temos uma página complexa e que leva, por exemplo, 2 segundos para gerar a resposta em HTML, mesmo que habilitemos o cache do lado cliente, nosso servidor ainda assim terá que processar a requisição para cada diferente usuário acessando a aplicação.</p>
+<p><code class="language-plaintext highlighter-rouge">Caching</code> é provavelmnete a técnica mais comum para aumento de desempenho am qualquer aplicação, seja ela desktop, mobile ou web. Quando lidamos com aplicações web é recomendável fazermos bom uso dos cabeçalhos de resposta HTTP para que o lado cliente (browsers) possam <em>cachear</em> corretamente o conteúdo que você está servindo. Mas quando temos uma página complexa e que leva, por exemplo, 2 segundos para gerar a resposta em HTML, mesmo que habilitemos o cache do lado cliente, nosso servidor ainda assim terá que processar a requisição para cada diferente usuário acessando a aplicação.</p>
 
 <p>Imagine a página inicial de um grande portal de notícias. Eles precisam processar o HTML toda vez que recebe um novo visitante?</p>
 
@@ -184,11 +186,11 @@
 
 <p>Nosso middleware fica assim:</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">mcache</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'memory-cache'</span><span class="p">);</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">mcache</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">memory-cache</span><span class="dl">'</span><span class="p">);</span>
 
 <span class="kd">var</span> <span class="nx">cache</span> <span class="o">=</span> <span class="p">(</span><span class="nx">duration</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="k">return</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="kd">let</span> <span class="nx">key</span> <span class="o">=</span> <span class="s1">'__express__'</span> <span class="o">+</span> <span class="nx">req</span><span class="p">.</span><span class="nx">originalUrl</span> <span class="o">||</span> <span class="nx">req</span><span class="p">.</span><span class="nx">url</span>
+    <span class="kd">let</span> <span class="nx">key</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">__express__</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">req</span><span class="p">.</span><span class="nx">originalUrl</span> <span class="o">||</span> <span class="nx">req</span><span class="p">.</span><span class="nx">url</span>
     <span class="kd">let</span> <span class="nx">cachedBody</span> <span class="o">=</span> <span class="nx">mcache</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">key</span><span class="p">)</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">cachedBody</span><span class="p">)</span> <span class="p">{</span>
       <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">cachedBody</span><span class="p">)</span>
@@ -205,13 +207,13 @@
 <span class="p">}</span>
 </code></pre></div></div>
 
-<p>Ele basicamente verifica se a página já está <em>cacheada</em> utilizando sua URL como a chave. Se entrou, ótimo, obtenha o conteúdo e retorne. Se não encontrou, fazemos um <em>wrap</em> da função <code class="highlighter-rouge">send</code> para que possamos fazer o cache antes de efetivamente enviar a resposta para o cliente e então deixamos o Express.js seguir com o fluxo normal de processamento dos outros middlewares utilizando a funcão <code class="highlighter-rouge">next</code>.</p>
+<p>Ele basicamente verifica se a página já está <em>cacheada</em> utilizando sua URL como a chave. Se entrou, ótimo, obtenha o conteúdo e retorne. Se não encontrou, fazemos um <em>wrap</em> da função <code class="language-plaintext highlighter-rouge">send</code> para que possamos fazer o cache antes de efetivamente enviar a resposta para o cliente e então deixamos o Express.js seguir com o fluxo normal de processamento dos outros middlewares utilizando a funcão <code class="language-plaintext highlighter-rouge">next</code>.</p>
 
 <p>E aqui está um exemplo de como fazer uso do middleware.</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="s1">'/'</span><span class="p">,</span> <span class="nx">cache</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/</span><span class="dl">'</span><span class="p">,</span> <span class="nx">cache</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="nx">res</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="s1">'index'</span><span class="p">,</span> <span class="p">{</span> <span class="na">title</span><span class="p">:</span> <span class="s1">'Hey'</span><span class="p">,</span> <span class="na">message</span><span class="p">:</span> <span class="s1">'Hello there'</span><span class="p">,</span> <span class="na">date</span><span class="p">:</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">()})</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="dl">'</span><span class="s1">index</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">title</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Hey</span><span class="dl">'</span><span class="p">,</span> <span class="na">message</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Hello there</span><span class="dl">'</span><span class="p">,</span> <span class="na">date</span><span class="p">:</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">()})</span>
   <span class="p">},</span> <span class="mi">5000</span><span class="p">)</span> <span class="c1">//setTimeout was used to simulate a slow processing request</span>
 <span class="p">})</span>
 </code></pre></div></div>
@@ -224,7 +226,7 @@
 
 <p>Você pode simplesmente adicionar este middleware em qualquer rota de suas aplicações Express.js que você desejar fazer cache.</p>
 
-<p><em>Importante:</em> Operações <code class="highlighter-rouge">PUT</code>, <code class="highlighter-rouge">DELETE</code> and <code class="highlighter-rouge">POST</code> nunca devem ser <em>cacheadas</em>.</p>
+<p><em>Importante:</em> Operações <code class="language-plaintext highlighter-rouge">PUT</code>, <code class="language-plaintext highlighter-rouge">DELETE</code> and <code class="language-plaintext highlighter-rouge">POST</code> nunca devem ser <em>cacheadas</em>.</p>
 
 <p>Para este exemplo utilizamos um módulo do NPM para fazer o cache em memória, porém esta abordagem possui boas e más implicações.</p>
 
@@ -239,17 +241,17 @@
 
 <h2 id="código-completo">Código completo</h2>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s1">'use strict'</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="dl">'</span><span class="s1">use strict</span><span class="dl">'</span>
 
-<span class="kd">var</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'express'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">express</span><span class="dl">'</span><span class="p">);</span>
 <span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
-<span class="kd">var</span> <span class="nx">mcache</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'memory-cache'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">mcache</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">memory-cache</span><span class="dl">'</span><span class="p">);</span>
 
-<span class="nx">app</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="s1">'view engine'</span><span class="p">,</span> <span class="s1">'jade'</span><span class="p">);</span>
+<span class="nx">app</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="dl">'</span><span class="s1">view engine</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">jade</span><span class="dl">'</span><span class="p">);</span>
 
 <span class="kd">var</span> <span class="nx">cache</span> <span class="o">=</span> <span class="p">(</span><span class="nx">duration</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="k">return</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="kd">let</span> <span class="nx">key</span> <span class="o">=</span> <span class="s1">'__express__'</span> <span class="o">+</span> <span class="nx">req</span><span class="p">.</span><span class="nx">originalUrl</span> <span class="o">||</span> <span class="nx">req</span><span class="p">.</span><span class="nx">url</span>
+    <span class="kd">let</span> <span class="nx">key</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">__express__</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">req</span><span class="p">.</span><span class="nx">originalUrl</span> <span class="o">||</span> <span class="nx">req</span><span class="p">.</span><span class="nx">url</span>
     <span class="kd">let</span> <span class="nx">cachedBody</span> <span class="o">=</span> <span class="nx">mcache</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="nx">key</span><span class="p">)</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">cachedBody</span><span class="p">)</span> <span class="p">{</span>
       <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">cachedBody</span><span class="p">)</span>
@@ -265,30 +267,30 @@
   <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="s1">'/'</span><span class="p">,</span> <span class="nx">cache</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/</span><span class="dl">'</span><span class="p">,</span> <span class="nx">cache</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="nx">res</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="s1">'index'</span><span class="p">,</span> <span class="p">{</span> <span class="na">title</span><span class="p">:</span> <span class="s1">'Hey'</span><span class="p">,</span> <span class="na">message</span><span class="p">:</span> <span class="s1">'Hello there'</span><span class="p">,</span> <span class="na">date</span><span class="p">:</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">()})</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="dl">'</span><span class="s1">index</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">title</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Hey</span><span class="dl">'</span><span class="p">,</span> <span class="na">message</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Hello there</span><span class="dl">'</span><span class="p">,</span> <span class="na">date</span><span class="p">:</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">()})</span>
   <span class="p">},</span> <span class="mi">5000</span><span class="p">)</span> <span class="c1">//setTimeout was used to simulate a slow processing request</span>
 <span class="p">})</span>
 
-<span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="s1">'/user/:id'</span><span class="p">,</span> <span class="nx">cache</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/user/:id</span><span class="dl">'</span><span class="p">,</span> <span class="nx">cache</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">({</span> <span class="na">id</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="na">name</span><span class="p">:</span> <span class="s2">"John"</span><span class="p">})</span>
+      <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">({</span> <span class="na">id</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">John</span><span class="dl">"</span><span class="p">})</span>
     <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">({</span> <span class="na">id</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="na">name</span><span class="p">:</span> <span class="s2">"Bob"</span><span class="p">})</span>
+      <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">({</span> <span class="na">id</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Bob</span><span class="dl">"</span><span class="p">})</span>
     <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">({</span> <span class="na">id</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="na">name</span><span class="p">:</span> <span class="s2">"Stuart"</span><span class="p">})</span>
+      <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">({</span> <span class="na">id</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Stuart</span><span class="dl">"</span><span class="p">})</span>
     <span class="p">}</span>
   <span class="p">},</span> <span class="mi">3000</span><span class="p">)</span> <span class="c1">//setTimeout was used to simulate a slow processing request</span>
 <span class="p">})</span>
 
 <span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">((</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mi">404</span><span class="p">).</span><span class="nx">send</span><span class="p">(</span><span class="s1">''</span><span class="p">)</span> <span class="c1">//not found</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="p">(</span><span class="mi">404</span><span class="p">).</span><span class="nx">send</span><span class="p">(</span><span class="dl">''</span><span class="p">)</span> <span class="c1">//not found</span>
 <span class="p">})</span>
 
 <span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="mi">3000</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Example app listening on port 3000!'</span><span class="p">)</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Example app listening on port 3000!</span><span class="dl">'</span><span class="p">)</span>
 <span class="p">})</span>
 </code></pre></div></div>
 

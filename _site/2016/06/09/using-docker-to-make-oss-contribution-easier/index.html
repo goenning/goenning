@@ -13,9 +13,9 @@
     <link rel="alternate" type="application/rss+xml" title="@goenning - loop at { run; code; blog; swim; eat; cycle; } until tired;" href="/feed.xml" />
     
 
-    <!-- Begin Jekyll SEO tag v2.5.0 -->
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>Using Docker to make OSS contribution easier | @goenning</title>
-<meta name="generator" content="Jekyll v3.8.5" />
+<meta name="generator" content="Jekyll v4.2.0" />
 <meta property="og:title" content="Using Docker to make OSS contribution easier" />
 <meta name="author" content="@goenning" />
 <meta property="og:locale" content="en" />
@@ -26,8 +26,10 @@
 <meta property="og:site_name" content="@goenning" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2016-06-09T00:00:00-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Using Docker to make OSS contribution easier" />
 <script type="application/ld+json">
-{"headline":"Using Docker to make OSS contribution easier","dateModified":"2016-06-09T00:00:00-05:00","datePublished":"2016-06-09T00:00:00-05:00","url":"https://goenning.net/2016/06/09/using-docker-to-make-oss-contribution-easier/","author":{"@type":"Person","name":"@goenning"},"description":"While surfing through GitHub it’s not hard to find projects that has a complex how to contribute guide that aims to help newcomers to set up a bare minimum development environment.","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://goenning.net/2016/06/09/using-docker-to-make-oss-contribution-easier/"},"@context":"http://schema.org"}</script>
+{"author":{"@type":"Person","name":"@goenning"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://goenning.net/2016/06/09/using-docker-to-make-oss-contribution-easier/"},"@type":"BlogPosting","description":"While surfing through GitHub it’s not hard to find projects that has a complex how to contribute guide that aims to help newcomers to set up a bare minimum development environment.","headline":"Using Docker to make OSS contribution easier","dateModified":"2016-06-09T00:00:00-05:00","url":"https://goenning.net/2016/06/09/using-docker-to-make-oss-contribution-easier/","datePublished":"2016-06-09T00:00:00-05:00","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   </head>
@@ -146,7 +148,7 @@
 
 
   
-    • 4 minutes read
+    • 5 minutes read
   
 
     • 
@@ -159,13 +161,13 @@
   </small>
 
   <div class="entry">
-    <p>While surfing through GitHub it’s not hard to find projects that has a complex <code class="highlighter-rouge">how to contribute</code> guide that aims to help newcomers to set up a bare minimum development environment.</p>
+    <p>While surfing through GitHub it’s not hard to find projects that has a complex <code class="language-plaintext highlighter-rouge">how to contribute</code> guide that aims to help newcomers to set up a bare minimum development environment.</p>
 
 <p>These projects are way more complex than an utility library, for example, because it’s becoming more and more common to find projects that depends on Redis, ElasticSearch, SQL Databases and so on. Knex, for example, has a <a href="https://github.com/tgriesser/knex/blob/master/CONTRIBUTING.md">CONTRIBUTING.md</a> guide suggesting that you install MySQL and Postgres locally with a given username, password and database name so that you can run their integrations tests.</p>
 
 <p>Having to install all these services locally doesn’t make sense, it will eventually slow down your machine while your not coding and you’ll end up with a ton of services that are idle most of the time.</p>
 
-<p>Aside from that, we also happens to find projects that are as simple as <code class="highlighter-rouge">git clone</code>, <code class="highlighter-rouge">npm install</code>, <code class="highlighter-rouge">npm test</code> and hooray! You’re ready to grab an issue and start coding!</p>
+<p>Aside from that, we also happens to find projects that are as simple as <code class="language-plaintext highlighter-rouge">git clone</code>, <code class="language-plaintext highlighter-rouge">npm install</code>, <code class="language-plaintext highlighter-rouge">npm test</code> and hooray! You’re ready to grab an issue and start coding!</p>
 
 <p>That’s how it should work for every project, it encourages people to contribute to the project by having a simplified development environment.</p>
 
@@ -173,9 +175,9 @@
 
 <h3 id="docker-the-almighty-savior">Docker, the almighty savior</h3>
 
-<p>It’s really easy (and fast!) to launch a third-party service like Redis, ElasticSearch or any DB. In a single <code class="highlighter-rouge">docker run</code> command you have a service container up and running, without touching anything in your local machine. You can then use it to run your project’s integrations tests against it.</p>
+<p>It’s really easy (and fast!) to launch a third-party service like Redis, ElasticSearch or any DB. In a single <code class="language-plaintext highlighter-rouge">docker run</code> command you have a service container up and running, without touching anything in your local machine. You can then use it to run your project’s integrations tests against it.</p>
 
-<p>Most of the time, the standard Docker images are enough, but if you find yourself in a situation that needs some sort of customization, you can always roll out your own <code class="highlighter-rouge">Dockerfile</code> and publish it to your project’s repository. Anyone interested in contributing to your open source project can actually simulate the same environment you used for testing.</p>
+<p>Most of the time, the standard Docker images are enough, but if you find yourself in a situation that needs some sort of customization, you can always roll out your own <code class="language-plaintext highlighter-rouge">Dockerfile</code> and publish it to your project’s repository. Anyone interested in contributing to your open source project can actually simulate the same environment you used for testing.</p>
 
 <p>Want to know something cool? <a href="https://travis-ci.org/">travis-ci</a> supports Docker out of the box, so you can make your build service run the same tools you use in your development machine.</p>
 
@@ -183,9 +185,9 @@
 
 <p>Let’s dig into an example using <a href="https://github.com/goenning/miniprofiler-pg">miniprofiler-pg</a>, a library that monkey-patches all postgres commands that are issued by the application and provide helpful information to <a href="https://github.com/MiniProfiler/node">miniprofiler</a>. It’s a small package, so I ended up with a small test suite, but it’s good example on how to set up everything.</p>
 
-<p>Before running the following commands, make sure Docker is installed you can run commands like <code class="highlighter-rouge">docker ps</code>.</p>
+<p>Before running the following commands, make sure Docker is installed you can run commands like <code class="language-plaintext highlighter-rouge">docker ps</code>.</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/goenning/miniprofiler-pg.git
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/goenning/miniprofiler-pg.git
 cd miniprofiler-pg
 npm install
 npm run start-services #this will start a new Postgres container using docker
@@ -200,23 +202,23 @@ npm test
 
 <h3 id="how-does-it-work">How does it work?</h3>
 
-<p>Looking at <code class="highlighter-rouge">package.json</code> file it’s possible to see that <code class="highlighter-rouge">start-services</code> is just an alias to <code class="highlighter-rouge">docker run -d -e POSTGRES_USER=docker -e POSTGRES_PASSWORD=docker -p 5050:5432 postgres</code>.</p>
+<p>Looking at <code class="language-plaintext highlighter-rouge">package.json</code> file it’s possible to see that <code class="language-plaintext highlighter-rouge">start-services</code> is just an alias to <code class="language-plaintext highlighter-rouge">docker run -d -e POSTGRES_USER=docker -e POSTGRES_PASSWORD=docker -p 5050:5432 postgres</code>.</p>
 
-<p>This docker cmomand creates a new container based on <a href="https://hub.docker.com/_/postgres/">postgres</a> image, create a new user named docker with password docker and a database named docker as well. That’s all configurable, choose what best fits your needs. <code class="highlighter-rouge">-p</code> parameter binds the docker host port 5050 to the container port 5432.</p>
+<p>This docker cmomand creates a new container based on <a href="https://hub.docker.com/_/postgres/">postgres</a> image, create a new user named docker with password docker and a database named docker as well. That’s all configurable, choose what best fits your needs. <code class="language-plaintext highlighter-rouge">-p</code> parameter binds the docker host port 5050 to the container port 5432.</p>
 
 <p>To connect to the container’s database is pretty straightforward, but there is a little gotcha when you’re running <a href="https://docs.docker.com/machine/">docker-machine</a>. On MacOS and Windows hosts it’s mandatory use to docker-machine because docker engine only runs on Linux systems. So what docker-machine does is provision a new VirtualBox VM to hosts the docker engine. In the end it’s pretty much transparent, but your docker host you’ll end up with a different IP address that your localhost.</p>
 
-<p>It’s possible to get the docker host’s IP using <code class="highlighter-rouge">docker-machine ip</code>.</p>
+<p>It’s possible to get the docker host’s IP using <code class="language-plaintext highlighter-rouge">docker-machine ip</code>.</p>
 
-<p>An easier way is to <code class="highlighter-rouge">npm install docker-ip --save-dev</code> and use it like this:</p>
+<p>An easier way is to <code class="language-plaintext highlighter-rouge">npm install docker-ip --save-dev</code> and use it like this:</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">ip</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'docker-ip'</span><span class="p">);</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">ip</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">docker-ip</span><span class="dl">'</span><span class="p">);</span>
 <span class="kd">var</span> <span class="nx">connString</span> <span class="o">=</span> <span class="s2">`postgres://docker:docker@</span><span class="p">${</span><span class="nx">ip</span><span class="p">()}</span><span class="s2">:5050/docker`</span><span class="p">;</span>
 </code></pre></div></div>
 
-<p><code class="highlighter-rouge">docker-ip</code> uses <code class="highlighter-rouge">docker-machine ip</code> and fallback to <code class="highlighter-rouge">localhost</code> when docker-machine is not available, like in Travis and most others Linux hosts.</p>
+<p><code class="language-plaintext highlighter-rouge">docker-ip</code> uses <code class="language-plaintext highlighter-rouge">docker-machine ip</code> and fallback to <code class="language-plaintext highlighter-rouge">localhost</code> when docker-machine is not available, like in Travis and most others Linux hosts.</p>
 
-<p>To make it work with Travis it’s necessary to add <code class="highlighter-rouge">docker</code> as a new service and start docker containers before running the test script. I had to add a <code class="highlighter-rouge">sleep 3</code> to my build recipe because the services was taking longer than expected to become available for use.</p>
+<p>To make it work with Travis it’s necessary to add <code class="language-plaintext highlighter-rouge">docker</code> as a new service and start docker containers before running the test script. I had to add a <code class="language-plaintext highlighter-rouge">sleep 3</code> to my build recipe because the services was taking longer than expected to become available for use.</p>
 
 <div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">language</span><span class="pi">:</span> <span class="s">node_js</span>
 <span class="na">node_js</span><span class="pi">:</span>
@@ -232,7 +234,7 @@ npm test
 <span class="na">before_script</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="s">npm run start-services</span>
   <span class="pi">-</span> <span class="s">npm run lint</span>
-  <span class="pi">-</span> <span class="s">sleep 3</span>
+  <span class="pi">-</span> <span class="s">sleep </span><span class="m">3</span>
 
 <span class="na">after_script</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="s">npm run coverage</span>
