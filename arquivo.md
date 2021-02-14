@@ -75,7 +75,7 @@ ref: archive
       {% if currTag == tag %}
         {% assign tagCount = tagCount | plus: 1 %}
       {% else %}
-        <span class="site-tag" style="font-size: {{ tagCount | times: 4 | plus: 70  }}%">
+        <span class="site-tag count-{{tagCount}}">
           <a href="/tags/pt#{{ currTag | slugify }}">{{ currTag | replace:'-', ' ' }} ({{ tagCount }})</a>
         </span>
         {% assign currTag = tag %}
