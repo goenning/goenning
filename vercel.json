@@ -50,6 +50,15 @@
           "value": "public, max-age=864000, s-maxage=864000"
         }
       ]
+    },
+    {
+      "source": "/public/script/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=864000, s-maxage=864000"
+        }
+      ]
     }
   ]
 }
