@@ -3,7 +3,7 @@
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-const script = document.getElementById('ga')
+const analytics = document.getElementById('analytics')
 
 ga('create', script.dataset.tracker, 'auto');
 ga('send', 'pageview', {

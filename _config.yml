@@ -79,7 +79,6 @@ plugins:
   - jekyll-sitemap # Create a sitemap using the official Jekyll sitemap gem
   - jekyll-feed # Create an Atom feed using the official Jekyll feed gem
   - jekyll-seo-tag # Canonical URL
-  - jekyll/minibundle # Minify and Cache Burst
 
 # Exclude these files from your production _site
 exclude:
