@@ -28,6 +28,24 @@
           "value": "nosniff"
         }
       ]
+    },
+    {
+      "source": "/public/images/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, s-maxage=86400"
+        }
+      ]
+    },
+    {
+      "source": "/public/style/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=864000, s-maxage=864000"
+        }
+      ]
     }
   ]
 }
