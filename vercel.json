@@ -9,7 +9,7 @@
       "headers": [
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; object-src 'none'; font-src 'self'; img-src 'self' data: https://www.google-analytics.com; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com 'sha256-aresHaHju/DqRehVYXbOaDdwtyG2aRDLI6NLIbg1aWs='; style-src 'self';"
+          "value": "default-src 'self'; object-src 'none'; font-src 'self'; img-src 'self' data: https://www.google-analytics.com; script-src 'self' https://platform.twitter.com/widgets.js https://www.googletagmanager.com https://www.google-analytics.com 'sha256-MWCUJilzJb2yjIarPO7tSjxDiWZzP9YbiuoA7osjt7w='; style-src 'self';"
         },
         {
           "key": "X-Xss-Protection",
