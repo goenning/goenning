@@ -7,9 +7,6 @@ ref: how-to-avoid-relative-path-hell-javascript-typescript-projects
 description: Caso na importação de módulos usando caminho relativo é algo bem comum em grandes projetos JavaScript/TypeScript. Aprenda aqui como usar Webpack para resolver este problema.
 ---
 
-<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Thanks to <a href="https://twitter.com/hashtag/typescript?src=hash">#typescript</a> and <a href="https://twitter.com/hashtag/webpack?src=hash">#webpack</a> I can now freely move my components without having to deal with relative path hell :) <a href="https://t.co/q257QPoylI">pic.twitter.com/q257QPoylI</a></p>&mdash; Guilherme Oenning (@goenning) <a href="https://twitter.com/goenning/status/880884293500850176">June 30, 2017</a></blockquote>
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-
 Quem já trabalhou em um projeto JavaScript já deve estar familiar com o problema de importação de módulos usando caminho relativo (também conhecido como **relative path hell**).
 
 Quando um módulo local importa outro módulo local, o caminho do módulo deve ser relativo, assim como estes dois exemplos.

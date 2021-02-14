@@ -7,9 +7,6 @@ ref: how-to-avoid-relative-path-hell-javascript-typescript-projects
 description: Relative path hell is a common pain point on large JavaScript/TypeScript projects. Learn how Webpack can help you avoid this problem.
 ---
 
-<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Thanks to <a href="https://twitter.com/hashtag/typescript?src=hash">#typescript</a> and <a href="https://twitter.com/hashtag/webpack?src=hash">#webpack</a> I can now freely move my components without having to deal with relative path hell :) <a href="https://t.co/q257QPoylI">pic.twitter.com/q257QPoylI</a></p>&mdash; Guilherme Oenning (@goenning) <a href="https://twitter.com/goenning/status/880884293500850176">June 30, 2017</a></blockquote>
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-
 Those who ever worked on a JavaScript project are familiar with relative path hell on module resolution. 
 
 Whenever a local module A depends on another local module B, it has to be imported using relative path, like these two examples.
