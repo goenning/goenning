@@ -89,3 +89,8 @@ exclude:
   - LICENSE
   - README.md
   - CNAME
+  - write-reminders.txt
+  - vercel.json
+  - yarn.lock
+  - build.sh
+  - serve.sh
