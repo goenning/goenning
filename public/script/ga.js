@@ -5,8 +5,8 @@ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 
 const analytics = document.getElementById('analytics')
 
-ga('create', script.dataset.tracker, 'auto');
+ga('create', analytics.dataset.tracker, 'auto');
 ga('send', 'pageview', {
-    'page': script.dataset.page,
-    'title': script.dataset.title
+    'page': analytics.dataset.page,
+    'title': analytics.dataset.title
 });
