@@ -5,7 +5,7 @@
 
     {% include meta.html %}
 
-    <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />  <!-- Icons -->
+    <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/public/style/site.css?v={{ site.time | date:'%s' }}" />
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
     {% include analytics.html %}
@@ -16,7 +16,7 @@
     <div class="wrapper-masthead">
       <div class="container">
         <header class="masthead clearfix">
-          <a href="{{ site.baseurl }}{{site.navigation[page.lang].index.url}}" class="site-avatar"><img width="70" height="70" alt="{{ site.name }}" src="{{ site.avatar }}" /></a>
+          <a href="{{ site.baseurl }}{{site.navigation[page.lang].index.url}}" class="site-avatar"><img width="70" height="70" alt="{{ site.name }}" src="{{ site.baseurl }}/public/images/profile.png" /></a>
 
           <div class="site-info">
             <h1 class="site-name"><a href="{{ site.baseurl }}{{site.navigation[page.lang].index.url}}">{{ site.name }}</a></h1>

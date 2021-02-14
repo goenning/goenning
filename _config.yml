@@ -4,7 +4,6 @@
 name: '@goenning'
 author: '@goenning'
 description: loop at { run; code; blog; swim; eat; cycle; } until tired;
-avatar: https://avatars.githubusercontent.com/u/94755?s=210
 env: production
 
 #
@@ -39,7 +38,6 @@ footer-links:
   email: me@goenning.net
   github: goenning
   linkedin: goenning
-  pinterest:
   rss: goenning
   twitter: goenning
 
