@@ -1,1 +1,1 @@
-Visit my blog at http://goenning.net
+✍️ http://goenning.net
