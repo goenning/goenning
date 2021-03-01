@@ -1,8 +1,13 @@
 - name: Fider
   link: https://getfider.com
-  desc_en: Collect and prioritize product feedback so that you can focus on building the right product.
-  desc_pt: Colete e priorize feedback para que você possa se concentrar na construção do produto ideal.
+  desc_en: Open Source platform to collect and prioritize product feedback so that you can focus on building the right product.
+  desc_pt: Projeto open source para coleta e prioritização de feedback para a construção de produto voltado às demandas dos usuários.
   github: https://github.com/getfider/fider
+
+- name: RepointHub
+  link: https://repointhub.com
+  desc_en: The single endpoint for all things security, network and browser monitoring using W3C Reporting API.
+  desc_pt: Um único endpoint para monitoração de segurança, rede e navegadores usando a Reporting API da W3C.
 
 - name: sitecheck.dev
   link: https://sitecheck.dev
