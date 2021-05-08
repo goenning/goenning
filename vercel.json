@@ -9,7 +9,7 @@
       "headers": [
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; object-src 'none'; font-src 'self'; img-src 'self' data: https://www.google-analytics.com; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://minigets.vercel.app 'sha256-MWCUJilzJb2yjIarPO7tSjxDiWZzP9YbiuoA7osjt7w='; connect-src 'self' https://www.google-analytics.com https://minigets.vercel.app; style-src 'self' 'unsafe-inline'"
+          "value": "default-src 'self'; object-src 'none'; font-src 'self'; img-src 'self' data: https://www.google-analytics.com; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://minigets.com 'sha256-MWCUJilzJb2yjIarPO7tSjxDiWZzP9YbiuoA7osjt7w='; connect-src 'self' https://www.google-analytics.com; style-src 'self' 'unsafe-inline'; frame-src https://minigets.com;"
         },
         {
           "key": "X-Xss-Protection",
