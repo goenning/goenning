@@ -15,10 +15,5 @@ layout: default
     {{ content }}
   </div>
 
-  <p class="like">
-    <span>Did you like this post?</span>
-    <mgs-widget type="like" icon="heart"></mgs-widget>
-    <script defer src="https://minigets.com/sdk/minigets.js" data-website="pk_XmE3kLcR0NrHiVVu"></script>
-  </p>
   <a href="https://twitter.com/intent/tweet?text={{ page.title | url_encode }}+by+@goenning&url={{ page.url | absolute_url | url_encode }}">Discuss on Twitter</a> <small>•</small> <a href="https://github.com/goenning/goenning.github.io/tree/master/{{ page.path }}">Edit on GitHub</a>
 </article>
