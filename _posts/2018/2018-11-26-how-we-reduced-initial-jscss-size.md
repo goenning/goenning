@@ -5,6 +5,7 @@ lang: en
 tags: [react, performance, web]
 description: We have been working on reducing the amount of bytes that we send to all Fider users. Being a web application built with React, we have focused on JS and CSS. On this post we share our learnings, some concepts and suggestions on how you can do the same with your web application.
 ref: how-we-reduced-initial-jscss-size
+canonical_url: https://getfider.com/blog/how-we-reduced-initial-jscss-size/
 ---
 
 ![](/public/images/2018/11/bundle-size-improvements.png)
