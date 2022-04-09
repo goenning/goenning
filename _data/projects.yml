@@ -21,7 +21,7 @@
   desc_pt: Um serviço de pre-renderização para melhorar o SEO de websites com renderização no navegador. Pode ser utilizado via CLI ou Docker.
   github: https://github.com/goenning/rendergun
 
-- name: ng-applicationinsights
+- name: ng-appinsights
   link: https://www.npmjs.com/package/ng-appinsights
   desc_en: A simple wrapper of Application Insights JS Library for Angular applications.
   desc_pt: Um pacote NPM para integrar Angular ao Azure Application Insights
