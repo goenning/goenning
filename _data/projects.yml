@@ -4,6 +4,11 @@
   desc_pt: Projeto open source para coleta e prioritização de feedback para a construção de produto voltado às demandas dos usuários.
   github: https://github.com/getfider/fider
 
+- name: Bluegets
+  link: https://bluegets.com
+  desc_en: Stay up to date with tweets that matter most to you, bluegets will send emails about tweets you care about, all based on your interests
+  desc_pt: Fique por dentro de tudo o que acontece no Twitter, bluegets envia para o seu e-mail todos os tweets baseado em tópicos de seu interesse
+
 - name: webping.cloud
   link: https://webping.cloud
   desc_en: Ping all Azure, AWS, GCP (and others) regions directly from your browser, in a single page.
