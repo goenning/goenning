@@ -8,6 +8,10 @@ ref: projects
 
 Uma lista de projetos open source que eu mantenho (ou mantive no passado).
 
+<div>
+{% include aptakube.html lang="pt" %}
+</div>
+
 <ul class="projects-list">
 {% for item in site.data.projects %}
     <li>

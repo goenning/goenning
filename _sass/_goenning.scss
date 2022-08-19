@@ -129,3 +129,60 @@ h1, h2, h3, h4, h5, h6 {
     }
   }
 }
+
+.aptakube {
+  color: rgb(17, 24, 39);
+  border-radius: 12px;
+  padding: 8px;
+  max-width: 500px;
+  margin: 40px auto 40px auto;
+  border: 1px solid rgb(212, 212, 216);
+  overflow: hidden;
+  display: block;
+  position: relative;
+  .ribbon {
+    top: 0px;
+    right: 0px; 
+    position: absolute;
+    > div {
+      position: absolute;
+      font-weight: 600;
+      text-align: center;
+      padding-top: 0.25rem;
+      padding-bottom: 0.25rem;
+      font-size: 12px;
+      top: 4px;
+      right: -30px;
+      transform: matrix(0.707107, 0.707107, -0.707107, 0.707107, 0, 0);
+      width: 100px;
+      color:white;
+      background-color: rgb(5, 150, 105);
+    }
+  }
+  .head {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    img {
+      height: 2rem;
+      margin-right: 4px;
+      border-radius: 0.5rem;
+    }
+    .title {
+      font-weight: 600;
+    }
+  }
+  .body {
+    font-size: 12px;
+    margin-top: 8px;
+    line-height: 16px;
+    .learn-more {
+      color: rgb(37, 99, 235);
+    }
+  }
+}
+
+.aptakube:hover {
+  color: rgb(17, 24, 39);
+  background-color: #f1f5f9;
+}

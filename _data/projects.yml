@@ -1,3 +1,8 @@
+- name: Aptakube
+  link: https://aptakube.com
+  desc_en: Modern, lightweight and multi-cluster Kubernetes desktop client. Available on Windows, macOS and Linux.
+  desc_pt: Cliente de desktop moderno, leve e multi-cluster para o Kubernetes. Disponível em Windows, macOS e Linux.
+
 - name: Fider
   link: https://fider.io
   desc_en: Open Source platform to collect and prioritize product feedback so that you can focus on building the right product.
