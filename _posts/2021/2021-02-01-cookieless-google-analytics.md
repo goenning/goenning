@@ -8,7 +8,7 @@ description: There is a lot more awareness on privacy these days and quite a few
 
 > **Note 1**: Some might argue that if you are concerned about cookies you shouldn’t be using Google Analytics in the first place. That’s a valid point in which I agree, but on this post I want to leave that discussion out. The focus here is to explain how to implement Google Analytics without cookies while still keeping an acceptable unique user metrics.
 
-> **Note 2**: This post is using Universal Analytics from Google and it DOES NOT WORK with Google Analytics 4. I tried many times and I could not make it work with GA4, if you know how, please share!
+> **Note 2**: This post is using Universal Analytics from Google and it DOES NOT WORK with Google Analytics 4. Since Google Analytics 4 uses *first-party* cookies, this approach isn't necessary.
 
 It might be useful for us to start with why cookies are needed in Google Analytics. Without cookies the script is not be able to identify if the user visited that site before, which would cause all page views to be counted as unique.
 
