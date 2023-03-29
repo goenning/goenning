@@ -3,6 +3,11 @@
   desc_en: Modern, lightweight and multi-cluster Kubernetes desktop client. Available on Windows, macOS and Linux.
   desc_pt: Cliente de desktop moderno, leve e multi-cluster para o Kubernetes. Disponível em Windows, macOS e Linux.
 
+- name: Aptabase
+  link: https://aptabase.com
+  desc_en: Privacy-first and simples analytics for desktop, mobile and web apps, without the hassle.
+  desc_pt: Plataforma de analytics simples e com foco em privacidade para aplicativos de desktop, mobile e web.
+
 - name: Kubedir
   link: https://kubedir.com
   desc_en: A directory for all things Kubernetes. Compare and discover Kubernetes tools, services and resources.
