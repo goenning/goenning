@@ -1,4 +1,4 @@
-Hey, I'm Guilherme 👋
+![1500x500](https://github.com/goenning/goenning/assets/94755/4ee1bc88-85c0-49c0-9215-266f48dbca4e)
 
 Here's some of the things I'm working on:
 
