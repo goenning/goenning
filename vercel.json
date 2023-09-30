@@ -1,6 +1,11 @@
 {
   "redirects": [
     {
+      "source": "/2016/04/14/stop-reading-json-files-with-require/",
+      "destination": "/blog/stop-reading-json-files-with-require/",
+      "permanent": true
+    },
+    {
       "source": "/2019/11/05/seo-on-spa-apps-with-rendergun/",
       "destination": "/blog/seo-on-spa-apps-with-rendergun/",
       "permanent": true
