@@ -2,7 +2,7 @@
 slug: free-and-automated-ssl-certificates-with-go
 title: Free and Automated SSL/TLS Certificates with Go
 tags: [go, security]
-plublishedAt: "2017-11-08T00:00:00.000Z"
+publishedAt: "2017-11-08T00:00:00.000Z"
 ---
 
 **Jan 13, 2018**: This post has been updated to use HTTP challenge as Let's Encrypt disabled the TLS-SNI challenge, which we were using before.

@@ -1,17 +1,27 @@
 {
   "redirects": [
     {
-      "source": "/2018-11-16-how-to-retry-dynamic-import-with-react-lazy",
+      "source": "/2018/11/26/how-we-reduced-initial-jscss-size/",
+      "destination": "/blog/how-we-reduced-initial-jscss-size/",
+      "permanent": true
+    },
+    {
+      "source": "/2018/12/21/automated-ssl-with-azure-blob-storage/",
+      "destination": "/blog/automated-ssl-with-azure-blob-storage/",
+      "permanent": true
+    },
+    {
+      "source": "/2018/11/16/how-to-retry-dynamic-import-with-react-lazy/",
       "destination": "/blog/how-to-retry-dynamic-import-with-react-lazy/",
       "permanent": true
     },
     {
-      "source": "/2017-11-08-free-and-automated-ssl-certificates-with-go/",
+      "source": "/2017/11/08/free-and-automated-ssl-certificates-with-go/",
       "destination": "/blog/free-and-automated-ssl-certificates-with-go/",
       "permanent": true
     },
     {
-      "source": "/2017-06-20-session-per-request-pattern-go/",
+      "source": "/2017/06/20/session-per-request-pattern-go/",
       "destination": "/blog/session-per-request-pattern-go/",
       "permanent": true
     },
