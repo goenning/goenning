@@ -1,4 +1,11 @@
 {
+  "redirects": [
+    {
+      "source": "/2019/11/05/seo-on-spa-apps-with-rendergun/",
+      "destination": "/blog/seo-on-spa-apps-with-rendergun/",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/p.js",

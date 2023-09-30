@@ -23,7 +23,7 @@ const sorted = posts.sort(
         <div>
           <a
             class="flex no-underline font-light items-center gap-1"
-            href={p.frontmatter.href ?? `/blog/${p.frontmatter.slug}`}
+            href={p.frontmatter.href ?? `/blog/${p.frontmatter.slug}/`}
           >
             <span>{p.frontmatter.title}</span>
             {p.frontmatter.href && (
