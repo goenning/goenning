@@ -1,5 +1,6 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
+import SideProjects from "../components/SideProjects.astro";
 ---
 
 <SiteLayout title="Guilherme Oenning">
@@ -16,8 +17,8 @@ import SiteLayout from "../layouts/SiteLayout.astro";
     <p>
       I'm a software developer passionate about the <span
         class="text-yellow-400">intersection of development and operations</span
-      >. My area of interest and expertise includes Kubernetes, AWS,
-      Infrastructure as Code, CI/CD, Developer Experience, Go, C# and much more.
+      >. My area of interest and expertise includes Kubernetes, AWS, Infra as
+      Code, CI/CD, Developer Experience, Go, C#, React and much more.
     </p>
     <p>
       I work as a <a href="/hire"
@@ -26,9 +27,32 @@ import SiteLayout from "../layouts/SiteLayout.astro";
         swimming — sometimes all at once.
       </a>
 
-      <h4 class="text-xl font-medium tracking-tight">Recent posts</h4>
+      <p class="text-base">
+        Find me on <a
+          href="https://www.linkedin.com/in/goenning"
+          target="_blank">LinkedIn</a
+        >
+         and <a href="https://github.com/goenning" target="_blank">GitHub</a>.
+      </p>
 
-      <h4 class="text-xl font-medium tracking-tight">Side Projects</h4>
+      <h4 class="text-xl font-medium tracking-tight">recent posts</h4>
+      <ul>
+        <li>
+          <span>Hello World</span>
+          <span class="text-neutral-500 text-sm block">January 30th, 2023</span>
+        </li>
+        <li>
+          <span>Hello World</span>
+          <span class="text-neutral-500 text-sm block">January 30th, 2023</span>
+        </li>
+        <li>
+          <span>Hello World</span>
+          <span class="text-neutral-500 text-sm block">January 30th, 2023</span>
+        </li>
+      </ul>
+
+      <h4 class="text-xl font-medium tracking-tight">side projects</h4>
+      <SideProjects />
     </p>
   </section>
 </SiteLayout>
