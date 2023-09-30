@@ -1,1 +1,0 @@
-docker run --rm -v=$(pwd):/srv/jekyll -p 4000:4000 -it jekyll/jekyll:4.2.0 /bin/bash jekyll build --drafts --config _config.yml,_config_dev.yml
