@@ -1,0 +1,21 @@
+---
+import Menu from "../components/Menu.astro";
+const { title } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{title}</title>
+  </head>
+  <body
+    class="antialiased max-w-2xl mb-40 flex flex-col md:flex-row mx-4 mt-8 lg:mx-auto bg-[#111010] text-white"
+  >
+    <main class="flex-auto min-w-0 mt-6 flex flex-col px-2 md:px-0">
+      <Menu />
+      <slot />
+    </main>
+  </body>
+</html>
