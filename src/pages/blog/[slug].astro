@@ -1,0 +1,40 @@
+---
+import SiteLayout from "../../layouts/SiteLayout.astro";
+import FormatDate from "../../components/FormatDate.astro";
+
+export async function getStaticPaths() {
+  const all = await Astro.glob("../../posts/*.md");
+  const internal = all.filter((p) => !p.frontmatter.href);
+  return internal.map((p) => ({
+    params: {
+      slug: p.frontmatter.slug,
+    },
+  }));
+}
+
+const { slug } = Astro.params;
+const all = await Astro.glob("../../posts/*.md");
+const post = all.find((x) => x.frontmatter.slug === slug);
+if (!post) return { status: 404 };
+---
+
+<SiteLayout title={`${post.frontmatter.title} • goenning`}>
+  <section class="prose lg:prose-lg prose-invert prose-h1:mb-2 mt-4">
+    <h1 class="leading-0">{post.frontmatter.title}</h1>
+    <div class="flex text-sm items-center text-neutral-400 gap-2">
+      <FormatDate class="block" date={post.frontmatter.publishedAt} />
+      {
+        post.frontmatter.tags && (
+          <>
+            <span>•</span>
+            <span class="inline-flex flex-row gap-1 text-neutral-500">
+              {post.frontmatter.tags.join(", ")}
+            </span>
+          </>
+        )
+      }
+    </div>
+
+    <post.Content />
+  </section>
+</SiteLayout>

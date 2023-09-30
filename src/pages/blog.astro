@@ -1,8 +1,48 @@
 ---
 import SiteLayout from "../layouts/SiteLayout.astro";
+import FormatDate from "../components/FormatDate.astro";
+import ExternalLinkIcon from "../components/ExternalLinkIcon.astro";
+
+const posts = await Astro.glob("../posts/*.md");
+const sorted = posts.sort(
+  (a, b) =>
+    new Date(b.frontmatter.publishedAt).getTime() -
+    new Date(a.frontmatter.publishedAt).getTime()
+);
 ---
 
-<SiteLayout title="Blog · Guilherme Oenning">
+<SiteLayout title="Blog • goenning">
   <h1 class="text-2xl font-medium tracking-tight">read my blog</h1>
-  <section class="prose lg:prose-lg prose-invert mt-4">hi</section>
+  <p class="text-neutral-400">
+    a collection of notes, guides and other things I write about
+  </p>
+
+  <div class="flex flex-col gap-4 mt-10">
+    {
+      sorted.map((p) => (
+        <div>
+          <a
+            class="flex no-underline font-light items-center gap-1"
+            href={p.frontmatter.href ?? `/blog/${p.frontmatter.slug}`}
+          >
+            <span>{p.frontmatter.title}</span>
+            {p.frontmatter.href && (
+              <ExternalLinkIcon class="w-3 h-3 text-neutral-400" />
+            )}
+          </a>
+          <div class="flex text-sm items-center text-neutral-400 gap-2">
+            <FormatDate class="block" date={p.frontmatter.publishedAt} />
+            {p.frontmatter.tags && (
+              <>
+                <span>•</span>
+                <span class="inline-flex flex-row gap-1 text-neutral-500">
+                  {p.frontmatter.tags.join(", ")}
+                </span>
+              </>
+            )}
+          </div>
+        </div>
+      ))
+    }
+  </div>
 </SiteLayout>
