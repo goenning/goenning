@@ -1,6 +1,11 @@
 {
   "redirects": [
     {
+      "source": "/2017-11-08-free-and-automated-ssl-certificates-with-go/",
+      "destination": "/blog/free-and-automated-ssl-certificates-with-go/",
+      "permanent": true
+    },
+    {
       "source": "/2017-06-20-session-per-request-pattern-go/",
       "destination": "/blog/session-per-request-pattern-go/",
       "permanent": true
