@@ -1,6 +1,11 @@
 {
   "redirects": [
     {
+      "source": "/2018-11-16-how-to-retry-dynamic-import-with-react-lazy",
+      "destination": "/blog/how-to-retry-dynamic-import-with-react-lazy/",
+      "permanent": true
+    },
+    {
       "source": "/2017-11-08-free-and-automated-ssl-certificates-with-go/",
       "destination": "/blog/free-and-automated-ssl-certificates-with-go/",
       "permanent": true
