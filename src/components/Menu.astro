@@ -2,10 +2,11 @@
 const items = [
     { href: '/', text: 'home' },
     { href: '/blog', text: 'blog' },
+    { href: '/hire', text: 'hire me' },
 ]
 ---
 
-<nav class="flex gap-2">
+<nav class="flex gap-2 mb-14">
     {items.map((item, idx) => (
         <>
             <a href={item.href} class={`${Astro.url.pathname === item.href ? 'text-white': 'text-neutral-500'} hover:text-neutral-200`}>
