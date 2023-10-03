@@ -3,6 +3,7 @@ slug: how-to-retry-dynamic-import-with-react-lazy
 title: How to retry when React lazy fails
 tags: [react]
 publishedAt: "2018-11-16T00:00:00.000Z"
+description: "Learn how to retry when React lazy fails to load a chunk."
 ---
 
 React 16.6 has been released and it's now easier than ever to do code split within our React applications by using the lazy function.

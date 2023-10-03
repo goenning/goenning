@@ -3,6 +3,7 @@ slug: seo-on-spa-apps-with-rendergun
 title: Adding SEO to Single Page Applications with Rendergun
 tags: [spa, seo]
 publishedAt: "2019-11-05T00:00:00Z"
+description: "Learn how to add SEO capabilities to Single Page Applications using Dynamic Rendering and Rendergun."
 ---
 
 SPA and SEO are two acronyms that don’t fit well together on the same sentence. Even though Google is able to crawl and index client-side rendered websites since 2015, there are a few reasons why this is not yet recommended.

@@ -2,6 +2,7 @@
 slug: one-liner-immutable-mistake
 title: The one-liner immutable mistake
 publishedAt: "2023-10-02T00:00:00Z"
+description: "Learn how a one-liner immutable mistake caused a 300x performance degradation on a JavaScript app and how to avoid it."
 ---
 
 I recently received a [bug report](https://github.com/aptakube/aptakube/issues/155) where the user reported our app would freeze for a few seconds while loading data from an external API.

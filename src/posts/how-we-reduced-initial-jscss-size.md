@@ -3,6 +3,7 @@ slug: how-we-reduced-initial-jscss-size
 title: How we reduced our initial JS/CSS size by 67%
 tags: [react, performance, web]
 publishedAt: "2018-11-26T00:00:00.000Z"
+description: "Learn how we slashed our JS/CSS size by 67%! Explore webpack techniques, code splitting, dynamic imports & more. Optimize your bundles for faster, accessible web experiences."
 ---
 
 ![](/blog/how-we-reduced-initial-jscss-size/bundle-size-improvements.png)

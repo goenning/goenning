@@ -2,6 +2,7 @@
 slug: automated-ssl-with-azure-blob-storage
 title: Using Azure Blob Storage as a cache backend for Go acme/autocert
 publishedAt: "2018-12-21T00:00:00.000Z"
+description: "Learn how to use Azure Blob Storage as a cache backend for Go acme/autocert package to provision free and automated SSL/TLS certificates from Let's Encrypt."
 ---
 
 If you're not familiar with `acme/autocert` package on Go, I'd recommend you to start with [Free and Automated SSL Certificates with Go](/blog/free-and-automated-ssl-certificates-with-go/) post. It'll show you how you can use acme/autocert to provision a Let's Encrypt Certificate for free in a fully automated manner.

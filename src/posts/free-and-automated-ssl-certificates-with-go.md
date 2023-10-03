@@ -3,6 +3,7 @@ slug: free-and-automated-ssl-certificates-with-go
 title: Free and Automated SSL/TLS Certificates with Go
 tags: [go, security]
 publishedAt: "2017-11-08T00:00:00.000Z"
+description: "Learn how to create a Go web application that automatically generates SSL/TLS Certificates and use them to run itself on HTTPS. The best part is: It's free!"
 ---
 
 **Jan 13, 2018**: This post has been updated to use HTTP challenge as Let's Encrypt disabled the TLS-SNI challenge, which we were using before.

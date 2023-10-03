@@ -3,6 +3,7 @@ slug: session-per-request-pattern-go
 title: "Session per Request pattern in Go"
 tags: [go, web, sql]
 publishedAt: "2017-06-20T00:00:00.000Z"
+description: "Learn 'Session per Request' pattern in Go, decouple logic from DB transactions. Streamline with middleware for efficient, cleaner code in your Go web apps!"
 ---
 
 Prior to start coding in Go, I've implemented multiple web applications in C# and Java. There is a particular pattern that is very common on these languages that is hard to find any mentions about in the Go community.

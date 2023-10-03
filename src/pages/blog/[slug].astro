@@ -18,7 +18,10 @@ const post = all.find((x) => x.frontmatter.slug === slug);
 if (!post) return { status: 404 };
 ---
 
-<SiteLayout title={`${post.frontmatter.title} • goenning`}>
+<SiteLayout
+  title={`${post.frontmatter.title} • goenning`}
+  description={post.frontmatter.description}
+>
   <section class="prose lg:prose-lg prose-invert prose-h1:mb-2 mt-4">
     <h1 class="leading-0">{post.frontmatter.title}</h1>
     <div class="flex text-sm items-center text-neutral-400 gap-2">

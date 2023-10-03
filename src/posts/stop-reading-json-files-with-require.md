@@ -3,6 +3,7 @@ slug: stop-reading-json-files-with-require
 publishedAt: "2016-04-14T00:00:00.000Z"
 title: Stop reading JSON files with require
 tags: [node]
+description: "Discover why you should stop reading JSON files with node's require function and how to do it properly."
 ---
 
 There you are, coding at 11pm, trying to get your unit tests back to a green state and no matter how hard you try, you **just can't find why**. Not even a dozen of console.log can help you.
