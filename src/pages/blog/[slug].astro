@@ -2,7 +2,7 @@
 import SiteLayout from "../../layouts/SiteLayout.astro";
 import FormatDate from "../../components/FormatDate.astro";
 
-export async function getStaticPaths() {
+export async function getStaticPaths(): Promise<any> {
   const all = await Astro.glob("../../posts/*.md");
   const internal = all.filter((p) => !p.frontmatter.href);
   return internal.map((p) => ({
@@ -14,7 +14,7 @@ export async function getStaticPaths() {
 
 const { slug } = Astro.params;
 const all = await Astro.glob("../../posts/*.md");
-const post = all.find((x) => x.frontmatter.slug === slug);
+const post = all.find((x: any) => x.frontmatter.slug === slug);
 if (!post) return { status: 404 };
 ---
 
@@ -25,7 +25,9 @@ if (!post) return { status: 404 };
   <section class="prose lg:prose-lg prose-invert prose-h1:mb-2 mt-4">
     <h1 class="leading-0">{post.frontmatter.title}</h1>
     <div class="flex text-sm items-center text-neutral-400 gap-2">
-      <FormatDate class="block" date={post.frontmatter.publishedAt} />
+      <FormatDate date={post.frontmatter.publishedAt} />
+      <span>•</span>
+      <span class="flex items-center gap-2 leading-none"><img src="/goenning.png" class="rounded-full h-4 w-4 inline ml-1 !m-0 p-0" /> <a href="https://twitter.com/goenning">@goenning</a></span>
       {
         post.frontmatter.tags && (
           <>
