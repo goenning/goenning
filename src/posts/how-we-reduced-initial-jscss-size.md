@@ -1,9 +1,9 @@
 ---
 slug: how-we-reduced-initial-jscss-size
-title: How we reduced our initial JS/CSS size by 67%
+title: How we reduced our JS/CSS content size by 67%
 tags: [react, performance, web]
 publishedAt: "2018-11-26T00:00:00.000Z"
-description: "Learn how we slashed our JS/CSS size by 67%! Explore webpack techniques, code splitting, dynamic imports & more. Optimize your bundles for faster, accessible web experiences."
+description: "Learn how we reduced our JS/CSS size by over 67%! Explore webpack techniques, code splitting, dynamic imports & more. Optimize your bundles for faster, accessible web experiences."
 ---
 
 ![](/blog/how-we-reduced-initial-jscss-size/bundle-size-improvements.png)
@@ -34,7 +34,7 @@ This is an example of what this plugin will generate for you.
 
 Did you notice that huge <strong>entities.json</strong> inside the vendor bundle? That's a good starting point to analyze the content of your bundle.
 
-## Long term caching with content hash
+## Long-term caching with content hash
 
 Long term caching is the process of telling the browser to cache a file for a long time, like 3 months or even 1 year. This is a important settings to ensure that returning users won’t need to download the same JS/CSS files over and over again.
 
@@ -124,7 +124,7 @@ While using the Bundle Analyzer we found that markdown-it alone was consuming ~4
 
 We’ve been using [bundlephobia.com](https://bundlephobia.com/) to analyse the byte size of any NPM package before installing it. We have switched from markdown-it to marked, which **reduced ~63kB from our vendor bundle** with minimal API change.
 
-Curious about it? Check out [PR #643](https://github.com/getfider/fider/pull/643).
+Curious about it? Check out [PR getfider/fider#643](https://github.com/getfider/fider/pull/643).
 
 You can also compare these two packages on bundlephobia:
 
@@ -161,6 +161,6 @@ The amount of bytes this can reduce from the bundle will depend on the amount of
 
 Are you ready for [the next billion users](https://developers.google.com/web/billions/)? Think about all the potential users of your app that currently struggle to use it because on a low-cost device and slower network.
 
-Reducing the byte size of our bundles has a direct impact on the performance of our applications and can help us make it more accessible to everyone. Hopefully this post can you help on this journey.
+Reducing the byte size of our bundles has a direct impact on the performance of our applications and can help us make it more accessible to everyone. 
 
-Thank you for reading!
+Thank you for reading, hopefully this post can help you as well!
